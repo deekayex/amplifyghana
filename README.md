@@ -1,2 +1,0 @@
-# amplifyGh
-Website 
