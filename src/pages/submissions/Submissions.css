@@ -1,0 +1,94 @@
+.submissions-container{
+    height: 108.5vh;
+    background: linear-gradient(180deg, rgba(255, 92, 0, 0.4) 0%, rgba(211, 118, 41, 0.87) 50%, #FF8018 100%),
+linear-gradient(0deg, rgba(255, 92, 0, 0.4), rgba(255, 92, 0, 0.4));
+}
+
+.forms-container{
+    width: 60%;
+    margin-left: 20%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.02);
+    align-items: center;
+    padding-top: 2%;
+}
+
+.form-container{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center; 
+    position: relative;
+}
+
+
+.submission-form{
+    /* background-color: yellow; */
+    height: 50vh;
+    width: 100%;  
+    position: relative; 
+}
+
+
+
+.input-name, .input-phone, .input-email{
+    height: 5vh;
+    border-radius: 20px 20px 20px;
+    border: none;
+    padding-left: 10px;
+}
+
+.input-name{
+    width: 100%;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+.input-phone, .input-email{
+    width: 48%;
+    margin-bottom: 2vh;
+}
+
+.input-phone{
+    margin-left: 4%;
+}
+
+.message-box{
+    height: 20vh;
+    width: 100%;
+    margin-bottom: 2vh;
+    border-radius: 20px 20px 20px;
+    border: none;
+    padding: 15px 15px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-box input{
+    align-items: flex-start;
+}
+
+.form-submit{
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+    width: 20vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    border-radius: 20px 20px 20px;
+    border: none;
+}
+
+.form-submit:hover{
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.error-message{
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    top: 0%;
+    left: 30%;
+}

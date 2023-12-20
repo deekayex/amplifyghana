@@ -1,0 +1,10 @@
+body{
+    font-family: 'Monument Extended', sans-serif; 
+    margin: 0;
+}
+
+.nav_active {
+    color:rgba(255, 115, 0) ;
+    transition: 0.5s;
+  }
+

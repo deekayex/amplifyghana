@@ -1,0 +1,72 @@
+.playlist-page{
+    background: linear-gradient(180deg, rgba(255, 92, 0, 0.4) 0%, rgba(211, 118, 41, 0.87) 50%, #FF8018 100%),
+    linear-gradient(0deg, rgba(255, 92, 0, 0.4), rgba(255, 92, 0, 0.4));
+    height: 200vh;
+}
+
+.playlist-container{
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    /* background-color: aliceblue; */
+    justify-content: center;
+}
+
+.playlist-header{
+    padding-top: 15vh;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Goldman', sans-serif;
+    font-weight: 700;
+    font-size: 1.8vw;
+}
+
+.playlist_component{
+    width: 80%;
+    /* background-color: aqua; */
+    height: 30vh;
+    margin-left: 10%;
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    gap: 2%;
+}
+
+.playlist_image{
+    width: 35%;
+    height: 100%;
+    border-radius: 20px 20px 20px 20px;
+    border: none;
+}
+
+.playlist_text{
+    height: 100%;
+    background-color: black;
+    width: 65%;
+    border-radius: 20px 20px 20px 20px;
+    color: white;
+    padding: 2% 2% 2%;
+    line-height: 2.6vh;
+    font-size: clamp(11px, 0.5vw, 18px);
+    position: relative;
+}
+
+.picture{
+    width: 100%;
+    height: 100%;
+}
+
+.playlist_button{
+    position: absolute;
+    bottom: 5%;
+    left: 2%;
+    border-radius: 20px 20px 20px 20px;
+    width: 15%;
+    height: 10%;
+    font-family: 'Goldman', sans-serif;
+    font-weight: 700;
+}
+
+.playlist_button:hover{
+    cursor: pointer;
+}

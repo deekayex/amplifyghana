@@ -1,0 +1,130 @@
+.about_us_page{
+    background: linear-gradient(180deg, rgba(255, 92, 0, 0.4) 0%, rgba(211, 118, 41, 0.87) 50%, #FF8018 100%),
+    linear-gradient(0deg, rgba(255, 92, 0, 0.4), rgba(255, 92, 0, 0.4));
+    
+    color: black;
+    height: 115vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.about_top{
+    margin-top: 12vh;
+    height: 25vh;
+}
+
+.top_header, .body_header, .box_text_header, .about-socials-header{
+    text-transform: uppercase;
+    margin-top: 2px;
+    font-family: 'Goldman', sans-serif;
+    font-size: 2vw;
+    text-decoration: solid;
+}
+
+.top_box, .body_box{
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2vw;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    color: white;
+}
+
+.top_box{
+    margin-left: 10%;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    max-width: 80%;
+    border-radius: 20px 20px 20px 20px;
+    letter-spacing: 1px;
+    font-weight: 800;
+    line-height: 3vh;
+    }
+
+
+.body_box{
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.box_container{
+    /* background-color:blue; */
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+}
+
+.box_text{
+    /* background-color:aqua; */
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between
+}
+
+.box_1, .box_2, .box_3, .box_new, .box_original{
+    width: 30%;
+    text-align: left;
+}
+
+.box_text_header{
+    color: rgba(255, 115, 0, 1);
+    padding-top: 3vh;
+    padding-bottom: 1vh;
+    font-size: 1.522vw;
+}
+
+.box_text_body{
+    font-size: 0.9vw;
+    font-weight: 800;
+    line-height: 2.5vh;
+}
+
+.box_controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80%;
+  }
+  
+
+.next-button, .previous-button{
+    cursor: pointer;
+    width: 8vw;
+    font-size: 6rem;
+}
+
+.previous-button.disabled,
+.next-button.disabled {
+  opacity: 0.5; /* Adjust the opacity as needed */
+  cursor: not-allowed;
+}
+
+
+
+.next-button:hover, .previous-button:hover{
+    cursor: pointer;
+}
+
+.box_text{
+    display: flex;
+    
+}
+
+.about_socials{
+    margin-top: 10vh;
+    text-transform: uppercase;
+}
+
+.about-us-socials{
+    display: flex;
+    height: 7vh;
+    justify-content: center;
+    margin-top: 5vh;
+}
+
+.about-us-socials .socials{
+    --socials-gap: 4vw;
+}

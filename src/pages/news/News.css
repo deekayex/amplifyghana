@@ -1,0 +1,175 @@
+.news-container {
+    height: 110%;
+    background: linear-gradient(180deg, #FF8018 0%, rgba(211, 118, 41, 0.87) 50%, rgba(255, 92, 0, 0.4) 100%),
+      linear-gradient(0deg, rgba(255, 92, 0, 0.4), rgba(255, 92, 0, 0.4));
+  }
+  
+  .spacer {
+    height: 10%;
+    margin-top: 0%;
+  }
+  
+  .page-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 28px;
+    font-family: "Goldman", sans-serif;
+    font-size: 3vh;
+  }
+  
+  .news-icon {
+    width: 3vh;
+    height: 20px;
+    margin-right: 10px;
+  }
+  
+  .flex-contents{
+    display: flex;
+    justify-content: center;
+  }
+
+  .page-contents {
+    height: 75%;
+    width: 80%;
+    /* background-color: aqua; */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 2%;
+  }
+  
+  .top-contents,
+  .bottom-contents {
+    height: 60%;
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 3%;
+  }
+  
+  .content-card {
+    width: 100%;
+    position: relative;
+    margin-right: 2%;
+    margin-bottom: 10%;
+    min-width: 250px;
+  }
+  
+  .content-pic {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .content-text {
+    position: absolute;
+    background-color: black;
+    bottom: 0px;
+    height: 30%;
+    color: white;
+    font-family: "Monument Extended";
+  }
+  
+  .content-text-header {
+    font-size: 1.1vw;
+    color: #FF7300;
+  }
+  
+  .content-text-body {
+    font-size: 0.56vw;
+    margin-top: 2px;
+    font-family: "Montserrat", sans-serif;
+    word-spacing: 1px;
+    letter-spacing: 1px;
+    font-weight: 400;
+  }
+  
+  .pagination {
+    text-align: center;
+    font-size: 1.5vw;
+  }
+
+  .page-button{
+    margin-left: 2%;
+    margin-right: 2%;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1vw;
+    width: 6vw;
+    height: 3vh;
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    box-shadow: rgba(24, 23, 23, 0.4) 2px 2px;
+    font-family: "Monument Extended";
+  }
+
+.page-button:hover{
+    box-shadow: rgba(24, 23, 23, 0.7) 2px 2px;
+    opacity: 0.9; 
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.page-button:active{
+    opacity: 1;
+    transition: 0.5s;
+}
+
+
+
+
+@media screen and (max-width: 1000px) {
+  .news-container, .home-page{
+    height: 148%;
+  }
+  .page-contents {
+    height: 120%;
+  }
+
+  .content-text-header{
+    font-size: 1.6vw;
+  }
+  .content-text-body{
+    font-size: 0.8vw;
+  }
+
+  .content-card{
+    width: 40vw;
+    min-width: 10px;
+  }
+
+  .pagination {
+    text-align: center;
+    font-size: 2.15vw;
+  }
+  .news-icon{
+    width: 3vw;
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+  .news-container,.home-page{
+    height: 155%;
+  }
+  .page-contents {
+    height: 120%;
+
+  }  
+  
+}
+
+
+@media screen and (max-width: 600px) {
+ 
+  .page-contents{
+    height: 85%;
+  }
+
+  .news-container, .home-page{
+    height: 120%;
+  }
+
+  .news-icon{
+    width: 15px;
+    height: 15px;
+  }
+}
