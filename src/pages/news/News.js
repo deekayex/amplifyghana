@@ -1,55 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './News.css';
 import { database } from '../../firebase/firebase';
-import { collection, getDocs } from '@firebase/firestore';
+import { collection, getDoc, addDoc, getDocs, deleteDoc, doc } from '@firebase/firestore';
+import { Link } from 'react-router-dom';
+import CreateArticleForm from '../../components/editor/CreateArticleForm';
+import ArticleRemover from '../../components/editor/ArticleRemove';
 
 
 const News =() =>{
   const[newsArticles, setNewsArticles] = useState([]);
-  // const newsArticles = [
-
-  //   {
-  //     title: 'BRA KOJO PERFORMS AT 9 OVER 9 OKENNETH CONCERT',
-  //     content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-  //     image: process.env.PUBLIC_URL + '/brakojo.png',
-  //   },
-  //   {
-  //     title: 'CONCRETE ROSES: THE CLAN\'S NEW EP IS AVAILABLE NOW',
-  //     content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-  //     image: process.env.PUBLIC_URL + '/concreteroses.png',
-  //   },
-  //   {
-  //     title: 'KIN EMSON DEBUTS WITH A SINGLE ABOUT LOVE \'JOLE\'',
-  //     content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-  //     image: process.env.PUBLIC_URL + '/kinemson.png',
-  //   },
-  //   {
-  //     title: 'KWAME DABIE TALKS ROADMAN TALES ON ‘DEMON SMILING’',
-  //     content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-  //     image: process.env.PUBLIC_URL + '/kwamedabie.png',
-  //   },
-  //   {
-  //     title: 'REBBEL ASHES TALKS BODY POSITIVITY ON NEW SINGLE',
-  //     content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-  //     image: process.env.PUBLIC_URL + '/rebbelashes.png',
-  //   },
-  //   {
-  //     title: '‘CERTIFIED LONER BOY’ AMOS K RELEASES NEW SONG',
-  //     content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-  //     image: process.env.PUBLIC_URL + '/certifiedlonerboy.png',
-  //   },
-  //   {
-  //     title: '‘CERTIFIED LONER BOY’ AMOS K RELEASES NEW SONG',
-  //     content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-  //     image: process.env.PUBLIC_URL + '/certifiedlonerboy.png',
-  //   },
-  //   {
-  //     title: '‘CERTIFIED LONER BOY’ AMOS K RELEASES NEW SONG',
-  //     content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-  //     image: process.env.PUBLIC_URL + '/certifiedlonerboy.png',
-  //   },
-  //   // Add more news articles as needed...
-  // ];
+  const [isCreateFormVisible, setCreateFormVisible] = useState(false);
+  const [selectedArticles, setSelectedArticles] = useState([]);
+  const [isArticleRemoverVisible, setArticleRemover] = useState(false);
 
   useEffect(() => {
     // Fetch data from Firestore
@@ -57,8 +19,10 @@ const News =() =>{
       try {
         const newsCollection = collection(database, 'news');
         const newsSnapshot = await getDocs(newsCollection);
-        const articles = newsSnapshot.docs.map(doc => doc.data());
+        const articles = newsSnapshot.docs.map(doc => ({
+          id: doc.id, ... doc.data(),}));
         setNewsArticles(articles);
+        console.log(articles);
       } catch (error) {
         console.error('Error fetching news articles', error);
       }
@@ -66,6 +30,56 @@ const News =() =>{
 
     fetchData();
   }, []);
+
+  const handleSaveNewArticle = async (newArticleData) => {
+    try {
+      const newArticleRef = await addDoc(collection(database, 'news'), newArticleData);
+      alert('New article created successfully!');
+      setCreateFormVisible(false);
+    } catch (error) {
+      console.error('Error creating new article', error);
+    }
+  };
+
+  const handleToggleArticleSelection = (articleId) => {
+    setSelectedArticles((prevSelected) => {
+      if (prevSelected.includes(articleId)) {
+        return prevSelected.filter((id) => id !== articleId);
+      } else {
+        return [...prevSelected, articleId];
+      }
+    });
+  };
+
+  const handleDeleteArticles = async () => {
+    try {
+      for (const articleId of selectedArticles) {
+        const articleRef = doc(collection(database, 'news'), articleId);
+        
+        // Use deleteDoc to delete the document by its reference
+        await deleteDoc(articleRef);
+        console.log(articleRef);
+      }
+  
+      // Fetch updated data after deletion
+      const updatedNewsCollection = collection(database, 'news');
+      const updatedNewsSnapshot = await getDocs(updatedNewsCollection);
+      const updatedArticles = updatedNewsSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
+  
+      // Update the state with the new articles
+      setNewsArticles(updatedArticles);
+      setSelectedArticles([]);
+  
+      console.log('Articles deleted successfully');
+    } catch (error) {
+      console.error('Error deleting articles', error);
+    }
+  };
+  
+
 
 
   const articlesPerPage = 6;
@@ -92,8 +106,8 @@ const News =() =>{
 
   const startIndex = (currentPage - 1) * articlesPerPage;
   const endIndex = Math.min(startIndex + articlesPerPage, totalArticles);
-
   const currentArticles = newsArticles.slice(startIndex, endIndex);
+
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, Math.ceil(totalArticles / articlesPerPage)));
@@ -114,20 +128,42 @@ const News =() =>{
         <img src={process.env.PUBLIC_URL + '/newspaper-folded.png'} alt='News icon' className='news-icon' />
         NEWS
       </div>
+
+      <div className="flex-container">
+        <div className="create-article-form">
+        {isCreateFormVisible ? (
+            <CreateArticleForm onSave={handleSaveNewArticle} onCancel={() => setCreateFormVisible(false)} />
+          ) : (
+            <button className='create-article' onClick={() => setCreateFormVisible(true)}>Create New Article</button>
+          )}
+
+        </div>
+        <div className="article-management">
+          {isArticleRemoverVisible ? (
+            <ArticleRemover articles={newsArticles} onDelete={handleDeleteArticles} />
+          ): <button className = 'create-article' onClick={() => setArticleRemover(true)}>Remove Articles</button>}
+        
+        </div>
+      </div>
+
       <div className='flex-contents'>
       <div className='page-contents'>
 
+      
       {Array.from({ length: Math.ceil(currentArticles.length / articlesPerRow) }).map((_, rowIndex) => (
   <div key={rowIndex} className="news-row">
     {currentArticles.slice(rowIndex * articlesPerRow, (rowIndex + 1) * articlesPerRow).map((article, colIndex) => (
-      <div key={colIndex} className="content-card">
 
-                <img src={article.image} alt={article.title} className='content-pic' />
-                <div className='content-text'>
-                  <p className='content-text-header'>{article.title}</p>
-                  <p className='content-text-body'>{article.content}</p>
-                </div>
-              </div>
+     <Link to={`/article/${article.id}`}>
+        <div key={colIndex} className="content-card">
+           <img src={article.image} alt='news' className='content-pic' />
+            <div className='content-text'>
+            <p className='content-text-header'>{article.title}</p>
+            <p className='content-text-body'>{article.content}</p>
+             </div>
+        </div>
+      </Link>
+              
             ))}
           </div>
         ))}
@@ -141,11 +177,16 @@ const News =() =>{
         <button onClick={handleNextPage} disabled={currentPage === Math.ceil(totalArticles / articlesPerPage)} className='page-button'>
           Next
         </button>
+        
       </div>
-      
     </section>
+    
   );
   
 }
 
 export default News;
+
+
+
+

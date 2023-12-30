@@ -1,6 +1,7 @@
 import React from 'react'
 import "./Submissions.css"
 import BasicForm from '../../components/form/Form'
+import { Link } from 'react-router-dom'
 
 function Submissions() {
   return (
@@ -13,6 +14,7 @@ function Submissions() {
         Reach out to us
         <div className='form-container'><BasicForm/></div>
       </div>
+      <Link to ='/login'>Sign In Link</Link>
       </section>
   )
 }

@@ -29,6 +29,25 @@
     justify-content: center;
   }
 
+  .flex-container{
+    display: flex;
+    justify-content: space-between; 
+    margin-bottom: 10px;
+  }
+
+  .create-article-form{
+  
+    
+  }
+
+  .article-management{
+  
+  }
+
+  .modal-content{
+    background-color: aqua;
+  }
+  
   .page-contents {
     height: 75%;
     width: 80%;
@@ -111,6 +130,10 @@
 .page-button:active{
     opacity: 1;
     transition: 0.5s;
+}
+
+.create-article{
+  height: 20px;
 }
 
 

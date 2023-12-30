@@ -12,6 +12,9 @@ import EditorsPicks from "./pages/editorsPicks/EditorsPicks";
 import Home from "./components/Home";
 import About from "./pages/about/About";
 import Submissions from "./pages/submissions/Submissions";
+import Login from "./pages/login/Login";
+import LoginPage from "./pages/login/Login";
+import ArticlePage from "./pages/articles/ArticlePage";
 
 
 function App() {
@@ -26,6 +29,8 @@ function App() {
              <Route path="/about" element={<About/>} />
              <Route path="submissions" element={<Submissions/>} />
              <Route path="editors-pick" element = {<EditorsPicks/>}/>
+             <Route path="/article/:articleId" element={<ArticlePage/>} />
+             <Route path="login" element ={<LoginPage/>}/>
           </Routes>
         </Router>
 );
