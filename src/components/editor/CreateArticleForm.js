@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './CreateArticleForm.css'
 
 const CreateArticleForm = ({ onSave, onCancel }) => {
   const [title, setTitle] = useState('');
@@ -29,7 +30,7 @@ const CreateArticleForm = ({ onSave, onCancel }) => {
       <h2>Create New Article</h2>
       <label>
         Title:
-        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} placeholder='Article title' className='article-input-title'/>
       </label>
       <label>
         Content:

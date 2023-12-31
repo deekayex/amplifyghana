@@ -44,6 +44,7 @@ const ArticleRemover = ({ articles, onDelete }) => {
           </li>
         ))}
       </ul>
+      <button >Cancel</button>
     </div>
   );
 };
