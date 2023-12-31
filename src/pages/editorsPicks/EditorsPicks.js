@@ -1,53 +1,54 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect} from 'react';
+import { database } from '../../firebase/firebase';
+import { collection, getDocs, addDoc, deleteDoc, doc } from '@firebase/firestore';
+import { Link } from 'react-router-dom';
+import CreateArticleForm from '../../components/editor/CreateArticleForm';
 
 function EditorsPicks() {
-  const newsArticles = [
-    {
-      title: 'MUSIC COLLECTIVES IN GHANA, THE CREATIVES',
-      content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-      image: process.env.PUBLIC_URL + '/brakojo.png',
-    },
-    {
-      title: 'INTERVIEW : AYRA STARR, THE SABI GIRL',
-      content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-      image: process.env.PUBLIC_URL + '/arya.png',
-    },
-    {
-      title: 'REVIEW : LOOKING AT ROLLIES AND CIGARS IN RETROSPECT',
-      content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-      image: process.env.PUBLIC_URL + '/review.png',
-    },
-    {
-      title: 'STREETWEAR BRANDS THAT ARE MAKING WAVES IN GHANA',
-      content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-      image: process.env.PUBLIC_URL + '/streetwear.png',
-    },
-    {
-      title: 'ONE YEAR ON : KING PROMISE’S TERMINATOR REVIEW',
-      content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-      image: process.env.PUBLIC_URL + '/oneyearon.png',
-    },
-    {
-      title: 'INTERVIEW : LIFE SIZE TEDDY IS MAVIN RECORD’S NEW ARTISTE',
-      content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-      image: process.env.PUBLIC_URL + '/interview.png',
-    },
-    {
-      title: '‘CERTIFIED LONER BOY’ AMOS K RELEASES NEW SONG',
-      content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-      image: process.env.PUBLIC_URL + '/arya.png',
-    },
-    {
-      title: '‘CERTIFIED LONER BOY’ AMOS K RELEASES NEW SONG',
-      content: 'BRO JUST GOT ON STAGE AND GAVE SOME WILD FREESTYLE AND ALL EVERYONE WAS HYPED AF AND JUST LIKE HIGH AND NIGGAS WAS IN PARIS AND BRO IDEK WHAT TO TYPE AT THIS POINT BUT YOU GET MY DRIFT INNIT NIGGAS WAS HYPED LIKE MAD HYPED',
-      image: process.env.PUBLIC_URL + '/certifiedlonerboy.png',
-    },
-    // Add more news articles as needed...
-  ];
+  const [editorsArticles, setEditorsArticles] = useState([]);
+  const [isCreateFormVisible, setCreateFormVisible] = useState(false);
+
+  useEffect(() => {
+
+    const fetchData = async () => {
+      try {
+        const newsCollection = collection(database, 'editors');
+        const newsSnapshot = await getDocs(newsCollection);
+        const articles = newsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setEditorsArticles(articles);
+        console.log(articles);
+      } catch (error) {
+        console.error('Error fetching news articles', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const handleSaveNewArticle = async (newArticleData) => {
+    try {
+      const newArticleRef = await addDoc(collection(database, 'editors'), newArticleData);
+      alert('New article created successfully!');
+      setCreateFormVisible(false);
+    } catch (error) {
+      console.error('Error creating new article', error);
+    }
+  };
+
+  const handleDeleteArticles = async (id) => {
+    const newsDoc = doc(database, "editors", id )
+    await deleteDoc(newsDoc);
+
+    setEditorsArticles((prevArticles) => prevArticles.filter((article) => article.id !== id));
+  };
+
 
   const articlesPerPage = 6;
 
-  const totalArticles = newsArticles.length;
+  const totalArticles = editorsArticles.length;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [articlesPerRow, setArticlesPerRow] = useState(getArticlesPerRow());
@@ -70,7 +71,7 @@ function EditorsPicks() {
   const startIndex = (currentPage - 1) * articlesPerPage;
   const endIndex = Math.min(startIndex + articlesPerPage, totalArticles);
 
-  const currentArticles = newsArticles.slice(startIndex, endIndex);
+  const currentArticles = editorsArticles.slice(startIndex, endIndex);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => Math.min(prevPage + 1, Math.ceil(totalArticles / articlesPerPage)));
@@ -92,12 +93,27 @@ function EditorsPicks() {
       EditorsPicks
     </div>
 
-  <div className='flex-contents'>
-      <div className='page-contents'>
+
+    <div className='flex-container'>
+        <div className='create-article-form-container'>
+          {isCreateFormVisible ? (
+            <CreateArticleForm onSave={handleSaveNewArticle} onCancel={() => setCreateFormVisible(false)} />
+          ) : (
+            <button className='create-article' onClick={() => setCreateFormVisible(true)}>
+              Create New Article
+            </button>
+          )}
+        </div>
+      </div> 
+
+
+      <div className='flex-contents'>
+        <div className='page-contents'>
         {Array.from({ length: Math.ceil(currentArticles.length / articlesPerRow) }).map((_, rowIndex) => (
           <div key={rowIndex} className='news-row'>
             {currentArticles.slice(rowIndex * articlesPerRow, (rowIndex + 1) * articlesPerRow).map((article, colIndex) => (
               <div key={colIndex} className='content-card'>
+                <button onClick={()=> handleDeleteArticles(article.id)}>Delete</button>
                 <img src={article.image} alt={article.title} className='content-pic' />
                 <div className='content-text'>
                   <p className='content-text-header'>{article.title}</p>

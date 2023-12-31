@@ -20,6 +20,7 @@ function Home() {
             <div className='editor-text'>
               <p className='editor-text-header'>MUSIC COLLECTIVES IN GHANA, THE CREATIVES</p>
               <p className='editor-text-body'>THERE ARE A LOT OF MUSICAL COLLECTIVES IN GHANA, THE CLAN, SUPER JAZZCLUB, 99 PHACES, RAGE BRUDDAS. ALL OF THE SE GUYS ARE JUST TRYING TO PUSH GHANA MUSIC TO THE WORLD AND STUFF LIKE THAT YOU BARB, EHEHEHEHEHEHEHEHE</p>
+              <img/>
             </div>
           </Link>
         </div>

@@ -1,17 +1,19 @@
 import React, { useState } from 'react';
-import './CreateArticleForm.css'
+import './CreateArticleForm.css';
+import {database, storage} from '../../firebase/firebase';
+
 
 const CreateArticleForm = ({ onSave, onCancel }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState(null);
 
-  const handleSave = () => {
+  const handleSave = ({ article }) => {
     // Validate the form fields if needed
     // ...
 
     // Call the onSave function with the new article data
-    onSave({ title, content });
+    onSave({ title, content, image });
 
     // Reset form fields
     setTitle('');
@@ -40,7 +42,7 @@ const CreateArticleForm = ({ onSave, onCancel }) => {
         Image:
         <input type="file" accept="image/*" onChange={handleImageChange} />
       </label>
-      <button onClick={handleSave}>Save</button>
+      <button onClick={() => onSave({ title, content, image })}>Save</button>
       <button onClick={onCancel}>Cancel</button>
     </div>
   );

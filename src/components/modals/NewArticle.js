@@ -7,11 +7,13 @@ Modal.setAppElement('#root'); // Set the root element for accessibility
 const CreateArticleModal = ({ onSave, onCancel, isOpen }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
+  const [image, setImage] = useState(null);
 
   const handleSave = () => {
     onSave({ title, content });
     setTitle('');
     setContent('');
+    setImage(null);
   };
 
   return (

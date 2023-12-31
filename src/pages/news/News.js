@@ -4,16 +4,17 @@ import { database } from '../../firebase/firebase';
 import { collection, getDocs, addDoc, deleteDoc, doc } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
 import CreateArticleForm from '../../components/editor/CreateArticleForm';
-import ArticleRemover from '../../components/editor/ArticleRemove';
+
+
 
 const News = () => {
   const [newsArticles, setNewsArticles] = useState([]);
   const [isCreateFormVisible, setCreateFormVisible] = useState(false);
-  const [selectedArticles, setSelectedArticles] = useState([]);
-  const [isArticleRemoverVisible, setArticleRemoverVisible] = useState(false); // Corrected the state name
+  
+
 
   useEffect(() => {
-    // Fetch data from Firestore
+
     const fetchData = async () => {
       try {
         const newsCollection = collection(database, 'news');
@@ -32,25 +33,40 @@ const News = () => {
     fetchData();
   }, []);
 
+  
+
   const handleSaveNewArticle = async (newArticleData) => {
     try {
-      const newArticleRef = await addDoc(collection(database, 'news'), newArticleData);
+      const { title, content, image } = newArticleData;
+
+      const imageUrl = URL.createObjectURL(image);
+
+       
+
+      const newArticleRef = await addDoc(collection(database, 'news'), {
+        title,
+        content,
+        image: imageUrl, // Use the URL obtained from the image file
+      });
+  
       alert('New article created successfully!');
       setCreateFormVisible(false);
     } catch (error) {
       console.error('Error creating new article', error);
-    }
-  };
+    }  };
 
  
-
-
+ 
+ 
   const handleDeleteArticles = async (id) => {
     const newsDoc = doc(database, "news", id )
     await deleteDoc(newsDoc);
 
     setNewsArticles((prevArticles) => prevArticles.filter((article) => article.id !== id));
   };
+
+
+
 
   const articlesPerPage = 6;
   const totalArticles = newsArticles.length;
@@ -84,6 +100,9 @@ const News = () => {
   function getArticlesPerRow() {
     return window.innerWidth >= 1000 ? 2 : 3;
   }
+
+
+
 
   return (
     <section className='news-container' id='news'>
@@ -143,3 +162,6 @@ const News = () => {
 };
 
 export default News;
+
+
+ 
