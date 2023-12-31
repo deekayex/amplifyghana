@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './News.css';
-import { database } from '../../firebase/firebase';
+import { database, storage } from '../../firebase/firebase';
 import { collection, getDocs, addDoc, deleteDoc, doc } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
 import CreateArticleForm from '../../components/editor/CreateArticleForm';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 
 
 
@@ -39,15 +41,18 @@ const News = () => {
     try {
       const { title, content, image } = newArticleData;
 
-      const imageUrl = URL.createObjectURL(image);
+      const storageRef = ref(storage, 'article_images/' + image.name);
+      await uploadBytes(storageRef, image);
 
-       
+       // Get the download URL of the uploaded image
+    const downloadURL = await getDownloadURL(storageRef);
 
-      const newArticleRef = await addDoc(collection(database, 'news'), {
-        title,
-        content,
-        image: imageUrl, // Use the URL obtained from the image file
-      });
+    // Add the new article to the Firestore collection with the image URL
+    const newArticleRef = await addDoc(collection(database, 'news'), {
+      title,
+      content,
+      image: downloadURL, // Use the URL obtained from Firebase Storage
+    });
   
       alert('New article created successfully!');
       setCreateFormVisible(false);
