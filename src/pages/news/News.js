@@ -5,18 +5,14 @@ import { collection, getDocs, addDoc, deleteDoc, doc } from '@firebase/firestore
 import { Link } from 'react-router-dom';
 import CreateArticleForm from '../../components/editor/CreateArticleForm';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-
-
-
+import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Import Firebase Authentication functions
 
 const News = () => {
   const [newsArticles, setNewsArticles] = useState([]);
   const [isCreateFormVisible, setCreateFormVisible] = useState(false);
-  
-
+  const [user, setUser] = useState(null); // State to track the authenticated user
 
   useEffect(() => {
-
     const fetchData = async () => {
       try {
         const newsCollection = collection(database, 'news');
@@ -26,16 +22,22 @@ const News = () => {
           ...doc.data(),
         }));
         setNewsArticles(articles);
-        console.log(articles);
       } catch (error) {
         console.error('Error fetching news articles', error);
       }
     };
 
     fetchData();
-  }, []);
 
-  
+    // Add listener for authentication state changes
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    // Cleanup the subscription to avoid memory leaks
+    return () => unsubscribe();
+  }, []);
 
   const handleSaveNewArticle = async (newArticleData) => {
     try {
@@ -44,34 +46,29 @@ const News = () => {
       const storageRef = ref(storage, 'article_images/' + image.name);
       await uploadBytes(storageRef, image);
 
-       // Get the download URL of the uploaded image
-    const downloadURL = await getDownloadURL(storageRef);
+      // Get the download URL of the uploaded image
+      const downloadURL = await getDownloadURL(storageRef);
 
-    // Add the new article to the Firestore collection with the image URL
-    const newArticleRef = await addDoc(collection(database, 'news'), {
-      title,
-      content,
-      image: downloadURL, // Use the URL obtained from Firebase Storage
-    });
-  
+      // Add the new article to the Firestore collection with the image URL
+      const newArticleRef = await addDoc(collection(database, 'news'), {
+        title,
+        content,
+        image: downloadURL, // Use the URL obtained from Firebase Storage
+      });
+
       alert('New article created successfully!');
       setCreateFormVisible(false);
     } catch (error) {
       console.error('Error creating new article', error);
-    }  };
+    }
+  };
 
- 
- 
- 
   const handleDeleteArticles = async (id) => {
-    const newsDoc = doc(database, "news", id )
+    const newsDoc = doc(database, 'news', id);
     await deleteDoc(newsDoc);
 
     setNewsArticles((prevArticles) => prevArticles.filter((article) => article.id !== id));
   };
-
-
-
 
   const articlesPerPage = 6;
   const totalArticles = newsArticles.length;
@@ -106,9 +103,6 @@ const News = () => {
     return window.innerWidth >= 1000 ? 2 : 3;
   }
 
-
-
-
   return (
     <section className='news-container' id='news'>
       <div className='spacer' />
@@ -119,15 +113,15 @@ const News = () => {
 
       <div className='flex-container'>
         <div className='create-article-form-container'>
-          {isCreateFormVisible ? (
+          {isCreateFormVisible && user ? (
             <CreateArticleForm onSave={handleSaveNewArticle} onCancel={() => setCreateFormVisible(false)} />
-          ) : (
+          ) : user ? (
             <button className='create-article' onClick={() => setCreateFormVisible(true)}>
               Create New Article
             </button>
-          )}
+          ) : null}
         </div>
-      </div> 
+      </div>
 
       <div className='flex-contents'>
         <div className='page-contents'>
@@ -138,7 +132,7 @@ const News = () => {
                 .map((article, colIndex) => (
                   <Link to={`/article/${article.id}`} key={colIndex}>
                     <div className='content-card'>
-                      <button onClick={()=> handleDeleteArticles(article.id)}>Delete</button>
+                      {user && <button onClick={() => handleDeleteArticles(article.id)}>Delete</button>}
                       <img src={article.image} alt='news' className='content-pic' />
                       <div className='content-text'>
                         <p className='content-text-header'>{article.title}</p>
@@ -158,7 +152,11 @@ const News = () => {
         <span className='page-number'>
           Page {currentPage} of {Math.ceil(totalArticles / articlesPerPage)}
         </span>
-        <button onClick={handleNextPage} disabled={currentPage === Math.ceil(totalArticles / articlesPerPage)} className='page-button'>
+        <button
+          onClick={handleNextPage}
+          disabled={currentPage === Math.ceil(totalArticles / articlesPerPage)}
+          className='page-button'
+        >
           Next
         </button>
       </div>
@@ -167,6 +165,3 @@ const News = () => {
 };
 
 export default News;
-
-
- 
