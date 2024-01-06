@@ -1,100 +1,92 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './Playlists.css';
+import { database, storage } from '../../firebase/firebase';
+import { collection, getDocs, addDoc, deleteDoc, doc } from '@firebase/firestore';
+import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { Link } from 'react-router-dom';
 
-function PlaylistComponent({ imageSrc, altText, description, buttonText }) {
-  return (
-    <div className='playlist_component'>
-      <div className='playlist_image'>
-        <img src={process.env.PUBLIC_URL + imageSrc} alt={altText} className='picture' />
-      </div>
-      <div className='playlist_text'>
-        {description}
-        <button className='playlist_button'>{buttonText}</button>
-      </div>
-    </div>
-  );
-}
+// Constant for the button text
+const PLAYLIST_BUTTON_TEXT = 'LISTEN';
 
-function Playlists() {
-  const playlistsData = [
-    {
-      imageSrc: '/MusicFriday.png',
-      altText: 'New Music Friday',
-      description: 'DISCOVER NEW AFRICAN MUSIC WITH OUR "NEW MUSIC FRIDAY" PLAYLIST. OUR EXPERTLY CRAFTED SELECTION CUTS THROUGH THE OVERWHELMING VOLUME OF RELEASES, PRESENTING ONLY THE BEST TRACKS THAT DEFINE  THE PULSE OF AFRICAN MUSIC. THIS PLAYLIST IS UPDATED WEEKLY, IF YOU LIKE SOMETHING YOU           HEAR WE RECOMMEND YOU ADD IT TO YOUR LIBRARY.',
-      buttonText: 'LISTEN',
-    },
 
-    {
-      imageSrc: '/DeyTrap.png',
-      altText: 'New Music Friday',
-      description: '"WE DEY TRAP" IS AN INTRODUCTION TO THE MINDS OF THE NEW GENERATION OF GHANAIAN RAPPERS AND TRAPPERS. FROM THE BUSTLE OF OSU TO THE TRENCHES IN KUMERICA AND BEYOND, THIS PLAYLIST EMBODIES THE HEART AND SPIRIT OF THE STREET. LISTEN WITH CAUTION, AND IF YOU HEAR SOMETHING YOU LIKE, WE RECOMMEND ADDING IT TO  YOUR LIBRARY.',
-      buttonText: 'LISTEN',
-    },
 
-    {
-      imageSrc: '/MamasDay.png',
-      altText: 'New Music Friday',
-      description: '“A MOTHER’S LOVE FOR HER CHILD IS LIKE NOTHING ELSE IN THE WORLD. IT KNOWS NO LAW, NO PITY” - AGATHA CHRISTIE. WE PRESENT TO YOU TEN GHANAIAN SONGS THAT YOU CAN USE TO CELEBRATE YOUR MOTHERS ON MOTHER’S DAY. THIS IS “MAMA’S DAY”.',
-      buttonText: 'LISTEN',
-    },
+const Playlists = () =>{
+  const [playlists, setPlaylists] = useState([]);
+  const [isCreateFormVisible, setCreateFormVisible] = useState(false);
 
-    {
-      imageSrc: '/Picks.png',
-      altText: 'New Music Friday',
-      description: 'WHERE EACH TRACK CARRIES THE ESSENCE OF HIS ARTISTIC VISION, ’KIRANI AYAT’S PICKS’ IS A PLAYLIST CURATED BY THE AWARD-WINNING MUSICIAN HIMSELF. FEATURING SOME OF HIS BIGGEST HITS LIKE ’SARKI’ AND ’INA JIN,’ ALONGSIDE MUSIC ROM FREQUENT COLLABORATORS AND FELLOW ARTISTES, ’KIRANI AYAT’S PICKS’ IS A CURATED JOURNEY THROUGH THE ARTIST’S MUSICAL LANDSCAPE. IF YOU HEAR SOMETHING  THAT RESONATES WITH YOU, WE RECOMMEND ADDING IT TO YOUR LIBRARY.',
-      buttonText: 'LISTEN',
-    },
+  useEffect(() => {
+    const fetchPlaylists = async () => {
+      try {
+        const playlistsCollection = collection(database, 'playlists');
+        const playlistsSnapshot = await getDocs(playlistsCollection);
+  
+        const playlistsData = playlistsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+  
+        setPlaylists(playlistsData);
+      } catch (error) {
+        console.error('Error fetching playlists:', error);
+      }
+    };
+  
+    fetchPlaylists(); // Fetch playlists when the component mounts
+  }, []);
 
-    {
-      imageSrc: '/TopSongs.png',
-      altText: 'New Music Friday',
-      description: "EMBARK ON A MUSICAL TIME CAPSULE WITH 'TOP SONGS OF 2021,' WHERE WE PROUDLY PRESENT OUR FAVORITE GHANAIAN TRACKS THAT DEFINED THE YEAR. IMMERSE YOURSELF IN CHART-TOPPING HITS LIKE BLACK SHERIF'S 'SECOND SERMON (REMIX)' AND DARKOVIBES' 'JE M'APPELLE,' TO HIDDEN GEMS FROM EMERGING ARTISTS THAT MAY HAVE FLOWN UNDER THE RADAR BUT ARE EQUALLY EXTRAORDINARY. THESE SONGS, RANGING FROM THE MOST POPULAR TO THE UNDISCOVERED, ENCAPSULATE THE DIVERSE SOUNDSCAPE OF GHANAIAN MUSIC IN 2021. AS YOU LISTEN,WE INVITE YOU TO EXPERIENCE THE SAME EXHILARATION AND EMOTION THAT THESE TRACKS BROUGHT TO US THROUGHOUT THE YEAR.",
-      buttonText: 'LISTEN',
-    },
 
-    // Add data for other playlists
-  ];
+  const toggleCreateForm = () => {
+    setCreateFormVisible(!isCreateFormVisible);
+  };
+
+
+
+  
+  const handleDeletePlaylist = async (id) => {
+    const playlistDoc = doc(database, 'playlists', id);
+    await deleteDoc(playlistDoc);
+
+    setPlaylists((prevPlaylists) => prevPlaylists.filter((playlist) => playlist.id !== id));
+  };
+
+  const handleListenButtonClick = (link) => {
+    // Handle redirection when "LISTEN" button is clicked
+    window.location.href = link;
+  };
+
 
   return (
     <div className='playlist-page'>
-      <div className='playlist-header'>Playlists</div>
+      <div className='playlist-header'>Playlists
+      </div>
+
       <div className='playlist-container'>
-        {playlistsData.map((playlist, index) => (
-          <PlaylistComponent key={index} {...playlist} />
+        {playlists.map((playlist) => (
+           <div className='playlist_component' key={playlist.id}
+           onDelete={handleDeletePlaylist}
+           {...playlist}>
+           <button className='delete-button' onClick={() => handleDeletePlaylist(playlist.id)}>
+            Delete
+           </button>
+         <div className='playlist_image'>
+           <img src={playlist.image} alt={playlist.altText} className='picture' />
+         </div>
+         <div className='playlist_text'>
+           {playlist.summary}
+           <button className='playlist_button' onClick={() => handleListenButtonClick(playlist.link)}>
+             {PLAYLIST_BUTTON_TEXT}
+           </button>
+         </div>
+       </div>         
+        
         ))}
       </div>
     </div>
   );
-}
+};
+
+
+   
+
 
 export default Playlists;
-
-
-
-
-
-//         <div className='playlist_component'>
-//           <div className='playlist_image'>
-//           <img src={process.env.PUBLIC_URL + '/TopSongs.png'} alt='New Music Friday' className='picture'/>
-//           </div>
-      
-//           <div className='playlist_text'>
-//           EMBARK ON A MUSICAL TIME CAPSULE WITH 'TOP SONGS OF 2021,' WHERE 
-//           WE PROUDLY PRESENT OUR FAVORITE GHANAIAN TRACKS THAT DEFINED 
-//           THE YEAR. IMMERSE YOURSELF IN CHART-TOPPING HITS LIKE BLACK 
-//           SHERIF'S 'SECOND SERMON (REMIX)' AND DARKOVIBES' 'JE M'APPELLE,' TO 
-//           HIDDEN GEMS FROM EMERGING ARTISTS THAT MAY HAVE FLOWN UNDER THE 
-//           RADAR BUT ARE EQUALLY EXTRAORDINARY. THESE SONGS, RANGING FROM 
-//           THE MOST POPULAR TO THE UNDISCOVERED, ENCAPSULATE THE DIVERSE 
-//           SOUNDSCAPE OF GHANAIAN MUSIC IN 2021. AS YOU LISTEN,WE INVITE YOU TO 
-//           EXPERIENCE THE SAME EXHILARATION AND EMOTION THAT THESE TRACKS 
-//           BROUGHT TO US THROUGHOUT THE YEAR.
-//             <button className='playlist_button'>LISTEN</button>    
-//           </div>    
-//         </div>
-//         </div>
-//       </div>
-//   )
-// }
-
-// export default Playlists

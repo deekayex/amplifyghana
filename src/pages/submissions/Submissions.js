@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
-import BasicForm from '../../components/form/Form';
+import BasicForm from '../../components/forms/Form';
 import './Submissions.css';
 
 function Submissions() {
@@ -17,13 +17,8 @@ function Submissions() {
     return () => unsubscribe();
   }, []);
 
-  const handleSignOut = async () => {
-    const auth = getAuth();
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.error('Error signing out', error);
-    }
+  const handleSubmit = async() =>{
+
   };
 
   return (
@@ -37,7 +32,7 @@ function Submissions() {
         </div>
       </div>
       {user ? (
-        <button onClick={handleSignOut}>Sign Out</button>
+        <button onClick={handleSubmit} className='sign-out'>Sign Out</button>
       ) : (
         <Link to='/login'>Sign In</Link>
       )}

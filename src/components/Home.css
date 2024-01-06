@@ -12,7 +12,6 @@ body{
     height: 70vh;
 }
 
-
 .left-homepage{
     width: 46.7%;
     border-radius: 20px;
@@ -25,12 +24,14 @@ body{
     transition: 0.5s ease;
 }
 
+
 .left-homepage:hover, .news-component:hover{
     cursor: pointer;
     opacity: 1;
     transition: 0.5s ease;
     background-position: right;
 }
+
 
 .editor, .playlist-text{
     position: absolute;
@@ -47,6 +48,7 @@ body{
     letter-spacing: 2px;
 }
 
+
 .editor-text{
     background-color: black;
     position: absolute;
@@ -56,9 +58,11 @@ body{
     opacity: 0.9;
 }
 
+
 .editor-text-body, .editor-text-header,.news-text-header{
     margin: 10px;
 }
+
 
 
 .editor-text-header{
@@ -71,6 +75,7 @@ body{
 
 
 
+
 .editor-text-body{
     font-size: 0.8vw;
     font-weight: 400;
@@ -78,12 +83,14 @@ body{
     padding-top: 0;
 }
 
+
 .right-homepage{
     display: flex;
     flex-direction: column;
     width: 30.7%;
     margin-left: 3%;
 }
+
 
 .news-component{
     flex: 1;
@@ -93,13 +100,16 @@ body{
     background-size:cover;
     background-position: center center;
     position: relative;
+ 
     opacity: 0.9;
     transition: 0.5s ease;
 }
 
+
 .news-component:hover{
     background-position: center 60%;
 }
+
 
 .news-text-header{
     font-size: 1.6vw;
@@ -108,6 +118,7 @@ body{
     margin-bottom: 0;
     padding-bottom: 0;
 }
+
 
 .playlist-component{
     background-color:brown;
@@ -119,6 +130,7 @@ body{
     position: relative;
 }
 
+
 .playlist-text{
     background-color: black;
     padding: 0;
@@ -127,6 +139,7 @@ body{
     font-size: 1.4vw;
     letter-spacing: 1px;
 }
+
 
 .bottom-homepage{
     background-color: black;
@@ -139,11 +152,13 @@ body{
     margin-bottom: 8.6vh;
 }
 
+
 .ad-section{
     font-size: 5vw;
     font-family: 'Monument Extended';
     margin-bottom: 0;
 }
+
 
 .rent-space{
     margin-top: 0;
@@ -189,7 +204,6 @@ body{
         font-size: 4vh;
     }
 
-    
 }
 
 

@@ -1,0 +1,38 @@
+.admin-page{
+  padding-top: 10vh;
+  height: 100vh;  
+}
+
+.admin-flex{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1%;
+  margin-bottom: 5vh;
+  margin-top: 2vh;
+}
+
+.admin-page-links{
+  display: flex;
+  justify-content: space-around;
+}
+
+.page-managers{
+  color: white;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1%;
+  padding-left: 60px;
+  background-color: black;
+  width: 30%;
+  position: sticky;
+  z-index: 25;
+}
+
+.admin-pages{
+  background-color: aqua;
+  width: 70%
+  ;
+}

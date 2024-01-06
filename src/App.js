@@ -15,6 +15,10 @@ import Submissions from "./pages/submissions/Submissions";
 import Login from "./pages/login/Login";
 import LoginPage from "./pages/login/Login";
 import ArticlePage from "./pages/articles/ArticlePage";
+import Admin from "./pages/admin/Admin";
+import Messages from "./components/messages/Messages";
+import CreateArticleForm from "./components/forms/editor/CreateArticleForm";
+import AdminPosts from "./components/AdminPosts";
 
 
 function App() {
@@ -31,6 +35,11 @@ function App() {
              <Route path="editors-pick" element = {<EditorsPicks/>}/>
              <Route path="/article/:articleId" element={<ArticlePage/>} />
              <Route path="login" element ={<LoginPage/>}/>
+             <Route path="admin" element= {<Admin/>}>
+             <Route path="messages" element={<Messages />} />
+             <Route path="create-posts" element={<AdminPosts/>} />
+             </Route>
+             
           </Routes>
         </Router>
 );

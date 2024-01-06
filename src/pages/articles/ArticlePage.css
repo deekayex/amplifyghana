@@ -1,4 +1,33 @@
 .article-page{
-
+  word-wrap: break-word;
   height: 100vh;
 }
+
+.article-main{
+  width: 60% ;
+  margin-left: 10%;
+  margin-top: 20px;
+  /* background-color: blue; */
+}
+
+.article-title{
+  font-size: 2.8rem;
+  text-align: justify;
+  letter-spacing: 0.5vw;
+  margin-bottom: 20px;
+}
+
+.article-image-container{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.article-image{
+  width: 100%;
+  height: 50vh;
+}
+
+.article-body{
+  /* background-color: aquamarine; */
+}
+

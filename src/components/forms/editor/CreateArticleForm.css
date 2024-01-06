@@ -1,15 +1,10 @@
 .create-article-form-container{
-  height: fit-content;
   width: 60%;
   margin-left: 10%;
   position: relative;
 }
 
 .create-article-form{
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 90;
   background-color: gray;
   width: 100%;
 }
@@ -32,11 +27,15 @@ textarea{
   padding: 10px ;
 }
 
+.article-summary{
+  height: 10vh;
+}
+
 h2{
   font-size: 2vw;
 }
 
-.article-input-title{
+.article-input-title, .article-summary{
   font-size: 1.2vw;
 }
 

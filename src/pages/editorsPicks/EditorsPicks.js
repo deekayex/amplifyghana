@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { database, storage } from '../../firebase/firebase';
 import { collection, getDocs, addDoc, deleteDoc, doc } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
-import CreateArticleForm from '../../components/editor/CreateArticleForm';
+import CreateArticleForm from '../../components/forms/editor/CreateArticleForm';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Import Firebase Authentication functions
 
@@ -14,9 +14,9 @@ function EditorsPicks() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const newsCollection = collection(database, 'editors-picks');
-        const newsSnapshot = await getDocs(newsCollection);
-        const articles = newsSnapshot.docs.map((doc) => ({
+        const editorsCollection = collection(database, 'editors-picks');
+        const editorsSnapshot = await getDocs(editorsCollection);
+        const articles = editorsSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
@@ -40,16 +40,18 @@ function EditorsPicks() {
 
   const handleSaveNewArticle = async (newArticleData) => {
     try {
-      const { title, content, image } = newArticleData;
+      const { title, content, image, section } = newArticleData;
 
-      const storageRef = ref(storage, 'article_images/' + image.name);
+      const storageRef = ref(storage, `article_images/${image.name}`);
       await uploadBytes(storageRef, image);
 
       // Get the download URL of the uploaded image
       const downloadURL = await getDownloadURL(storageRef);
 
+      const collectionName = section === 'news' ? 'news' : 'editors-picks';
+
       // Add the new article to the Firestore collection with the image URL
-      const newArticleRef = await addDoc(collection(database, 'editors-picks'), {
+      const newArticleRef = await addDoc(collection(database, collectionName), {
         title,
         content,
         image: downloadURL, // Use the URL obtained from Firebase Storage

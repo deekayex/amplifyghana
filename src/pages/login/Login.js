@@ -24,20 +24,20 @@ const LoginPage = () => {
   return (
     <div className='login-page'>
       <div className='space'/>
+      
       <div className='sum'>
-        Login
+          Login
       </div>
       <div className='login-form'>
-        
+        <div className='login-form-input'>
           <input 
-          type='email' placeholder='email address' value={email} onChange={(e) => setEmail(e.target.value)}/>
-
+          type='email' placeholder='email address' value={email} onChange={(e) => setEmail(e.target.value)} className='email-input'/>
           <input
-           type='password' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)}/>
-
-          <button onClick={login}>Submit</button>         
+           type='password' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} className='password-input'/>
+          <button onClick={login} className='login-submit-button'>Submit</button>
+        </div>         
       </div>
-      </div>
+    </div>
   )
 }
 

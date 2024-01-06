@@ -31,13 +31,23 @@ const ArticlePage = () => {
   return (
     <div className="article-page">
       <div className='spacer' />
-      {article && (
-        <>
-          <h1>{article.title}</h1>
-          <img src={article.image} alt="Article" />
-          <p>{article.content}</p>
-        </>
-      )}
+        <div className='article-flex'>
+          <div className='article-main'>
+            {article && (
+              <>
+            <h1 className='article-title'>{article.title}</h1>
+          <div className='article-image-container'>
+            <img src={article.image} alt="Article" className='article-image' />
+          </div>
+          
+          <div className='article-body'>{article.content}</div>
+              </>
+            )}
+          </div>
+        </div>
+        <div className='article-aside'>
+
+        </div>
     </div>
   );
 };

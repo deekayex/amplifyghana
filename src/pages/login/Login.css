@@ -3,3 +3,37 @@
   background-color: green
 }
 
+.login-form{
+  width: 50%;
+  height: 50vh;
+  background-color: aqua;
+  margin-left: 25%;
+ 
+}
+
+.login-form-input{
+  padding-top: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* background-color: antiquewhite; */
+  height: 90%;
+}
+
+.email-input, .password-input, .login-submit-button{
+  border: none;
+}
+
+.email-input, .password-input{
+  width: 70%;
+  border-radius: 10px; 
+  margin-left: 15%; 
+}
+
+.login-submit-button{
+  width: 40%;  
+  margin-left: 30%;
+  height: 40px;
+  border-radius: 20px;
+}
+
