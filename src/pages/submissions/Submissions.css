@@ -1,7 +1,5 @@
 .submissions-container{
     height: 108.5vh;
-    background: linear-gradient(180deg, rgba(255, 92, 0, 0.4) 0%, rgba(211, 118, 41, 0.87) 50%, #FF8018 100%),
-linear-gradient(0deg, rgba(255, 92, 0, 0.4), rgba(255, 92, 0, 0.4));
 }
 
 .forms-container{

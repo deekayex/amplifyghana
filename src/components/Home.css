@@ -1,15 +1,18 @@
 body{
     font-family: 'Monument Extended';
+    background: linear-gradient(180deg, rgba(255, 92, 0, 0.4) 0%, rgba(211, 118, 41, 1) 50%, #FF8018 100%),
+    linear-gradient(0deg, rgba(255, 92, 0, 0.8), rgba(255, 92, 0, 0.6));
 }
 
 .homnepage-components{
     display: flex;
-    flex-direction: column;
+    flex-direction: column;   
 }
 
 .homepage-contents{
     display: flex;
     height: 70vh;
+    
 }
 
 .left-homepage{
@@ -66,7 +69,7 @@ body{
 
 
 .editor-text-header{
-    font-size: 2.7vw;
+    font-size: 2.6vw;
     font-family: 'Monument Extended';
     color: #FF7300;
     margin-bottom: 0;
@@ -77,7 +80,7 @@ body{
 
 
 .editor-text-body{
-    font-size: 0.8vw;
+    font-size: 0.9vw;
     font-weight: 400;
     margin-top: 0;
     padding-top: 0;
@@ -128,6 +131,35 @@ body{
     background-size:cover;
     background-position: center;
     position: relative;
+    z-index: 2;
+}
+
+.playlist-button{
+    position: absolute;
+    width: 20%;
+    bottom: 10px;
+    right: 35%;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgba(255, 115, 0, 1);
+    color: white;
+    font-family: 'Monument Extended';
+    font-size: 0.7vw;
+    border: white;
+    border-style: solid;
+    border-width: 0.12vw;
+    opacity: 0.8;
+}
+
+.playlist-button:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.playlist-button:active{
+    opacity: 1s;
 }
 
 
@@ -141,11 +173,12 @@ body{
 }
 
 
+
 .bottom-homepage{
     background-color: black;
     text-align: center;
     margin-top: 2.3vh;
-    height: 12vh;
+    height: 13vh;
     width: 80%;
     margin-left: 8%;
     border-radius: 15px;
@@ -164,6 +197,14 @@ body{
     margin-top: 0;
     padding-top: 0;
     font-size: 1vw;
+}
+
+.playlist-text:hover, .editor:hover{
+    color: white;
+}
+
+.playlist-text:hover,.editor:hover, .news-text-header:hover, .editor-text-header:hover,.content-text-header:hover{
+    text-decoration: underline;
 }
 
 

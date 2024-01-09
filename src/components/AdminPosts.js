@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { database, storage } from '../firebase/firebase';
 import { collection, addDoc } from '@firebase/firestore';
-import CreateArticleForm from './forms/editor/CreateArticleForm';
+import CreateArticleForm from './forms/editor/createArticle/CreateArticleForm';
 
 const AdminPosts = () => {
   const [isArticleFormVisible, setArticleFormVisible] = useState(false);

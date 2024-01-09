@@ -1,13 +1,15 @@
 .article-page{
   word-wrap: break-word;
-  height: 100vh;
+  background-color: white;
+  display: flex;
+  padding-bottom: 20vh;
 }
 
 .article-main{
-  width: 60% ;
+  width: 50% ;
   margin-left: 10%;
-  margin-top: 20px;
-  /* background-color: blue; */
+  padding-top: 12vh;
+  z-index: 2;
 }
 
 .article-title{
@@ -28,6 +30,52 @@
 }
 
 .article-body{
-  /* background-color: aquamarine; */
+  font-size: 2vw;
+  /* background-color: aqua; */
 }
 
+.article-aside{
+  top: 12vh;
+  width: 30%;
+  position: fixed;
+  right: 20px;
+  height: 80vh;
+  background-color:hsl(180, 40%, 98%);
+}
+
+.aside-articles{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aside-article{
+  background-size: cover;
+  width: 60%;
+  margin-left: 10%;
+  height: 25vh;
+  margin-bottom: 5%;
+  position: relative;
+  border-top-right-radius: 30px;
+  border-top-Left-radius:30px ;
+}
+
+.article-title-text{
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.9);
+  color:#FF7300 ;
+  font-family: 'Monument Extended';
+  font-size: 1.1vw;
+}
+
+.aside-article:hover{
+  cursor: pointer;
+}
+
+.article-title-text:hover{
+  color: white;
+  background-color: #FF7300;
+  opacity: 0.8;
+  transition: 0.5s;
+}

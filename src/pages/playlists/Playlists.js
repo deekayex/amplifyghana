@@ -4,6 +4,7 @@ import { database, storage } from '../../firebase/firebase';
 import { collection, getDocs, addDoc, deleteDoc, doc } from '@firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Link } from 'react-router-dom';
+import LoadingScreen from '../../context/loading/LoadingScreen';
 
 // Constant for the button text
 const PLAYLIST_BUTTON_TEXT = 'LISTEN';
@@ -13,6 +14,7 @@ const PLAYLIST_BUTTON_TEXT = 'LISTEN';
 const Playlists = () =>{
   const [playlists, setPlaylists] = useState([]);
   const [isCreateFormVisible, setCreateFormVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchPlaylists = async () => {
@@ -28,6 +30,8 @@ const Playlists = () =>{
         setPlaylists(playlistsData);
       } catch (error) {
         console.error('Error fetching playlists:', error);
+      }finally {
+        setIsLoading(false);
       }
     };
   
@@ -35,13 +39,7 @@ const Playlists = () =>{
   }, []);
 
 
-  const toggleCreateForm = () => {
-    setCreateFormVisible(!isCreateFormVisible);
-  };
-
-
-
-  
+    
   const handleDeletePlaylist = async (id) => {
     const playlistDoc = doc(database, 'playlists', id);
     await deleteDoc(playlistDoc);
@@ -59,6 +57,10 @@ const Playlists = () =>{
     <div className='playlist-page'>
       <div className='playlist-header'>Playlists
       </div>
+
+      {isLoading ? (
+        <LoadingScreen/>
+      ) : (
 
       <div className='playlist-container'>
         {playlists.map((playlist) => (
@@ -81,6 +83,7 @@ const Playlists = () =>{
         
         ))}
       </div>
+      )}
     </div>
   );
 };

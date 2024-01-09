@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { NavLink, Route, Routes, useNavigate, Outlet } from 'react-router-dom';
+import { NavLink, useNavigate, Outlet } from 'react-router-dom';
 import { onAuthStateChanged, getIdTokenResult } from 'firebase/auth';
 import { auth } from '../../firebase/firebase';
 import { getAuth, signOut } from 'firebase/auth';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { database, storage } from '../../firebase/firebase';
-import { collection, getDocs, addDoc, deleteDoc, doc } from '@firebase/firestore';
 import './Admin.css';
-import CreateArticleForm from '../../components/forms/editor/CreateArticleForm';
-import NewPlaylistForm from '../../components/forms/editor/NewPlaylist';
-import Messages from '../../components/messages/Messages';
+
 
 const Admin = () => {
   const [isAdmin, setIsAdmin] = useState(false);
-  const [isArticleFormVisible, setArticleFormVisible] = useState(false);
-  const [isPlaylistFormVisible, setPlaylistFormVisible] = useState(false);
-  const [activeSection, setActiveSection] = useState(null);
   const[showPosts, setShowPosts] = useState(false);
   
 
@@ -35,79 +27,6 @@ const Admin = () => {
     }
   };
   
-
-  const handleCreateFormCancel = () => {
-    // Handle cancel button click for the Create Article Form
-    setArticleFormVisible(false);
-  };
-
-  const handleSaveNewArticle = async (newArticleData) => {
-    try {
-      const { title, summary, content, image, selectedSection } = newArticleData;
-
-      const storageRef = ref(storage, 'article_images/' + image.name);
-
-      let collectionName;
-
-          if (selectedSection === 'news') {
-            collectionName = 'news';
-          } else if (selectedSection === 'editors-picks') {
-            collectionName = 'editors-picks';
-          } else {
-            alert('Invalid section selected!');
-          }
-
-
-      await uploadBytes(storageRef, image);
-
-      // Get the download URL of the uploaded image
-      const downloadURL = await getDownloadURL(storageRef);
-
-      // Add the new article to the Firestore collection with the image URL
-      const newArticleRef = await addDoc(collection(database, collectionName), {
-        title,
-        summary,
-        content,
-        image: downloadURL, // Use the URL obtained from Firebase Storage
-      });
-
-      alert('New article created successfully!');
-      setArticleFormVisible(false);
-    } catch (error) {
-      console.error('Error creating new article', error);
-    }
-  };
-
-  const handleCreatePlaylistFormToggle = () => {
-    setPlaylistFormVisible(!isPlaylistFormVisible);
-    // Ensure article form is hidden when showing playlist form
-    setArticleFormVisible(false);
-  };
-
-  const handleSaveNewPlaylist = async (newPlaylistData) => {
-    try {
-      const { title, summary, image, link } = newPlaylistData;
-
-      const storageRef = ref(storage, 'playlist_images/' + image.name);
-      await uploadBytes(storageRef, image);
-
-      // Get the download URL of the uploaded image
-      const downloadURL = await getDownloadURL(storageRef);
-
-      // Add the new playlist to the Firestore collection with the image URL
-      const newPlaylistRef = await addDoc(collection(database, 'playlists'), {
-        title,
-        summary,
-        link,
-        image: downloadURL, // Use the URL obtained from Firebase Storage
-      });
-
-      alert('New playlist created successfully!');
-      setArticleFormVisible(false);
-    } catch (error) {
-      console.error('Error creating new playlist', error);
-    }
-  };
 
   useEffect(() => {
     const checkAdminStatus = async () => {
@@ -146,13 +65,11 @@ const Admin = () => {
       {/* Display user */}
       <div className='admin-flex'>
         <div>
-        User
+        Admin
         </div>
-        <div>
           <button onClick={handleSignOut} className='sign-out'>
-            Sign Out
+            <img src={process.env.PUBLIC_URL + '/power.svg'} alt='Sign Out' className='sign-out-icon'/>
           </button>
-          </div>
       </div>
 
       <div className='admin-page-links'>
@@ -167,34 +84,27 @@ const Admin = () => {
           </NavLink>
           </div>
           )}
-          {showPosts &&  <div>Manage Posts</div>}
+          {showPosts &&  
+          <div><NavLink to = "/">Manage Posts</NavLink></div>}
         </div>
-        
-        
           
         <div className='playlists-manager'>
+          <NavLink to='update-playlist'>
           Update Playlists
-          <button onClick={handleCreatePlaylistFormToggle}>
-            New Playlist
-          </button>
-          {isPlaylistFormVisible && (
-            <div className='form-container'>
-              <NewPlaylistForm onSave={handleSaveNewPlaylist} onCancel={handleCreateFormCancel} />
-            </div>
-          )}
-        </div>
-
-        <div><NavLink to= "messages">Submissions Received</NavLink> 
-    
+          </NavLink>
         </div>
 
         {/* Special Privileges */}
-        <div>Top Picks</div>
+        <div>
+          <NavLink to='top-picks'>
+          Top Picks
+          </NavLink>
+          </div>
         <div>Featured Ad</div>
         <div className='page-manager'>Edit Pages</div>
     </div>
 
-    <div className='admin-pages'>Pages
+    <div className='admin-pages'>
     <Outlet/>
    </div>
     </div>

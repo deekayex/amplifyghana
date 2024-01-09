@@ -1,17 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import { database, storage } from '../../firebase/firebase';
-import { collection, getDocs, addDoc, deleteDoc, doc } from '@firebase/firestore';
+import { collection, getDocs, addDoc, deleteDoc, doc, getDoc, setDoc } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
-import CreateArticleForm from '../../components/forms/editor/CreateArticleForm';
+import CreateArticleForm from '../../components/forms/editor/createArticle/CreateArticleForm';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Import Firebase Authentication functions
+import LoadingScreen from '../../context/loading/LoadingScreen';
 
 function EditorsPicks() {
   const [editorsArticles, setEditorsArticles] = useState([]);
   const [isCreateFormVisible, setCreateFormVisible] = useState(false);
   const [user, setUser] = useState(null); // State to track the authenticated user
+  const [isLoading, setIsLoading] = useState(true);
+  const [highlightedArticleId, setHighlightedArticleId] = useState(null);
+  const [highlightedEditors, setHighlightedEditors] = useState(null);
+
+  const handleSetHighlight = async (articleId) => {
+    try {
+      // Update the 'highlightedArticleId' in Firebase to set the currently highlighted article
+      await setDoc(doc(database, 'highlighted', 'highlightedEditors' ), {
+        articleId,
+      });
+
+      setHighlightedArticleId(articleId);
+      alert('Article set as highlight successfully!');
+    } catch (error) {
+      console.error('Error setting highlight:', error);
+    }
+  };
 
   useEffect(() => {
+    const fetchHighlightedEditors = async () => {
+      try {
+        const highlightedEditorsDoc = await getDoc(
+          doc(database,'highlighted', 'highlightedEditors' )
+        );
+        const highlightedEditorsData = highlightedEditorsDoc.data();
+
+        if (highlightedEditorsData) {
+          // Fetch the highlighted article using the articleId from the Firestore document
+          const articleRef = doc(database, 'editors-picks', highlightedEditorsData.articleId);
+          const articleDoc = await getDoc(articleRef);
+
+          if (articleDoc.exists()) {
+            setHighlightedEditors(articleDoc.data());
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching highlighted article', error);
+      }
+    };
+
     const fetchData = async () => {
       try {
         const editorsCollection = collection(database, 'editors-picks');
@@ -23,9 +62,12 @@ function EditorsPicks() {
         setEditorsArticles(articles);
       } catch (error) {
         console.error('Error fetching news articles', error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
+    fetchHighlightedEditors();
     fetchData();
 
     // Add listener for authentication state changes
@@ -40,7 +82,7 @@ function EditorsPicks() {
 
   const handleSaveNewArticle = async (newArticleData) => {
     try {
-      const { title, content, image, section } = newArticleData;
+      const { title, image, summary, section } = newArticleData;
 
       const storageRef = ref(storage, `article_images/${image.name}`);
       await uploadBytes(storageRef, image);
@@ -53,7 +95,7 @@ function EditorsPicks() {
       // Add the new article to the Firestore collection with the image URL
       const newArticleRef = await addDoc(collection(database, collectionName), {
         title,
-        content,
+        summary,
         image: downloadURL, // Use the URL obtained from Firebase Storage
       });
 
@@ -101,50 +143,50 @@ function EditorsPicks() {
   };
 
   function getArticlesPerRow() {
-    return window.innerWidth >= 1000 ? 2 : 3;
+    return window.innerWidth >= 900 ? 2 : 3;
   }
 
   return (
-    <section className='home-page' id='editors-pick'>
+    <section className='editor-page' id='editors-pick'>
       <div className='space' />
       <div className='page-header'>
         <img src={process.env.PUBLIC_URL + '/newspaper-folded.png'} alt='News icon' className='news-icon' />
         EditorsPicks
       </div>
 
-      <div className='flex-container'>
-        <div className='create-article-form-container'>
-          {isCreateFormVisible && user ? (
-            <CreateArticleForm onSave={handleSaveNewArticle} onCancel={() => setCreateFormVisible(false)} />
-          ) : user ? (
-            <button className='create-article' onClick={() => setCreateFormVisible(true)}>
-              Create New Article
-            </button>
-          ) : null}
-        </div>
-      </div>
-
       <div className='flex-contents'>
-        <div className='page-contents'>
-          {Array.from({ length: Math.ceil(currentArticles.length / articlesPerRow) }).map((_, rowIndex) => (
-            <div key={rowIndex} className='news-row'>
-              {currentArticles
-                .slice(rowIndex * articlesPerRow, (rowIndex + 1) * articlesPerRow)
-                .map((article, colIndex) => (
-                  <Link to={`/article/${article.id}`} key={colIndex}>
-                    <div key={colIndex} className='content-card'>
-                      {user && <button onClick={() => handleDeleteArticles(article.id)}>Delete</button>}
-                      <img src={article.image} alt={article.title} className='content-pic' />
-                      <div className='content-text'>
-                        <p className='content-text-header'>{article.title}</p>
-                        <p className='content-text-body'>{article.content}</p>
+        {isLoading ? (
+          <LoadingScreen />
+        ) : (
+          <div className='page-contents'>
+
+            {/* Display the rest of the articles */}
+            {Array.from({ length: Math.ceil(currentArticles.length / articlesPerRow) }).map((_, rowIndex) => (
+              <div key={rowIndex} className='news-row'>
+                {currentArticles
+                  .slice(rowIndex * articlesPerRow, (rowIndex + 1) * articlesPerRow)
+                  .map((article, colIndex) => (
+                    <Link to={`/article/editors-picks/${article.id}`} key={colIndex}>
+                      <div key={colIndex} className='content-card' style={{backgroundImage: `url(${article ? article.image : ''})`}}>
+                        {user && (
+                          <button onClick={() => handleDeleteArticles(article.id)}>Delete</button>
+                        )}
+                        {user && !article.isHighlight && (
+                          <button onClick={() => handleSetHighlight(article.id)}>
+                            Set as Highlight
+                          </button>
+                        )}
+                        <div className='content-text'>
+                          <p className='content-text-header'>{article.title}</p>
+                          <p className='content-text-body'>{article.summary}</p>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
-            </div>
-          ))}
-        </div>
+                    </Link>
+                  ))}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
       <div className='pagination'>
         <button onClick={handlePrevPage} disabled={currentPage === 1} className='page-button'>

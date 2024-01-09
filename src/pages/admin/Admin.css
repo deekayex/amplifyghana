@@ -8,8 +8,10 @@
   justify-content: center;
   flex-direction: row;
   gap: 1%;
-  margin-bottom: 5vh;
+  margin-bottom: 2vh;
   margin-top: 2vh;
+  /* background-color: aqua; */
+  text-align: center;
 }
 
 .admin-page-links{
@@ -27,12 +29,28 @@
   padding-left: 60px;
   background-color: black;
   width: 30%;
-  position: sticky;
+  position: static;
   z-index: 25;
 }
 
 .admin-pages{
-  background-color: aqua;
-  width: 70%
-  ;
+  /* background-color: aqua; */
+  width: 70% ;
+}
+
+.sign-out{
+  border: none;
+  background-color: white;
+}
+
+.sign-out:hover{
+  cursor: pointer;
+}
+
+.sign-out-icon{
+  width: 20px;
+}
+
+.sign-out-icon:hover{
+  width: 22px;
 }

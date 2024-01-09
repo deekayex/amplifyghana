@@ -12,13 +12,14 @@ import EditorsPicks from "./pages/editorsPicks/EditorsPicks";
 import Home from "./components/Home";
 import About from "./pages/about/About";
 import Submissions from "./pages/submissions/Submissions";
-import Login from "./pages/login/Login";
 import LoginPage from "./pages/login/Login";
 import ArticlePage from "./pages/articles/ArticlePage";
 import Admin from "./pages/admin/Admin";
 import Messages from "./components/messages/Messages";
-import CreateArticleForm from "./components/forms/editor/CreateArticleForm";
+
 import AdminPosts from "./components/AdminPosts";
+import UpdatePlaylists from "./components/UpdatePlaylists";
+import Footer from "./components/footer/Footer";
 
 
 function App() {
@@ -33,15 +34,18 @@ function App() {
              <Route path="/about" element={<About/>} />
              <Route path="submissions" element={<Submissions/>} />
              <Route path="editors-pick" element = {<EditorsPicks/>}/>
-             <Route path="/article/:articleId" element={<ArticlePage/>} />
+             <Route path="/article/:category/:articleId" element={<ArticlePage/>} />
              <Route path="login" element ={<LoginPage/>}/>
              <Route path="admin" element= {<Admin/>}>
-             <Route path="messages" element={<Messages />} />
              <Route path="create-posts" element={<AdminPosts/>} />
-             </Route>
-             
+             <Route path="manage-posts" element={<HomePages/>} />
+             <Route path="update-playlist" element={<UpdatePlaylists/>} />
+             <Route path="top-picks" element={<HomePages/>} />
+             </Route>  
           </Routes>
-        </Router>
+        <Footer/>
+      </Router>
+        
 );
 }
 
