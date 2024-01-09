@@ -214,10 +214,10 @@ body{
     .homepage-contents{
         flex-direction: column;
         height: 75vh;
+        align-items: center;
     }
 
     .left-homepage{
-        margin-left: 10%;
         width: 80%; 
         height: 100%;
     }
@@ -226,7 +226,6 @@ body{
         margin-top: 3%;
         width: 80%;
         height: 40%;
-        margin-left: 10%;
         flex-direction: row;
         justify-content: space-between;
         gap: 5%;
@@ -251,6 +250,10 @@ body{
 @media screen and (max-width: 600px) {
 
     .editor-text-header{
-        font-size: 3vh;
+        font-size: 2rem;
     }
+    .editor-text-body{
+        font-size: 0.9rem;
+    }
+
 }

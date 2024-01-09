@@ -6,8 +6,8 @@
 }
 
 .article-main{
-  width: 50% ;
-  margin-left: 10%;
+  width: 45vw;
+  margin-left: 20%;
   padding-top: 12vh;
   z-index: 2;
 }
@@ -30,8 +30,8 @@
 }
 
 .article-body{
-  font-size: 2vw;
-  /* background-color: aqua; */
+  font-size: 1.5rem;
+  background-color: aqua;
 }
 
 .article-aside{
