@@ -1,11 +1,6 @@
 
 
-.playlist-page{
-    margin-top: 2vh;
-}
-
 .playlist-container{
-    height: 80%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,48 +8,53 @@
 }
 
 .playlist-header{
-    padding-top: 8%;
     text-align: center;
     text-transform: uppercase;
     font-family: 'Goldman', sans-serif;
     font-weight: 700;
-    font-size: 1.8vw;
+    font-size: 2.8rem;
 }
 
 .playlist_component{
-    width: 80%;
-    height: 30vh;
+    width: 80vw;
+    height: 25vh;
     margin-left: 10%;
     margin-top: 2%;
     display: flex;
     flex-direction: row;
     gap: 2%;
     padding-bottom: 2%;
+    flex: 2 1 auto;
 
 }
 
 .playlist_image{
-    width: 35%;
+    width: 20vw;
     height: auto;
     border-radius: 20px 20px 20px 20px;
     border: none;
+    background-color: black;
 }
 
 .playlist_text{
+    flex: 1;
     height: 100%;
+    width: 60vw;
     background-color: black;
-    width: 65%;
+    width: 6;
     border-radius: 20px 20px 20px 20px;
     color: white;
     padding: 2% 2% 2%;
     line-height: 2.6vh;
-    font-size: clamp(11px, 0.5vw, 18px);
+    font-size: 2rem;
     position: relative;
+    
 }
 
 .picture{
     width: 100%;
     height: 100%;
+    object-fit: fill;
 }
 
 .playlist_button{
@@ -62,40 +62,59 @@
     bottom: 5%;
     left: 2%;
     border-radius: 20px 20px 20px 20px;
-    width: 80px;
+    width: 15%;
     height: 10%;
     font-family: 'Goldman', sans-serif;
     font-weight: 700;
+    font-size: 1.6vh;
 }
 
 .playlist_button:hover{
     cursor: pointer;
 }
 
-@media screen and (max-width: 900px ) {
-
-    .playlist_button{
-        font-size: 10px;
-        width: 70px;
-    }
-
-    .picture{
-       width: 25vw;
-    }
-
-    .playlist_text{
-        width: 45vw;
-    }
+.delete-button{
+    position: absolute;
 }
 
-@media screen and (max-width: 700px) {
-    .playlist_button{
-        font-size: 6px;
-        width: 55px;
-    }
 
-    .playlist_text{
-        font-size: 1rem;
+
+@media screen and (max-width: 1030px) {
+    .playlist_component{
+        height: 20vh;
+    } 
+
+    .playlist_button{
+        height: 3vh;
+        width: 25%;
     }
     
 }
+
+
+
+@media screen and (max-width: 600px){
+    .playlist_component{
+        height: 10vh;
+        margin-bottom: 2vh;
+    }
+
+    .playlist-header{
+        font-size: 1.6rem;
+    }
+
+    .playlist_text{
+        font-size: 0.7rem;
+    }
+
+    .playlist_button{
+        height: 1.9vh;
+        width: 20%;
+        font-size: 0.8vh;
+        margin-left: 5%;
+    }
+
+}
+
+
+

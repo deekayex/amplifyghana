@@ -8,7 +8,7 @@
 
 .about_top{
     margin-top: 12vh;
-    height: 25vh;
+    height: 25%;
 }
 
 .top_header, .body_header, .box_text_header, .about-socials-header{
@@ -22,16 +22,16 @@
 .top_box, .body_box{
     background-color: black;
     font-family: 'Montserrat', sans-serif;
-    font-size: 1.2vw;
-    margin-top: 2vh;
-    margin-bottom: 2vh;
+    font-size: 1.4vw;
+    margin-top: 2%;
+    margin-bottom: 2%;
     color: white;
 }
 
 .top_box{
     margin-left: 10%;
-    padding-top: 2vh;
-    padding-bottom: 2vh;
+    padding-top: 2%;
+    padding-bottom: 2%;
     max-width: 80%;
     border-radius: 20px 20px 20px 20px;
     letter-spacing: 1px;
@@ -106,12 +106,11 @@
 }
 
 .box_text{
-    display: flex;
-    
+    display: flex;   
 }
 
 .about_socials{
-    margin-top: 10vh;
+    margin-top: 10%;
     text-transform: uppercase;
 }
 
@@ -119,9 +118,82 @@
     display: flex;
     height: 7vh;
     justify-content: center;
-    margin-top: 5vh;
+    margin-top: 5%;
 }
 
 .about-us-socials .socials{
     --socials-gap: 4vw;
 }
+
+@media screen and (max-width: 1025px) {
+    .about_us_page{
+        height: 100%;
+    }
+
+    .box_container{
+        width: 90%;
+    }
+
+    .about-us-socials{
+        height: 3vh;
+    }
+    .about-us-socials .socials{
+        --socials-gap: 10vw;
+    }
+
+    .box_text_body{
+        line-height: 1.3vh;
+        font-size: 1rem;
+    }
+    
+
+    .body_box{
+        height: 25vh;
+    }
+
+    .next-button, .previous-button{
+        font-size: 10vw;
+    }
+
+    .top_box{
+        line-height: 1.2vh;
+    }
+
+    .box_text_header{
+        font-size: 1.6vw;
+    }
+
+    .body_header, .top_header{
+        font-size: 3vw;
+    } 
+    
+}
+
+
+@media screen and (max-width: 1020px){
+    .box_text_body{
+        line-height: 1.3vh;
+        font-size: 1.2vw;
+    }
+}
+
+
+@media only screen and (max-width: 700px) {
+    /* .about_us_page{
+        height: 60vh;
+    } */
+    
+    .box_1, .box_2, .box_3{
+        width: 45%;
+    }
+
+    .box_text_body{
+        font-size: 0.6rem;
+    }
+    
+    .box_text_header{
+        font-size: 1rem;
+    }
+
+  }
+  

@@ -55,6 +55,7 @@ const Playlists = () =>{
 
   return (
     <div className='playlist-page'>
+      <div className='space' />
       <div className='playlist-header'>Playlists
       </div>
 

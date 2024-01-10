@@ -143,12 +143,12 @@ function EditorsPicks() {
   };
 
   function getArticlesPerRow() {
-    return window.innerWidth >= 900 ? 2 : 3;
+    return window.innerWidth >= 700 ? 2 : 3;
   }
 
   return (
     <section className='editor-page' id='editors-pick'>
-      <div className='space' />
+      <div className='editor_space' />
       <div className='page-header'>
         <img src={process.env.PUBLIC_URL + '/newspaper-folded.png'} alt='News icon' className='news-icon' />
         EditorsPicks

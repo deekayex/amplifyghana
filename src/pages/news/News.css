@@ -2,17 +2,21 @@
 .news-container {
   background: linear-gradient(180deg, rgba(234, 131, 72, 0.4) 0%, rgba(211, 118, 41, 0.87) 50%, #FF8018 100%),
   linear-gradient(0deg, rgba(255, 92, 0, 0.4), rgba(231, 114, 46, 0.4));
-  position: relative;
 }
 
 .editor-page, .news-container{
-  height: 90vh;
+  position: relative;
+  height: 100vh;
   margin-bottom: 10vh;
 }
 
 .spacer {
   height: 10%;
   margin-top: 0%;
+}
+
+.editor_space{
+  height: 10%;
 }
 
 .page-header {
@@ -53,11 +57,11 @@
 
 
 .content-card {
-  width: 100%;
+  width: 25vw;
   margin-right: 2%;
   margin-bottom: 10%;
   min-width: 40px;
-  height: 30vh;
+  height: 35vh;
   position: relative;
   padding-top: 10px; ;
   background-size: cover;
@@ -79,6 +83,8 @@
 .content-text-header {
   font-size: 1.1vw;
   color: #FF7300;
+  text-transform: uppercase;
+  padding: 3px;  
 }
 
 .content-text-body {
@@ -86,8 +92,10 @@
   margin-top: 2px;
   font-family: "Montserrat", sans-serif;
   word-spacing: 1px;
-  letter-spacing: 1px;
+  letter-spacing: 0.1rem;
   font-weight: 400;
+  padding-left: 3px;
+  padding-bottom: 3px;
 }
 
 .pagination {
@@ -125,27 +133,80 @@
   transition: 0.5s;
 }
 
+@media screen and (max-width: 1030px ) {
+  .content-card{
+    height: 20vh;
+    width: 25vw;
+  }
+  .news-container, .editor-page{
+    height: 60vh;
+   }
+   .editor_space{
+    height: 0;
+   }
 
+   .page-contents{
+    width: 80%;
+   }
+
+   .content-text-body, .content-text-header{
+    overflow: hidden;
+    text-overflow: ellipsis; 
+   }
+
+   .content-text-header{
+    font-size: 1.75rem;
+   }
+   .content-text-body{
+    font-size: 1.4rem;
+    white-space: nowrap;
+   }
+
+}
+
+@media screen and (min-width: 1020px) and (max-height: 700px) {
+  .news-container,
+  .editor-page {
+    height: 110vh;
+  }
+  .content-card{
+    height: 35vh;
+  }
+}
+
+
+@media screen and (max-width: 1000px ) {
+ 
+   .content-text-header{
+    font-size: 1.4rem;
+   }
+   .content-text-body{
+    font-size: 1rem;
+   }
+
+}
 
 
 @media screen and (max-width:700px ) {
    .news-container{
-    height: 85vh;
+    height: 86vh;
    }
+   
 
    .editor-page{
-    height: 680px;
+    height: 80vh;
    }
    .content-card{
-    width: 35vw;
-    height: 50%;
+    width: 43vw;
+    height: 20vh;
     min-width: 100px;
-
     border-radius: 20px;
+
    }
 
    .page-contents{
-    grid-gap: 10%;
+    grid-gap: 5%;
+    width: 90%;
    }
 
    .page-button{
@@ -160,5 +221,22 @@
    .news-icon{
     width: 20px;
    }
+
+   .content-text-body{
+    font-size: 0.8rem;
+   }
+
+   .content-text-header{
+    font-size: 1rem;   
+   }
+}
+
+@media screen and (max-width: 300px){
+  .content-text-header{
+    font-size: 0.8rem;
+  }
+  .content-text-body{
+    font-size: 0.6rem;
+  }
 }
 

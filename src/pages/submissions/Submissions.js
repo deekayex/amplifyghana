@@ -12,7 +12,7 @@ function Submissions() {
     <section className='submissions-container' id='submissions'>
       <div className='space' />
       <div className='forms-container'>
-        Reach out to us
+        <div className='form-header-text'>Reach out to us</div>
         <div className='form-container'>
           <BasicForm onSubmit={handleSubmit}/>
         </div>
