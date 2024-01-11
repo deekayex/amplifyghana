@@ -54,3 +54,11 @@
 .sign-out-icon:hover{
   width: 22px;
 }
+
+.admin-link, .page-manager, .playlists-manager{
+  padding-left: 20px;
+  padding-bottom: 10px;
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-color: aliceblue;
+}

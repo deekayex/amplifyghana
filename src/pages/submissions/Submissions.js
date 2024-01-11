@@ -4,7 +4,7 @@ import './Submissions.css';
 
 function Submissions() {
   const handleSubmit = async (values, setSubmitting) => {
-    // Your form submission logic here
+    // Form submission logic here
   };
 
 

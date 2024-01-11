@@ -5,6 +5,7 @@
     flex-direction: column;
     justify-content: center;
     word-wrap: break-word;
+    margin-bottom: 20vh;
 }
 
 .playlist-header{

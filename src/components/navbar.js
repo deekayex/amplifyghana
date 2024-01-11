@@ -23,7 +23,7 @@ function Navbar() {
 
   return (
     <nav className="nav">
-      <NavLink to="/" spy={true} smooth={true} offset={0} duration={50} initial={0}>
+      <NavLink to="/" >
         <img
           src={process.env.PUBLIC_URL + "/amplifyghlogo.png"}
           alt="Amplify logo"

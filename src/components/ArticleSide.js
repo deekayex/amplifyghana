@@ -11,7 +11,6 @@ import { doc, getDoc } from '@firebase/firestore';
 
 
 
-
 const ArticleSide = () => {
   const [highlightedNews, setHighlightedArticle] = useState(null); // State to track the highlighted article
 
@@ -72,7 +71,9 @@ const ArticleSide = () => {
 
   return (
     <div className='article-side'>
-      <div className='aside-articles'>  
+      <div className='aside-header'>You Might Also Like</div> 
+      <div className='aside-articles'> 
+        
           <div style={{ backgroundImage: `url(${highlightedNews ? highlightedNews.image : ''})` }} className='aside-article'>
             <div className='editor'>News</div>
         <div >
@@ -83,16 +84,16 @@ const ArticleSide = () => {
       </div>
 
       <div style={{ backgroundImage: `url(${highlightedEditors ? highlightedEditors.image : ''})` }} className='aside-article'>
-        <div className='editor'>EditorsPicks</div>
+        <div className='editor'>Editors</div>
 
         <p className='article-title-text'>
            {highlightedEditors ? highlightedEditors.title : 'Loading...'}
         </p>
       </div>
-      <div>Playlists</div>
+      {/* <div>Playlists</div> */}
       </div>
     </div>
   )
 }
 
-export default ArticleSide
+export default ArticleSide;

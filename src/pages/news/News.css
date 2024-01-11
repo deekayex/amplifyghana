@@ -133,6 +133,11 @@
   transition: 0.5s;
 }
 
+.content-text-body, .content-text-header{
+  overflow: hidden;
+  text-overflow: ellipsis; 
+ }
+
 @media screen and (max-width: 1030px ) {
   .content-card{
     height: 20vh;
@@ -148,12 +153,7 @@
    .page-contents{
     width: 80%;
    }
-
-   .content-text-body, .content-text-header{
-    overflow: hidden;
-    text-overflow: ellipsis; 
-   }
-
+   
    .content-text-header{
     font-size: 1.75rem;
    }
@@ -171,6 +171,9 @@
   }
   .content-card{
     height: 35vh;
+  }
+  .editor_space{
+    height: 10%;
   }
 }
 
@@ -190,6 +193,11 @@
 @media screen and (max-width:700px ) {
    .news-container{
     height: 86vh;
+   }
+
+   .editor_space{
+    margin-top: 0;
+    padding-top: 0;
    }
    
 

@@ -4,6 +4,7 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+    margin-bottom: 20vh;
 }
 
 .about_top{
@@ -119,6 +120,7 @@
     height: 7vh;
     justify-content: center;
     margin-top: 5%;
+     
 }
 
 .about-us-socials .socials{

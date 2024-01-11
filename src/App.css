@@ -1,10 +1,15 @@
 body{
     font-family: 'Monument Extended', sans-serif; 
-    margin: 0;
+    background: linear-gradient(180deg, rgba(255, 92, 0, 0.4) 0%, rgba(211, 118, 41, 1) 50%, #FF8018 100%),
+    linear-gradient(0deg, rgba(255, 92, 0, 0.8), rgba(255, 92, 0, 0.6));
 }
 
 .nav_active {
     color:rgba(255, 115, 0) ;
     transition: 0.5s;
   }
+
+.footer{
+    margin-top: auto;
+}
 

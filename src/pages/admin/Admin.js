@@ -76,7 +76,7 @@ const Admin = () => {
        <div className='page-managers'>
         <div className='posts-manager'onMouseEnter={() => setShowPosts(true)} onMouseLeave={()=> setShowPosts(false)}>
 
-          <div>Posts</div>
+          <div className='admin-link'>Posts</div>
           {showPosts && (
           <div>
             <NavLink to= 'create-posts' >
@@ -85,7 +85,7 @@ const Admin = () => {
           </div>
           )}
           {showPosts &&  
-          <div><NavLink to = "/">Manage Posts</NavLink></div>}
+          <div className='admin-link'><NavLink to = "/">Manage Posts</NavLink></div>}
         </div>
           
         <div className='playlists-manager'>
@@ -95,12 +95,12 @@ const Admin = () => {
         </div>
 
         {/* Special Privileges */}
-        <div>
+        <div className='admin-link'>
           <NavLink to='top-picks'>
           Top Picks
           </NavLink>
           </div>
-        <div>Featured Ad</div>
+        <div className='admin-link'>Featured Ad</div>
         <div className='page-manager'>Edit Pages</div>
     </div>
 

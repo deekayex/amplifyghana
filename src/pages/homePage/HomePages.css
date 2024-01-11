@@ -48,3 +48,11 @@
     height: 3vh;
     display: flex;
 }
+
+
+@media screen and (max-width: 600px) {
+    .home-socials{
+        height: 2vh;
+    }
+    
+}

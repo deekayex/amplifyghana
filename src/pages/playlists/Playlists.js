@@ -49,7 +49,7 @@ const Playlists = () =>{
 
   const handleListenButtonClick = (link) => {
     // Handle redirection when "LISTEN" button is clicked
-    window.location.href = link;
+    window.open(link, '_blank');
   };
 
 

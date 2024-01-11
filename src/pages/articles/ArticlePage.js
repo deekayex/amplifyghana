@@ -32,6 +32,7 @@ const ArticlePage = () => {
 
     fetchArticle();
   }, [category, articleId]);
+  
 
   return (
     <div className="article-page">
