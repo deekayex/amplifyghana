@@ -49,14 +49,12 @@
 }
 
 .box_container{
-    /* background-color:blue; */
     width: 85%;
     display: flex;
     flex-direction: row;
 }
 
 .box_text{
-    /* background-color:aqua; */
     display: flex;
     flex-direction: row;
     justify-content:space-between
@@ -96,7 +94,7 @@
 
 .previous-button.disabled,
 .next-button.disabled {
-  opacity: 0.5; /* Adjust the opacity as needed */
+  opacity: 0.5; 
   cursor: not-allowed;
 }
 
@@ -137,10 +135,10 @@
     }
 
     .about-us-socials{
-        height: 3vh;
+        height: 2vh;
     }
     .about-us-socials .socials{
-        --socials-gap: 10vw;
+        --socials-gap: 10%;        ;
     }
 
     .box_text_body{
@@ -181,9 +179,6 @@
 
 
 @media only screen and (max-width: 700px) {
-    /* .about_us_page{
-        height: 60vh;
-    } */
     
     .box_1, .box_2, .box_3{
         width: 45%;

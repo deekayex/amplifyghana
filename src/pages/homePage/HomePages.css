@@ -53,6 +53,7 @@
 @media screen and (max-width: 600px) {
     .home-socials{
         height: 2vh;
+        width: 100%;
     }
     
 }
