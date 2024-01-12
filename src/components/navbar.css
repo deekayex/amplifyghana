@@ -1,0 +1,166 @@
+*,
+*::after,
+
+*::before {
+  margin:0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 18px;
+}
+
+li {
+  list-style: none;
+}
+
+a{
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: 700;
+  font-size: 18px;
+  font-family:'Montserrat', sans-serif;
+}
+
+
+
+.nav {
+  display: flex;
+  height: 8.9vh;
+  background-color: black;
+  align-items: center;
+  position: fixed; 
+  top: 0;
+  width: 100%;
+  z-index: 100000;
+  min-height: 30px;
+  }
+
+  
+  .amplify-logo{
+    width: 15%;
+    position: static;
+    margin-left: 5%;
+  }
+
+
+.nav__link, .nav__link__icon{
+    color:white;
+    font-size: 16px;
+    opacity: 1;
+    text-decoration: solid;
+    font-family: 'Montserrat', sans-serif;
+    opacity: 0.9;
+}
+
+
+.nav__link{
+  margin-right: 40px;
+}
+
+.nav__link:hover{
+  text-decoration:underline;
+  opacity: 1;
+  transition: 0.5s;
+}
+
+.nav_active {
+  color: #FF7300; /* Change the color for the active state */
+  transition: 0.3s;
+  cursor: pointer;
+  opacity: 1;
+}
+
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.3rem; 
+  position: absolute;
+  right: 3%;
+  
+}
+
+.menu-icon{
+  margin-right: 5%;
+  color: white;
+  opacity: 0;
+}
+
+
+/* Add responsive styles for smaller screens */
+@media (max-width: 768px) {
+  .nav__menu {
+    display: none;
+  }
+
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+    opacity: 1;
+    margin-right: 10%;    
+  }
+
+  .nav__active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 8.9vh; 
+    right: 0;
+    background-color: rgba(24, 21, 18, 0.997);
+    width: 75%;
+    height: 80vh;
+    padding-top: 2vh;
+  }
+
+  a, .nav__link, .nav__item{
+    font-size: 2vw;
+  }
+
+  .nav__toggler.toggle {
+    transform: rotate(90deg); /* Rotate the icon for a visual indicator */
+    transition: 5s;
+  }
+
+  .nav__item {
+    text-align: center; 
+    border-bottom: rgb(30, 28, 28);
+    padding-bottom: 10px;
+    border-bottom-style: solid;
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .nav__link{
+   
+  }
+
+}
+
+@media (max-width: 1218px) {
+  
+  a, .nav__link, .nav__item{
+    font-size: 11px;
+  }
+
+  .amplify-logo{
+    width: 30%;
+  }
+
+  .menu-icon{
+    size: 2rem;
+  }
+}
+
+@media screen and (min-width: 1020px) and (max-height: 700px){
+  .amplify-logo{
+    width: 20%;
+  }
+}
+

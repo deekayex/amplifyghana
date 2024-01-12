@@ -1,0 +1,212 @@
+
+.article-page{
+  word-wrap: break-word;
+  background-color: white;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding-bottom: 10vh;
+  justify-content: center;
+}
+
+.article-flex{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10%;
+}
+
+.article-main{
+  width: 50vw;
+  margin-left: 5%;
+  padding-top: 12vh;
+  z-index: 2;
+}
+
+.article-title{
+  font-size: 2.8rem;
+  text-align: justify;
+  letter-spacing: 0.5vw;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.article-image-container{
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.article-image{
+  width: 100%;
+  height: 50vh;
+  object-fit: cover;
+}
+
+.article-body{
+  font-size: 1.5rem;
+}
+
+.article-aside{
+  padding-top: 5vh;
+  top: 20%;
+  width: 30%;
+  position: sticky;
+  right: 10%;
+  height: 80vh;
+  background-color:hsl(180, 40%, 98%);
+  z-index: 2;
+}
+
+.aside-header{
+  margin-bottom: 20px;
+  font-family: "Goldman", sans-serif;
+  text-align: center;
+  font-size: 2.2vh;
+  text-transform: uppercase;
+}
+
+.aside-articles{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.aside-article{
+  background-size: cover;
+  width: 20vw;
+  margin-left: 10%;
+  height: 25vh;
+  margin-bottom: 5%;
+  position: relative;
+  border-top-right-radius: 30px;
+  border-top-Left-radius:30px ;
+}
+
+.article-title-text{
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.9);
+  color:#FF7300 ;
+  font-family: 'Monument Extended';
+  font-size: 1.1vw;
+}
+
+.aside-article:hover{
+  cursor: pointer;
+}
+
+.article-title-text:hover{
+  color: white;
+  background-color: #FF7300;
+  opacity: 0.8;
+  transition: 0.5s;
+}
+
+.article-body h1 {
+  font-size: 2.5rem;
+}
+
+.article-body p{
+  font-size: 2rem;
+}
+
+.article-body image, .article-body img{
+  width: 45%;
+  height: auto;
+}
+
+.article-body h1, .article-body h2, .article-body p, .article-body image, .article-body img{
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 1030px){
+  .article-main{
+    width: 60vw;
+    margin-left: 5%;
+  }  
+
+  .article-aside{
+    right: 2%;
+    width: 30vw;
+  }
+
+  .aside-article{
+    width: 80%;
+    height: 15vh;
+  }
+  .article-body image, .article-body img{
+    width: 60vw;
+  }
+}
+
+
+@media screen and (max-width: 700px) {
+
+  .article-flex{
+    flex-direction: column;
+  }
+  
+  .article-page{
+    position: relative;
+  }
+
+
+  .article-main{
+    width: 80vw;
+    margin-left: 0;
+  }
+
+  .article-image{
+    height: 40vh;
+    width: 100%;
+  }
+
+  .article-aside{
+    position:static;
+    bottom: 10px;
+    height: 25vh;
+    margin-top: 5vh;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .aside-articles{
+    flex-direction: row;
+    width: 100%;
+    display: flex; 
+    gap: 5%; 
+  }
+
+  .aside-article{
+    margin-bottom: 0;
+    justify-content: center;
+    margin-left: 0;
+  }
+
+  .article-body h1, .article-body h2{
+    font-size: 2rem;
+  }
+
+  .article-body p{
+    font-size: 1.5rem;
+  }
+
+  .article-title-text{
+    font-size: 0.9rem;
+  }
+  .article-body image, .article-body img{
+    width: 100%;
+  }
+
+  .article-title{
+    text-align:start;
+  }
+  
+}
+
+@media screen and (max-width: 400px) {
+   .editor{
+    font-size: 1.4rem;
+    font-weight: 800;
+  }
+}

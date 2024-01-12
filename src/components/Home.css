@@ -1,0 +1,303 @@
+
+.homnepage-components{
+    display: flex;
+    flex-direction: column;   
+}
+
+.homepage-contents{
+    display: flex;
+    height: 70vh;
+    
+}
+
+.left-homepage{
+    width: 46.7%;
+    border-radius: 20px;
+    margin-left: 8%;
+    background-image: url('../../public/clanpic.jpg'); 
+    background-size:cover;
+    background-position: center;
+    position: relative; 
+    opacity: 0.95;
+    transition: 0.5s ease;
+}
+
+
+.left-homepage:hover, .news-component:hover{
+    cursor: pointer;
+    opacity: 1;
+    transition: 0.5s ease;
+    background-position: right;
+}
+
+
+.editor, .playlist-text{
+    position: absolute;
+    right: 0;
+    background-color: #FF7300;
+    border-top-right-radius: 18px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-bottom: 5px;
+    font-family: 'hanson', sans-serif;
+    font-size: 1.5vw;
+    font-weight: bolder;
+    letter-spacing: 2px;
+}
+
+
+.editor-text{
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    opacity: 0.9;
+}
+
+
+.editor-text-body, .editor-text-header,.news-text-header{
+    margin: 10px;
+}
+
+
+
+.editor-text-header{
+    font-size: 2.6vw;
+    font-family: 'Monument Extended';
+    color: #FF7300;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+
+
+
+.editor-text-body{
+    font-size: 0.9vw;
+    font-weight: 400;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+
+.right-homepage{
+    display: flex;
+    flex-direction: column;
+    width: 30.7%;
+    margin-left: 3%;
+}
+
+
+.news-component{
+    flex: 1;
+    margin-bottom: 2.3vh;
+    border-radius: 20px;
+    background-image: url('../../public/newspic.jpg'); 
+    background-size:cover;
+    background-position: center center;
+    position: relative;
+ 
+    opacity: 0.9;
+    transition: 0.5s ease;
+}
+
+
+.news-component:hover{
+    background-position: center 60%;
+}
+
+
+.news-text-header{
+    font-size: 1.6vw;
+    font-family: 'Monument Extended';
+    color: #FF7300;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+
+.playlist-component{
+    background-color:brown;
+    border-radius: 20px;
+    flex: 1;
+    background-image: url('../../public/newmusic.jpg'); 
+    background-size:cover;
+    background-position: center;
+    position: relative;
+    z-index: 2;
+}
+
+.playlist-button{
+    position: absolute;
+    width: 20%;
+    bottom: 10px;
+    right: 35%;
+    border-radius: 20px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgba(255, 115, 0, 1);
+    color: white;
+    font-family: 'Monument Extended';
+    font-size: 0.7vw;
+    border: white;
+    border-style: solid;
+    border-width: 0.12vw;
+    opacity: 0.8;
+}
+
+.playlist-button:hover{
+    opacity: 0.9;
+    cursor: pointer;
+}
+
+.playlist-button:active{
+    opacity: 1s;
+}
+
+
+.playlist-text{
+    background-color: black;
+    padding: 0;
+    padding-left: 10px;
+    padding-right: 12px;
+    font-size: 1.4vw;
+    letter-spacing: 1px;
+}
+
+
+
+.bottom-homepage{
+    background-color: black;
+    text-align: center;
+    justify-content: center;
+    margin-top: 2.3vh;
+    height: 13vh;
+    width: 80%;
+    margin-left: 8%;
+    object-fit: contain;
+    border-radius: 15px;
+    margin-bottom: 8.6vh;
+}
+
+
+.ad-section{
+    font-size: 5vw;
+    font-family: 'Monument Extended';
+    margin-bottom: 0;
+}
+
+
+.rent-space{
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 1vw;
+}
+
+.playlist-text:hover, .editor:hover{
+    color: white;
+}
+
+.playlist-text:hover,.editor:hover, .news-text-header:hover, .editor-text-header:hover,.content-text-header:hover{
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1030px) {
+    .homepage-contents{
+        height: 40vh;
+    }
+    .bottom-homepage{
+        margin-left: 10%;
+    }
+}
+
+@media screen and (min-width: 1020px) and (max-height: 700px){
+    .homepage-contents{
+        height: 65vh;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+
+    .homepage-contents{
+        flex-direction: column;
+        height: 75vh;
+        align-items: center;
+    }
+
+    .editor-text-body{
+        font-size: 1.6rem;
+    }
+
+    .left-homepage{
+        width: 90%; 
+        margin-left: 0;
+        height: 100%;
+    }
+
+    .right-homepage{
+        margin-top: 3%;
+        width: 90%;
+        height: 40%;
+        margin-left: 0%;
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 5%;
+    }
+
+    .news-component, .playlist-component{
+        width: 100%;
+        height: 100%;
+    }
+
+    .bottom-homepage{
+        height: 20%;
+        
+    }
+
+    .editor-text-header{
+        font-size: 4vh;
+    }
+    .news-text-header{
+        font-size: 2.5vw;
+    }
+
+}
+
+
+@media screen and (max-width: 600px) {
+
+    .editor-text-header{
+        font-size: 2rem;
+    }
+    .editor-text-body{
+        font-size: 0.9rem;
+    }
+
+}
+
+@media screen and (max-width: 300px){
+    .editor-text-header{
+        font-size: 1.7rem;
+    }
+
+    .editor-text-body{
+        font-size: 0.8rem;
+    }
+    .bottom-homepage{
+        height: 7vh;
+        padding-top: 1.5vh;
+        position: relative;
+    }
+
+    .ad-section{
+        font-size: 2rem;
+    }
+
+    .rent-space{
+        font-size: 0.55rem;
+        bottom: 10px;
+    }
+}
