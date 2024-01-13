@@ -1,11 +1,26 @@
+.playlist-page{
+    min-height: 80vh;
+}
 
+.playlist-flex{
+    display: flex;
+    flex-direction: column;  
+}
 
 .playlist-container{
     display: flex;
     flex-direction: column;
     justify-content: center;
     word-wrap: break-word;
-    margin-bottom: 20vh;
+    /* background-color: aqua; */
+    flex: 1;
+    height: 100%;
+}
+
+.ad-box{
+    background-color: rgb(176, 163, 163);
+    flex: 1;
+    height: 100%;
 }
 
 .playlist-header{
@@ -18,7 +33,7 @@
 
 .playlist_component{
     width: 80vw;
-    height: 25vh;
+    height: 30vh;
     margin-left: 10%;
     margin-top: 2%;
     display: flex;
@@ -26,7 +41,7 @@
     gap: 2%;
     padding-bottom: 2%;
     flex: 2 1 auto;
-
+    /* background-color: aliceblue; */
 }
 
 .playlist_image{
@@ -75,7 +90,7 @@
 }
 
 .delete-button{
-    position: absolute;
+    position: static;
 }
 
 
@@ -96,8 +111,10 @@
 
 @media screen and (max-width: 600px){
     .playlist_component{
-        height: 10vh;
+        height: 15vh;
         margin-bottom: 2vh;
+        width: 90vw;
+        margin-left: 5vw;
     }
 
     .playlist-header{

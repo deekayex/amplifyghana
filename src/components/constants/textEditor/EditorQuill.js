@@ -25,8 +25,8 @@ const Editor = ({onChange}) => {
   }, [quill, handleChange]);
 
   return (
-    <div>
-      <div ref={quillRef} />
+    <div className='text-editor'>
+      <div ref={quillRef}/>
     </div>
   );
 };

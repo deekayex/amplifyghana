@@ -20,6 +20,9 @@ import Messages from "./components/messages/Messages";
 import AdminPosts from "./components/AdminPosts";
 import UpdatePlaylists from "./components/UpdatePlaylists";
 import Footer from "./components/footer/Footer";
+import ArticleList from "./pages/admin-pages/ArticleList";
+import PlaylistList from "./pages/admin-pages/PlaylistList";
+import TopPicksPage from "./pages/admin-pages/TopPicksPage";
 
 
 function App() {
@@ -38,9 +41,10 @@ function App() {
              <Route path="login" element ={<LoginPage/>}/>
              <Route path="admin" element= {<Admin/>}>
              <Route path="create-posts" element={<AdminPosts/>} />
-             <Route path="manage-posts" element={<HomePages/>} />
              <Route path="update-playlist" element={<UpdatePlaylists/>} />
-             <Route path="top-picks" element={<HomePages/>} />
+             <Route path="all-articles" element={<ArticleList/>} />
+             <Route path="all-playlists" element={<PlaylistList/>} />
+             <Route path="top-picks" element={<TopPicksPage/>} />
              </Route>  
           </Routes>
         <Footer/>

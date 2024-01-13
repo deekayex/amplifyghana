@@ -62,3 +62,56 @@
   border-left-style: solid;
   border-color: aliceblue;
 }
+
+.playlists-manager{
+  border-bottom: none;
+}
+
+.admin-header{
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Goldman', sans-serif;
+  font-weight: 700;
+  font-size: 2.8rem;
+}
+.page-limiter{
+  max-height: 80vh;
+  min-width: 30vw;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+.top-picks-page{
+margin-left: 10%;
+}
+.top-picks-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.editors-highlighted{
+  width: 30vw;
+  height: 50vh;
+  background-color: aquamarine;
+  display: flex;
+  position: relative;
+  border-top-right-radius: 20px ;
+  border-top-left-radius: 20px;
+}
+
+.highlighted-text{
+  position: absolute;
+  bottom: 0;
+}
+
+.top-links{
+  display: flex;
+  flex-direction: row;
+  width: 50vw;
+  margin-top: 10vh;
+  justify-content: space-between;
+}
+
+.link:hover{
+  text-decoration: underline;
+}

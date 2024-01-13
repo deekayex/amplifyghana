@@ -64,7 +64,7 @@ const Admin = () => {
     <div className='admin-page'>
       {/* Display user */}
       <div className='admin-flex'>
-        <div>
+        <div className='admin-header'>
         Admin
         </div>
           <button onClick={handleSignOut} className='sign-out'>
@@ -74,24 +74,27 @@ const Admin = () => {
 
       <div className='admin-page-links'>
        <div className='page-managers'>
-        <div className='posts-manager'onMouseEnter={() => setShowPosts(true)} onMouseLeave={()=> setShowPosts(false)}>
-
-          <div className='admin-link'>Posts</div>
-          {showPosts && (
-          <div>
+        <div className='posts-manager'>         
+          <div className='admin-link'>
             <NavLink to= 'create-posts' >
           Create Posts
           </NavLink>
           </div>
-          )}
-          {showPosts &&  
-          <div className='admin-link'><NavLink to = "/">Manage Posts</NavLink></div>}
+           
+          <div className='admin-link'><NavLink to = "all-articles">Manage Posts</NavLink></div>
         </div>
           
         <div className='playlists-manager'>
+          <div className='admin-link'>
           <NavLink to='update-playlist'>
           Update Playlists
+          </NavLink>  
+          </div>
+          <div className='admin-link'>
+          <NavLink to='all-playlists'>
+            Manage Playlists
           </NavLink>
+          </div>
         </div>
 
         {/* Special Privileges */}
@@ -100,7 +103,8 @@ const Admin = () => {
           Top Picks
           </NavLink>
           </div>
-        <div className='admin-link'>Featured Ad</div>
+        <div className='admin-link'>
+          <NavLink>Featured Ad</NavLink></div>
         <div className='page-manager'>Edit Pages</div>
     </div>
 

@@ -121,9 +121,7 @@
      
 }
 
-.about-us-socials .socials{
-    --socials-gap: 4vw;
-}
+
 
 @media screen and (max-width: 1025px) {
     .about_us_page{
@@ -137,16 +135,12 @@
     .about-us-socials{
         height: 2vh;
     }
-    .about-us-socials .socials{
-        --socials-gap: 10%;        ;
-    }
 
     .box_text_body{
         line-height: 1.3vh;
         font-size: 1rem;
     }
     
-
     .body_box{
         height: 25vh;
     }
