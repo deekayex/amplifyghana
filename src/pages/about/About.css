@@ -111,6 +111,7 @@
 .about_socials{
     margin-top: 10%;
     text-transform: uppercase;
+    /* width: 80%; */
 }
 
 .about-us-socials{
@@ -184,6 +185,10 @@
     
     .box_text_header{
         font-size: 1rem;
+    }
+
+    .about_us_page{
+        margin-bottom: 0;
     }
 
   }

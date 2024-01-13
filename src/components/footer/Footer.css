@@ -50,7 +50,15 @@
   margin-top: 5vh;
 }
 
+@media screen and (max-width: 1030px) {
+  .footer{
+    width: 100vw;
+  }
+}
+
 @media screen and (max-width: 600px){
+
+  
   .footer-links{
     /* background-color: aliceblue; */
     width: 80%;
