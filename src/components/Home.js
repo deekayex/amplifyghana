@@ -72,7 +72,7 @@ function Home() {
           
              <Link
                 smooth
-                to="/#editors-pick" className='footer-link'>
+                to="/#editors-pick" >
                 EDITOR'S PICKS
               </Link>
           </div>

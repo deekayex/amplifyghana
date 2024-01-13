@@ -15,3 +15,8 @@ body{
     flex-grow: 1;
 }
 
+@media screen and (max-width) {
+   body{
+    background-color: rgba(215, 144, 61, 1);
+   }     
+}
