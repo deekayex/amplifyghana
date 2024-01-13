@@ -119,11 +119,12 @@
 
 
 .playlist-component{
-    background-color:brown;
+    background-color:#df6b0d;
     border-radius: 20px;
     flex: 1;
     background-image: url('../../public/newmusic.jpg'); 
-    background-size:cover;
+    background-size:contain;
+    background-repeat: no-repeat;
     background-position: center;
     position: relative;
     z-index: 2;

@@ -6,13 +6,14 @@ import { Link } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import LoadingScreen from '../../context/loading/LoadingScreen';
 
-const News = () => {
+const News = ({isAllArticlesPage}) => {
   const [newsArticles, setNewsArticles] = useState([]);
   const [user, setUser] = useState(null);
   const [highlightedArticleId, setHighlightedArticleId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleSetHighlight = async (articleId) => {
+
     try {
       // Update the 'highlightedArticleId' in Firebase to set the currently highlighted article
       await setDoc(doc(database, 'highlighted', 'highlightedNews'), {
@@ -65,10 +66,16 @@ const News = () => {
   }, []);
 
   const handleDeleteArticles = async (id) => {
-    const newsDoc = doc(database, 'news', id);
-    await deleteDoc(newsDoc);
-
-    setNewsArticles((prevArticles) => prevArticles.filter((article) => article.id !== id));
+    if(isAllArticlesPage){
+        const newsDoc = doc(database, 'news', id);
+        await deleteDoc(newsDoc);
+        setNewsArticles((prevArticles) => prevArticles.filter((article) => article.id !== id));
+    }
+    else{
+      alert('You are not allowed to delete any article here')
+    }
+    
+   
   };
 
   const articlesPerPage = 6;
@@ -124,10 +131,10 @@ const News = () => {
                   .map((article, colIndex) => (
                     <Link to={`/article/news/${article.id}`} key={colIndex}>
                       <div className='content-card' style={{backgroundImage: `url(${article ? article.image : ''})`}}> 
-                        {user && (
+                        {user && isAllArticlesPage && (
                           <button onClick={() => handleDeleteArticles(article.id)}>Delete</button>
                         )}
-                        {user && !article.isHighlight && (
+                        {user && isAllArticlesPage && !article.isHighlight && (
                           <button onClick={() => handleSetHighlight(article.id)}>
                             Set as Highlight
                           </button>

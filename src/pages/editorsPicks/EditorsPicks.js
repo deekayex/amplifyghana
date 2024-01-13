@@ -2,18 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { database, storage } from '../../firebase/firebase';
 import { collection, getDocs, addDoc, deleteDoc, doc, getDoc, setDoc } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
-import CreateArticleForm from '../../components/forms/editor/createArticle/CreateArticleForm';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Import Firebase Authentication functions
 import LoadingScreen from '../../context/loading/LoadingScreen';
 
-function EditorsPicks() {
+function EditorsPicks({isAllArticlesPage}) {
   const [editorsArticles, setEditorsArticles] = useState([]);
   const [isCreateFormVisible, setCreateFormVisible] = useState(false);
   const [user, setUser] = useState(null); // State to track the authenticated user
   const [isLoading, setIsLoading] = useState(true);
-  const [highlightedArticleId, setHighlightedArticleId] = useState(null);
-  const [highlightedEditors, setHighlightedEditors] = useState(null);
+  const [, setHighlightedArticleId] = useState(null);
+  const [, setHighlightedEditors] = useState(null);
 
   const handleSetHighlight = async (articleId) => {
     try {
@@ -168,10 +167,10 @@ function EditorsPicks() {
                   .map((article, colIndex) => (
                     <Link to={`/article/editors-picks/${article.id}`} key={colIndex}>
                       <div key={colIndex} className='content-card' style={{backgroundImage: `url(${article ? article.image : ''})`}}>
-                        {user && (
+                        {user && isAllArticlesPage && (
                           <button onClick={() => handleDeleteArticles(article.id)}>Delete</button>
                         )}
-                        {user && !article.isHighlight && (
+                        {user && !article.isHighlight && isAllArticlesPage && (
                           <button onClick={() => handleSetHighlight(article.id)}>
                             Set as Highlight
                           </button>

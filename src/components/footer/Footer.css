@@ -1,9 +1,10 @@
+
 .footer{
   background-color:black;
   color: white;
-  position: static;
-  bottom: 0;
-  width: 100%;
+  /* position: sticky;
+  bottom: 0; */
+  width: 98.9vw;
   text-align: center;
   z-index: 2000;
 }

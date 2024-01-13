@@ -24,7 +24,7 @@
     flex: 1;
     position: absolute;
     left: 0;
-    background-color: aliceblue;
+    /* background-color: aliceblue; */
     align-items: center;
     display: flex;
     font-style:normal;
@@ -53,10 +53,6 @@
 @media screen and (max-width: 600px) {
     .home-socials{
         height: 20px;
-        width: 120px;
-        justify-content: space-around;
-        /* background-color: aliceblue; */
     }
-
     
 }
