@@ -6,6 +6,8 @@ body{
     min-height: 100vh;
 }
 
+
+
 .nav_active {
     color:rgba(255, 115, 0) ;
     transition: 0.5s;
@@ -15,8 +17,8 @@ body{
     flex-grow: 1;
 }
 
-@media screen and (max-width) {
-   body{
+@media screen and (max-width: 600px) {
+   body, .home-page{
     background-color: rgba(215, 144, 61, 1);
    }     
 }
