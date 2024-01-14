@@ -108,7 +108,7 @@ const News = ({isAllArticlesPage}) => {
   };
 
   function getArticlesPerRow() {
-    return window.innerWidth >= 700 ? 2 : 3;
+    return window.innerWidth >= 700 ? 3 : 2;
   }
 
   return (
@@ -124,16 +124,16 @@ const News = ({isAllArticlesPage}) => {
           <LoadingScreen />
         ) : (
           <div className='page-contents'>
-            {Array.from({ length: Math.ceil(currentArticles.length / articlesPerRow) }).map((_, rowIndex) => (
-              <div key={rowIndex} className='news-row'>
-                {currentArticles
-                  .slice(rowIndex * articlesPerRow, (rowIndex + 1) * articlesPerRow)
-                  .map((article, colIndex) => (
-                    <Link to={`/article/news/${article.id}`} key={colIndex}>
-                      <div className='content-card' style={{backgroundImage: `url(${article ? article.image : ''})`}}> 
-                        {user && isAllArticlesPage && (
-                          <button onClick={() => handleDeleteArticles(article.id)}>Delete</button>
-                        )}
+          {Array.from({ length: articlesPerRow }).map((_, colIndex) => (
+            <div key={colIndex} className='news-row'>
+              {currentArticles
+                .filter((article, index) => index % articlesPerRow === colIndex)
+                .map((article, rowIndex) => (
+                  <Link to={`/article/news/${article.id}`} key={rowIndex}>                     
+                  <div className='content-card' style={{backgroundImage: `url(${article ? article.image : ''})`}}> 
+                    {user && isAllArticlesPage && (
+                     <button onClick={() => handleDeleteArticles(article.id)}>Delete</button>
+                                  )}
                         {user && isAllArticlesPage && !article.isHighlight && (
                           <button onClick={() => handleSetHighlight(article.id)}>
                             Set as Highlight
