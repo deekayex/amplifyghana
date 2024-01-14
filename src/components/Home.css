@@ -276,9 +276,38 @@
     .editor-text-body{
         font-size: 0.9rem;
     }
+    .bottom-homepage{
+        height: 144px;
+        width: 90%;
+        margin-left: 5%;
+        position: relative;
+    }
+
+    .ad-section{
+        font-size: 4rem;
+        padding-top: 30px;
+    }
+    .rent-space{
+        font-size: 0.8rem;
+        padding-left: 25px;
+        position: absolute;
+        bottom: 20px;
+    }
+
+    .playlist-text{
+        font-size: 0.1rem;
+    }
+    
 
 }
-
+@media screen and (max-width: 400px){
+    .ad-section{
+        font-size: 3rem;
+    }  
+    .rent-space{
+        font-size: 0.6rem;
+    }
+}
 @media screen and (max-width: 300px){
     .editor-text-header{
         font-size: 1.7rem;
@@ -288,7 +317,7 @@
         font-size: 0.8rem;
     }
     .bottom-homepage{
-        height: 7vh;
+       
         padding-top: 1.5vh;
         position: relative;
     }
