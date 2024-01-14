@@ -277,21 +277,22 @@
         font-size: 0.9rem;
     }
     .bottom-homepage{
-        height: 144px;
+        height: 120px;
         width: 90%;
         margin-left: 5%;
-        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .ad-section{
         font-size: 4rem;
-        padding-top: 30px;
+        padding-top: 20px;
     }
     .rent-space{
         font-size: 0.8rem;
-        padding-left: 25px;
-        position: absolute;
-        bottom: 20px;
+        text-align: center;
+        
     }
 
     .playlist-text{
