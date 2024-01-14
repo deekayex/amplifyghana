@@ -142,7 +142,7 @@ function EditorsPicks({isAllArticlesPage}) {
   };
 
   function getArticlesPerRow() {
-    return window.innerWidth >= 700 ? 2 : 3;
+    return window.innerWidth >= 700 ? 3 : 2;
   }
 
   return (
@@ -160,11 +160,11 @@ function EditorsPicks({isAllArticlesPage}) {
           <div className='page-contents'>
 
             {/* Display the rest of the articles */}
-            {Array.from({ length: Math.ceil(currentArticles.length / articlesPerRow) }).map((_, rowIndex) => (
-              <div key={rowIndex} className='news-row'>
-                {currentArticles
-                  .slice(rowIndex * articlesPerRow, (rowIndex + 1) * articlesPerRow)
-                  .map((article, colIndex) => (
+            {Array.from({ length: articlesPerRow }).map((_, colIndex) => (
+            <div key={colIndex} className='news-row'>
+              {currentArticles
+                .filter((article, index) => index % articlesPerRow === colIndex)
+                .map((article, rowIndex) => (
                     <Link to={`/article/editors-picks/${article.id}`} key={colIndex}>
                       <div key={colIndex} className='content-card' style={{backgroundImage: `url(${article ? article.image : ''})`}}>
                         {user && isAllArticlesPage && (
