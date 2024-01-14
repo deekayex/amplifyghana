@@ -34,7 +34,8 @@
     margin-left: 10%;
     padding-top: 2%;
     padding-bottom: 2%;
-    max-width: 80%;
+    max-width: 90%;
+    width: 80%;
     border-radius: 20px 20px 20px 20px;
     letter-spacing: 1px;
     font-weight: 800;
@@ -109,19 +110,19 @@
     display: flex;   
 }
 
-.about_socials{
+/* .about_socials{
     margin-top: 10%;
     text-transform: uppercase;
     /* width: 80%; */
-}
+/* } */
 
-.about-us-socials{
+/* .about-us-socials{
     display: flex;
     height: 7vh;
     justify-content: center;
     margin-top: 5%;
      
-}
+} */
 
 
 
@@ -134,9 +135,9 @@
         width: 90%;
     }
 
-    .about-us-socials{
+    /* .about-us-socials{
         height: 2vh;
-    }
+    } */
 
     .box_text_body{
         line-height: 1.3vh;
@@ -175,21 +176,62 @@
 
 
 @media only screen and (max-width: 700px) {
-    
+    .top_box{
+        width: 100%;
+        background-color: black;
+    }
+    .box_container{
+       gap: 15px;
+    }
     .box_1, .box_2, .box_3{
-        width: 45%;
+        width: 48%;
+        /* background-color: aqua; */
     }
 
     .box_text_body{
-        font-size: 0.6rem;
+        font-size: 0.9rem;
+        line-height: 2vh;
+        position: relative;
     }
     
     .box_text_header{
+        font-size: 1.4rem;
+    }
+
+   
+
+    .top_box{
+        width: 90vw;
+        margin-left: 5%;
+    }
+
+    .top_box{
         font-size: 1rem;
+        line-height: 2.2vh;
     }
 
     .about_us_page{
         margin-bottom: 0;
+    }
+
+    .body_box{
+        height: 55vh;
+    }
+
+    .previous-button, .next-button{
+        position: absolute;
+        /* padding-bottom: 20vh; */
+    }
+    .previous-button{
+        left: 10px;
+    }
+
+    .next-button{
+        right: 10px;
+    }
+
+    .about-socials-header, .top_header, .body_header{
+        font-size: 2rem;
     }
 
   }

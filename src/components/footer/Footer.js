@@ -2,7 +2,7 @@ import React from 'react'
 import "./Footer.css"
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-router-dom'
-import Socials from '../socials/Socials'
+
 
 const Footer = () => {
   return (

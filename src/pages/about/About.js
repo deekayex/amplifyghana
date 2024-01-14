@@ -31,7 +31,7 @@ const About = () => {
                 <div className='about_socials'>
                     <div className='about-socials-header'>Our socials</div>
                     <div className='about-us-socials'>
-                        <Socials/>
+                        {/* <Socials/> */}
                     </div>
                 </div>
             </div>
