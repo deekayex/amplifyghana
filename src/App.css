@@ -18,6 +18,13 @@ body{
     flex-grow: 1;
 }
 
+.page{
+     min-height: 70vh;
+     margin-top: 30vh;
+     max-width: 70vw;
+     margin-left: 15vw;
+}
+
 /* @media screen and (max-width: 600px) {
    body, .container, .news-container, .playlist-page, .submissions-container, .about_us_page{
     background-color: rgba(215, 144, 61, 1);
