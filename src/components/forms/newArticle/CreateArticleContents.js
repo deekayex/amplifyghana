@@ -1,8 +1,14 @@
 // Step 3: StepThree.js
-import React from 'react';
-import Editor from '../../constants/textEditor/EditorQuill';
+import React, {useState} from 'react';
+import { EditorState, ContentState, convertFromHTML, convertToRaw } from 'draft-js';
+import { Editor } from 'react-draft-wysiwyg';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
+
+
 
 const CreateArticleContents = ({ content, onContentChange, onSave, onPrevious, onCancel }) => (
+
+  
   <div className='create-article-contents-container'>
     <h2>Step 3: Article Content</h2>
     <label>
