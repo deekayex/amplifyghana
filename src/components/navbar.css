@@ -39,7 +39,7 @@ a{
 
   
   .amplify-logo{
-    width: 13%;
+    width: 11%;
     position: static;
     margin-left: 5%;
   }
@@ -57,7 +57,7 @@ a{
 
 
 .nav__link{
-  margin-right: 70px;
+  margin-right: 40px;
 }
 
 .nav__link:hover{
@@ -80,7 +80,8 @@ a{
   justify-content: space-around;
   gap: 0.3rem; 
   position: absolute;
-  right: 3%;
+  right: 7%;
+  /* background-color: aliceblue; */
   
 }
 
