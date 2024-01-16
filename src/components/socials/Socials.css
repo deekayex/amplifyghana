@@ -4,8 +4,16 @@
     /* background-color: brown; */
 }
 
+
+.instagram-logo{
+    /* background-color: blue; */
+}
+.tiktok-logo{
+    /* background-color: blue; */
+}
+
 .instagram-logo, .tiktok-logo, .x-logo, .email-icon{
-    height: 80%;
+   height: 2vh;
     object-fit: contain;
 }
 
