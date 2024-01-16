@@ -72,7 +72,7 @@ function Home() {
           
              <Link
                 smooth
-                to="/#editors-pick" >
+                to="/#editors-pick" className='sticker'>
                 EDITOR'S PICKS
               </Link>
           </div>
@@ -91,7 +91,7 @@ function Home() {
 
           <Link to={newsLink} className='news-component' style={{ backgroundImage: `url(${highlightedNews ? highlightedNews.image : ''})` }}>
             <div className='editor'>
-              <Link to='/news'>
+              <Link to='/news' className='sticker'>
                 NEWS
               </Link>
             </div>
@@ -105,8 +105,8 @@ function Home() {
               </div>
             </Link>)}
           <div className='playlist-component'>
-            <div className='playlist-text'>
-              <Link to='/playlists'>
+            <div className='playlist-text' >
+              <Link to='/playlists' className='sticker'>
                 PLAYLISTS
               </Link>
             </div>
