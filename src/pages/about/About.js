@@ -1,7 +1,7 @@
 import React from 'react'
 import './About.css'
 import BoxContainer from '../../components/BoxText'
-import Socials from '../../components/socials/Socials'
+
 
 const About = () => {
   return (

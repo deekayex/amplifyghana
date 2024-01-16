@@ -1,8 +1,4 @@
-.socials{
-    display: flex;
-    flex-direction: row;
-    gap: 2vw
-}
+
 
 .instagram-logo, .tiktok-logo, .x-logo, .email-icon{
     height: 80%;
