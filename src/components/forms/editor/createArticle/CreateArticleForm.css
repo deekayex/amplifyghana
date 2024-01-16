@@ -33,6 +33,11 @@
   bottom: 58vh;  
 }
 
+.article-section{
+  margin-top: 2vh;
+  margin-left: 20vw;
+}
+
 .buttons-flex, .buttons-flex-2{
   width: 25vw;
   display: flex;
@@ -118,9 +123,7 @@ h2{
   background-color: aliceblue;
 }
 
-.article-section{
-  margin-top: 2vh;
-}
+
 
 .btn{
   border-radius: 10px;

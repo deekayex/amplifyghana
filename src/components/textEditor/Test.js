@@ -1,9 +1,9 @@
 import React from 'react'
-import { LexicalEdit } from './Editor';
+import Editor, { LexicalEdit, TinyEditor } from './Editor';
 
 const Test = () => {
   return (
-    <div className='page'><LexicalEdit/></div>
+    <div className='page'><TinyEditor/></div>
   )
 }
 
