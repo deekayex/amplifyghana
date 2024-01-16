@@ -11,9 +11,16 @@ export function TinyEditor({ value, onChange }) {
     }
   };
 
+  const handleFullscreen = (isFullscreen) => {
+    if (isFullscreen) {
+      // Add styles when entering fullscreen
+      document.body.style.marginTop = '20vh'; // Adjust the margin value as needed
+    } else {
+      // Remove styles when exiting fullscreen
+      document.body.style.marginTop = '0';
+    }
+  };
 
-  
- 
   
   return (
     <>
@@ -40,15 +47,28 @@ export function TinyEditor({ value, onChange }) {
             'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
             'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount', 'uploadcare', 'image'
           ],
-          toolbar: 'undo redo | blocks | ' +
-            'bold underline italic forecolor | alignleft aligncenter ' +
-            'alignright alignjustify | bullist numlist outdent indent | ' +
-            'removeformat | help | link image ',
+          toolbar:
+            'undo redo spellcheckdialog| ' +
+            'bold italic underline forecolor backcolor | ' +
+            '| blocks fontfamily fontsize |'+
+            'alignleft aligncenter alignright alignjustify | ' +'lineheight | '+
+            'bullist numlist outdent indent | ' +
+            'removeformat typography| help | link image'+  'charmap emoticons | ' +
+            'hr pagebreak | ' +
+            'searchreplace | spellchecker | ' +
+            'fullscreen | ' +
+            'formats | ' +
+            'help',
 
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
 
+          setup: (editor) => {
+            editor.on('FullscreenStateChanged', (e) => {
+              handleFullscreen(e.state);
+            })
+
           
-         }}
+         }}}
       />
     </>
   );

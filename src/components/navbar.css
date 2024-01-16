@@ -27,7 +27,7 @@ a{
 
 .nav {
   display: flex;
-  height: 8.9vh;
+  height: 8vh;
   background-color: black;
   align-items: center;
   position: fixed; 
@@ -39,7 +39,7 @@ a{
 
   
   .amplify-logo{
-    width: 15%;
+    width: 13%;
     position: static;
     margin-left: 5%;
   }
@@ -47,16 +47,17 @@ a{
 
 .nav__link, .nav__link__icon{
     color:white;
-    font-size: 16px;
+    font-size: 14px;
     opacity: 1;
     text-decoration: solid;
     font-family: 'Montserrat', sans-serif;
     opacity: 0.9;
+    /* background-color: aqua; */
 }
 
 
 .nav__link{
-  margin-right: 40px;
+  margin-right: 70px;
 }
 
 .nav__link:hover{

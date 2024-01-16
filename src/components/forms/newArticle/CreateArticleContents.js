@@ -1,7 +1,5 @@
 // Step 3: StepThree.js
-import React, {useState} from 'react';
-import { EditorState, ContentState, convertFromHTML, convertToRaw } from 'draft-js';
-import { Editor } from 'react-draft-wysiwyg';
+import React from 'react';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import {TinyEditor} from '../../textEditor/Editor';
 
@@ -14,12 +12,6 @@ const CreateArticleContents = ({ content, onContentChange, onSave, onPrevious, o
     <h2>Step 3: Article Content</h2>
     <label>
       Content:
-      {/* <Editor 
-        theme="snow"
-        value={content}
-        onChange={onContentChange}
-        className="article-content"
-      /> */}
       <TinyEditor value={content} onChange={onContentChange} />
     </label>
     <div className='buttons-flex-2'>
