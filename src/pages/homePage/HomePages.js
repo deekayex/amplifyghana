@@ -14,7 +14,7 @@ function HomePages() {
       <div>
          <div className='home-page'>
           <div className='space'/>
-          <div className='home-menu'>
+          <div className='home-menu-icons'>
             <div className='home-icon'>
                <HomeOutlinedIcon fontSize='10rem' className='home_icon'/>
                HOME
