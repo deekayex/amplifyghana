@@ -41,11 +41,13 @@
     padding-left: 20px;
     padding-bottom: 5px;
     font-family: 'hanson', sans-serif;
-    font-size: 1.5vw;
     font-weight: bolder;
     letter-spacing: 2px;
 }
 
+.sticker{
+    font-size: 13px;
+}
 
 .editor-text{
     background-color: black;
@@ -293,6 +295,9 @@
         font-size: 0.8rem;
         text-align: center;
         
+    }
+    .sticker{
+        font-size: 6px;
     }
 
     .playlist-text{
