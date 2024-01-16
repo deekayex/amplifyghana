@@ -46,7 +46,7 @@
 
 .socials{
     background-color: aqua;
-    width: 10vw;
+    /* width: 10vw; */
     display: flex;
     justify-content: space-between;
 }
@@ -64,7 +64,7 @@
     }
 
     .socials{
-        width: 25vw;
+        /* width: 25vw; */
     }
 
 }
