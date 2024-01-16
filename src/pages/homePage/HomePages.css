@@ -41,14 +41,23 @@
 .home-socials{
     right: 0;
     height: 3vh;
-    background-color: aliceblue;
-    width: 10vw;
+    /* background-color: aliceblue; */
+    width: 12vw;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
 }
 
 .socials{
-    background-color: aqua;
+    /* background-color: aqua; */
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media screen and (max-width: 1000px) {
+    .home-socials{
+        /* background-color: aliceblue; */
+        width: 25vw;
+        height: 2vh;
+    }
+
 }
