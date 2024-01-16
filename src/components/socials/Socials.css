@@ -2,6 +2,7 @@
 
 .instagram-logo, .tiktok-logo, .x-logo, .email-icon{
     height: 80%;
+    /* background-color: azure; */
 }
 
 .email-icon:hover, .instagram-logo:hover, .x-logo:hover, .tiktok-logo:hover{
