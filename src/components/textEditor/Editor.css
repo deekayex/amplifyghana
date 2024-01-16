@@ -1,18 +1,5 @@
-.RDW-INLINE-BOLD.active {
-  font-weight: bold;
-}
-
-/* Style the italic button when active */
-.RDW-INLINE-ITALIC.active {
-  font-style: italic;
-}
-
-/* Style the underline button when active */
-.RDW-INLINE-UNDERLINE.active {
-  text-decoration: underline;
-}
-
-/* Style the strikethrough button when active */
-.RDW-INLINE-STRIKETHROUGH.active {
-  text-decoration: line-through;
+.edit-contain {
+  width: 60vw;
+  height: 50vh;
+  background-color: #fff;
 }

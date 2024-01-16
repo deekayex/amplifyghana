@@ -12,9 +12,13 @@
     "@mui/icons-material": "^5.14.19",
     "@mui/material": "^5.14.20",
     "@mui/styled-engine-sc": "^6.0.0-alpha.1",
+    "@syncfusion/ej2-react-richtexteditor": "^24.1.45",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@tinymce/tinymce-react": "^4.3.2",
+    "@uploadcare/blocks": "0.30.5",
+    "axios": "^1.6.5",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.5.1",
     "dompurify": "^3.0.8",
@@ -35,6 +39,7 @@
     "react-scripts": "5.0.1",
     "react-scroll": "^1.9.0",
     "styled-components": "^6.1.0",
+    "tinymce": "^6.8.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

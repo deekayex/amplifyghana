@@ -18,8 +18,8 @@ const CreateArticleSummary = ({ title, summary, onSummaryChange, onImageChange, 
     <div className='create-article-form-container'>
       <h2>Step 2: Article Details</h2>
       <label className='article-section'>
-        Section:
-        <select onChange={onSectionChange} required>
+        Select Section
+        <select onChange={onSectionChange} required className='select-category'> 
           <option value="news">News</option>
           <option value="editors-picks">Editors Picks</option>
         </select>
