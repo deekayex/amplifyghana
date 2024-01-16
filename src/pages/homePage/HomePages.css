@@ -18,7 +18,7 @@
     width: 80vw; 
     justify-content: space-around;
     align-items: center;
-    background-color: antiquewhite;
+    /* background-color: antiquewhite; */
 }
 
 .home-icon{
@@ -45,9 +45,10 @@
 }
 
 .socials{
-    background-color: aqua;
-   max-width: 20vw;
+    /* background-color: aqua; */
+    width: 10vw;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -58,13 +59,13 @@
         width: 85%;
     } */
     .home-socials{
-         background-color: aliceblue;
+         /* background-color: aliceblue; */
         height: 2vh;
-
+        
     }
 
     .socials{
-        /* width: 25vw; */
+        width: 30vw;
     }
 
 }

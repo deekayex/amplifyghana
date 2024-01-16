@@ -83,10 +83,18 @@
     font-family: 'Goldman', sans-serif;
     font-weight: 700;
     font-size: 1.6vh;
+    opacity: 0.8;
 }
 
 .playlist_button:hover{
     cursor: pointer;
+    box-shadow: 0 3px #454343;
+    opacity: 0.9;
+}
+
+.playlist_button:active{
+    transform: translateY(4px);
+    opacity: 1;
 }
 
 .delete-button{
