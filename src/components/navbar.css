@@ -39,9 +39,10 @@ a{
 
   
   .amplify-logo{
-    width: 11%;
-    position: static;
-    margin-left: 5%;
+    width: 15vh;
+    position: absolute;
+    left: 5%;
+    top: 30%;
   }
 
 
