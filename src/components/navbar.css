@@ -40,9 +40,7 @@ a{
   
   .amplify-logo{
     width: 15vh;
-    position: absolute;
-    left: 5%;
-    top: 30%;
+    margin-left: 5vw;
   }
 
 
@@ -95,6 +93,10 @@ a{
 
 /* Add responsive styles for smaller screens */
 @media (max-width: 768px) {
+  .amplify-logo{
+    margin-left: 10vw;
+  }
+
   .nav__menu {
     display: none;
   }
@@ -137,28 +139,25 @@ a{
     padding-left: 0;
   }
 
-  .nav__link{
-   
-  }
 
 }
 
 @media (max-width: 1218px) {
   
   a, .nav__link, .nav__item{
-    font-size: 11px;
+    font-size: 10px;
   }
 
-  .amplify-logo{
-    width: 30%;
-    position: static;
-    margin-left: 10%;
-  }
+  
 
   .menu-icon{
     size: 2rem;
+    /* background-color: aliceblue; */
+    margin-left: 45vw;
   }
 }
+
+
 
 @media screen and (min-width: 1020px) and (max-height: 700px){
   .amplify-logo{
