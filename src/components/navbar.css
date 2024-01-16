@@ -93,6 +93,10 @@ a{
 
 /* Add responsive styles for smaller screens */
 @media (max-width: 768px) {
+  .amplify-logo{
+    margin-left: 10vw;
+  }
+
   .nav__menu {
     display: none;
   }
