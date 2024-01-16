@@ -51,18 +51,20 @@
     justify-content: space-between;
 }
 
-@media screen and (max-width: 1000px) {
 
+
+ @media screen and (max-width: 1000px) {
     .home-menu-icons{
         width: 85%;
     }
     .home-socials{
-        /* background-color: aliceblue; */
-        height: 1.5vh;
+         background-color: aliceblue;
+        height: 2vh;
+
     }
 
-    /* .socials{
+    .socials{
         width: 25vw;
-    } */
+    }
 
 }
