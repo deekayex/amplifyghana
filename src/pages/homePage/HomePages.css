@@ -46,7 +46,7 @@
 
 .socials{
     background-color: aqua;
-    /* width: 10vw; */
+   max-width: 20vw;
     display: flex;
     justify-content: space-between;
 }
@@ -54,9 +54,9 @@
 
 
  @media screen and (max-width: 1000px) {
-    .home-menu-icons{
+    /* .home-menu-icons{
         width: 85%;
-    }
+    } */
     .home-socials{
          background-color: aliceblue;
         height: 2vh;
