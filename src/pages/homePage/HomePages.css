@@ -10,15 +10,15 @@
     height: 11.56vh;
 }
 
-.home-menu{
+.home-menu-icons{
     height: 4vh; 
     display: flex;
     flex-direction: row;
     margin-left: 8%;
     width: 80vw; 
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    /* background-color: antiquewhite; */
+    background-color: antiquewhite;
 }
 
 .home-icon{
@@ -39,25 +39,30 @@
 }
 
 .home-socials{
-    right: 0;
     height: 3vh;
-    /* background-color: aliceblue; */
-    width: 12vw;
+    /* width: 100%; */
     display: flex;
 }
 
 .socials{
-    /* background-color: aqua; */
-    width: 100%;
+    background-color: aqua;
+    width: 10vw;
     display: flex;
     justify-content: space-between;
 }
 
 @media screen and (max-width: 1000px) {
+
+    .home-menu-icons{
+        width: 85%;
+    }
     .home-socials{
         /* background-color: aliceblue; */
+        height: 1.5vh;
+    }
+
+    .socials{
         width: 25vw;
-        height: 2vh;
     }
 
 }
