@@ -6,12 +6,13 @@
 
 .homepage-contents{
     display: flex;
-    height: 70vh;
-    
+    height: 70vh;   
 }
+
 
 .left-homepage{
     width: 46.7%;
+    height: auto;
     border-radius: 20px;
     margin-left: 8%;
     background-image: url('../../public/clanpic.jpg'); 
@@ -218,7 +219,11 @@
 
 @media screen and (min-width: 1020px) and (max-height: 700px){
     .homepage-contents{
-        height: 65vh;
+        height: 100vh;
+    }
+
+    .bottom-homepage{
+        height: 20vh;
     }
 }
 

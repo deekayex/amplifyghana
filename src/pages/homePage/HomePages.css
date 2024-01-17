@@ -55,17 +55,33 @@
 
 
  @media screen and (max-width: 1000px) {
-    /* .home-menu-icons{
-        width: 85%;
-    } */
+    .home-menu-icons{
+        width: 90vw; 
+        margin-left: 5%;
+    }
+
     .home-socials{
-         /* background-color: aliceblue; */
-        height: 2vh;
-        
+        height: 2vh;        
     }
 
     .socials{
         width: 30vw;
     }
 
+}
+
+@media screen and (min-width: 1020px) and (max-height: 700px){
+    .space{
+        height: 18vh;
+    }
+
+    .instagram-logo, .tiktok-logo, .x-logo, .email-icon, .home-icon{
+        height: 3vh;
+     }
+
+     .home_icon{
+        font-size: 3vh;
+     }
+
+    
 }

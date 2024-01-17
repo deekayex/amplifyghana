@@ -39,6 +39,7 @@ function Navbar() {
 
   return (
     <nav className="nav">
+      <div className="nav-small-menu">
       <NavLink to="/" >
         <img
           src={process.env.PUBLIC_URL + "/amplifyghlogo.png"}
@@ -50,6 +51,7 @@ function Navbar() {
 
       <div className="menu-icon" onClick={toggleMenu}>
         <MenuIcon fontSize="large" />
+      </div>
       </div>
 
       <ul className={`nav__menu ${menuOpen ? 'nav__active' : ''}`}>

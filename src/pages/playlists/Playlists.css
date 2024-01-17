@@ -49,7 +49,7 @@
     height: auto;
     border-radius: 20px 20px 20px 20px;
     border: none;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .playlist_text{
@@ -70,7 +70,7 @@
 .picture{
     width: 100%;
     height: 100%;
-    object-fit: fill;
+    object-fit: contain;
 }
 
 .playlist_button{
@@ -118,6 +118,10 @@
 
 
 @media screen and (max-width: 600px){
+    .playlist_image{
+        width: 35vw;
+
+    }
     .playlist_component{
         height: 15vh;
         margin-bottom: 2vh;
