@@ -26,7 +26,7 @@ const Socials = () => {
             </div>
             
             <div className='social-icon'>
-            <a href="mailto:max.amplifygh@gmail.comS?" target="_blank">
+            <a href="mailto:amplifygh@gmail.com?" target="_blank">
               <img src={process.env.PUBLIC_URL + '/email_icon.png'}
                  alt="Email icon" className="email-icon"/>
             </a>
