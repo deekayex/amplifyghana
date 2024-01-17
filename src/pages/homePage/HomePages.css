@@ -71,9 +71,9 @@
 }
 
 @media screen and (min-width: 1020px) and (max-height: 700px){
-    .space{
+    /* .space{
         height: 18vh;
-    }
+    } */
 
     .instagram-logo, .tiktok-logo, .x-logo, .email-icon, .home-icon{
         height: 3vh;
