@@ -24,7 +24,6 @@ a{
 }
 
 
-
 .nav {
   display: flex;
   height: 8vh;
@@ -48,8 +47,13 @@ a{
   .amplify-logo{
     width: 12%;
     margin-left: 5vw;
+    opacity: 0.9;
   }
 
+  .amplify-logo:hover{
+    opacity: 1;
+    transition: 0.3s;
+  }
 
 .nav__link, .nav__link__icon{
     color:white;

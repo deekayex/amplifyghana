@@ -21,6 +21,9 @@
   background-color: black; 
   height: 20vh;
   width: 32vw;
+  color: white;
+  padding: 20px;
+  font-size: 1.6rem;
 }
 
 
@@ -52,3 +55,7 @@ h{
   margin-left: 5%;
 }
 
+.playlist-highlighted{
+  /* height: 90vh;
+  background-color: aqua; */
+}

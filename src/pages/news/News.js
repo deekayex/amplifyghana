@@ -136,7 +136,7 @@ const News = ({isAllArticlesPage}) => {
                                   )}
                         {user && isAllArticlesPage && !article.isHighlight && (
                           <button onClick={() => handleSetHighlight(article.id)}>
-                            Set as Highlight
+                           Set as News Highlight
                           </button>
                         )}
                         <div className='content-text'>

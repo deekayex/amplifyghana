@@ -172,7 +172,7 @@ function EditorsPicks({isAllArticlesPage}) {
                         )}
                         {user && !article.isHighlight && isAllArticlesPage && (
                           <button onClick={() => handleSetHighlight(article.id)}>
-                            Set as Highlight
+                            Set as Editor's Highlight 
                           </button>
                         )}
                         <div className='content-text'>
@@ -187,7 +187,7 @@ function EditorsPicks({isAllArticlesPage}) {
           </div>
         )}
       </div>
-      <div className='pagination'>
+      <div className='pagination' >
         <button onClick={handlePrevPage} disabled={currentPage === 1} className='page-button'>
           Back
         </button>

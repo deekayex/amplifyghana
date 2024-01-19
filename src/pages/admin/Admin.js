@@ -77,7 +77,7 @@ const Admin = () => {
         <div className='posts-manager'>         
           <div className='admin-link'>
             <NavLink to= 'create-posts' >
-          Create Posts
+             Create Posts
           </NavLink>
           </div>
            
@@ -87,7 +87,7 @@ const Admin = () => {
         <div className='playlists-manager'>
           <div className='admin-link'>
           <NavLink to='update-playlist'>
-          Update Playlists
+             Update Playlists
           </NavLink>  
           </div>
           <div className='admin-link'>
@@ -100,13 +100,20 @@ const Admin = () => {
         {/* Special Privileges */}
         <div className='admin-link'>
           <NavLink to='top-picks'>
-          Top Picks
+            Top Picks
           </NavLink>
           </div>
+
         <div className='admin-link'>
-          <NavLink>Featured Ad</NavLink></div>
-        <div className='page-manager'>Edit Pages</div>
-    </div>
+          <NavLink>
+            Featured Ad
+          </NavLink>
+          </div>
+
+        <div className='page-manager'>
+          Edit Pages
+          </div>
+      </div>
 
     <div className='admin-pages'>
     <Outlet/>

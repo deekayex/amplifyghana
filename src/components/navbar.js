@@ -22,6 +22,13 @@ function Navbar() {
     setMenuOpen(false);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   useEffect(() => {
     const handleOutsideClick = (event) => {
       if (menuOpen && !event.target.closest('.nav')) {
@@ -36,18 +43,20 @@ function Navbar() {
     };
   }, [menuOpen]);
 
+ 
+
 
   return (
     <nav className="nav">
       <div className="nav-small-menu">
-      <NavLink to="/" >
+      <Link to="/" >
         <img
           src={process.env.PUBLIC_URL + "/amplifyghlogo.png"}
           alt="Amplify logo"
           className="amplify-logo"
           onClick={closeMenu}
         />
-      </NavLink>
+      </Link>
 
       <div className="menu-icon" onClick={toggleMenu}>
         <MenuIcon fontSize="large" />
@@ -60,7 +69,7 @@ function Navbar() {
             smooth
             to="/#news"
             className={`nav__link ${activeSection === 'news' ? 'nav_active' : ''}`}
-            onClick={closeMenu}
+            onClick={()=>{closeMenu(); scrollToTop();}}
           >
             NEWS
           </Link>
@@ -71,7 +80,7 @@ function Navbar() {
             smooth
             to="/#editors-pick"
             className={`nav__link ${activeSection === 'editors-pick' ? 'nav_active' : ''}`}
-            onClick={closeMenu}
+            onClick={()=>{closeMenu(); scrollToTop();}}
           >
             EDITOR'S PICKS
           </Link>

@@ -2,6 +2,9 @@
 .news-container {
   background: linear-gradient(180deg, rgba(234, 131, 72, 0.4) 0%, rgba(211, 118, 41, 0.87) 50%, #FF8018 100%),
   linear-gradient(0deg, rgba(255, 92, 0, 0.4), rgba(231, 114, 46, 0.4));
+ 
+  padding-top: 10vh;
+  padding-bottom: 10vh;
   
 }
 
@@ -28,6 +31,9 @@
   margin-bottom: 28px;
   font-family: "Goldman", sans-serif;
   font-size: 3vh;
+  text-transform: uppercase;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 .news-icon {
@@ -193,12 +199,21 @@
 
 
 @media screen and (max-width:700px ) {
+  .news-container{
+    padding-top: 8vh;
+  }
+
+  .spacer{
+    height: 0;
+  }
+
   .page-contents {
     grid-template-columns: repeat(2, 1fr); 
   }
+ 
+
    .editor_space{
-    margin-top: 0;
-    padding-top: 0;
+    padding-top: 8vh;
    }
    
 

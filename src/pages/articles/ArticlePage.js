@@ -32,7 +32,37 @@ const ArticlePage = () => {
 
     fetchArticle();
   }, [category, articleId]);
-  
+
+  const renderArticleContent = () => {
+    if (article) {
+      // Use DOMPurify to sanitize and render HTML content
+      const sanitizedContent = DOMPurify.sanitize(article.content, {
+        ADD_ATTR: ['target'], // Allow adding 'target' attribute
+        FORBID_TAGS: ['script'], // Forbid script tags
+      });
+
+      return (
+        <div
+          className='article-body'
+          dangerouslySetInnerHTML={{ __html: modifyLinkTargets(sanitizedContent) }}
+        />
+      );
+    }
+
+    return null;
+  };
+
+  // Modify the link targets to open in a new window
+  const modifyLinkTargets = (content) => {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(content, 'text/html');
+
+    doc.querySelectorAll('a').forEach((link) => {
+      link.setAttribute('target', '_blank');
+    });
+
+    return doc.body.innerHTML;
+  };
 
   return (
     <div className="article-page">
@@ -48,12 +78,7 @@ const ArticlePage = () => {
                 <div className='article-image-container'>
                   <img src={article.image} alt="Article" className='article-image' />
                 </div>
-
-                {/* Use DOMPurify to sanitize and render HTML content */}
-                <div
-                  className='article-body'
-                  dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(article.content) }}
-                />
+                {renderArticleContent()}
               </>
             )}
           </div>
