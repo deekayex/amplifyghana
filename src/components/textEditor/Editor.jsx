@@ -45,7 +45,7 @@ export function TinyEditor({ value, onChange }) {
           plugins: [
             'advlist', 'autolink', 'lists', 'link', 'charmap', 'preview',
             'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
-            'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount', 'uploadcare', 'image'
+            'insertdatetime', 'media', 'table', 'code', 'help', 'wordcount','image'
           ],
           toolbar:
             'undo redo spellcheckdialog| ' +
@@ -61,6 +61,9 @@ export function TinyEditor({ value, onChange }) {
             'help',
 
           content_style: 'body { font-family:Helvetica,Arial,sans-serif; font-size:14px }',
+
+          // Set target_list to open links in a new window by default
+          target_list: [{ title: 'New Window', value: '_blank' }],
 
           setup: (editor) => {
             editor.on('FullscreenStateChanged', (e) => {

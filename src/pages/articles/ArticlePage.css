@@ -3,7 +3,7 @@
   word-wrap: break-word;
   background-color: white;
   display: flex;
-  width: 100%;
+  width: 100vw;
   margin-bottom: 0;
   padding-bottom: 10vh;
   justify-content: center;
@@ -26,7 +26,7 @@
 
 .article-title{
   font-size: 2.8rem;
-  text-align: justify;
+  text-align:left;
   letter-spacing: 0.5vw;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -109,6 +109,7 @@
 
 .article-body p{
   font-size: 2rem;
+  /* background-color: #FF7300; */
 }
 
 .article-body image, .article-body img{
@@ -119,6 +120,19 @@
 .article-body h1, .article-body h2, .article-body p, .article-body image, .article-body img{
   padding-bottom: 20px;
 }
+
+
+.article-body a{
+  color: hwb(27 2% 18%);
+  /* text-decoration: underline; */
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.article-body a:hover{
+  text-decoration: underline;
+}
+
 
 @media screen and (max-width: 1030px){
   .article-main{
@@ -187,7 +201,7 @@
     font-size: 2rem;
   }
 
-  .article-body p{
+  .article-body p .article-body a{
     font-size: 1.5rem;
   }
 

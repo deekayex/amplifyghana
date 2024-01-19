@@ -9,6 +9,11 @@ body{
     overflow-x: hidden;
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+
 
 
 .nav_active {

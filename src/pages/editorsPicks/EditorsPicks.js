@@ -172,7 +172,7 @@ function EditorsPicks({isAllArticlesPage}) {
                         )}
                         {user && !article.isHighlight && isAllArticlesPage && (
                           <button onClick={() => handleSetHighlight(article.id)}>
-                            Set as Highlight
+                            Set as Editor's Highlight 
                           </button>
                         )}
                         <div className='content-text'>

@@ -68,7 +68,7 @@ const TopPicksPage = () => {
         {highlightedNews && <highlightedNews highlightedNews={highlightedNews} />}</div>
       <div className='top-links'>
         <NavLink to='/admin/all-articles' className='link'>Highlight Article</NavLink>
-        <NavLink to= '/admin/all-playlists' className='link'>Highlight Playlist</NavLink>
+        <NavLink to= '/admin/top-playlist' className='link'>Highlight Playlist</NavLink>
       </div>
     </div>
   )

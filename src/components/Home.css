@@ -90,6 +90,8 @@
     flex-direction: column;
     width: 30.7%;
     margin-left: 3%;
+    height: auto;
+    /* background-color: antiquewhite; */
 }
 
 
@@ -101,7 +103,6 @@
     background-size:cover;
     background-position: center center;
     position: relative;
- 
     opacity: 0.9;
     transition: 0.5s ease;
 }
@@ -125,10 +126,6 @@
     background-color:#df6b0d;
     border-radius: 20px;
     flex: 1;
-    background-image: url('../../public/newmusic.jpg'); 
-    background-size:cover;
-    background-repeat: no-repeat;
-    background-position: center;
     position: relative;
     z-index: 2;
 }
@@ -169,6 +166,13 @@
     padding-right: 12px;
     font-size: 1.4vw;
     letter-spacing: 1px;
+}
+
+.highlighted-playlist-image{
+    height: 100%;
+    width: 100%;
+    object-fit: fill;
+    border-radius: 20px;
 }
 
 
@@ -248,7 +252,7 @@
     .right-homepage{
         margin-top: 3%;
         width: 90%;
-        height: 40%;
+        height: auto;
         margin-left: 0%;
         flex-direction: row;
         justify-content: space-between;
@@ -256,13 +260,13 @@
     }
 
     .news-component, .playlist-component{
-        width: auto;
-        height: auto;
+        width: 100%;
+        height: 100%;
+        
     }
 
     .bottom-homepage{
-        height: 20%;
-        
+        height: 20%;   
     }
 
     .editor-text-header{
@@ -270,6 +274,10 @@
     }
     .news-text-header{
         font-size: 2.5vw;
+    }
+
+    .highlighted-playlist-image{
+        object-fit: contain;
     }
 
 }
@@ -280,9 +288,11 @@
     .editor-text-header{
         font-size: 2rem;
     }
+
     .editor-text-body{
         font-size: 0.9rem;
     }
+
     .bottom-homepage{
         height: 120px;
         width: 90%;
@@ -308,15 +318,27 @@
     .playlist-text{
         font-size: 0.1rem;
     }
-    
-
 }
+
+@media screen and (max-width: 500px) {
+    .playlist-button{
+        padding: 2%;
+        font-size: 0.5rem;
+        bottom: 5px;
+    }
+}
+
+
 @media screen and (max-width: 400px){
     .ad-section{
         font-size: 3rem;
     }  
     .rent-space{
         font-size: 0.6rem;
+    }
+
+    .playlist-button{
+        font-size: 0.4rem;
     }
 }
 @media screen and (max-width: 300px){

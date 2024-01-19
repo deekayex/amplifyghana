@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './NewPlaylist.css'
+import { Link } from 'react-router-dom';
 
 const NewPlaylistForm = ({ onSave, onCancel }) => {
   const initialPlaylistData = {
@@ -33,7 +34,7 @@ const NewPlaylistForm = ({ onSave, onCancel }) => {
       // Reset form state on successful save
       setPlaylistData({ ...initialPlaylistData });
     } catch (error) {
-      console.error('Error saving playlist:', error);
+      alert('Error saving playlist:', error);
     }
   };
 
@@ -79,9 +80,14 @@ const NewPlaylistForm = ({ onSave, onCancel }) => {
         <button type='submit' className='btn'>
           Create 
         </button>
-       
+
       </div>
+    
+      <Link to='/admin/top-playlist'> 
+        Create Playlist Highlight
+      </Link>
       </div>
+    
     </form>
   );
 };

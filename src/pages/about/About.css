@@ -110,19 +110,7 @@
     display: flex;   
 }
 
-/* .about_socials{
-    margin-top: 10%;
-    text-transform: uppercase;
-    /* width: 80%; */
-/* } */
 
-/* .about-us-socials{
-    display: flex;
-    height: 7vh;
-    justify-content: center;
-    margin-top: 5%;
-     
-} */
 
 
 
@@ -174,6 +162,31 @@
     }
 }
 
+@media screen and (min-width: 1020px) and (max-height: 700px) {
+    .top_box{
+        height: 20vh;
+        line-height: 4vh;
+    }
+
+    .body_box{
+        height: 50vh;
+    }
+
+    .body_header{
+        margin-top: 5vh;
+    }
+
+    .box_text_body{
+        line-height: 3vh;
+    }
+
+    .top_header, .body_header{
+        font-size: 2vw;
+    }
+
+
+}
+
 
 @media only screen and (max-width: 700px) {
     .top_box{
@@ -197,8 +210,6 @@
     .box_text_header{
         font-size: 1.4rem;
     }
-
-   
 
     .top_box{
         width: 90vw;
