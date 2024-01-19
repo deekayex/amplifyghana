@@ -13,8 +13,6 @@
   display: flex;
   flex-direction: row;
   gap: 10%;
-  /* width: 100%; */
-  /* background-color: #FF7300; */
 }
 
 .article-main{
@@ -26,7 +24,7 @@
 
 .article-title{
   font-size: 2.8rem;
-  text-align:left;
+  text-align: justify;
   letter-spacing: 0.5vw;
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -35,6 +33,12 @@
 .article-image-container{
   width: 100%;
   margin-bottom: 20px;
+}
+
+.aside-playlist-image{
+  width: 80%;
+  height: auto;
+  margin-left: 10%;
 }
 
 .article-image{
@@ -48,12 +52,12 @@
 }
 
 .article-aside{
-  padding-top: 5vh;
-  top: 20%;
+  padding-top: 2vh;
+  top: 10%;
   width: 30vw;
   position: sticky;
   right: 10%;
-  height: 80vh;
+  height: 90vh;
   background-color:hsl(180, 40%, 98%);
   z-index: 2;
 }
@@ -74,7 +78,7 @@
 
 .aside-article{
   background-size: cover;
-  width: 20vw;
+  width: 80%;
   margin-left: 10%;
   height: 25vh;
   margin-bottom: 5%;
@@ -89,7 +93,8 @@
   background-color: rgba(0,0,0,0.9);
   color:#FF7300 ;
   font-family: 'Monument Extended';
-  font-size: 1.1vw;
+  font-size: 1vw;
+  text-shadow: 2px 2px #121111;
 }
 
 .aside-article:hover{
@@ -109,7 +114,6 @@
 
 .article-body p{
   font-size: 2rem;
-  /* background-color: #FF7300; */
 }
 
 .article-body image, .article-body img{
@@ -120,7 +124,6 @@
 .article-body h1, .article-body h2, .article-body p, .article-body image, .article-body img{
   padding-bottom: 20px;
 }
-
 
 .article-body a{
   color: hwb(27 2% 18%);
@@ -134,26 +137,6 @@
 }
 
 
-@media screen and (max-width: 1030px){
-  .article-main{
-    width: 60vw;
-    margin-left: 5%;
-  }  
-
-  .article-aside{
-    right: 2%;
-    width: 30vw;
-  }
-
-  .aside-article{
-    width: 80%;
-    height: 15vh;
-  }
-  .article-body image, .article-body img{
-    width: 60vw;
-  }
-}
-
 
 @media screen and (max-width: 700px) {
 
@@ -163,12 +146,13 @@
   
   .article-page{
     position: relative;
+    width: 100%;
   }
 
 
   .article-main{
     width: 80vw;
-    margin-left: 0;
+    margin-left: 10vw;
   }
 
   .article-image{
@@ -187,26 +171,36 @@
   .aside-articles{
     flex-direction: row;
     width: 100%;
+    margin-left: 5%;
     display: flex; 
-    gap: 5%; 
+    /* background-color: rgb(35, 78, 115); */
   }
 
   .aside-article{
     margin-bottom: 0;
     justify-content: center;
     margin-left: 0;
+    width: 60%;
+    height: auto;
+    border-top-right-radius: 5px;
+    border-top-left-radius:5px ;
+    margin-right: 5%;
+  }
+
+  .aside-playlist-image{
+    width: 60%;
   }
 
   .article-body h1, .article-body h2{
     font-size: 2rem;
   }
 
-  .article-body p .article-body a{
+  .article-body p{
     font-size: 1.5rem;
   }
 
   .article-title-text{
-    font-size: 0.9rem;
+    font-size: 0.6rem;
   }
   .article-body image, .article-body img{
     width: 100%;

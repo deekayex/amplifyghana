@@ -28,6 +28,7 @@ import HighlightPlaylist from "./pages/admin-pages/HighlightPlaylist";
 
 
 function App() {
+  
   return (
        <Router>
         <Navbar/>

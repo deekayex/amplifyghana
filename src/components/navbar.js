@@ -49,14 +49,14 @@ function Navbar() {
   return (
     <nav className="nav">
       <div className="nav-small-menu">
-      <NavLink to="/" >
+      <Link to="/" >
         <img
           src={process.env.PUBLIC_URL + "/amplifyghlogo.png"}
           alt="Amplify logo"
           className="amplify-logo"
           onClick={closeMenu}
         />
-      </NavLink>
+      </Link>
 
       <div className="menu-icon" onClick={toggleMenu}>
         <MenuIcon fontSize="large" />
