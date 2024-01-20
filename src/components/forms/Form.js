@@ -48,11 +48,11 @@ const BasicForm = ({onSubmit}) => {
     >
       {({ isSubmitting }) => (
         <Form className="submission-form">
-          <Field type="name" name="name" placeholder="Your name" className="input-name" />
-          <Field type="email" name="email" placeholder="Email" className="input-email" />
+          <Field type="name" name="name" placeholder="Your name" className="input-name" required/>
+          <Field type="email" name="email" placeholder="Email" className="input-email" required/>
           <ErrorMessage name="email" component="div" className="error-message" />
 
-          <Field type="number" name="phone" placeholder="Phone number" className="input-phone" />
+          <Field type="number" name="phone" placeholder="Phone number" className="input-phone" required/>
 
           <Field
             as="textarea"
