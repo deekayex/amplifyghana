@@ -31,6 +31,7 @@ const ArticlePage = () => {
     };
 
     fetchArticle();
+    
   }, [category, articleId]);
 
   const renderArticleContent = () => {
@@ -41,10 +42,56 @@ const ArticlePage = () => {
         FORBID_TAGS: ['script'], // Forbid script tags
       });
 
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(sanitizedContent, 'text/html');
+  
+      doc.querySelectorAll('img').forEach((image) => {
+        const altText = image.getAttribute('alt');
+        if (altText) {
+
+          // Create a container for the image and alt text
+          const container = document.createElement('div');
+          container.style.display = 'flex'; 
+          container.style.flexDirection = 'column';
+          // container.style.backgroundColor = 'green'
+          container.className = 'image-container';
+  
+          // Append the image to the container
+          const styledImage = image.cloneNode(true);
+          styledImage.style.margin = '0'; 
+          styledImage.style.padding = '0'; 
+          // styledImage.style.marginBottom = '10px'; 
+
+          container.appendChild(styledImage);
+  
+          // Create a paragraph for the alt text
+          const altElement = document.createElement('p');
+          altElement.textContent = altText;
+
+          // Add styles for flexbox layout
+          altElement.style.margin = '0'; // Set margin to zero
+          altElement.style.paddingTop = '2px'; 
+          // altElement.style.backgroundColor = 'blue';
+          altElement.style.textAlign = 'center';
+          altElement.style.fontSize ='1.3rem'
+          altElement.style.color= '#666666';
+          altElement.style.fontFamily ='Copperplate, Papyrus, fantasy';
+          altElement.style.fontWeight = '700';
+
+  
+          // Append the alt text to the container
+          container.appendChild(altElement);
+
+  
+          // Replace the original image with the container
+          image.parentNode.replaceChild(container, image);
+        }
+      });
+
       return (
         <div
           className='article-body'
-          dangerouslySetInnerHTML={{ __html: modifyLinkTargets(sanitizedContent) }}
+          dangerouslySetInnerHTML={{ __html: modifyLinkTargets(doc.body.innerHTML) }}
         />
       );
     }
@@ -77,7 +124,7 @@ const ArticlePage = () => {
                 <h1 className='article-title'>{article.title}</h1>
                 <div className='article-image-container'>
                   <img src={article.image} alt="Article" className='article-image' />
-                </div>
+                </div>                
                 {renderArticleContent()}
               </>
             )}

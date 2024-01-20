@@ -23,7 +23,7 @@ import Footer from "./components/footer/Footer";
 import ArticleList from "./pages/admin-pages/ArticleList";
 import PlaylistList from "./pages/admin-pages/PlaylistList";
 import TopPicksPage from "./pages/admin-pages/TopPicksPage";
-import Test from "./components/textEditor/Test";
+
 import HighlightPlaylist from "./pages/admin-pages/HighlightPlaylist";
 
 
@@ -50,7 +50,6 @@ function App() {
              <Route path="top-picks" element={<TopPicksPage/>} />
              <Route path="top-playlist" element={<HighlightPlaylist/>} />
              </Route>  
-             <Route path="check" element={<Test/>}/>
           </Routes>
         <Footer/>
       </Router>
