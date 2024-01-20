@@ -70,7 +70,7 @@ const ArticlePage = () => {
 
           // Add styles for flexbox layout
           altElement.style.margin = '0'; // Set margin to zero
-          altElement.style.paddingTop = '10px'; 
+          altElement.style.paddingTop = '2px'; 
           // altElement.style.backgroundColor = 'blue';
           altElement.style.textAlign = 'center';
           altElement.style.fontSize ='1.3rem'
