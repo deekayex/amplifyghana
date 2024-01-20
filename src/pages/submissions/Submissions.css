@@ -116,6 +116,10 @@
     .forms-container{
         width: 400px;
     }
+
+    .form-header-text{
+        font-size: 2rem;
+    }
     
 }
 
@@ -130,5 +134,11 @@
 
     .form-submit{
         left: 30vw;
+    }
+
+    .form-header-text{
+        font-size: 1.7rem;
+        padding-bottom: 2vh;
+        padding-top: 2vh;
     }
 }
