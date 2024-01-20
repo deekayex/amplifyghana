@@ -19,12 +19,6 @@ const HighlightedNews = ({highlightedNews}) => {
       </div>
     </Link>
   )}
-  <div className='playlist-component'>
-    <div className='playlist-text'>
-      <Link to='/playlists'>PLAYLISTS</Link>
-    </div>
-    <button className='playlist-button'>Listen</button>
-  </div>
 </div>
 );
   };

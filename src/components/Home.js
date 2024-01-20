@@ -138,7 +138,7 @@ function Home() {
 
             {highlightedPlaylists.map((playlist) => (
           <div key={playlist.id} className='playlist-component'>
-            <Link>
+            <a href={playlist.link} target='_blank' rel='noopener noreferrer'>
             <div className='playlist-text' >
               <Link to='/playlists' className='sticker'>
                 PLAYLISTS
@@ -146,7 +146,7 @@ function Home() {
             </div>
             <button className='playlist-button' onClick={()=> window.open(playlist.link, '_blank')}>Listen</button>
             <img src={playlist.imageUrl} alt={playlist.title} className='highlighted-playlist-image' />
-            </Link>
+            </a>
           </div>
             ))}
         </div>
