@@ -94,31 +94,32 @@ const ArticleSide = () => {
     fetchHighlightedPlaylists();
   }, []);
 
-
+  const editorsLink = highlightedEditors ? `/article/editors-picks/${highlightedEditors.id}` : '';
+  const newsLink = highlightedNews ? `/article/news/${highlightedNews.id}` : '';
 
   return (
     <div className='article-side'>
       <div className='aside-header'>You Might Also Like</div> 
       <div className='aside-articles'> 
         
-        <div style={{ backgroundImage: `url(${highlightedNews ? highlightedNews.image : ''})` }} className='aside-article'>
+        <Link to={newsLink} style={{ backgroundImage: `url(${highlightedNews ? highlightedNews.image : ''})` }} className='aside-article'>
             <p className='article-title-text'>
               {highlightedNews ? highlightedNews.title : ''}
             </p>
-       </div>
+       </Link>
 
-      <div style={{ backgroundImage: `url(${highlightedEditors ? highlightedEditors.image : ''})` }} className='aside-article'>
+      <Link to={editorsLink}  style={{ backgroundImage: `url(${highlightedEditors ? highlightedEditors.image : ''})` }} className='aside-article'>
         <p className='article-title-text'>
            {highlightedEditors ? highlightedEditors.title : ''}
         </p>
-      </div>
+      </Link>
 
       {highlightedPlaylists.map((playlist) => (
           <div key={playlist.id} className='aside-playlist'>
-            <Link>
+            <a href={playlist.link} target='_blank' rel='noopener noreferrer'>
             {/* <button className='playlist-button' onClick={()=> window.open(playlist.link, '_blank')}>Listen</button> */}
             <img src={playlist.imageUrl} alt={playlist.title} className='aside-playlist-image' />
-            </Link>
+            </a>
           </div>
             ))}
       </div>
