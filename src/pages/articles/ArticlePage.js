@@ -75,8 +75,8 @@ const ArticlePage = () => {
           altElement.style.textAlign = 'center';
           altElement.style.fontSize ='1.3rem'
           altElement.style.color= '#666666';
-          altElement.style.fontFamily ='Copperplate, Papyrus, fantasy';
-          altElement.style.fontWeight = '700';
+          altElement.style.fontFamily ='Papyrus, fantasy';
+          altElement.style.fontWeight = '200';
 
   
           // Append the alt text to the container
