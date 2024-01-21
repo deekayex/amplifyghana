@@ -376,13 +376,14 @@
   }
 
   .share-container{
-    flex-direction: row;
+    /* flex-direction: row;
     position: sticky;
     height: auto;
     max-width: 100%;
     justify-content: center;
     background: none;
-    width: 100%;
+    width: 100%; */
+    display: none;
   }
 
   .share-socials{
