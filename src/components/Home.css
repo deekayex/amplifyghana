@@ -182,7 +182,6 @@
 
 
 .bottom-homepage{
-    /* background-color: black; */
     margin-top: 2.3vh;
     height: auto;
     width: 80%;
@@ -294,13 +293,7 @@
         font-size: 0.9rem;
     }
 
-   
-
-    .ad-section{
-        padding-top: 20px;
-    }
-  
-  
+ 
     .sticker{
         font-size: 6px;
     }
