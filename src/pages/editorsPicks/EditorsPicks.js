@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Import Firebase Authentication functions
 import LoadingScreen from '../../context/loading/LoadingScreen';
+import LoadingArticles from '../../context/loading/ArticlesLoad/LoadingArticles';
 
 function EditorsPicks({isAllArticlesPage}) {
   const [editorsArticles, setEditorsArticles] = useState([]);
@@ -155,7 +156,7 @@ function EditorsPicks({isAllArticlesPage}) {
 
       <div className='flex-contents'>
         {isLoading ? (
-          <LoadingScreen />
+          <LoadingArticles />
         ) : (
           <div className='page-contents'>
 

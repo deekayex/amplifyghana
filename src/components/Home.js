@@ -3,6 +3,7 @@ import './Home.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { database } from '../firebase/firebase';
 import { collection, doc, getDoc, getDocs } from '@firebase/firestore';
+import LoadingHome from '../context/loading/HomeLoad/LoadingHome';
 
 function Home() {
   const [highlightedNews, setHighlightedNews] = useState(null); // State to track the highlighted news
@@ -11,119 +12,83 @@ function Home() {
   const [highlightedPlaylists, setHighlightedPlaylists] = useState([]);
 
   const [newFeaturedAd, setfeaturedAd] = useState([]);
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
-    const fetchHighlightedNews = async () => {
+    const fetchData = async () => {
       try {
-        // Fetch the highlighted news from Firebase
-        const highlightedNewsDoc = await getDoc(
-          doc(database, 'highlighted', 'highlightedNews')
-        );
-        const highlightedNewsData = highlightedNewsDoc.data();
-
-        if (highlightedNewsData) {
-          // Fetch the detailed information of the highlighted news
-          const articleRef = doc(database, 'news', highlightedNewsData.articleId);
-          const articleDoc = await getDoc(articleRef);
-
-          if (articleDoc.exists()) {
-            setHighlightedNews({id: articleDoc.id, ...articleDoc.data()});
+        // Fetch your data here...
+        const fetchHighlightedNews = getDoc(doc(database, 'highlighted', 'highlightedNews')).then((highlightedNewsDoc) => {
+          const highlightedNewsData = highlightedNewsDoc.data();
+          if (highlightedNewsData) {
+            const articleRef = doc(database, 'news', highlightedNewsData.articleId);
+            return getDoc(articleRef).then((articleDoc) => {
+              if (articleDoc.exists()) {
+                setHighlightedNews({ id: articleDoc.id, ...articleDoc.data() });
+              }
+            });
           }
-        }
-      } catch (error) {
-        console.error('Error fetching highlighted news', error);
-      }
-    };
+        });
 
-    const fetchEditorsHighlight = async () => {
-      try {
-        // Fetch the highlighted editors from Firebase
-        const highlightedEditorsDoc = await getDoc(
-          doc(database, 'highlighted', 'highlightedEditors')
-        );
-
-        const highlightedEditorsData = highlightedEditorsDoc.data();
-
-        if (highlightedEditorsData) {
-          // Fetch the detailed information of the highlighted editors
-          const articleRef = doc(database, 'editors-picks', highlightedEditorsData.articleId);
-          const articleDoc = await getDoc(articleRef);
-
-          if (articleDoc.exists()) {
-            setHighlightedEditors({ id: articleDoc.id, ...articleDoc.data() });
+        const fetchEditorsHighlight = getDoc(doc(database, 'highlighted', 'highlightedEditors')).then((highlightedEditorsDoc) => {
+          const highlightedEditorsData = highlightedEditorsDoc.data();
+          if (highlightedEditorsData) {
+            const articleRef = doc(database, 'editors-picks', highlightedEditorsData.articleId);
+            return getDoc(articleRef).then((articleDoc) => {
+              if (articleDoc.exists()) {
+                setHighlightedEditors({ id: articleDoc.id, ...articleDoc.data() });
+              }
+            });
           }
-        }
+        });
+
+        const fetchHighlightedPlaylists = getDocs(collection(database, 'Playlisthighlights')).then((querySnapshot) => {
+          if (!querySnapshot.empty) {
+            const playlists = [];
+            querySnapshot.forEach((doc) => {
+              playlists.push({ id: doc.id, ...doc.data() });
+            });
+            setHighlightedPlaylists(playlists);
+          } else {
+            console.error('No documents found in Playlisthighlights collection');
+          }
+        });
+
+        const fetchFeaturedAd = getDocs(collection(database, 'FeaturedAd')).then((querySnapshot) => {
+          if (!querySnapshot.empty) {
+            const featuredAd = [];
+            querySnapshot.forEach((doc) => {
+              featuredAd.push({ id: doc.id, ...doc.data() });
+            });
+            setfeaturedAd(featuredAd);
+          } else {
+            console.error('No documents found in FeaturedAd collection');
+          }
+        });
+
+        // Wait for all asynchronous operations to complete before setting loading to false
+        await Promise.all([fetchHighlightedNews, fetchEditorsHighlight, fetchHighlightedPlaylists, fetchFeaturedAd]);
+
+        setLoading(false);
       } catch (error) {
-        console.error('Error fetching highlighted editors', error);
+        console.error('Error fetching data', error);
+        setLoading(false);
       }
     };
 
-    const fetchHighlightedPlaylists = async () => {
-      try {
-        const highlightsCollectionRef = collection(database, 'Playlisthighlights');
-        const querySnapshot = await getDocs(highlightsCollectionRef);
-    
-        // Check if there are any documents in the collection
-        if (!querySnapshot.empty) {
-          const playlists = [];
-    
-          // Iterate over the documents in the collection
-          querySnapshot.forEach((doc) => {
-            // Extract data from each document and add it to the playlists array
-            playlists.push({ id: doc.id, ...doc.data() });
-          });
-    
-          // Set the fetched data in the state
-          setHighlightedPlaylists(playlists);
-
-        } else {
-          console.error('No documents found in Playlisthighlights collection');
-        }
-
-      } catch (error) {
-        console.error('Error fetching highlighted playlist', error);
-      }
-    };
-
-    const fetchfeaturedAd = async () => {
-      try {
-        const featuredCollectionRef = collection(database, 'FeaturedAd');
-        const querySnapshot = await getDocs(featuredCollectionRef);
-    
-        // Check if there are any documents in the collection
-        if (!querySnapshot.empty) {
-          const featuredAd = [];
-    
-          // Iterate over the documents in the collection
-          querySnapshot.forEach((doc) => {
-            // Extract data from each document and add it to the playlists array
-            featuredAd.push({ id: doc.id, ...doc.data() });
-          });
-    
-          // Set the fetched data in the state
-          setfeaturedAd(featuredAd);
-
-        } else {
-          console.error('No documents found in Playlisthighlights collection');
-        }
-
-      } catch (error) {
-        console.error('Error fetching highlighted playlist', error);
-      }
-    };
-
-
-    fetchHighlightedNews();
-    fetchEditorsHighlight();
-    fetchHighlightedPlaylists();
-    fetchfeaturedAd();
+    fetchData();
   }, []);
+
+
 
   // Add a check for highlightedEditors before accessing its properties
   const editorsLink = highlightedEditors ? `/article/editors-picks/${highlightedEditors.id}` : '';
   const newsLink = highlightedNews ? `/article/news/${highlightedNews.id}` : '';
 
+  if (loading) {
+    return <LoadingHome />;
+  }
 
   return (
     <div className='homepage-components'>
@@ -157,11 +122,11 @@ function Home() {
                 NEWS
               </Link>
             </div>
-            <div className='editor-text'>
+            <div className='news-text'>
               <p className='news-text-header'>
                 {highlightedNews ? highlightedNews.title || 'Loading...' : ''}
               </p>
-              <p className='editor-text-body'>
+              <p className='news-text-body'>
                 {highlightedNews ? highlightedNews.summary  : ''}
               </p>
               </div>

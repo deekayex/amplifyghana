@@ -1,24 +1,123 @@
-.loading-screen {
+.loading-screen{
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  position: fixed;
-  top: 50;
-  left: 50;
+  background-color: #dae0ea;
 }
 
-.loader {
-  border: 8px solid #f3f3f3;
-  border-top: 8px solid #3498db;
+.loading-spinner{
+  width: 80px;
+  height: 80px;
+  border: 7px solid #FF7300;
+  border-top-color: transparent;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
+  animation: spinner 0.7s linear infinite;  
 }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes spinner {
+  from{}
+  to{
+    transform: rotate(360deg);
+  }
+  
+}
+
+.skeleton-container{
+  height: 100vh;
+}
+
+.skeleton{
+  animation: skeleton-editors 1s linear infinite alternate;
+}
+
+@keyframes skeleton-editors {
+  0% {
+    background-color: hwb(0 100% 0% / 0.456);
+  }
+  100%{
+    background-color: hwb(0 100% 0% / 0.216);
+  }
+}
+
+.skeleton-news{
+  animation: skeleton-news 1s linear infinite alternate;
+}
+
+@keyframes skeleton-news {
+  0%{
+    background-color: hsla(34, 78%, 91%, 0.57);
+  }
+
+  100%{
+    background-color: rgba(250, 235, 215, 0.178);
+  }
+  
+}
+
+.skeleton-playlist{
+  animation: skeleton-playlist 1s linear infinite alternate;
+}
+
+@keyframes skeleton-playlist {
+  0%{
+    background-color: hsla(160, 100%, 75%, 0.192);
+  }
+
+  100%{
+    background-color: hsla(160, 100%, 75%, 0.327);
+  }
+}
+
+.sketon-cards{
+  margin-bottom: 10vh;
+}
+
+.card-skeleton{
+  animation: skeleton-card 1s linear infinite alternate;
+}
+
+@keyframes skeleton-card {
+  0%{
+    background-color: rgba(0, 0, 0, 0.141);
+  }
+  
+}
+
+
+@media screen and (max-width: 1000px) {
+  .news_playlist_container{
+    height: 20vh;
+  }
+}
+
+.playlist-image-skeleton{
+  animation: skeleton-playlist-image 1s linear infinite alternate;
+
+}
+
+@keyframes skeleton-playlist-image{
+  0%{
+    background-color: rgba(250, 235, 215, 0.063);
+  }
+
+  100%{
+    background-color: rgba(250, 235, 215, 0.178);
+  }
+}
+
+.playlsit-text-skeleton{
+  animation: skeleton-playlist-text 1s linear infinite alternate;
+}
+
+@keyframes skeleton-playlist-text {
+  0%{
+    background-color: rgba(0, 0, 0, 0.295);
+  }
+
+  100%{
+    background-color: rgba(0, 0, 0, 0.048);
+  }
+  
 }
