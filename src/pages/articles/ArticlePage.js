@@ -10,6 +10,8 @@ import Share from '../../components/share/Share';
 
 const ShareButton = ({ articleTitle, articleUrl }) => {
   const handleShare = () => {
+
+    
     // Implement your share functionality here
     // You can use the Web Share API or any other method to handle sharing
     // For example:
@@ -69,6 +71,8 @@ const ArticlePage = () => {
     fetchArticle();
     
   }, [category, articleId]);
+
+  
 
   const renderArticleContent = () => {
     if (article) {

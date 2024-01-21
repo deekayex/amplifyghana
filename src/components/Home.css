@@ -14,8 +14,7 @@
     width: 46.7%;
     height: auto;
     border-radius: 20px;
-    margin-left: 8%;
-    background-image: url('../../public/clanpic.jpg'); 
+    margin-left: 8%; 
     background-size:cover;
     background-position: center;
     position: relative; 
@@ -50,7 +49,7 @@
     font-size: 13px;
 }
 
-.editor-text{
+.editor-text, .news-text{
     background-color: black;
     position: absolute;
     bottom: 0;
@@ -59,8 +58,14 @@
     opacity: 0.9;
 }
 
+.news-text{
+    max-height: 50%;
+    overflow-y: hidden;
+    padding-bottom: 10px;
+}
 
-.editor-text-body, .editor-text-header,.news-text-header{
+
+.editor-text-body, .editor-text-header,.news-text-header, .news-text-body{
     margin: 10px;
 }
 
@@ -78,12 +83,13 @@
 
 
 
-.editor-text-body{
+.editor-text-body, .news-text-body{
     font-size: 0.9vw;
     font-weight: 400;
     margin-top: 0;
     padding-top: 0;
 }
+
 
 
 .right-homepage{
@@ -100,7 +106,6 @@
     flex: 1;
     margin-bottom: 2.3vh;
     border-radius: 20px;
-    background-image: url('../../public/newspic.jpg'); 
     background-size:cover;
     background-position: center center;
     position: relative;
@@ -114,6 +119,7 @@
 }
 
 
+
 .news-text-header{
     font-size: 1.6vw;
     font-family: 'Monument Extended';
@@ -122,6 +128,9 @@
     padding-bottom: 0;
 }
 
+.news-text-body{
+    font-size: 0.9vw;
+}
 
 .playlist-component{
     background-color:#df6b0d;
@@ -265,15 +274,23 @@
         margin-left: 5%;
         width: 90%;
     }
-
-
-
    
     .editor-text-header{
         font-size: 4vh;
     }
+
+    .news-text{
+        max-height: 7vh;
+    }
+
+
     .news-text-header{
-        font-size: 2.5vw;
+        font-size: 2.7vw;
+        overflow-y: hidden;
+    }
+
+    .news-text-body{
+        font-size: 0.8rem;
     }
 
     .highlighted-playlist-image{

@@ -6,6 +6,7 @@ import { collection, getDocs, addDoc, deleteDoc, doc } from '@firebase/firestore
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Link } from 'react-router-dom';
 import LoadingScreen from '../../context/loading/LoadingScreen';
+import LoadingPlaylists from '../../context/loading/PlayListLoad/LoadingPlaylists';
 
 // Constant for the button text
 const PLAYLIST_BUTTON_TEXT = 'LISTEN';
@@ -65,7 +66,7 @@ const Playlists = ({ isPlayListManager }) => {
       <div className='playlist-header'>Playlists</div>
       <div className='playlist-flex'>
         {isLoading ? (
-          <LoadingScreen />
+          <LoadingPlaylists />
         ) : (
           <div className='playlist-container'>
             {playlists.map((playlist) => (

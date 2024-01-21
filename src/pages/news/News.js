@@ -4,7 +4,7 @@ import { database, storage } from '../../firebase/firebase';
 import { collection, getDocs, addDoc, getDoc, deleteDoc, doc, updateDoc, setDoc } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import LoadingScreen from '../../context/loading/LoadingScreen';
+import LoadingArticles from '../../context/loading/ArticlesLoad/LoadingArticles';
 
 const News = ({isAllArticlesPage}) => {
   const [newsArticles, setNewsArticles] = useState([]);
@@ -121,7 +121,7 @@ const News = ({isAllArticlesPage}) => {
 
       <div className='flex-contents'>
         {isLoading ? (
-          <LoadingScreen />
+          <LoadingArticles />
         ) : (
           <div className='page-contents'>
           {Array.from({ length: articlesPerRow }).map((_, colIndex) => (

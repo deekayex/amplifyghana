@@ -210,11 +210,7 @@
   .page-contents {
     grid-template-columns: repeat(2, 1fr); 
   }
- 
 
-   .editor_space{
-    padding-top: 8vh;
-   }
    
 
    .content-card{
