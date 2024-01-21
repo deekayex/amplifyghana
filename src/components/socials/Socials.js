@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Socials = () => {
   return (
     <div className='socials'>
-      <div className='insta-social-icon'>
+      <div className='social-icon'>
         <a href="https://www.instagram.com/_amplifygh?utm_source=qr" target="_blank" rel="noreferrer">
           
           <img
@@ -13,11 +13,11 @@ const Socials = () => {
             alt="Instagram logo"
             className="instagram-logo"
           />
-          <img
+          {/* <img
             src={process.env.PUBLIC_URL + '/alt_instagram_logo.png'}
             alt="Instagram logo"
             className="instagram-logo-active"
-          />
+          /> */}
         </a>
       </div>
       <div className='social-icon'>
