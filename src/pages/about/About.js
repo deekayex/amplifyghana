@@ -1,6 +1,7 @@
 import React from 'react'
 import './About.css'
 import BoxContainer from '../../components/BoxText'
+import Socials from '../../components/socials/Socials'
 
 
 const About = () => {
@@ -31,7 +32,9 @@ const About = () => {
                 <div className='about_socials'>
                     <div className='about-socials-header'>Our socials</div>
                     <div className='about-us-socials'>
-                        {/* <Socials/> */}
+                        <div className='about-socials'>
+                        <Socials/>
+                        </div>
                     </div>
                 </div>
             </div>

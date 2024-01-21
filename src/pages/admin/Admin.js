@@ -105,7 +105,7 @@ const Admin = () => {
           </div>
 
         <div className='admin-link'>
-          <NavLink>
+          <NavLink to='featured-ad'>
             Featured Ad
           </NavLink>
           </div>

@@ -10,6 +10,8 @@ function Home() {
 
   const [highlightedPlaylists, setHighlightedPlaylists] = useState([]);
 
+  const [newFeaturedAd, setfeaturedAd] = useState([]);
+
 
   useEffect(() => {
     const fetchHighlightedNews = async () => {
@@ -84,14 +86,44 @@ function Home() {
       }
     };
 
+    const fetchfeaturedAd = async () => {
+      try {
+        const featuredCollectionRef = collection(database, 'FeaturedAd');
+        const querySnapshot = await getDocs(featuredCollectionRef);
+    
+        // Check if there are any documents in the collection
+        if (!querySnapshot.empty) {
+          const featuredAd = [];
+    
+          // Iterate over the documents in the collection
+          querySnapshot.forEach((doc) => {
+            // Extract data from each document and add it to the playlists array
+            featuredAd.push({ id: doc.id, ...doc.data() });
+          });
+    
+          // Set the fetched data in the state
+          setfeaturedAd(featuredAd);
+
+        } else {
+          console.error('No documents found in Playlisthighlights collection');
+        }
+
+      } catch (error) {
+        console.error('Error fetching highlighted playlist', error);
+      }
+    };
+
+
     fetchHighlightedNews();
     fetchEditorsHighlight();
     fetchHighlightedPlaylists();
+    fetchfeaturedAd();
   }, []);
 
   // Add a check for highlightedEditors before accessing its properties
   const editorsLink = highlightedEditors ? `/article/editors-picks/${highlightedEditors.id}` : '';
   const newsLink = highlightedNews ? `/article/news/${highlightedNews.id}` : '';
+
 
   return (
     <div className='homepage-components'>
@@ -102,8 +134,7 @@ function Home() {
           <div className='editor'>
           
              <Link
-                smooth
-                to="/#editors-pick" className='sticker'>
+                to="/editors-pick" className='sticker'>
                 EDITOR'S PICKS
               </Link>
           </div>
@@ -152,12 +183,13 @@ function Home() {
         </div>
       </div>
       <div className='bottom-homepage'>
-        <Link>
-          <p className='ad-section'>PLACE AN AD</p>
-          <p className='rent-space'>
-            SEND AN EMAIL TO AMPLIFYGH@GMAIL.COM IF YOU WANT THIS SPACE
-          </p>
-        </Link>
+
+        {/* Map over the featuredAd array to create links with background images */}
+        {newFeaturedAd.map((ad) => (
+          <Link key={ad.id} to={ad.link} className='featured-ad'>
+            <img src={ad.imageUrl} alt={ad.title} className='ad'/>
+          </Link>
+        ))}
       </div>
     </div>
   );
