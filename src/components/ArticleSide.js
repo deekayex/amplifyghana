@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { database } from '../firebase/firebase';
 import { collection, doc, getDoc, getDocs } from '@firebase/firestore';
+import { Share } from '@mui/icons-material';
 
 
 
@@ -99,29 +100,49 @@ const ArticleSide = () => {
 
   return (
     <div className='article-side'>
+     
       <div className='aside-header'>You Might Also Like</div> 
       <div className='aside-articles'> 
-        
-        <Link to={newsLink} style={{ backgroundImage: `url(${highlightedNews ? highlightedNews.image : ''})` }} className='aside-article'>
+
+        <div className='flex-aside-article'>
+          <Link to={newsLink} style={{ backgroundImage: `url(${highlightedNews ? highlightedNews.image : ''})` }} className='aside-article'>
+              <p className='article-title-text'>
+                {highlightedNews ? highlightedNews.title : ''}
+              </p>
+           </Link>
+           <div className='aside-article-side'>
+            <Link to={newsLink} className='article-description'>{highlightedNews ? highlightedNews.title : ''}</Link>
+          <Link to='/news' className='link-to-section'>See more News</Link>
+          </div>
+       </div>
+
+       <div className='flex-aside-article'>
+          <Link to={editorsLink}  style={{ backgroundImage: `url(${highlightedEditors ? highlightedEditors.image : ''})` }} className='aside-article'>
             <p className='article-title-text'>
-              {highlightedNews ? highlightedNews.title : ''}
+              {highlightedEditors ? highlightedEditors.title : ''}
             </p>
-       </Link>
+          </Link>
+          <div className='aside-article-side'>
+          <Link to={editorsLink} className='article-description'>{highlightedEditors ? highlightedEditors.title : ''}</Link>
+          <Link to="/editors-pick" className='link-to-section'>
+            See more Editor's Picks</Link>
+            </div>
+        </div>
 
-      <Link to={editorsLink}  style={{ backgroundImage: `url(${highlightedEditors ? highlightedEditors.image : ''})` }} className='aside-article'>
-        <p className='article-title-text'>
-           {highlightedEditors ? highlightedEditors.title : ''}
-        </p>
-      </Link>
-
-      {highlightedPlaylists.map((playlist) => (
+        <div className='flex-aside-article'>
+          {highlightedPlaylists.map((playlist) => (
           <div key={playlist.id} className='aside-playlist'>
             <a href={playlist.link} target='_blank' rel='noopener noreferrer'>
             {/* <button className='playlist-button' onClick={()=> window.open(playlist.link, '_blank')}>Listen</button> */}
-            <img src={playlist.imageUrl} alt={playlist.title} className='aside-playlist-image' />
+              <img src={playlist.imageUrl} alt={playlist.title} className='aside-playlist-image' />
             </a>
           </div>
             ))}
+            <div className='aside-playlist-side'>
+            <Link to='/playlists' className='article-description'>HERE FOR THE MUSIC? CHECK OUT AWESOME PLAYLISTS</Link>
+            <Link to='/playlists' className='link-to-section'>See more Playlists</Link>
+            </div>
+        </div>
       </div>
     </div>
   )

@@ -67,8 +67,8 @@ const TopPicksPage = () => {
         {highlightedEditors && <HighlightedEditors highlightedEditors={highlightedEditors} />}
         {highlightedNews && <highlightedNews highlightedNews={highlightedNews} />}</div>
       <div className='top-links'>
-        <NavLink to='/admin/all-articles' className='link'>Highlight Article</NavLink>
-        <NavLink to= '/admin/top-playlist' className='link'>Highlight Playlist</NavLink>
+        <NavLink to='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/all-articles' className='link'>Highlight Article</NavLink>
+        <NavLink to= '/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/top-playlist' className='link'>Highlight Playlist</NavLink>
       </div>
     </div>
   )

@@ -1,31 +1,29 @@
-import React, {useState} from 'react'
-import { Link } from 'react-router-dom';
+import { addDoc, collection, getDocs, setDoc } from '@firebase/firestore';
+import React, { useState } from 'react'
 import { database, storage } from '../../firebase/firebase';
-import { collection, addDoc, setDoc, getDocs } from 'firebase/firestore';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
-
-const HighlightPlaylist = ({onSave, onCancel}) => {
-  const initialHighlight= {
+const FeatureAd = (onSave, onCancel) => {
+  const initialFeature ={
     title: '',
     image: null,
     link: '',
   };
 
-  const [playlistData, setPlaylistData] = useState({ ...initialHighlight });
+  const[featuredAd, setFeaturedAd] = useState({ ...initialFeature});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setPlaylistData({
-      ...playlistData,
+    setFeaturedAd({
+      ...featuredAd,
       [name]: value,
     });
   };
 
   const handleImageChange = (e) => {
     const image = e.target.files[0];
-    setPlaylistData({
-      ...playlistData,
+    setFeaturedAd({
+      ...featuredAd,
       image,
     });
   };
@@ -34,19 +32,19 @@ const HighlightPlaylist = ({onSave, onCancel}) => {
   const handleSave = async () => {
     try {
       // Upload image to Firebase Storage
-      const storageRef = ref(storage, 'highlight/' + playlistData.image.name);
-      await uploadBytes(storageRef, playlistData.image);
+      const storageRef = ref(storage, 'highlight/' + featuredAd.image.name);
+      await uploadBytes(storageRef, featuredAd.image);
       const downloadURL = await getDownloadURL(storageRef);
   
       // Check if a document already exists in the collection
-      const highlightsCollectionRef = collection(database, 'Playlisthighlights');
+      const highlightsCollectionRef = collection(database, 'FeaturedAd');
       const querySnapshot = await getDocs(highlightsCollectionRef);
   
       if (querySnapshot.empty) {
         // If no document exists, create a new one
         const newHighlightRef = await addDoc(highlightsCollectionRef, {
-          title: playlistData.title,
-          link: playlistData.link,
+          title: featuredAd.title,
+          link: featuredAd.link,
           imageUrl: downloadURL,
         });
         alert('Document written with ID: ', newHighlightRef.id);
@@ -54,17 +52,17 @@ const HighlightPlaylist = ({onSave, onCancel}) => {
         // If a document exists, update its fields
         const existingDoc = querySnapshot.docs[0];
         await setDoc(existingDoc.ref, {
-          title: playlistData.title,
-          link: playlistData.link,
+          title: featuredAd.title,
+          link: featuredAd.link,
           imageUrl: downloadURL,
         });
-        console.log('Document updated with ID: ', existingDoc.id);
+        alert('Document updated with ID: ', existingDoc.id);
       }
   
       // Reset form state on successful save
-      setPlaylistData({ ...initialHighlight });
+      setFeaturedAd({ ...initialFeature });
     } catch (error) {
-      alert('Error saving playlist:', error);
+      alert('Error saving featured ad:', error);
     }
   };
   
@@ -72,7 +70,7 @@ const HighlightPlaylist = ({onSave, onCancel}) => {
   
   const handleCancel = () => {
     // Reset form state on cancel
-    setPlaylistData({ ...initialHighlight });
+    setFeaturedAd({ ...initialFeature });
     onCancel();
   };
 
@@ -82,16 +80,13 @@ const HighlightPlaylist = ({onSave, onCancel}) => {
   };
 
 
-
-
   return (
-    <div className='playlist-highlighted'>
-
-     <form onSubmit={handleSubmit} className='playlist-form'>
-      <h className>Create New Playlist Highlight</h>
+    <div className='featured-ad'>
+      <form onSubmit={handleSubmit} className='playlist-form'>
+      <h className>Feature Ad</h>
       <div className='new-playlist-container'>
-        <div className='new-playlist-image-container'style={{
-            backgroundImage: playlistData.image ? `url(${URL.createObjectURL(playlistData.image)})` : 'none',
+        <div className='featured-ad-container'style={{
+            backgroundImage: featuredAd.image ? `url(${URL.createObjectURL(featuredAd.image)})` : 'none',
           }}>
           
         </div>
@@ -101,10 +96,10 @@ const HighlightPlaylist = ({onSave, onCancel}) => {
       
       <input type='file' name='image' accept='image/*' onChange={handleImageChange} required />
       
-      <input type='text' name='title' value={playlistData.title} onChange={handleInputChange} required placeholder='Type the Playlist title' className='playlist-title'/>
+      <input type='text' name='title' value={featuredAd.title} onChange={handleInputChange} required placeholder='Type the Playlist title' className='playlist-title'/>
 
       <label>Link:</label>
-      <input type='text' name='link' value={playlistData.link} onChange={handleInputChange} required className='playlist-link'/>
+      <input type='text' name='link' value={featuredAd.link} onChange={handleInputChange} className='playlist-link'/>
 
       <div className='form-buttons'>
       <div className='playlist-buttons-flex'>
@@ -117,16 +112,11 @@ const HighlightPlaylist = ({onSave, onCancel}) => {
         </button>
 
       </div>
-    
-      <Link to='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist'> 
-        Update Playlists 
-      </Link>
-      </div>
-    
-    </form>
 
+    </div>
+    </form>
     </div>
   )
 }
 
-export default HighlightPlaylist
+export default FeatureAd

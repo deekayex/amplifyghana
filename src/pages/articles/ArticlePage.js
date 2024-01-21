@@ -6,6 +6,42 @@ import DOMPurify from 'dompurify'; // Import DOMPurify
 import './ArticlePage.css';
 import LoadingScreen from '../../context/loading/LoadingScreen';
 import ArticleSide from '../../components/ArticleSide';
+import Share from '../../components/share/Share';
+
+const ShareButton = ({ articleTitle, articleUrl }) => {
+  const handleShare = () => {
+    // Implement your share functionality here
+    // You can use the Web Share API or any other method to handle sharing
+    // For example:
+    if (navigator.share) {
+      navigator.share({
+        title: articleTitle,
+        text: 'Check out this article!',
+        url: articleUrl,
+      })
+        .then(() => console.log('Successful share'))
+        .catch((error) => console.log('Error sharing', error));
+    } else {
+      // Fallback for browsers that do not support Web Share API
+      console.log('Web Share API not supported');
+    }
+  };
+
+  return (
+    <div className="share-container">
+      <div className="share-social">
+        <Share articleTitle ={articleTitle} articleUrl={articleUrl}/>
+      </div>
+      <button className="share-button" onClick={handleShare}>
+      <img
+          src={process.env.PUBLIC_URL + "/share-icon.png"}
+          alt="Share This Article"/>
+      </button>
+      
+    </div>
+  );
+};
+
 
 const ArticlePage = () => {
   const { articleId, category } = useParams();
@@ -89,10 +125,9 @@ const ArticlePage = () => {
       });
 
       return (
-        <div
-          className='article-body'
-          dangerouslySetInnerHTML={{ __html: modifyLinkTargets(doc.body.innerHTML) }}
-        />
+        <div className='article-body'>
+          <div dangerouslySetInnerHTML={{ __html: modifyLinkTargets(doc.body.innerHTML) }} />
+        </div>
       );
     }
 
@@ -124,13 +159,18 @@ const ArticlePage = () => {
                 <h1 className='article-title'>{article.title}</h1>
                 <div className='article-image-container'>
                   <img src={article.image} alt="Article" className='article-image' />
-                </div>                
+                </div>
+                <div className='read-article'>
+                 {/* Add the ShareButton component */}
+                 <ShareButton articleTitle={article.title} articleUrl={`/article/${category}/${articleId}`} className='external-share'/>                
                 {renderArticleContent()}
+                </div>
+                
               </>
             )}
+            
           </div>
         )}
-      
       <div className='article-aside'>
         <ArticleSide/>
       </div>

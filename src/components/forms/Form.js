@@ -1,9 +1,9 @@
-// Render Prop
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { database } from '../../firebase/firebase';
 import { collection, addDoc } from '@firebase/firestore';
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+import LoginPage from '../../pages/login/Login';
 
 const BasicForm = ({onSubmit}) => {
 
@@ -71,7 +71,7 @@ const BasicForm = ({onSubmit}) => {
                 <div>
                   <p>Well done! Message contains the required content.</p>
                   {/* Display your link here */}
-                  <Link to='/login'>Sign In</Link>
+                  <Link to='/t2nrkxgof25hi3as46h5mgen5cjd7hdnxxogi943hg1hm9j1sdft68eskyiwfe0siz96cuiu7yn7dfn9c7stz01hvi'>Sign In</Link>
                 </div>
               )}
       </div>

@@ -110,6 +110,16 @@
     display: flex;   
 }
 
+.about-socials{
+    /* background-color: aqua; */
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: center;
+    height: 5vh;
+}
+
+
 
 
 

@@ -32,6 +32,7 @@ const imagetools_cors_hosts = ['www.tinymce.com', 'codepen.io'];
     <>
       <Editor
         apiKey='upzlvpyzyxwa2ruk88onayhmb7zk3vv4nsmtbx3svwmwwrqf'
+        // apiKey : process.env.REACT_APP_EDITOR_KEY,
         onInit={(evt, editor) => {
           editorRef.current = editor;
           // Attach the event listener for node changes

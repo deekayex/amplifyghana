@@ -182,23 +182,20 @@
 
 
 .bottom-homepage{
-    background-color: black;
-    text-align: center;
-    justify-content: center;
+    /* background-color: black; */
     margin-top: 2.3vh;
-    height: 13vh;
+    height: auto;
     width: 80%;
     margin-left: 8%;
-    object-fit: contain;
-    border-radius: 15px;
-    margin-bottom: 8.6vh;
 }
 
 
-.ad-section{
-    font-size: 5vw;
-    font-family: 'Monument Extended';
-    margin-bottom: 0;
+
+
+.ad{
+    object-fit: contain;
+    width: 100%;
+    border-radius: 20px;
 }
 
 
@@ -220,9 +217,7 @@
     .homepage-contents{
         height: 40vh;
     }
-    .bottom-homepage{
-        margin-left: 10%;
-    }
+   
 }
 
 @media screen and (min-width: 1020px) and (max-height: 700px){
@@ -230,9 +225,7 @@
         height: 100vh;
     }
 
-    .bottom-homepage{
-        height: 20vh;
-    }
+  
 }
 
 @media screen and (max-width: 1000px) {
@@ -270,9 +263,13 @@
     }
 
     .bottom-homepage{
-        height: 20%;   
+        margin-left: 5%;
+        width: 90%;
     }
 
+
+
+   
     .editor-text-header{
         font-size: 4vh;
     }
@@ -297,30 +294,23 @@
         font-size: 0.9rem;
     }
 
-    .bottom-homepage{
-        height: 120px;
-        width: 90%;
-        margin-left: 5%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
+   
 
     .ad-section{
-        font-size: 4rem;
         padding-top: 20px;
     }
-    .rent-space{
-        font-size: 0.8rem;
-        text-align: center;
-        
-    }
+  
+  
     .sticker{
         font-size: 6px;
     }
 
     .playlist-text{
         font-size: 0.1rem;
+    }
+
+    .ad{
+        border-radius: 10px;
     }
 }
 
@@ -334,13 +324,7 @@
 
 
 @media screen and (max-width: 400px){
-    .ad-section{
-        font-size: 3rem;
-    }  
-    .rent-space{
-        font-size: 0.6rem;
-    }
-
+  
     .playlist-button{
         font-size: 0.4rem;
     }
@@ -353,18 +337,9 @@
     .editor-text-body{
         font-size: 0.8rem;
     }
+
     .bottom-homepage{
-       
         padding-top: 1.5vh;
-        position: relative;
     }
 
-    .ad-section{
-        font-size: 2rem;
-    }
-
-    .rent-space{
-        font-size: 0.55rem;
-        bottom: 10px;
-    }
 }

@@ -83,7 +83,7 @@ const NewPlaylistForm = ({ onSave, onCancel }) => {
 
       </div>
     
-      <Link to='/admin/top-playlist'> 
+      <Link to='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/top-playlist'> 
         Create Playlist Highlight
       </Link>
       </div>

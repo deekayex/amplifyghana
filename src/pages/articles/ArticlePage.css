@@ -23,6 +23,51 @@
   margin-left: 5%;
   padding-top: 12vh;
   z-index: 2;
+  position: relative;
+}
+
+.read-article{
+  display: flex;
+  position: relative;
+  width: 100%;
+
+}
+
+.share-socials{
+  display: flex;
+  flex-direction: column;
+  margin-right: 0;
+  justify-content: space-between;
+ 
+}
+
+.share-text{
+  font-size: 1.7rem;
+  padding-bottom: 2vh;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+
+.share-container{
+  position: sticky;
+  top:10%;
+  left: 0;
+  height: 50vh;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  background-color: #FDFCFA;
+}
+
+.share-button{
+  background: none;
+  border: none;
+  width: 100%;
+}
+
+.share-button:hover{
+  cursor: pointer;
 }
 
 .article-title{
@@ -50,10 +95,13 @@
   object-fit:cover;
 }
 
+
+
 .article-body{
   font-size: 1.5rem;
-  width: 80%;
-  margin-left: 20%;
+  width: 90%;
+  margin-left: 5%;
+  /* background-color: #FF7300; */
 }
 
 .article-aside{
@@ -63,7 +111,7 @@
   position: sticky;
   right: 10%;
   height: 90vh;
-  background-color:hsl(180, 40%, 98%);
+  background-color: #FDFCFA;
   z-index: 2;
 }
 
@@ -75,10 +123,24 @@
   text-transform: uppercase;
 }
 
+
+
 .aside-articles{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+
+.flex-aside-article, .aside-playlist-side{
+  display: flex;
+  flex-direction: column;
+  /* background-color: aqua; */
+  justify-content: space-around;
+  margin-bottom: 10%;
+}
+
+.aside-playlist-side{
+  display: flex;
 }
 
 
@@ -87,7 +149,6 @@
   width: 80%;
   margin-left: 10%;
   height: 20vh;
-  margin-bottom: 20%;
   position: relative;
   border-top-right-radius: 30px;
   border-top-Left-radius:30px ;
@@ -112,6 +173,17 @@
   background-color: #FF7300;
   opacity: 0.8;
   transition: 0.5s;
+}
+
+.link-to-section{
+  padding-top: 1vh;
+  text-align: center;
+  color: #121111;
+  font-size: 1.2vh;
+}
+
+.link-to-section:hover{
+  text-decoration: underline;
 }
 
 .article-body h1 {
@@ -142,6 +214,22 @@
   text-decoration: underline;
 }
 
+.aside-article-side{
+  display: flex;
+  justify-content: center;
+}
+
+.article-description{
+  display: none;
+}
+
+.featured-ad-container{
+  width: 30vw;
+  height: 10vh;
+  background-color: #121111;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
 
 
 @media screen and (max-width: 1000px) {
@@ -194,10 +282,6 @@
     margin-left: 5%;
   }
 
-  .article-image{
-  
-  }
-
   .article-body{
     width: 90%;
     margin-left: 5%;
@@ -217,7 +301,12 @@
     flex-direction: column;
     margin-left: 5%;
     display: flex; 
+  }
 
+  .flex-aside-article{
+    flex-direction: row;
+    height: auto;
+    /* background-color: #FF7300; */
   }
 
   .aside-article{
@@ -227,12 +316,40 @@
     height: 20vh;
     border-top-right-radius: 5px;
     border-top-left-radius:5px ;
-    margin-right: 5%;
+  }
+
+  .aside-article-side{
+    flex-direction: column;
+    width: 45%;
+    /* background-color: #FF7300; */
+    height: 20vh;
+    justify-content: end;
+  }
+
+
+  .aside-playlist-side{
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  .article-description{
+    display: flex;
+    font-size: 2vh;
+    text-decoration:overline;
+    color: #121111;
+  }
+
+  .article-description:hover{
+    text-decoration: underline;
+    transition: 0.4s;
   }
 
   .aside-playlist-image{
-    width: 50%;
+    width: 90%;
     margin-left: 0;
+    margin-right: 0;
   }
 
   .article-body h1, .article-body h2{
@@ -252,6 +369,43 @@
 
   .article-title{
     text-align:start;
+  }
+
+  .read-article{
+    flex-direction: column;
+  }
+
+  .share-container{
+    flex-direction: row;
+    position: sticky;
+    height: auto;
+    max-width: 100%;
+    justify-content: center;
+    background: none;
+    width: 100%;
+  }
+
+  .share-socials{
+    flex-direction: row;
+    width: 100%;
+    opacity: 0.6;
+    z-index: 2;
+  }
+
+  .share-socials:hover{
+    opacity: 0.8;
+  }
+
+  .share-button:active{
+    opacity: 1;
+  }
+
+  .social-icon{
+    width: 4vh;
+  }
+
+  .share-text, .share-button{
+    display: none;
   }
   
 }
