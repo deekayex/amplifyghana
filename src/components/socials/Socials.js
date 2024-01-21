@@ -1,6 +1,5 @@
 import React from 'react';
 import './Socials.css';
-import { Link } from 'react-router-dom';
 
 const Socials = () => {
   return (
@@ -13,13 +12,9 @@ const Socials = () => {
             alt="Instagram logo"
             className="instagram-logo"
           />
-          {/* <img
-            src={process.env.PUBLIC_URL + '/alt_instagram_logo.png'}
-            alt="Instagram logo"
-            className="instagram-logo-active"
-          /> */}
         </a>
       </div>
+      
       <div className='social-icon'>
         <a href="https://www.tiktok.com/@amplify.gh?_t=8iv9u4FSAFi&_r=1" target="_blank" rel="noreferrer">
           <img src={process.env.PUBLIC_URL + '/tiktok_logo.png'} alt="Tiktok logo" className="tiktok-logo" />

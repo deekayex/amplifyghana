@@ -29,25 +29,35 @@
 }
 
 .skeleton{
+  height: 70vh;
   animation: skeleton-editors 1s linear infinite alternate;
+  opacity: 0.8;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .skeleton{
+    height: 50vh;
+  }
 }
 
 @keyframes skeleton-editors {
   0% {
-    background-color: hwb(0 100% 0% / 0.456);
+    background-color: hwb(0 100% 0% / 0.392);
   }
   100%{
-    background-color: hwb(0 100% 0% / 0.216);
+    background-color: hwb(0 100% 0% / 0.256);
   }
 }
 
 .skeleton-news{
   animation: skeleton-news 1s linear infinite alternate;
+  opacity: 0.8;
 }
 
 @keyframes skeleton-news {
   0%{
-    background-color: hsla(34, 78%, 91%, 0.57);
+    background-color: hsla(33, 78%, 91%, 0.319);
   }
 
   100%{
@@ -58,15 +68,16 @@
 
 .skeleton-playlist{
   animation: skeleton-playlist 1s linear infinite alternate;
+  opacity: 0.8;
 }
 
 @keyframes skeleton-playlist {
   0%{
-    background-color: hsla(160, 100%, 75%, 0.192);
+    background-color: hsla(160, 100%, 75%, 0.097);
   }
 
   100%{
-    background-color: hsla(160, 100%, 75%, 0.327);
+    background-color: rgba(250, 235, 215, 0.178);
   }
 }
 

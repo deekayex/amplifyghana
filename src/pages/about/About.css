@@ -8,6 +8,7 @@
     max-width: 100vw;
 }
 
+
 .about_top{
     margin-top: 12vh;
     height: 25%;
@@ -110,14 +111,31 @@
     display: flex;   
 }
 
+
 .about-socials{
-    /* background-color: aqua; */
-    width: 80%;
-    margin-left: 10%;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5vh; 
     display: flex;
-    justify-content: center;
-    height: 5vh;
+    justify-content: space-evenly;
 }
+
+
+.about-x-logo, .about-email-icon, .about-tiktok-logo, .about-instagram-logo{
+    height: 10vh;
+    object-fit: contain;
+}
+
+.about-social-icon{
+    display: flex;
+    border-right: solid;
+    padding-right: 5%;
+}
+
+.about-email-icon{
+    border-right: none;
+}
+
 
 
 
@@ -133,9 +151,6 @@
         width: 90%;
     }
 
-    /* .about-us-socials{
-        height: 2vh;
-    } */
 
     .box_text_body{
         line-height: 1.3vh;
@@ -144,6 +159,7 @@
     
     .body_box{
         height: 25vh;
+        margin-bottom: 5vh;
     }
 
     .next-button, .previous-button{
@@ -161,7 +177,7 @@
     .body_header, .top_header{
         font-size: 3vw;
     } 
-    
+
 }
 
 
@@ -251,9 +267,21 @@
         right: 10px;
     }
 
+    .about-socials{
+       margin-top: 2vh;
+       width: 80%;
+       margin-left: 10%;
+    }
+
     .about-socials-header, .top_header, .body_header{
         font-size: 2rem;
     }
+
+    .about-x-logo, .about-email-icon, .about-tiktok-logo, .about-instagram-logo{
+        height: 5vh;
+    }
+    
+
 
   }
   

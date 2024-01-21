@@ -7,6 +7,7 @@ import './ArticlePage.css';
 import LoadingScreen from '../../context/loading/LoadingScreen';
 import ArticleSide from '../../components/ArticleSide';
 import Share from '../../components/share/Share';
+import Connect from '../../components/connect/Connect';
 
 const ShareButton = ({ articleTitle, articleUrl }) => {
   const handleShare = () => {
@@ -153,10 +154,10 @@ const ArticlePage = () => {
   return (
     <div className="article-page">
       <div className='spacer' />
-      <div className='article-flex'>
-        {isLoading ? (
+      {isLoading ? (
           <LoadingScreen/>
         ) : (
+      <div className='article-flex'>
           <div className='article-main'>
             {article && (
               <>
@@ -172,14 +173,16 @@ const ArticlePage = () => {
                 
               </>
             )}
+
+            <Connect/>
             
           </div>
-        )}
+      
       <div className='article-aside'>
         <ArticleSide/>
       </div>
       </div>
-    </div>
+     )} </div>
   );
 };
 
