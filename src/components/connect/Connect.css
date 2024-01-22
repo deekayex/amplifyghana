@@ -23,7 +23,7 @@
   height: 5vh;
   margin-top: 2vh;
   display: flex;
-  /* background-color: rgb(13, 77, 133); */
+  background-color: rgb(252, 254, 255);
   width: 100%;
 }
 
@@ -32,13 +32,17 @@
   display: flex;
   width: 100%;
   align-items: center;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
   padding-top: 15px;
   padding-bottom: 10px;
   opacity: 0.8; 
   border: solid;
   font-size: 1.7rem;
+}
+
+.connect-social-media-insta{
+  font-size: 1.4rem;
 }
 
 .connect-social-media:hover, .connect-social-media-insta:hover, .connect-social-mail:hover, .connect-social-x:hover{
@@ -70,6 +74,26 @@
   object-fit: contain;
   opacity: 0.6;
   transition: 0.5s;
+  border:solid;
+  border-color: rgb(16, 16, 17);
+}
+
+.twitter{
+border: none;
+}
+
+.tiktok{
+  border-radius: 50%;
+}
+
+.instagram{
+  border-color: rgb(238, 16, 131);
+  border-radius: 50%;
+}
+
+.email{
+  border-color: rgba(255, 0, 0, 0.71);
+  border-radius: 10px;
 }
 
 .tiktok:hover, .instagram:hover, .twitter:hover, .email:hover{

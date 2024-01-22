@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { database, storage } from '../../firebase/firebase';
-import { collection, getDocs, addDoc, deleteDoc, doc, getDoc, setDoc } from '@firebase/firestore';
+import { collection, getDocs, addDoc, deleteDoc, doc, getDoc, setDoc, orderBy, query } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Import Firebase Authentication functions
@@ -54,7 +54,8 @@ function EditorsPicks({isAllArticlesPage}) {
     const fetchData = async () => {
       try {
         const editorsCollection = collection(database, 'editors-picks');
-        const editorsSnapshot = await getDocs(editorsCollection);
+        const editorsQuery = query(editorsCollection, orderBy('timestamp', 'desc'));
+        const editorsSnapshot = await getDocs(editorsQuery);
         const articles = editorsSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -80,31 +81,6 @@ function EditorsPicks({isAllArticlesPage}) {
     return () => unsubscribe();
   }, []);
 
-  const handleSaveNewArticle = async (newArticleData) => {
-    try {
-      const { title, image, summary, section } = newArticleData;
-
-      const storageRef = ref(storage, `article_images/${image.name}`);
-      await uploadBytes(storageRef, image);
-
-      // Get the download URL of the uploaded image
-      const downloadURL = await getDownloadURL(storageRef);
-
-      const collectionName = section === 'news' ? 'news' : 'editors-picks';
-
-      // Add the new article to the Firestore collection with the image URL
-      const newArticleRef = await addDoc(collection(database, collectionName), {
-        title,
-        summary,
-        image: downloadURL, // Use the URL obtained from Firebase Storage
-      });
-
-      alert('New article created successfully!');
-      setCreateFormVisible(false);
-    } catch (error) {
-      console.error('Error creating new article', error);
-    }
-  };
 
   const handleDeleteArticles = async (id) => {
     const newsDoc = doc(database, 'editors-picks', id);

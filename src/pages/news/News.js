@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './News.css';
 import { database, storage } from '../../firebase/firebase';
-import { collection, getDocs, addDoc, getDoc, deleteDoc, doc, updateDoc, setDoc } from '@firebase/firestore';
+import { collection, getDocs, addDoc, getDoc, deleteDoc, doc, updateDoc, setDoc, orderBy, query } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import LoadingArticles from '../../context/loading/ArticlesLoad/LoadingArticles';
@@ -42,7 +42,8 @@ const News = ({isAllArticlesPage}) => {
 
         // Fetch all news articles
         const newsCollection = collection(database, 'news');
-        const newsSnapshot = await getDocs(newsCollection);
+        const newsQuery = query(newsCollection, orderBy('timestamp', 'desc'));
+        const newsSnapshot = await getDocs(newsQuery);
         const articles = newsSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
