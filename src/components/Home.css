@@ -68,6 +68,9 @@
     margin: 10px;
 }
 
+.news-sticker{
+    font-size: 1.4vh;
+}
 
 
 .editor-text-header{
@@ -105,7 +108,7 @@
     margin-bottom: 2.3vh;
     border-radius: 20px;
     background-size:cover;
-    background-position: center center;
+    background-position: center 20%;
     position: relative;
     opacity: 0.9;
     transition: 0.5s ease;
@@ -113,7 +116,8 @@
 
 
 .news-component:hover{
-    background-position: center 20%;
+    background-position: center center;
+    transition: 0.5s ease-in-out;
 }
 
 
@@ -136,6 +140,16 @@
     flex: 1;
     position: relative;
     z-index: 2;
+    opacity: 0.95;
+}
+
+.playlist-component:hover{
+    opacity: 0.99;
+    transition: opacity 0.5s;
+}
+
+.playlist-component:active{
+    opacity: 1;
 }
 
 .playlist-button{

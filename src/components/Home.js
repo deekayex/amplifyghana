@@ -118,7 +118,7 @@ function Home() {
 
           <Link to={newsLink} className='news-component' style={{ backgroundImage: `url(${highlightedNews ? highlightedNews.image : ''})` }}>
             <div className='editor'>
-              <Link to='/news' className='sticker'>
+              <Link to='/news' className='news-sticker'>
                 NEWS
               </Link>
             </div>
