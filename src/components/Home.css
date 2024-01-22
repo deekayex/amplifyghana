@@ -342,6 +342,17 @@
     .ad{
         border-radius: 10px;
     }
+
+    .editor{
+        padding-left: 10px;
+        padding-right: 12px;
+    }
+
+    .news-sticker{
+        font-size: 5px;
+        padding-left: 2px;
+
+    }
 }
 
 @media screen and (max-width: 500px) {
