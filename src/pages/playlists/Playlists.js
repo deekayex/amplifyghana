@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import './Playlists.css';
 import { database } from '../../firebase/firebase';
-import { collection, getDocs, addDoc, deleteDoc, doc } from '@firebase/firestore';
+import { collection, getDocs, addDoc, deleteDoc, doc, orderBy, query } from '@firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Link } from 'react-router-dom';
 import LoadingScreen from '../../context/loading/LoadingScreen';
@@ -30,7 +30,8 @@ const Playlists = ({ isPlayListManager }) => {
     const fetchPlaylists = async () => {
       try {
         const playlistsCollection = collection(database, 'playlists');
-        const playlistsSnapshot = await getDocs(playlistsCollection);
+        const playlistsQuery = query(playlistsCollection, orderBy('timestamp', 'desc'));
+        const playlistsSnapshot = await getDocs(playlistsQuery);
 
         const playlistsData = playlistsSnapshot.docs.map((doc) => ({
           id: doc.id,

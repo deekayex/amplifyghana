@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { collection, addDoc } from '@firebase/firestore';
+import { collection, addDoc, serverTimestamp } from '@firebase/firestore';
 import { database, storage } from '../firebase/firebase';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import NewPlaylistForm from './forms/editor/newPlaylist/NewPlaylist';
@@ -30,6 +30,7 @@ const UpdatePlaylists = () => {
         summary,
         link,
         image: downloadURL, // Use the URL obtained from Firebase Storage
+        timestamp: serverTimestamp(),
       });
 
       alert('New playlist created successfully!');
