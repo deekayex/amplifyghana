@@ -29,6 +29,7 @@ import React,{ useState, useEffect } from "react";
 import FeatureAd from "./pages/admin-pages/FeatureAd";
 import LoadingPlaylists from "./context/loading/PlayListLoad/LoadingPlaylists";
 import LoadingScreen from "./context/loading/LoadingScreen";
+import LoadingHome from "./context/loading/HomeLoad/LoadingHome";
 
 
 function App() {
@@ -39,7 +40,7 @@ function App() {
         <Navbar/>
         {/* <NavigationControl /> */}
           <Routes>
-            <Route path="/load" element = {<LoadingScreen/>}/>
+            <Route path="/load" element = {<LoadingHome/>}/>
              <Route path="/" exact element={<HomePages/>} />
              <Route path="home" exact element={<Home/>}/>
              <Route path="news" element={<News/>} />

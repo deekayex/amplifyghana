@@ -113,11 +113,13 @@
     font-size: 1.6rem;
   }
 
-  .connect-social-media, .connect-social-media-insta, .connect-social-x, .connect-social-mail{
+  .connect-social-media, .connect-social-media-insta, .connect-social-x{
     font-size: 1.2rem;
   }
 
-
+  .connect-social-mail{
+    font-size: 1rem;
+  }
 
 
 }

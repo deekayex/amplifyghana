@@ -37,8 +37,9 @@ const ShareButton = ({ articleTitle, articleUrl }) => {
       </div>
       <button className="share-button" onClick={handleShare}>
       <img
-          src={process.env.PUBLIC_URL + "/share-icon.png"}
-          alt="Share This Article"/>
+          src={process.env.PUBLIC_URL + "/share.svg"} 
+          alt="Share This Article" className='share-icon'/>
+          
       </button>
       
     </div>
