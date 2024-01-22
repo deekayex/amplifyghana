@@ -149,9 +149,6 @@
     height: 20vh;
     width: 25vw;
   }
-  .news-container, .editor-page{
-    /* height: 60vh; */
-   }
    .editor_space{
     height: 0;
    }
@@ -166,6 +163,10 @@
    .content-text-body{
     font-size: 1.4rem;
     white-space: nowrap;
+   }
+
+   .content-text-header{
+    font-size: 1rem;   
    }
 
 }
@@ -240,20 +241,20 @@
    }
 
    .content-text-body{
-    font-size: 0.8rem;
+    font-size: 0.7rem;
    }
 
    .content-text-header{
-    font-size: 1rem;   
+    font-size: 0.9rem;   
    }
 }
 
 @media screen and (max-width: 300px){
   .content-text-header{
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
   .content-text-body{
-    font-size: 0.6rem;
+    font-size: 0.5rem;
   }
 }
 
