@@ -9,7 +9,7 @@ const HighlightedEditors = ({highlightedEditors}) => {
     <Link to={editorsLink}  >
       <div className='editors-highlighted' tyle={{ backgroundImage: `url(${highlightedEditors ? highlightedEditors.image : ''})` }}>
       <div className='editor'>
-        <Link smooth to="/#editors-pick" className='footer-link'>
+        <Link  to="/#editors-pick" className='footer-link'>
           EDITOR'S PICKS
         </Link>
       </div>
