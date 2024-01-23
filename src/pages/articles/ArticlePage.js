@@ -9,13 +9,11 @@ import ArticleSide from '../../components/ArticleSide';
 import Share from '../../components/share/Share';
 import Connect from '../../components/connect/Connect';
 
+
+
 const ShareButton = ({ articleTitle, articleUrl }) => {
   const handleShare = () => {
 
-    
-    // Implement your share functionality here
-    // You can use the Web Share API or any other method to handle sharing
-    // For example:
     if (navigator.share) {
       navigator.share({
         title: articleTitle,
@@ -52,6 +50,7 @@ const ArticlePage = () => {
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
+
   useEffect(() => {
     const fetchArticle = async () => {
       try {
@@ -77,15 +76,31 @@ const ArticlePage = () => {
   
 
   const renderArticleContent = () => {
+    
     if (article) {
       // Use DOMPurify to sanitize and render HTML content
       const sanitizedContent = DOMPurify.sanitize(article.content, {
         ADD_ATTR: ['target'], // Allow adding 'target' attribute
         FORBID_TAGS: ['script'], // Forbid script tags
       });
-
+  
       const parser = new DOMParser();
       const doc = parser.parseFromString(sanitizedContent, 'text/html');
+  
+      // Insert your div with content in the middle of the article
+      const insertionDiv = document.createElement('div');
+      insertionDiv.innerHTML = '<div>Ad goes here</div>';
+  
+     // Find the middle position
+      const paragraphTags = doc.querySelectorAll('p');
+      const middlePosition = Math.floor(paragraphTags.length / 2);
+
+      // Insert the new div at the middle position
+      const targetElement = paragraphTags[middlePosition];
+      if (targetElement) {
+        targetElement.insertAdjacentElement('afterend', insertionDiv);
+      }
+  
   
       doc.querySelectorAll('img').forEach((image) => {
         const altText = image.getAttribute('alt');

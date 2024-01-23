@@ -9,7 +9,6 @@
   width: 90%;
   margin-left: 5%;
   font-size: 40vh;
-  color: white;
   margin-top: 0;
   position: relative;
   webkit-animation: glow 1s ease-in-out infinite alternate;
@@ -30,7 +29,6 @@
 .blank_message{
   width: 70%;
   margin-left: 15%;
-  color: white;
   font-size: 3vh;
   font-weight: 700;
   letter-spacing: 0.02em;
