@@ -149,7 +149,7 @@ function Home() {
       </div>
       <div className='bottom-homepage'>
 
-        {/* Map over the featuredAd array to create links with background images */}
+    
         {newFeaturedAd.map((ad) => (
           <a key={ad.id} href={ad.link} className='featured-ad' target="_blank" rel="noopener noreferrer">
             <img src={ad.imageUrl} alt={ad.title} className='ad'/>
