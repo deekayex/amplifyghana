@@ -8,6 +8,7 @@ import LoadingScreen from '../../context/loading/LoadingScreen';
 import ArticleSide from '../../components/ArticleSide';
 import Share from '../../components/share/Share';
 import Connect from '../../components/connect/Connect';
+import { useLocation } from 'react-router-dom';
 
 const ShareButton = ({ articleTitle, articleUrl }) => {
   const handleShare = () => {
@@ -51,6 +52,8 @@ const ArticlePage = () => {
   const { articleId, category } = useParams();
   const [article, setArticle] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+  const ad = location.state?.ad;
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -83,9 +86,37 @@ const ArticlePage = () => {
         ADD_ATTR: ['target'], // Allow adding 'target' attribute
         FORBID_TAGS: ['script'], // Forbid script tags
       });
-
+  
       const parser = new DOMParser();
       const doc = parser.parseFromString(sanitizedContent, 'text/html');
+  
+      
+    // Insert your div with content in the middle of the article
+    const insertionDiv = document.createElement('div');
+    insertionDiv.innerHTML = `<div><img src="${ad?.imageUrl}" alt="${ad?.title}" class="ad" /></div>`;
+
+    // Find the middle position
+    const paragraphTags = doc.querySelectorAll('p');
+    const middlePosition = Math.floor(paragraphTags.length / 2);
+
+    // Insert the new div at the middle position
+    const targetElement = paragraphTags[middlePosition];
+    if (targetElement) {
+      targetElement.insertAdjacentElement('afterend', insertionDiv);
+
+      // Insert the ad image after the new div
+      const adImage = document.createElement('img');
+         if (ad && ad.imageUrl) {
+      const adImage = document.createElement('img');
+      adImage.src = ad.imageUrl;
+      adImage.alt = ad.title;
+      adImage.className = 'ad';
+      insertionDiv.insertAdjacentElement('afterend', adImage);
+    }
+   }
+
+
+
   
       doc.querySelectorAll('img').forEach((image) => {
         const altText = image.getAttribute('alt');

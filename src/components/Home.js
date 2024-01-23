@@ -118,7 +118,7 @@ function Home() {
 
           <Link to={newsLink} className='news-component' style={{ backgroundImage: `url(${highlightedNews ? highlightedNews.image : ''})` }}>
             <div className='editor'>
-              <Link to='/news' className='news-sticker'>
+              <Link to='/news' className='sticker'>
                 NEWS
               </Link>
             </div>
@@ -151,9 +151,9 @@ function Home() {
 
         {/* Map over the featuredAd array to create links with background images */}
         {newFeaturedAd.map((ad) => (
-          <Link key={ad.id} to={ad.link} className='featured-ad'>
+          <a key={ad.id} href={ad.link} className='featured-ad' target="_blank" rel="noopener noreferrer">
             <img src={ad.imageUrl} alt={ad.title} className='ad'/>
-          </Link>
+          </a>
         ))}
       </div>
     </div>

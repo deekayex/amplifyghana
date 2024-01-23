@@ -24,7 +24,7 @@ const Footer = () => {
         <div className='footer-links'>
             <li className="footer-nav__item">
               <Link
-                smooth
+      
                 to="/#news" className='footer-link'>
                 NEWS
               </Link>
@@ -32,7 +32,7 @@ const Footer = () => {
 
             <li className="footer-nav__item">
               <Link
-                smooth
+      
                 to="/#editors-pick" className='footer-link'>
                 EDITOR'S PICKS
               </Link>
@@ -40,7 +40,7 @@ const Footer = () => {
 
             <li className="footer-nav__item" >
               <Link
-                smooth
+      
                 to="/playlists#playlists" className='footer-link'>
                 PLAYLISTS
               </Link>
@@ -48,7 +48,7 @@ const Footer = () => {
 
             <li className="footer-nav__item">
               <Link
-                smooth
+      
                 to="/submissions#submissions" className='footer-link'>
                 SUBMISSIONS
               </Link>
@@ -56,7 +56,7 @@ const Footer = () => {
 
             <li className="footer-nav__item">
               <Link
-                smooth
+      
                 to="/about#about" className='footer-link'>
                 ABOUT US
               </Link>
