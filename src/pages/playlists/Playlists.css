@@ -32,7 +32,7 @@
 }
 
 .playlist_component{
-    width: 80vw;
+    width: 80%;
     height: 30vh;
     margin-left: 10%;
     margin-top: 2%;
@@ -61,8 +61,8 @@
     border-radius: 20px 20px 20px 20px;
     color: white;
     padding: 2% 2% 2%;
-    line-height: 2.6vh;
-    font-size: 2rem;
+    line-height: 2.5vh;
+    font-size: 1.3rem;
     position: relative;
     
 }
@@ -102,15 +102,35 @@
 }
 
 
-
-@media screen and (max-width: 1030px) {
+@media screen and (max-width: 1025px)  and (min-height: 1360px){
     .playlist_component{
         height: 20vh;
+        width: 95%;
+        margin-left: 2.5%;
+    } 
+
+    .playlist_button{
+        height: 2vh;
+        width: 15%;
+        font-size: 1vh;
+    }
+    
+}
+
+@media screen and (max-width: 1023px) {
+    .playlist_component{
+        height: 20vh;
+        width: 95%;
+        margin-left: 2.5%;
     } 
 
     .playlist_button{
         height: 3vh;
         width: 25%;
+    }
+
+    .playlist_text{
+        line-height: 2vh;
     }
     
 }
@@ -123,10 +143,8 @@
 
     }
     .playlist_component{
-        height: 15vh;
+        height: 140px;
         margin-bottom: 2vh;
-        width: 90vw;
-        margin-left: 5vw;
     }
 
     .playlist-header{
@@ -134,7 +152,8 @@
     }
 
     .playlist_text{
-        font-size: 0.7rem;
+        font-size: 1.5vw;
+        line-height: 1.4vh;
     }
 
     .playlist_button{

@@ -27,9 +27,8 @@ import HighlightPlaylist from "./pages/admin-pages/HighlightPlaylist";
 import Blank from "./pages/Blank";
 import React,{ useState, useEffect } from "react";
 import FeatureAd from "./pages/admin-pages/FeatureAd";
-import LoadingPlaylists from "./context/loading/PlayListLoad/LoadingPlaylists";
-import LoadingScreen from "./context/loading/LoadingScreen";
-import LoadingHome from "./context/loading/HomeLoad/LoadingHome";
+import EmbeddedDoc from "./components/EmbeddedDoc";
+
 
 
 function App() {
@@ -40,7 +39,7 @@ function App() {
         <Navbar/>
         {/* <NavigationControl /> */}
           <Routes>
-            <Route path="/load" element = {<LoadingHome/>}/>
+            <Route path="/load" element = {<EmbeddedDoc/>}/>
              <Route path="/" exact element={<HomePages/>} />
              <Route path="home" exact element={<Home/>}/>
              <Route path="news" element={<News/>} />

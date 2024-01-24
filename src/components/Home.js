@@ -4,13 +4,12 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { database } from '../firebase/firebase';
 import { collection, doc, getDoc, getDocs } from '@firebase/firestore';
 import LoadingHome from '../context/loading/HomeLoad/LoadingHome';
+import FeaturedAd from './FeaturedAd';
 
 function Home() {
-  const [highlightedNews, setHighlightedNews] = useState(null); // State to track the highlighted news
-  const [highlightedEditors, setHighlightedEditors] = useState(null); // State to track the highlighted editors
-
+  const [highlightedNews, setHighlightedNews] = useState(null); 
+  const [highlightedEditors, setHighlightedEditors] = useState(null); 
   const [highlightedPlaylists, setHighlightedPlaylists] = useState([]);
-
   const [newFeaturedAd, setfeaturedAd] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -18,7 +17,6 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch your data here...
         const fetchHighlightedNews = getDoc(doc(database, 'highlighted', 'highlightedNews')).then((highlightedNewsDoc) => {
           const highlightedNewsData = highlightedNewsDoc.data();
           if (highlightedNewsData) {
@@ -150,12 +148,11 @@ function Home() {
       <div className='bottom-homepage'>
 
     
-        {newFeaturedAd.map((ad) => (
-          <a key={ad.id} href={ad.link} className='featured-ad' target="_blank" rel="noopener noreferrer">
-            <img src={ad.imageUrl} alt={ad.title} className='ad'/>
-          </a>
-        ))}
+      {newFeaturedAd.map((ad) => (
+        <FeaturedAd key={ad.id} ad={ad} />
+      ))}
       </div>
+  
     </div>
   );
 }
