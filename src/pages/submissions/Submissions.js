@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import BasicForm from '../../components/forms/Form';
 import './Submissions.css';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 
 function Submissions() {
   const handleSubmit = async (values, setSubmitting) => {
@@ -10,6 +11,7 @@ function Submissions() {
 
   return (
     <section className='submissions-container' id='submissions'>
+      <ScrollToTopOnMount/>
       <div className='space' />
       <div className='forms-container'>
         <div className='form-header-text'>Reach out to us</div>

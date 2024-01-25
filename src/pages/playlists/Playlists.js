@@ -7,6 +7,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { Link } from 'react-router-dom';
 import LoadingScreen from '../../context/loading/LoadingScreen';
 import LoadingPlaylists from '../../context/loading/PlayListLoad/LoadingPlaylists';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 
 // Constant for the button text
 const PLAYLIST_BUTTON_TEXT = 'LISTEN';
@@ -63,6 +64,7 @@ const Playlists = ({ isPlayListManager }) => {
 
   return (
     <div className='playlist-page'>
+      <ScrollToTopOnMount/>
       <div className='space' />
       <div className='playlist-header'>Playlists</div>
       <div className='playlist-flex'>

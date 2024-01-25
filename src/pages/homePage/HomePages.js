@@ -5,6 +5,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import News from '../news/News';
 import EditorsPicks from '../editorsPicks/EditorsPicks';
 import Socials from '../../components/socials/Socials';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 
 
 

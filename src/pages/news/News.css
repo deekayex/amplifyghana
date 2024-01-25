@@ -84,7 +84,7 @@
 
 .centered{
   background-position: center center;
-  transition: 0.5s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .disable-content:hover {
@@ -98,7 +98,7 @@
 
 .content-card:hover{
   background-position: center center;
-  transition: 0.5s ease-in-out;
+  transition: 1s ease-in-out;
 }
 
 .centered:hover{

@@ -5,6 +5,7 @@ import { collection, getDocs, addDoc, getDoc, deleteDoc, doc, updateDoc, setDoc,
 import { Link } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import LoadingArticles from '../../context/loading/ArticlesLoad/LoadingArticles';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 
 const News = ({ isAllArticlesPage }) => {
   const [newsArticles, setNewsArticles] = useState([]);
