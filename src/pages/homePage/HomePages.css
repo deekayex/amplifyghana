@@ -61,13 +61,22 @@
     }
 
     .home-socials{
-        height: 2vh;        
+        height: 2vh;
+        margin-right: 0;
+        padding-right: 0;          
     }
 
     .socials{
-        width: 30vw;
+        width: 30vw;  
     }
 
+}
+
+@media screen and (max-width:700px){
+    .socials{
+        margin-left: 10%;
+        justify-content: space-between;
+    }
 }
 
 @media screen and (min-width: 1020px) and (max-height: 700px){
