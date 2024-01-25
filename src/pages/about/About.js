@@ -2,12 +2,13 @@ import React from 'react'
 import './About.css'
 import BoxContainer from '../../components/BoxText'
 import Socials from '../../components/socials/Socials'
+import ScrollToTopOnMount from '../../components/ScrollToTop'
 
 
 const About = () => {
   return (
     <section className='about_us_page' id='about'>
-        
+        <ScrollToTopOnMount/>        
         <div className='about_top'>
             <div className='top_header'>
                 about amplify ghana

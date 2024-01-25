@@ -9,6 +9,7 @@ import ArticleSide from '../../components/ArticleSide';
 import Share from '../../components/share/Share';
 import Connect from '../../components/connect/Connect';
 import { useLocation } from 'react-router-dom';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 
 const ShareButton = ({ articleTitle, articleUrl }) => {
   const handleShare = () => { 
@@ -216,6 +217,7 @@ const ArticlePage = () => {
 
   return (
     <div className="article-page">
+      <ScrollToTopOnMount/>
       <div className='spacer' />
       {isLoading ? (
           <LoadingScreen/>

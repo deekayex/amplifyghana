@@ -6,6 +6,7 @@ import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Import Firebase Authentication functions
 import LoadingScreen from '../../context/loading/LoadingScreen';
 import LoadingArticles from '../../context/loading/ArticlesLoad/LoadingArticles';
+import ScrollToTopOnMount from '../../components/ScrollToTop';
 
 function EditorsPicks({isAllArticlesPage}) {
   const [editorsArticles, setEditorsArticles] = useState([]);
@@ -161,7 +162,7 @@ useEffect(() => {
   const endIndex = Math.min(startIndex + articlesPerPage, totalArticles);
   const currentArticles = editorsArticles.slice(startIndex, endIndex);
 
-  const handleNextPage = () => {
+  const handleNextPage = () =>{
     setCurrentPage((prevPage) => Math.min(prevPage + 1, Math.ceil(totalArticles / articlesPerPage)));
   };
 
