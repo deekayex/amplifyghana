@@ -126,7 +126,7 @@
 .article-aside{
   padding-top: 2vh;
   top: 15%;
-  width: 20vw;
+  width: 15vw;
   position: sticky;
   right: 10%;
   height: 90vh;
@@ -165,7 +165,8 @@
 
 .aside-article{
   background-size: cover;
-  width: 80%;
+  width: 100%;
+  min-height: 150px;
   margin-left: 10%;
   height: 20vh;
   position: relative;
