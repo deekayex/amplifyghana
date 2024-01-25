@@ -33,7 +33,6 @@
 
 .connect-social-media, .connect-social-media-insta, .connect-social-x, .connect-social-mail{
   display: flex;
-  width: 100%;
   align-items: center;
   border-radius: 10px;
   padding: 10px;
