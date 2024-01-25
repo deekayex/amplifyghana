@@ -2,7 +2,6 @@
   background-color: #FDFCFA;
   margin-top: 5vh;
   margin-bottom: 5vh;
-  background-color: blanchedalmond;
 }
 
 .connect-header{
@@ -16,18 +15,16 @@
 
 .connect-socials{
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Two columns per row by default */
+  grid-template-columns: repeat(2, 1fr); 
   gap: 1rem;
-  background-color: green;
 }
 
 .connect-social{
   height: 5vh;
   margin-top: 2vh;
   display: flex;
+  justify-content: space-between;
   background-color: rgb(252, 254, 255);
-  width: 100%;
-  background-color: blue;
 }
 
 
@@ -35,6 +32,7 @@
   display: flex;
   align-items: center;
   border-radius: 10px;
+  width: 100%;
   padding: 10px;
   padding-top: 15px;
   padding-bottom: 10px;

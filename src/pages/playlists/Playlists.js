@@ -2,10 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import './Playlists.css';
 import { database } from '../../firebase/firebase';
-import { collection, getDocs, addDoc, deleteDoc, doc, orderBy, query } from '@firebase/firestore';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { Link } from 'react-router-dom';
-import LoadingScreen from '../../context/loading/LoadingScreen';
+import { collection, getDocs, deleteDoc, doc, orderBy, query } from '@firebase/firestore';
 import LoadingPlaylists from '../../context/loading/PlayListLoad/LoadingPlaylists';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
 
