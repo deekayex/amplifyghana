@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import './News.css';
-import { database, storage } from '../../firebase/firebase';
-import { collection, getDocs, addDoc, getDoc, deleteDoc, doc, updateDoc, setDoc, orderBy, query } from '@firebase/firestore';
+import { database} from '../../firebase/firebase';
+import { collection, getDocs, getDoc, deleteDoc, doc, updateDoc, setDoc, orderBy, query } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import LoadingArticles from '../../context/loading/ArticlesLoad/LoadingArticles';
-import ScrollToTopOnMount from '../../components/ScrollToTop';
+
 
 const News = ({ isAllArticlesPage }) => {
   const [newsArticles, setNewsArticles] = useState([]);

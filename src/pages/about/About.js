@@ -1,7 +1,6 @@
 import React from 'react'
 import './About.css'
 import BoxContainer from '../../components/BoxText'
-import Socials from '../../components/socials/Socials'
 import ScrollToTopOnMount from '../../components/ScrollToTop'
 
 

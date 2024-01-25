@@ -2,15 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { database, storage } from '../../firebase/firebase';
 import { collection, getDocs, addDoc, deleteDoc, doc, getDoc, setDoc, orderBy, query, updateDoc } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Import Firebase Authentication functions
-import LoadingScreen from '../../context/loading/LoadingScreen';
 import LoadingArticles from '../../context/loading/ArticlesLoad/LoadingArticles';
-import ScrollToTopOnMount from '../../components/ScrollToTop';
+
 
 function EditorsPicks({isAllArticlesPage}) {
   const [editorsArticles, setEditorsArticles] = useState([]);
-  const [isCreateFormVisible, setCreateFormVisible] = useState(false);
   const [user, setUser] = useState(null); // State to track the authenticated user
   const [isLoading, setIsLoading] = useState(true);
   const [, setHighlightedArticleId] = useState(null);
