@@ -6,16 +6,28 @@ import { Link } from 'react-router-dom';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import LoadingArticles from '../../context/loading/ArticlesLoad/LoadingArticles';
 
-const News = ({isAllArticlesPage}) => {
+const News = ({ isAllArticlesPage }) => {
   const [newsArticles, setNewsArticles] = useState([]);
   const [user, setUser] = useState(null);
   const [highlightedArticleId, setHighlightedArticleId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [centeredStates, setCenteredStates] = useState(
+    JSON.parse(localStorage.getItem('centeredStates')) || {}
+  );
+
+  const handleToggleClick = (articleId) => {
+    setCenteredStates((prevStates) => {
+      const newStates = {
+        ...prevStates,
+        [articleId]: !prevStates[articleId],
+      };
+      localStorage.setItem('centeredStates', JSON.stringify(newStates));
+      return newStates;
+    });
+  };
 
   const handleSetHighlight = async (articleId) => {
-
     try {
-      // Update the 'highlightedArticleId' in Firebase to set the currently highlighted article
       await setDoc(doc(database, 'highlighted', 'highlightedNews'), {
         articleId,
       });
@@ -30,9 +42,8 @@ const News = ({isAllArticlesPage}) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch the currently highlighted article from Firebase
         const highlightedArticleDoc = await getDoc(
-          doc(database, 'highlighted', 'highlightedNews' )
+          doc(database, 'highlighted', 'highlightedNews')
         );
         const highlightedArticleData = highlightedArticleDoc.data();
 
@@ -67,16 +78,13 @@ const News = ({isAllArticlesPage}) => {
   }, []);
 
   const handleDeleteArticles = async (id) => {
-    if(isAllArticlesPage){
-        const newsDoc = doc(database, 'news', id);
-        await deleteDoc(newsDoc);
-        setNewsArticles((prevArticles) => prevArticles.filter((article) => article.id !== id));
+    if (isAllArticlesPage) {
+      const newsDoc = doc(database, 'news', id);
+      await deleteDoc(newsDoc);
+      setNewsArticles((prevArticles) => prevArticles.filter((article) => article.id !== id));
+    } else {
+      alert('You are not allowed to delete any article here');
     }
-    else{
-      alert('You are not allowed to delete any article here')
-    }
-    
-   
   };
 
   const articlesPerPage = 6;
@@ -125,21 +133,30 @@ const News = ({isAllArticlesPage}) => {
           <LoadingArticles />
         ) : (
           <div className='page-contents'>
-          {Array.from({ length: articlesPerRow }).map((_, colIndex) => (
-            <div key={colIndex} className='news-row'>
-              {currentArticles
-                .filter((article, index) => index % articlesPerRow === colIndex)
-                .map((article, rowIndex) => (
-                  <Link to={`/article/news/${article.id}`} key={rowIndex}>                     
-                  <div className='content-card' style={{backgroundImage: `url(${article ? article.image : ''})`}}> 
-                    {user && isAllArticlesPage && (
-                     <button onClick={() => handleDeleteArticles(article.id)}>Delete</button>
-                                  )}
-                        {user && isAllArticlesPage && !article.isHighlight && (
-                          <button onClick={() => handleSetHighlight(article.id)}>
-                           Set as News Highlight
-                          </button>
+            {Array.from({ length: articlesPerRow }).map((_, colIndex) => (
+              <div key={colIndex} className='news-row'>
+                {currentArticles
+                  .filter((article, index) => index % articlesPerRow === colIndex)
+                  .map((article, rowIndex) => (
+                    <Link
+                      to={user && isAllArticlesPage && !article.isHighlight ? '#' : `/article/news/${article.id}`}
+                      key={rowIndex}
+                    >
+                      <div
+                        className={`content-card ${centeredStates[article.id] ? 'centered' : ''} `}
+                        style={{ backgroundImage: `url(${article ? article.image : ''})` }}
+                      >
+                        <div className='card-manager'>
+                        {user && isAllArticlesPage && (
+                          <button onClick={() => handleDeleteArticles(article.id)}>Delete</button>
                         )}
+                          {user && isAllArticlesPage && !article.isHighlight && (
+                          <button onClick={() => handleToggleClick(article.id)}>Change Center</button>
+                        )}
+                        {user && isAllArticlesPage && !article.isHighlight && (
+                          <button onClick={() => handleSetHighlight(article.id)}>Set as News Highlight</button>
+                        )}
+                      </div>
                         <div className='content-text'>
                           <p className='content-text-header'>{article.title}</p>
                           <p className='content-text-body'>{article.summary}</p>

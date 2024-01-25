@@ -14,10 +14,24 @@ function EditorsPicks({isAllArticlesPage}) {
   const [isLoading, setIsLoading] = useState(true);
   const [, setHighlightedArticleId] = useState(null);
   const [, setHighlightedEditors] = useState(null);
+  const [centeredStates, setCenteredStates] = useState(
+    JSON.parse(localStorage.getItem('centeredStates')) || {}
+  );
+
+
+  const handleToggleClick = (articleId) => {
+    setCenteredStates((prevStates) => {
+      const newStates = {
+        ...prevStates,
+        [articleId]: !prevStates[articleId],
+      };
+      localStorage.setItem('centeredStates', JSON.stringify(newStates));
+      return newStates;
+    });
+  };
 
   const handleSetHighlight = async (articleId) => {
     try {
-      // Update the 'highlightedArticleId' in Firebase to set the currently highlighted article
       await setDoc(doc(database, 'highlighted', 'highlightedEditors' ), {
         articleId,
       });
@@ -38,7 +52,6 @@ function EditorsPicks({isAllArticlesPage}) {
         const highlightedEditorsData = highlightedEditorsDoc.data();
 
         if (highlightedEditorsData) {
-          // Fetch the highlighted article using the articleId from the Firestore document
           const articleRef = doc(database, 'editors-picks', highlightedEditorsData.articleId);
           const articleDoc = await getDoc(articleRef);
 
@@ -136,22 +149,29 @@ function EditorsPicks({isAllArticlesPage}) {
         ) : (
           <div className='page-contents'>
 
-            {/* Display the rest of the articles */}
             {Array.from({ length: articlesPerRow }).map((_, colIndex) => (
             <div key={colIndex} className='news-row'>
               {currentArticles
                 .filter((article, index) => index % articlesPerRow === colIndex)
                 .map((article, rowIndex) => (
-                    <Link to={`/article/editors-picks/${article.id}`} key={colIndex}>
-                      <div key={colIndex} className='content-card' style={{backgroundImage: `url(${article ? article.image : ''})`}}>
+                    <Link to={user && isAllArticlesPage && !article.isHighlight ? '#' :`/article/editors-picks/${article.id}`} key={colIndex}>
+                      <div key={colIndex} className={`content-card ${centeredStates[article.id] ? 'centered' : ''}`} style={{backgroundImage: `url(${article ? article.image : ''})`}}>
+
+                      <div className='card-manager'>
                         {user && isAllArticlesPage && (
                           <button onClick={() => handleDeleteArticles(article.id)}>Delete</button>
                         )}
+
+                        {user && isAllArticlesPage && !article.isHighlight && (
+                          <button onClick={() => handleToggleClick(article.id)}>Change Center</button>
+                        )}
+
                         {user && !article.isHighlight && isAllArticlesPage && (
                           <button onClick={() => handleSetHighlight(article.id)}>
                             Set as Editor's Highlight 
                           </button>
                         )}
+                        </div>
                         <div className='content-text'>
                           <p className='content-text-header'>{article.title}</p>
                           <p className='content-text-body'>{article.summary}</p>
