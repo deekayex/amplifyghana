@@ -11,20 +11,60 @@ const News = ({ isAllArticlesPage }) => {
   const [user, setUser] = useState(null);
   const [highlightedArticleId, setHighlightedArticleId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [centeredStates, setCenteredStates] = useState(
-    JSON.parse(localStorage.getItem('centeredStates')) || {}
-  );
+  const [centeredStates, setCenteredStates] = useState({});
 
-  const handleToggleClick = (articleId) => {
-    setCenteredStates((prevStates) => {
-      const newStates = {
-        ...prevStates,
-        [articleId]: !prevStates[articleId],
-      };
-      localStorage.setItem('centeredStates', JSON.stringify(newStates));
-      return newStates;
-    });
+
+  const handleToggleClick = async (articleId) => {
+  try {
+    const articleDocRef = doc(database, 'centeredStates', articleId);
+    const articleDoc = await getDoc(articleDocRef);
+
+    if (articleDoc.exists()) {
+      // If the document exists, update the centered state
+      const currentCenteredState = articleDoc.data().centeredState;
+      const newCenteredState = !currentCenteredState;
+
+      await updateDoc(articleDocRef, {
+        centeredState: newCenteredState,
+      });
+    } else {
+      // If the document doesn't exist, create a new one
+      await setDoc(articleDocRef, {
+        centeredState: true, // Initial state
+      });
+    }
+
+    // Fetch the updated centered states
+    const updatedCenteredStates = await fetchCenteredStates();
+    setCenteredStates(updatedCenteredStates);
+
+  } catch (error) {
+    console.error('Error toggling centered state:', error);
+  }
+};
+
+const fetchCenteredStates = async () => {
+  const centeredStatesCollection = collection(database, 'centeredStates');
+  const centeredStatesSnapshot = await getDocs(centeredStatesCollection);
+
+  const centeredStates = {};
+  centeredStatesSnapshot.forEach((doc) => {
+    centeredStates[doc.id] = doc.data().centeredState;
+  });
+
+  return centeredStates;
+};
+
+// Call fetchCenteredStates once to initialize the state
+useEffect(() => {
+  const initializeCenteredStates = async () => {
+    const initialCenteredStates = await fetchCenteredStates();
+    setCenteredStates(initialCenteredStates);
   };
+
+  initializeCenteredStates();
+}, []);
+
 
   const handleSetHighlight = async (articleId) => {
     try {
