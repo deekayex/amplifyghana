@@ -38,11 +38,11 @@
   padding-bottom: 10px;
   opacity: 0.8; 
   border: solid;
-  font-size: 1.7rem;
+  font-size: 1.1vw;
 }
 
 .connect-social-media-insta{
-  font-size: 1.4rem;
+  font-size: 1vw;
 }
 
 .connect-social-media:hover, .connect-social-media-insta:hover, .connect-social-mail:hover, .connect-social-x:hover{
@@ -117,7 +117,7 @@ border: none;
 .connect-social-mail{
   background-color: rgba(255, 0, 0, 0.71);
   color: white;
-  font-size: 1rem;
+  font-size: 0.7vw;
 }
 
 .connect-social-mail:active{

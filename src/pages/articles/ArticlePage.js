@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { doc, getDoc } from 'firebase/firestore';
+import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { database } from '../../firebase/firebase';
 import DOMPurify from 'dompurify'; // Import DOMPurify
 import './ArticlePage.css';
@@ -11,12 +11,7 @@ import Connect from '../../components/connect/Connect';
 import { useLocation } from 'react-router-dom';
 
 const ShareButton = ({ articleTitle, articleUrl }) => {
-  const handleShare = () => {
-
-    
-    // Implement your share functionality here
-    // You can use the Web Share API or any other method to handle sharing
-    // For example:
+  const handleShare = () => { 
     if (navigator.share) {
       navigator.share({
         title: articleTitle,
@@ -26,7 +21,6 @@ const ShareButton = ({ articleTitle, articleUrl }) => {
         .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error));
     } else {
-      // Fallback for browsers that do not support Web Share API
       console.log('Web Share API not supported');
     }
   };
@@ -54,6 +48,8 @@ const ArticlePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   const ad = location.state?.ad;
+  const [featuredAdElements, setFeaturedAdElements] = useState([]);
+
 
   useEffect(() => {
     const fetchArticle = async () => {
@@ -77,6 +73,52 @@ const ArticlePage = () => {
     
   }, [category, articleId]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Fetch FeaturedAd data
+        const featuredAdSnapshot = await getDocs(collection(database, 'FeaturedAd'));
+  
+        if (!featuredAdSnapshot.empty) {
+          // Directly access the data of the first document
+          const adData = featuredAdSnapshot.docs[0].data();
+          console.log('Fetched FeaturedAd:', adData);
+  
+          // Set the single ad data to the state variable
+          setFeaturedAdElements([adData]);
+        } else {
+          console.error('No documents found in FeaturedAd collection');
+        }
+  
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error fetching data', error);
+        setIsLoading(false);
+      }
+    };
+  
+    fetchData();
+  }, []);
+  
+  const renderFeaturedAd = () => {
+    if (featuredAdElements.length > 0) {
+      // Render the first featured ad
+      const ad = featuredAdElements[0];
+  
+      const container = document.createElement('div');
+      container.innerHTML = `
+        <a href="${ad.link}" target="_blank" rel="noopener noreferrer" class='featured-ad'>
+          <img src="${ad.imageUrl}" alt="Featured Ad" class='ad' />
+        </a>
+      `;
+  
+      return container;
+    }
+
+  
+    return null;
+  };
+  
   
 
   const renderArticleContent = () => {
@@ -90,31 +132,17 @@ const ArticlePage = () => {
       const parser = new DOMParser();
       const doc = parser.parseFromString(sanitizedContent, 'text/html');
   
-      
-    // Insert your div with content in the middle of the article
-    const insertionDiv = document.createElement('div');
-    insertionDiv.innerHTML = `<div><img src="${ad?.imageUrl}" alt="${ad?.title}" class="ad" /></div>`;
-
-    // Find the middle position
-    const paragraphTags = doc.querySelectorAll('p');
-    const middlePosition = Math.floor(paragraphTags.length / 2);
-
-    // Insert the new div at the middle position
-    const targetElement = paragraphTags[middlePosition];
-    if (targetElement) {
-      targetElement.insertAdjacentElement('afterend', insertionDiv);
-
-      // Insert the ad image after the new div
-      const adImage = document.createElement('img');
-         if (ad && ad.imageUrl) {
-      const adImage = document.createElement('img');
-      adImage.src = ad.imageUrl;
-      adImage.alt = ad.title;
-      adImage.className = 'ad';
-      insertionDiv.insertAdjacentElement('afterend', adImage);
-    }
-   }
-
+      // Insert the rendered featured ad into the middle of the article
+      const paragraphTags = doc.querySelectorAll('p');
+      const middlePosition = Math.floor(paragraphTags.length / 2);
+  
+      const renderedFeaturedAd = renderFeaturedAd();
+  
+      if (middlePosition >= 0 && renderedFeaturedAd) {
+        const targetElement = paragraphTags[middlePosition];
+        targetElement.insertAdjacentElement('afterend', renderedFeaturedAd);
+        console.log('Rendered Featured Ad:', renderedFeaturedAd);
+      }
 
 
   
@@ -161,6 +189,10 @@ const ArticlePage = () => {
         }
       });
 
+
+
+
+
       return (
         <div className='article-body'>
           <div dangerouslySetInnerHTML={{ __html: modifyLinkTargets(doc.body.innerHTML) }} />
@@ -171,7 +203,6 @@ const ArticlePage = () => {
     return null;
   };
 
-  // Modify the link targets to open in a new window
   const modifyLinkTargets = (content) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(content, 'text/html');
@@ -198,7 +229,6 @@ const ArticlePage = () => {
                   <img src={article.image} alt="Article" className='article-image' />
                 </div>
                 <div className='read-article'>
-                 {/* Add the ShareButton component */}
                  <ShareButton articleTitle={article.title} articleUrl={`/article/${category}/${articleId}`} className='external-share'/>                
                 {renderArticleContent()}
                 </div>
