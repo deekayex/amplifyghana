@@ -26,7 +26,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 1%;
-  padding-left: 60px;
+  padding-left: 10px;
   background-color: black;
   width: 30%;
   position: static;
@@ -34,8 +34,7 @@
 }
 
 .admin-pages{
-  /* background-color: aqua; */
-  width: 70% ;
+  width: 100% ;
 }
 
 .sign-out{

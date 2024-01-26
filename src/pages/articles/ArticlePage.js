@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { database } from '../../firebase/firebase';
-import DOMPurify from 'dompurify'; // Import DOMPurify
+import DOMPurify from 'dompurify';
 import './ArticlePage.css';
 import LoadingScreen from '../../context/loading/LoadingScreen';
 import ArticleSide from '../../components/ArticleSide';
@@ -124,11 +124,12 @@ const ArticlePage = () => {
 
   const renderArticleContent = () => {
     if (article) {
-      // Use DOMPurify to sanitize and render HTML content
+      
       const sanitizedContent = DOMPurify.sanitize(article.content, {
-        ADD_ATTR: ['target'], // Allow adding 'target' attribute
-        FORBID_TAGS: ['script'], // Forbid script tags
+        ADD_TAGS: ['iframe'],
+        ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling']
       });
+
   
       const parser = new DOMParser();
       const doc = parser.parseFromString(sanitizedContent, 'text/html');
