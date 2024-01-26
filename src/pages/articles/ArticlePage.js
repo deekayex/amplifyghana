@@ -124,8 +124,11 @@ const ArticlePage = () => {
 
   const renderArticleContent = () => {
     if (article) {
-      // Use DOMPurify to sanitize and render HTML content
-      const sanitizedContent = article.content; // Remove DOMPurify
+      
+      const sanitizedContent = DOMPurify.sanitize(article.content, {
+        ADD_TAGS: ['iframe'],
+        ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling']
+      });
 
   
       const parser = new DOMParser();
