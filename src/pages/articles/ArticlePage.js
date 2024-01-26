@@ -124,7 +124,7 @@ const ArticlePage = () => {
 
   const renderArticleContent = () => {
     if (article) {
-      
+
       const sanitizedContent = DOMPurify.sanitize(article.content, {
         ADD_TAGS: ['iframe'],
         ADD_ATTR: ['allow', 'allowfullscreen', 'frameborder', 'scrolling']
@@ -190,6 +190,26 @@ const ArticlePage = () => {
           image.parentNode.replaceChild(container, image);
         }
       });
+
+      doc.querySelectorAll('iframe').forEach((iframe) => {
+              // Create a container for the iframe
+        const container = document.createElement('div');
+        container.style.display = 'flex';
+        container.style.flexDirection = 'column';
+        // Add additional styles as needed
+
+        // Append the iframe to the container
+        const styledIframe = iframe.cloneNode(true);
+        // Apply styles to the iframe as needed
+        styledIframe.style.margin = '0';
+        styledIframe.style.padding = '0';
+        styledIframe.style.maxWidth ='90vw';
+
+        container.appendChild(styledIframe);
+
+        // Replace the original iframe with the container
+        iframe.parentNode.replaceChild(container, iframe);
+        });
 
 
 
