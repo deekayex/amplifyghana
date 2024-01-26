@@ -8,6 +8,7 @@
   margin-bottom: 0;
   margin-right: 0;
   padding-bottom: 10vh;
+  min-height: 2000px;
   justify-content: center;
 }
 
@@ -18,9 +19,9 @@
 }
 
 .article-main{
-  width: 60vw;
+  width: 60%;
   max-width: 100vw;
-  margin-left: 5%;
+  margin-left: 10%;
   padding-top: 12vh;
   z-index: 2;
   position: relative;
@@ -127,7 +128,7 @@
   padding-top: 2vh;
   top: 15%;
   width: 15vw;
-  min-width: 180px;
+  /* min-width: 180px; */
   position: sticky;
   right: 10%;
   height: 90vh;
@@ -168,6 +169,7 @@
   background-size: cover;
   width: 100%;
   min-width: 150px;
+  min-height: 100px;
   margin-left: 10%;
   height: 20vh;
   position: relative;

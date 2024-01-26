@@ -20,11 +20,11 @@
 }
 
 .connect-social{
-  height: 5vh;
-  margin-top: 2vh;
+  height: auto;
   display: flex;
-  justify-content: space-between;
+  margin-top: 2vh; 
   background-color: rgb(252, 254, 255);
+  align-items: center;
 }
 
 
@@ -70,12 +70,12 @@
 
 
 .tiktok, .instagram, .twitter, .email{
-  height: 100%;
   object-fit: contain;
   opacity: 0.6;
   transition: 0.5s;
   border:solid;
   border-color: rgb(16, 16, 17);
+  height: 5vh;
 }
 
 .twitter{
@@ -139,10 +139,16 @@ border: none;
 
   .connect-social-media, .connect-social-media-insta, .connect-social-x{
     font-size: 1.2rem;
+    
+    
   }
 
   .connect-social-mail{
     font-size: 1rem;
+  }
+
+  .connect-social-x{
+    padding-top: 5px;
   }
 
 
