@@ -1,7 +1,5 @@
 import React from 'react'
 import {
-  EmailIcon,
-  EmailShareButton,
   FacebookIcon,
   FacebookShareButton,
   TelegramIcon,
@@ -18,7 +16,7 @@ const Share = ({articleTitle, articleUrl}) => {
     <div className='share-socials'>
       <div className='share-text'>Share on</div>
       <div className='shareable-socials'> 
-           <WhatsappShareButton title={articleTitle} url={articleUrl}>
+           <WhatsappShareButton title={articleTitle} url={`amplifyghana/${articleUrl}.com`}>
       <WhatsappIcon className='share-icon'/>
     </WhatsappShareButton>
 
