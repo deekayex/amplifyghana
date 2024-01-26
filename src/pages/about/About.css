@@ -35,7 +35,7 @@
     margin-left: 10%;
     padding-top: 2%;
     padding-bottom: 2%;
-    max-width: 90%;
+    max-width: 99%;
     width: 80%;
     border-radius: 20px 20px 20px 20px;
     letter-spacing: 1px;
@@ -218,9 +218,11 @@
     .top_box{
         width: 100%;
         background-color: black;
+        margin-bottom: 0;
     }
+    
     .box_container{
-       gap: 15px;
+       gap: 10px;
     }
     .box_1, .box_2, .box_3{
         width: 48%;
@@ -238,17 +240,27 @@
     }
 
     .top_box{
-        width: 90vw;
-        margin-left: 5%;
-    }
-
-    .top_box{
+        width: 95%;
+        margin-left: 2.5%;
         font-size: 1rem;
         line-height: 2.2vh;
+        padding: 10px;
+        margin-right: 0;
     }
 
     .about_us_page{
         margin-bottom: 0;
+    }
+
+    .about_top{
+        /* background-color: blue; */
+        height: auto;
+        margin-bottom: 10vh;
+    }
+
+    .about_body{
+        /* background-color: aqua; */
+        margin-top: 0;
     }
 
     .body_box{
@@ -260,11 +272,14 @@
         /* padding-bottom: 20vh; */
     }
     .previous-button{
-        left: 10px;
-    }
+        left: 0;}
 
     .next-button{
-        right: 10px;
+        right: 0;
+    }
+
+    .about_socials{
+        margin-top: 10vh;
     }
 
     .about-socials{
