@@ -362,6 +362,7 @@
     font-size: 2vh;
     text-decoration:overline;
     color: #121111;
+    text-transform: uppercase;
   }
 
   .article-description:hover{

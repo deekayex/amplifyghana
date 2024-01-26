@@ -133,7 +133,6 @@ const ArticleSide = () => {
           {highlightedPlaylists.map((playlist) => (
           <div key={playlist.id} className='aside-playlist'>
             <a href={playlist.link} target='_blank' rel='noopener noreferrer'>
-            {/* <button className='playlist-button' onClick={()=> window.open(playlist.link, '_blank')}>Listen</button> */}
               <img src={playlist.imageUrl} alt={playlist.title} className='aside-playlist-image' />
             </a>
           </div>
