@@ -1,7 +1,7 @@
 import React from 'react'
 import './Blank.css'
 import { Link } from 'react-router-dom'
-import Socials from '../components/socials/Socials'
+import Socials from '../../components/socials/Socials'
 
 const Blank = () => {
   return (

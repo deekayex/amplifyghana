@@ -247,8 +247,8 @@
     width: 43vw;
     height: 20vh;
     min-width: 100px;
-    border-radius: 20px;
-
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
    }
 
    .page-contents{
