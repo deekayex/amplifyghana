@@ -132,7 +132,7 @@
   position: sticky;
   right: 10%;
   height: 90vh;
-  background-color: #FDFCFA;
+  background-color: #fdfcfacc;
   z-index: 2;
 }
 
@@ -140,7 +140,8 @@
   margin-bottom: 20px;
   font-family: "Goldman", sans-serif;
   text-align: center;
-  font-size: 2.2vh;
+  width: 100%;
+  font-size: 2.1vh;
   text-transform: uppercase;
 }
 
@@ -170,7 +171,6 @@
   width: 100%;
   min-width: 150px;
   min-height: 100px;
-  margin-left: 10%;
   height: 20vh;
   position: relative;
   border-top-right-radius: 30px;

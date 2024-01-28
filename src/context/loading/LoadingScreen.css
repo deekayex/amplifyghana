@@ -151,12 +151,13 @@
 
 @media screen and (max-width: 1000px) {
   .news_playlist_container{
-    height: 20vh;
+    height: 40vh;
   }
 }
 
 .playlist-image-skeleton{
   animation: skeleton-playlist-image 1s linear infinite alternate;
+  
 
 }
 
@@ -172,6 +173,7 @@
 
 .playlsit-text-skeleton{
   animation: skeleton-playlist-text 1s linear infinite alternate;
+  height: 40vh;
 }
 
 @keyframes skeleton-playlist-text {

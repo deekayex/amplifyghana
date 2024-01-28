@@ -14,8 +14,6 @@ import Submissions from "./pages/submissions/Submissions";
 import LoginPage from "./pages/login/Login";
 import ArticlePage from "./pages/articles/ArticlePage";
 import Admin from "./pages/admin/Admin";
-import Messages from "./components/messages/Messages";
-
 import AdminPosts from "./components/AdminPosts";
 import UpdatePlaylists from "./components/UpdatePlaylists";
 import Footer from "./components/footer/Footer";
@@ -24,10 +22,10 @@ import PlaylistList from "./pages/admin-pages/PlaylistList";
 import TopPicksPage from "./pages/admin-pages/TopPicksPage";
 
 import HighlightPlaylist from "./pages/admin-pages/HighlightPlaylist";
-import Blank from "./pages/Blank";
-import React,{ useState, useEffect } from "react";
+import Blank from "./pages/blank/Blank";
+import React from "react";
 import FeatureAd from "./pages/admin-pages/FeatureAd";
-import EmbeddedDoc from "./components/EmbeddedDoc";
+
 
 
 
@@ -39,7 +37,6 @@ function App() {
         <Navbar/>
         {/* <NavigationControl /> */}
           <Routes>
-            <Route path="/load" element = {<EmbeddedDoc/>}/>
              <Route path="/" exact element={<HomePages/>} />
              <Route path="home" exact element={<Home/>}/>
              <Route path="news" element={<News/>} />
@@ -58,6 +55,8 @@ function App() {
              <Route path="top-playlist" element={<HighlightPlaylist/>} />
              <Route path="featured-ad" element={<FeatureAd/>}/>
              </Route>
+
+
               {/* No path specified for NotFound component */}
             <Route path="*"  element={<Blank/>} />  
           </Routes>

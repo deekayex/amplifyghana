@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { database } from '../../firebase/firebase';
 import DOMPurify from 'dompurify';
@@ -11,7 +12,7 @@ import Connect from '../../components/connect/Connect';
 import { useLocation } from 'react-router-dom';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
 
-const ShareButton = ({ articleTitle, articleUrl }) => {
+const ShareButton = ({ articleTitle, articleUrl, articleImageSrc }) => {
   const handleShare = () => { 
     if (navigator.share) {
       navigator.share({
@@ -28,16 +29,18 @@ const ShareButton = ({ articleTitle, articleUrl }) => {
 
   return (
     <div className="share-container">
+      <Helmet>
+        <title>{articleTitle}</title>
+        <meta name="description" content={articleTitle} />
+      
+        {articleImageSrc && <meta property="og:image" content={articleImageSrc} />}
+      </Helmet>
       <div className="share-social">
-        <Share articleTitle ={articleTitle} articleUrl={articleUrl}/>
+        <Share articleTitle={articleTitle} articleUrl={articleUrl} />
       </div>
       <button className="share-button" onClick={handleShare}>
-      <img
-          src={process.env.PUBLIC_URL + "/share.svg"} 
-          alt="Share This Article" className='share-icon'/>
-          
+        <img src={process.env.PUBLIC_URL + '/share.svg'} alt="Share This Article" className="share-icon" />
       </button>
-      
     </div>
   );
 };
@@ -252,7 +255,7 @@ const ArticlePage = () => {
                   <img src={article.image} alt="Article" className='article-image' />
                 </div>
                 <div className='read-article'>
-                 <ShareButton articleTitle={article.title} articleUrl={`/article/${category}/${articleId}`} className='external-share'/>                
+                 <ShareButton articleTitle={article.title} articleUrl={`/article/${category}/${articleId}`} articleImageSrc={article.image} className='external-share'/>                
                 {renderArticleContent()}
                 </div>
                 

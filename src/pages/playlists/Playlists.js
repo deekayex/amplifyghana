@@ -6,13 +6,15 @@ import { collection, getDocs, deleteDoc, doc, orderBy, query } from '@firebase/f
 import LoadingPlaylists from '../../context/loading/PlayListLoad/LoadingPlaylists';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
 
-// Constant for the button text
+
 const PLAYLIST_BUTTON_TEXT = 'LISTEN';
 
 const Playlists = ({ isPlayListManager }) => {
   const [playlists, setPlaylists] = useState([]);
-  const [user, setUser] = useState(null); // State to track the authenticated user
+  const [user, setUser] = useState(null); 
   const [isLoading, setIsLoading] = useState(true);
+  const [expandedPlaylistIds, setExpandedPlaylistIds] = useState([]);
+  const [textLimit, setTextLimit] = useState(700);
 
   useEffect(() => {
     const auth = getAuth();
@@ -20,8 +22,7 @@ const Playlists = ({ isPlayListManager }) => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
-
-    return () => unsubscribe(); // Cleanup the subscription when the component unmounts
+    return () => unsubscribe(); 
   }, []);
 
   useEffect(() => {
@@ -44,7 +45,7 @@ const Playlists = ({ isPlayListManager }) => {
       }
     };
 
-    fetchPlaylists(); // Fetch playlists when the component mounts
+    fetchPlaylists(); 
   }, []);
 
   const handleDeletePlaylist = async (id) => {
@@ -54,12 +55,43 @@ const Playlists = ({ isPlayListManager }) => {
     setPlaylists((prevPlaylists) => prevPlaylists.filter((playlist) => playlist.id !== id));
   };
 
+  useEffect(() => {
+    const handleResize = () => {
+
+      setTextLimit(window.innerWidth >= 900 ? 700 : 255);
+    };
+
+    
+
+    // Add event listener for window resize
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handleTogglePlaylist = (id) => {
+    setExpandedPlaylistIds((prevIds) => {
+      if (prevIds.includes(id)) {
+        return prevIds.filter((prevId) => prevId !== id);
+      } else {
+        return [...prevIds, id];
+      }
+    });
+  };
+
   const handleListenButtonClick = (link) => {
     // Handle redirection when "LISTEN" button is clicked
     window.open(link, '_blank');
   };
 
-  return (
+  const handleShowLess = (id) => {
+    setExpandedPlaylistIds((prevIds) => prevIds.filter((prevId) => prevId !== id));
+  };
+
+ return (
     <div className='playlist-page'>
       <ScrollToTopOnMount/>
       <div className='space' />
@@ -80,7 +112,26 @@ const Playlists = ({ isPlayListManager }) => {
                   <img src={playlist.image} alt={playlist.altText} className='picture' />
                 </div>
                 <div className='playlist_text'>
-                  {playlist.summary}
+                {expandedPlaylistIds.includes(playlist.id) ? (
+                    <>
+                      {playlist.summary}
+                      {playlist.summary.length >= textLimit && (
+                        <button className='show-less' onClick={() => handleShowLess(playlist.id)}>
+                          Show Less
+                        </button>
+                      )}
+                    </>
+                  ) : (
+
+                    <>
+                      {playlist.summary.slice(0, textLimit)}{' '}
+                      {playlist.summary.length >= textLimit && (
+                        <button className='read-more' onClick={() => handleTogglePlaylist(playlist.id)}>
+                          Click for more
+                        </button>
+                      )}
+                    </>
+                  )}
                   <button className='playlist_button' onClick={() => handleListenButtonClick(playlist.link)}>
                     {PLAYLIST_BUTTON_TEXT}
                   </button>

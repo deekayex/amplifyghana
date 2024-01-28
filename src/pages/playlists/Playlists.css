@@ -33,7 +33,7 @@
 
 .playlist_component{
     width: 80%;
-    height: 30vh;
+    height: auto;
     margin-left: 10%;
     margin-top: 2%;
     display: flex;
@@ -47,6 +47,7 @@
 .playlist_image{
     width: 20vw;
     height: auto;
+    min-height: 20vh;
     border-radius: 20px 20px 20px 20px;
     border: none;
     /* background-color: black; */
@@ -54,7 +55,7 @@
 
 .playlist_text{
     flex: 1;
-    height: 100%;
+    height: auto;
     width: 60vw;
     background-color: black;
     width: 6;
@@ -64,7 +65,9 @@
     line-height: 2.5vh;
     font-size: 1.3rem;
     position: relative;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .picture{
@@ -74,9 +77,6 @@
 }
 
 .playlist_button{
-    position: absolute;
-    bottom: 5%;
-    left: 2%;
     border-radius: 20px 20px 20px 20px;
     width: 15%;
     height: 10%;
@@ -102,9 +102,23 @@
 }
 
 
+.read-more, .show-less{
+    background: none;
+    color: white;
+    border: none;
+    text-decoration: underline;
+    opacity: 0.7;
+}
+
+
+.read-more:hover, .show-less:hover{
+    cursor: pointer;
+    opacity: 1;
+}
+
+
 @media screen and (max-width: 1025px)  and (min-height: 1360px){
     .playlist_component{
-        height: 20vh;
         width: 95%;
         margin-left: 2.5%;
     } 
@@ -119,7 +133,6 @@
 
 @media screen and (max-width: 1023px) {
     .playlist_component{
-        height: 20vh;
         width: 95%;
         margin-left: 2.5%;
     } 
@@ -143,7 +156,7 @@
 
     }
     .playlist_component{
-        height: 140px;
+        /* height: 140px; */
         margin-bottom: 2vh;
     }
 
@@ -152,8 +165,12 @@
     }
 
     .playlist_text{
+        font-size: 2vw;
+        line-height: 2vh;
+    }
+
+    .read-more, .show-less{
         font-size: 1.7vw;
-        line-height: 1.7vh;
     }
 
     .playlist_button{

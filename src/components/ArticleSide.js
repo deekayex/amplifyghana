@@ -124,7 +124,7 @@ const ArticleSide = () => {
           </Link>
           <div className='aside-article-side'>
           <Link to={editorsLink} className='article-description'>{highlightedEditors ? highlightedEditors.title : ''}</Link>
-          <Link to="/editors-pick" className='link-to-section'>
+          <Link to="/#editors-pick" className='link-to-section'>
             See more Editor's Picks</Link>
             </div>
         </div>
