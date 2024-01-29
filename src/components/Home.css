@@ -19,15 +19,20 @@
     background-position: center;
     position: relative; 
     opacity: 0.95;
-    transition: 0.5s ease;
+    transition: 0.5s ease-in-out;
 }
 
 
 .left-homepage:hover, .news-component:hover{
     cursor: pointer;
     opacity: 1;
-    transition: 0.5s ease;
     background-position: right;
+    background-position: center center;
+    transition: 0.5s ease-in-out;
+}
+
+.left-homepage:hover{
+    background-position: bottom;
 }
 
 
@@ -112,12 +117,6 @@
     position: relative;
     opacity: 0.9;
     transition: 0.5s ease;
-}
-
-
-.news-component:hover{
-    background-position: center center;
-    transition: 0.5s ease-in-out;
 }
 
 
