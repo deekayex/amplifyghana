@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import './Home.css';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import { database } from '../firebase/firebase';
@@ -69,6 +69,7 @@ function Home() {
       {loading && <LoadingHome />}
       <div className='homepage-contents'>
         {(highlightedEditors && !loading) && (
+          <Suspense fallback={<div>Loading...</div>}>
           <Link to={editorsLink} className='left-homepage' style={{ backgroundImage: `url(${highlightedEditors.image || ''})` }}>
             <div className='editor'>
               <Link to="#/editors-pick" className='sticker'>
@@ -80,9 +81,11 @@ function Home() {
               <p className='editor-text-body'>{highlightedEditors.summary}</p>
             </div>
           </Link>
+          </Suspense>
         )}
         <div className='right-homepage'>
           {(highlightedNews && !loading) && (
+             <Suspense fallback={<div>Loading...</div>}>
             <Link to={newsLink} className='news-component' style={{ backgroundImage: `url(${highlightedNews.image || ''})` }}>
               <div className='editor'>
                 <Link to='/news' className='sticker'>
@@ -94,9 +97,11 @@ function Home() {
                 <p className='news-text-body'>{highlightedNews.summary || ''}</p>
               </div>
             </Link>
+            </Suspense>
           )}
 
           {highlightedPlaylists.map((playlist) => (
+            <Suspense key={playlist.id} fallback={<div>Loading...</div>}>
             <div key={playlist.id} className='playlist-component'>
               <a href={playlist.link} target='_blank' rel='noopener noreferrer'>
                 <div className='playlist-text'>
@@ -110,13 +115,16 @@ function Home() {
                 <img src={playlist.imageUrl} alt={playlist.title} className='highlighted-playlist-image' />
               </a>
             </div>
+            </Suspense>
           ))}
         </div>
       </div>
       <div className='bottom-homepage'>
-        {newFeaturedAd.map((ad) => (
-          <FeaturedAd key={ad.id} ad={ad} />
-        ))}
+      <Suspense fallback={<div>Loading...</div>}>
+          {newFeaturedAd.map((ad) => (
+            <FeaturedAd key={ad.id} ad={ad} />
+          ))}
+        </Suspense>
       </div>
     </div>
   );
