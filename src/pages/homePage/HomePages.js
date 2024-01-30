@@ -3,6 +3,7 @@ import './HomePages.css';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import Socials from '../../components/socials/Socials';
 import Home from '../../components/Home';
+import LoadingHome from '../../context/loading/HomeLoad/LoadingHome';
 
 
 const News = lazy(() => import('../news/News'));
@@ -22,13 +23,9 @@ function HomePages() {
             </div>
             <div className='home-socials'><Socials/></div>
           </div>
-
-          <Home />
-
-          <Suspense fallback={<div>Loading...</div>}>
-            {/* Lazy-loaded News component */}
+          <Suspense fallback={<LoadingHome/>}>
+          <Home />       
             <News />
-            {/* Lazy-loaded EditorsPicks component */}
             <EditorsPicks />
           </Suspense>
 

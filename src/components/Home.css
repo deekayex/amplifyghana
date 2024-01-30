@@ -9,6 +9,16 @@
     height: 70vh;   
 }
 
+/* Styles for the LoadingComponent can be adjusted based on your requirements */
+.loading-container > div {
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
 
 .left-homepage{
     width: 46.7%;
@@ -20,6 +30,7 @@
     position: relative; 
     opacity: 0.95;
     transition: 0.5s ease-in-out;
+    background-image: url('/public/compressed-background.png');
 }
 
 
