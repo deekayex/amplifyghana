@@ -5,7 +5,7 @@ import { database } from '../../firebase/firebase';
 import { collection, getDocs, deleteDoc, doc, orderBy, query } from '@firebase/firestore';
 import LoadingPlaylists from '../../context/loading/PlayListLoad/LoadingPlaylists';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
-
+import Blurhash from 'blurhash';
 
 const PLAYLIST_BUTTON_TEXT = 'LISTEN';
 
@@ -109,7 +109,7 @@ const Playlists = ({ isPlayListManager }) => {
                   </button>
                 )}
                 <div className='playlist_image'>
-                  <img src={playlist.image} alt={playlist.altText} className='picture' />
+                  <img src={playlist.image} alt={playlist.altText} className='picture' loading='lazy' />
                 </div>
                 <div className='playlist_text'>
                 {expandedPlaylistIds.includes(playlist.id) ? (

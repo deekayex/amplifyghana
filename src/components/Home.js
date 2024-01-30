@@ -16,7 +16,12 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [highlightedNewsDoc, highlightedEditorsDoc, playlistsSnapshot, featuredAdSnapshot] = await Promise.all([
+        const [
+          highlightedNewsDoc,
+          highlightedEditorsDoc,
+          playlistsSnapshot,
+          featuredAdSnapshot,
+        ] = await Promise.all([
           getDoc(doc(database, 'highlighted', 'highlightedNews')),
           getDoc(doc(database, 'highlighted', 'highlightedEditors')),
           getDocs(collection(database, 'Playlisthighlights')),
@@ -58,7 +63,7 @@ function Home() {
 
     fetchData();
   }, []);
-
+  
   const editorsLink = highlightedEditors ? `/article/editors-picks/${highlightedEditors.id}` : '';
   const newsLink = highlightedNews ? `/article/news/${highlightedNews.id}` : '';
  
