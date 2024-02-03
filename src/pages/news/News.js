@@ -166,7 +166,7 @@ useEffect(() => {
       <div className='spacer' />
       <div className='page-header'>
         <img src={process.env.PUBLIC_URL + '/newspaper-folded.png'} alt='News icon' className='news-icon' />
-        NEWS
+        <h1>NEWS</h1>
       </div>
 
       <div className='flex-contents'>
@@ -199,7 +199,7 @@ useEffect(() => {
                         )}
                       </div>
                         <div className='content-text'>
-                          <p className='content-text-header'>{article.title}</p>
+                          <h2 className='content-text-header'>{article.title}</h2>
                           <p className='content-text-body'>{article.summary}</p>
                         </div>
                       </div>

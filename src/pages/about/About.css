@@ -14,7 +14,7 @@
     height: 25%;
 }
 
-.top_header, .body_header, .box_text_header, .about-socials-header{
+ .box_text_header{
     text-transform: uppercase;
     margin-top: 2px;
     font-family: 'Goldman', sans-serif;
@@ -73,6 +73,7 @@
     padding-top: 3vh;
     padding-bottom: 1vh;
     font-size: 1.522vw;
+    text-align: left;
 }
 
 .box_text_body{

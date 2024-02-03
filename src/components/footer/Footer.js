@@ -12,7 +12,7 @@ const Footer = () => {
         <img
           src={process.env.PUBLIC_URL + "/amplifyghlogo.png"}
           alt="Amplify logo"
-          className="logo-footer"
+          className="logo-footer" aria-label="link-to-home-page"
         />
       </NavLink>
       </div>
@@ -24,40 +24,35 @@ const Footer = () => {
         <div className='footer-links'>
             <li className="footer-nav__item">
               <Link
-      
-                to="/#news" className='footer-link'>
+                to="/#news" className='footer-link' aria-label="link-to-news-page">
                 NEWS
               </Link>
             </li>
 
             <li className="footer-nav__item">
               <Link
-      
-                to="/#editors-pick" className='footer-link'>
+                to="/#editors-pick" className='footer-link' aria-label="link-to-editors-page">
                 EDITOR'S PICKS
               </Link>
             </li>
 
             <li className="footer-nav__item" >
               <Link
-      
-                to="/playlists#playlists" className='footer-link'>
+                to="/playlists#playlists" className='footer-link' aria-label="link-to-playlists-page">
                 PLAYLISTS
               </Link>
             </li>
 
             <li className="footer-nav__item">
               <Link
-      
-                to="/submissions#submissions" className='footer-link'>
+                to="/submissions#submissions" className='footer-link' aria-label="link-to-submissions-page">
                 SUBMISSIONS
               </Link>
             </li>
 
             <li className="footer-nav__item">
               <Link
-      
-                to="/about#about" className='footer-link'>
+                to="/about#about" className='footer-link' aria-label="link-to-about-page">
                 ABOUT US
               </Link>
             </li>

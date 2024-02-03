@@ -96,6 +96,7 @@
   letter-spacing: 0.5vw;
   margin-bottom: 20px;
   text-transform: uppercase;
+  font-family: 'Monument Extended';
 }
 
 .article-image-container{
@@ -121,14 +122,12 @@
   font-size: 1.5rem;
   width: 90%;
   margin-left: 5%;
-  /* background-color: #FF7300; */
 }
 
 .article-aside{
   padding-top: 2vh;
   top: 15%;
   width: 15vw;
-  /* min-width: 180px; */
   position: sticky;
   right: 10%;
   height: 90vh;
@@ -175,6 +174,7 @@
   position: relative;
   border-top-right-radius: 30px;
   border-top-Left-radius:30px ;
+  background-position: center;
 }
 
 .article-title-text{

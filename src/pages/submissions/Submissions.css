@@ -28,7 +28,6 @@
 }
 
 .submission-form{
-    /* background-color: yellow; */
     height: 50vh;
     width: 100%;  
     position: relative; 
@@ -94,6 +93,11 @@
     position: absolute;
     top: 0%;
     left: 20%;
+    text-shadow: 0px 2px 4px rgba(252, 246, 246, 0.642);
+}
+
+.input-email, .input-name, .input-phone, .message-box{
+    text-transform: none;
 }
 
 @media screen and (min-width: 1020px) and (max-height: 700px) {

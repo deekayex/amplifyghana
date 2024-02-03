@@ -19,6 +19,7 @@ const ShareButton = ({ articleTitle, articleUrl, articleImageSrc }) => {
         title: articleTitle,
         text: 'Check out this article!',
         url: articleUrl,
+        image: articleImageSrc
       })
         .then(() => console.log('Successful share'))
         .catch((error) => console.log('Error sharing', error));
@@ -30,10 +31,9 @@ const ShareButton = ({ articleTitle, articleUrl, articleImageSrc }) => {
   return (
     <div className="share-container">
       <Helmet>
-        <title>{articleTitle}</title>
+        <title>{articleTitle}- Amplify Ghana</title>
         <meta name="description" content={articleTitle} />
-      
-        {articleImageSrc && <meta property="og:image" content={articleImageSrc} />}
+        {articleImageSrc && <meta property="og:image" content={articleImageSrc}/>}
       </Helmet>
       <div className="share-social">
         <Share articleTitle={articleTitle} articleUrl={articleUrl} />

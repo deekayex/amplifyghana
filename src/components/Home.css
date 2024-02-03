@@ -82,6 +82,7 @@
 
 .editor-text-body, .editor-text-header,.news-text-header, .news-text-body{
     margin: 10px;
+    text-align: left;
 }
 
 .news-sticker{
@@ -90,7 +91,7 @@
 
 
 .editor-text-header{
-    font-size: 2.6vw;
+    font-size: 2.4vw;
     font-family: 'Monument Extended';
     color: #FF7300;
     margin-bottom: 0;
@@ -106,6 +107,10 @@
     font-weight: 400;
     margin-top: 0;
     padding-top: 0;
+}
+
+.editor-text-body{
+    font-size: 1.2vw;
 }
 
 
