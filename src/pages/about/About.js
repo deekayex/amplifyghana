@@ -2,15 +2,23 @@ import React from 'react'
 import './About.css'
 import BoxContainer from '../../components/BoxText'
 import ScrollToTopOnMount from '../../components/ScrollToTop'
+import { Helmet } from 'react-helmet'
 
 
 const About = () => {
   return (
     <section className='about_us_page' id='about'>
+         <Helmet>
+        <title>About Us | Amplify Ghana</title>
+        <meta name="description" content= "Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered." />
+        <meta property="og:image" content={'public/sharelogo.jpg'}/>
+      </Helmet>
         <ScrollToTopOnMount/>        
         <div className='about_top'>
+            
             <div className='top_header'>
-                about amplify ghana
+                <h1>about amplify ghana</h1>
+                
             </div>
             <div className='top_box'>
                 AMPLIFY GHANA IS AN ONLINE CREATIVE’S 
@@ -23,14 +31,15 @@ const About = () => {
         </div>
         <div className='about_body'>
             <div className='body_header'>
-                services we offer
+                <h1>services we offer</h1>
             </div>
             <div className='body_box'>
                 <BoxContainer/>
                 </div>
 
                 <div className='about_socials'>
-                    <div className='about-socials-header'>Our socials</div>                       
+                    <div className='about-socials-header'>
+                        <h1>Our socials</h1></div>                       
                         <div className='about-us-socials'>
                             <div className='about-socials'>
                                 <div className='about-social-icon'>

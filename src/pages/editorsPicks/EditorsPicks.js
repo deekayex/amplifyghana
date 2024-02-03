@@ -176,7 +176,7 @@ useEffect(() => {
       <div className='editor_space' />
       <div className='page-header'>
         <img src={process.env.PUBLIC_URL + '/newspaper-folded.png'} alt='News icon' className='news-icon' />
-        Editor's Picks
+        <h1>Editor's Picks</h1>
       </div>
 
       <div className='flex-contents'>
@@ -209,7 +209,7 @@ useEffect(() => {
                         )}
                         </div>
                         <div className='content-text'>
-                          <p className='content-text-header'>{article.title}</p>
+                          <h2 className='content-text-header'>{article.title}</h2>
                           <p className='content-text-body'>{article.summary}</p>
                         </div>
                       </div>

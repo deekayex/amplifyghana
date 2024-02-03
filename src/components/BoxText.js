@@ -37,17 +37,20 @@ useEffect(() => {
   };
 }, []);
 
+// ...
+
 const boxesPerPage = screenWidth < 700 ? 2 : 3;
+const totalBoxSets = boxTexts.length;
+
+const adjustedTotalBoxSets = Math.ceil(totalBoxSets / boxesPerPage);
 const startIndex = currentBoxSet * boxesPerPage;
+
 const endIndex = startIndex + boxesPerPage;
 
-// Additional adjustment for smaller screens
-const totalBoxSets = Math.ceil(boxTexts.length / boxesPerPage);
-const adjustedCurrentBoxSet = currentBoxSet % totalBoxSets;
+const adjustedCurrentBoxSet = currentBoxSet % adjustedTotalBoxSets;
 
 return (
   <div className="box_container">
-
     <div className="box_controls">
       <div
         onClick={handlePreviousBoxSet}
@@ -58,24 +61,29 @@ return (
     </div>
 
     <div className="box_text">
-      {boxTexts[adjustedCurrentBoxSet].slice(startIndex, endIndex).map((boxData, index) => (
-        <div key={index} className={`box_${index + 1}`}>
-          <div className="box_text_header">{boxData.header}</div>
-          <div className="box_text_body">{boxData.body}</div>
-        </div>
+      {boxTexts.flatMap((boxSet, setIndex) => (
+        setIndex === adjustedCurrentBoxSet &&
+        boxSet.slice(startIndex, endIndex).map((boxData, index) => (
+          <div key={index} className={`box_${index + 1}`}>
+            <h2 className="box_text_header">{boxData.header}</h2>
+            <p className="box_text_body">{boxData.body}</p>
+          </div>
+        ))
       ))}
     </div>
 
     <div className="box_controls">
       <div
         onClick={handleNextBoxSet}
-        className={`next-button ${currentBoxSet === totalBoxSets ? 'disabled' : (!handleNextBoxSet)}`}
+        className={`next-button ${currentBoxSet === Math.floor(boxTexts.length / boxesPerPage) - 1 ? 'disabled' : ''}`}
       >
         <span>&#10095;</span>
       </div>
     </div>
   </div>
 );
+
+
 };
 
 export default BoxContainer;

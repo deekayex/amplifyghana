@@ -5,6 +5,7 @@ import { database } from '../firebase/firebase';
 import { collection, doc, getDoc, getDocs } from '@firebase/firestore';
 import LoadingHome from '../context/loading/HomeLoad/LoadingHome';
 import FeaturedAd from './FeaturedAd';
+import { Helmet } from 'react-helmet';
 
 function Home() {
   const [highlightedNews, setHighlightedNews] = useState(null);
@@ -71,18 +72,23 @@ function Home() {
 
   return (
     <div className='homepage-components'>
+       <Helmet>
+        <title>Amplify Ghana | Promoting African Creatives | PR Agency | Music and Entertainment News</title>
+        <meta name="description" content= "Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered." />
+        <meta property="og:image" content={'public/sharelogo.jpg'}/>
+      </Helmet>
       {loading && <LoadingHome />}
       <div className='homepage-contents'>
         {(highlightedEditors && !loading) && (
           <Suspense fallback={<div>Loading...</div>}>
-          <Link to={editorsLink} className='left-homepage' style={{ backgroundImage: `url(${highlightedEditors.image || ''})` }}>
+          <Link to={editorsLink} className='left-homepage' aria-label="link-to-featured-editors-pick" style={{ backgroundImage: `url(${highlightedEditors.image || ''})` }}>
             <div className='editor'>
-              <Link to="#/editors-pick" className='sticker'>
-                EDITOR'S PICKS
+              <Link to="#/editors-pick" aria-label="link-to-editors-page" className='sticker'>
+                <h3>EDITOR'S PICKS</h3>
               </Link>
             </div>
             <div className='editor-text'>
-              <p className='editor-text-header'>{highlightedEditors.title || 'Loading...'}</p>
+              <h2 className='editor-text-header'>{highlightedEditors.title || 'Loading...'}</h2>
               <p className='editor-text-body'>{highlightedEditors.summary}</p>
             </div>
           </Link>
@@ -91,14 +97,14 @@ function Home() {
         <div className='right-homepage'>
           {(highlightedNews && !loading) && (
              <Suspense fallback={<div>Loading...</div>}>
-            <Link to={newsLink} className='news-component' style={{ backgroundImage: `url(${highlightedNews.image || ''})` }}>
+            <Link to={newsLink} className='news-component' aria-label="link-to-featured-news" style={{ backgroundImage: `url(${highlightedNews.image || ''})` }}>
               <div className='editor'>
-                <Link to='/news' className='sticker'>
-                  NEWS
+                <Link to='/news' aria-label="link-to-news-page" className='sticker'>
+                  <h3>NEWS</h3>
                 </Link>
               </div>
               <div className='news-text'>
-                <p className='news-text-header'>{highlightedNews.title || 'Loading...'}</p>
+                <h2 className='news-text-header'>{highlightedNews.title || 'Loading...'}</h2>
                 <p className='news-text-body'>{highlightedNews.summary || ''}</p>
               </div>
             </Link>
@@ -108,10 +114,10 @@ function Home() {
           {highlightedPlaylists.map((playlist) => (
             <Suspense key={playlist.id} fallback={<div>Loading...</div>}>
             <div key={playlist.id} className='playlist-component'>
-              <a href={playlist.link} target='_blank' rel='noopener noreferrer'>
+              <a href={playlist.link} target='_blank' rel='noopener noreferrer' aria-label="link-to-featured-playlist">
                 <div className='playlist-text'>
-                  <Link to='/playlists' className='sticker'>
-                    PLAYLISTS
+                  <Link to='/playlists' className='sticker' aria-label="link-to-playlists-page">
+                    <h3>PLAYLISTS</h3>
                   </Link>
                 </div>
                 <button className='playlist-button' onClick={() => window.open(playlist.link, '_blank')}>

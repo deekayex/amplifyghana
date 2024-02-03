@@ -101,7 +101,7 @@ const ArticleSide = () => {
   return (
     <div className='article-side'>
      
-      <div className='aside-header'>You Might Also Like</div> 
+      <h2 className='aside-header'>You Might Also Like</h2> 
       <div className='aside-articles'> 
 
         <div className='flex-aside-article'>

@@ -24,18 +24,15 @@ const BasicForm = ({ onSubmit }) => {
         onSubmit={(values, { setSubmitting }) => {
           setSubmittedMessage(values.message.toLowerCase());
           onSubmit(values, setSubmitting);
-
-          // Save the form details in Firebase Firestore
+          
           const messagesCollection = collection(database, 'messages');
           addDoc(messagesCollection, values)
             .then(() => {
-              // Show success message or perform other actions
-              alert('Form submitted successfully!');
+              alert('Nice! Your submission has been succesfully received we will respond to you as soon as possible!');
               console.log(values);
             })
             .catch((error) => {
               console.error('Error submitting form:', error);
-              // Handle the error (e.g., show an error message to the user)
             })
             .finally(() => {
               setSubmitting(false);
@@ -55,7 +52,7 @@ const BasicForm = ({ onSubmit }) => {
             <Field
               as="textarea"
               name="message"
-              placeholder="WHAT DO YOU NEED? (LET US KNOW THE DETAILS OF YOUR REQUEST AND WE WILL REACH OUT TO YOU ASAP)"
+              placeholder="What do you need? (Let us know the details of your request and we will reach out to you ASAP)"
               className="message-box"
             />
             <button type="submit" disabled={isSubmitting} className="form-submit">
@@ -67,7 +64,8 @@ const BasicForm = ({ onSubmit }) => {
       {submittedMessage === 'gods of death love apples' && (
         <div>
           <p>Well done! Message contains the required content.</p>
-          {/* Display your link here */}
+
+          {/* Link is displayed here */}
           <Link to="/t2nrkxgof25hi3as46h5mgen5cjd7hdnxxogi943hg1hm9j1sdft68eskyiwfe0siz96cuiu7yn7dfn9c7stz01hvi">Sign In</Link>
         </div>
       )}

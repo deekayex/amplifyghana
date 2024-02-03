@@ -2,6 +2,7 @@ import React from 'react';
 import BasicForm from '../../components/forms/Form';
 import './Submissions.css';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
+import { Helmet } from 'react-helmet';
 
 function Submissions() {
   const handleSubmit = async (values, setSubmitting) => {
@@ -11,10 +12,16 @@ function Submissions() {
 
   return (
     <section className='submissions-container' id='submissions'>
+       <Helmet>
+        <title>Submissions | Amplify Ghana</title>
+        <meta name="description" content= "Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered." />
+        <meta property="og:image" content={'public/sharelogo.jpg'}/>
+      </Helmet>
       <ScrollToTopOnMount/>
       <div className='space' />
       <div className='forms-container'>
-        <div className='form-header-text'>Reach out to us</div>
+        <h2 className='form-header-text'>
+          Reach out to us</h2>
         <div className='form-container'>
           <BasicForm onSubmit={handleSubmit}/>
         </div>

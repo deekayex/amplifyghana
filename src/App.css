@@ -9,6 +9,18 @@ body{
     overflow-x: hidden;
 }
 
+h1{
+  font-size: 2vw;
+  text-transform: uppercase;
+  margin-top: 2px;
+  font-family: 'Goldman', sans-serif;
+  text-decoration: solid;
+}
+
+h2{
+  font-size: 2vh;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -38,3 +50,15 @@ html, body {
      margin-left: 15vw;
 }
 
+
+@media screen and (max-width: 1025px) {
+  h1{
+    font-size: 3vw;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  h1{
+    font-size: 2rem;
+  }
+}
