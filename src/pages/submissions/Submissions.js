@@ -15,7 +15,7 @@ function Submissions() {
        <Helmet>
         <title>Submissions | Amplify Ghana</title>
         <meta name="description" content= "Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered." />
-        <meta property="og:image" content={'public/sharelogo.jpg'}/>
+        <meta property="og:image" content={'/sharelogo.jpg'}/>
       </Helmet>
       <ScrollToTopOnMount/>
       <div className='space' />
