@@ -20,6 +20,7 @@
     "@uploadcare/blocks": "0.30.5",
     "@uploadcare/upload-client": "^6.12.1",
     "@vercel/analytics": "^1.1.2",
+    "@vercel/speed-insights": "^1.0.9",
     "axios": "^1.6.5",
     "babel-polyfill": "^6.26.0",
     "blurhash": "^2.0.5",
