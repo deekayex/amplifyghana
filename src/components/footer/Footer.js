@@ -57,6 +57,7 @@ const Footer = () => {
               </Link>
             </li>
         </div>
+        {/* <div><p>Social logos are obtained from freepiks</p></div> */}
         <div className='copyright'>© 2024 Amplify Ghana</div>
       </div>
     </div>
