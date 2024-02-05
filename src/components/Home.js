@@ -6,6 +6,7 @@ import { collection, doc, getDoc, getDocs } from '@firebase/firestore';
 import LoadingHome from '../context/loading/HomeLoad/LoadingHome';
 import FeaturedAd from './FeaturedAd';
 import { Helmet } from 'react-helmet';
+import { fetchDataWithCache } from '../context/cache/cacheUtils';
 
 function Home() {
   const [highlightedNews, setHighlightedNews] = useState(null);
@@ -23,10 +24,10 @@ function Home() {
           playlistsSnapshot,
           featuredAdSnapshot,
         ] = await Promise.all([
-          getDoc(doc(database, 'highlighted', 'highlightedNews')),
-          getDoc(doc(database, 'highlighted', 'highlightedEditors')),
-          getDocs(collection(database, 'Playlisthighlights')),
-          getDocs(collection(database, 'FeaturedAd')),
+          fetchDataWithCache('highlightedNewsCache', () => getDoc(doc(database, 'highlighted', 'highlightedNews'))),
+          fetchDataWithCache('highlightedEditorsCache', () => getDoc(doc(database, 'highlighted', 'highlightedEditors'))),
+          fetchDataWithCache('playlistsCache', () => getDocs(collection(database, 'Playlisthighlights'))),
+          fetchDataWithCache('featuredAdCache', () => getDocs(collection(database, 'FeaturedAd'))),
         ]);
 
         // Fetch and set highlightedNews
