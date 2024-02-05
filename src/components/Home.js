@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense } from 'react';
 import './Home.css';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import {  Link } from 'react-router-dom';
 import { database } from '../firebase/firebase';
 import { collection, doc, getDoc, getDocs } from '@firebase/firestore';
 import LoadingHome from '../context/loading/HomeLoad/LoadingHome';
@@ -44,6 +44,7 @@ function Home() {
           const articleDoc = await getDoc(articleRef);
           if (articleDoc.exists()) {
             setHighlightedEditors({ id: articleDoc.id, ...articleDoc.data() });
+            console.log(articleDoc.data);
           }
         }
 

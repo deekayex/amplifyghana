@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import HomePages from '../pages/homePage/HomePages';
 import {
-  BrowserRouter as Router,
-  Route,Routes,
   Link
 } from 'react-router-dom';
 import { database } from '../firebase/firebase';
