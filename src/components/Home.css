@@ -6,6 +6,7 @@
 
 .homepage-contents{
     display: flex;
+    height: 70vh;
     min-height: 560px;   
 }
 
