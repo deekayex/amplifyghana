@@ -6,7 +6,7 @@
 
 .homepage-contents{
     display: flex;
-    height: 70vh;
+    height: 40vw;
     min-height: 560px;   
 }
 
@@ -250,11 +250,11 @@
     text-decoration: underline;
 }
 
-@media screen and (min-width: 1600px) {
+/* @media screen and (min-width: 1400px) {
     .homepage-contents{
-        min-height: 80vh;
+        min-height: 100vh;
     }    
-}
+} */
 
 /* @media screen and (min-width: 1020px) and (max-height: 700px){
     .homepage-contents{
