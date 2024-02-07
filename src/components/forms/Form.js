@@ -26,9 +26,16 @@ const BasicForm = ({ onSubmit }) => {
           onSubmit(values, setSubmitting);
           
           const messagesCollection = collection(database, 'messages');
+
+          // Modify values object to include sender information
+          const senderName = values.name;
+          const contactNumber = values.phone;
+          values.senderName = senderName;
+          values.contactNumber = contactNumber;
+
           addDoc(messagesCollection, values)
             .then(() => {
-              alert('Nice! Your submission has been succesfully received we will respond to you as soon as possible!');
+              alert('Nice! Your submission has been successfully received. We will respond to you as soon as possible!');
               console.log(values);
             })
             .catch((error) => {
