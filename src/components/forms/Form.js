@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { database } from '../../firebase/firebase';
-import { collection, addDoc, doc } from '@firebase/firestore';
+import { collection, addDoc } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
 
 const BasicForm = ({ onSubmit }) => {
@@ -27,19 +27,13 @@ const BasicForm = ({ onSubmit }) => {
           
           const messagesCollection = collection(database, 'messages');
 
-          // Determine the document ID based on the provided information
-          let documentId = '';
-          if (values.name) {
-            documentId = values.name;
-          } else if (values.email) {
-            documentId = values.email;
-          } else {
-            documentId = values.phone;
-          }
+          // Modify values object to include sender information
+          const senderName = values.name;
+          const contactNumber = values.phone;
+          values.senderName = senderName;
+          values.contactNumber = contactNumber;
 
-          // Use the determined document ID to add the document
-          const messageDocRef = doc(messagesCollection, documentId);
-          addDoc(messageDocRef, values)
+          addDoc(messagesCollection, values)
             .then(() => {
               alert('Nice! Your submission has been successfully received. We will respond to you as soon as possible!');
               console.log(values);
