@@ -12,18 +12,18 @@ const PLAYLIST_BUTTON_TEXT = 'LISTEN';
 
 const Playlists = ({ isPlayListManager }) => {
   const [playlists, setPlaylists] = useState([]);
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedPlaylistIds, setExpandedPlaylistIds] = useState([]);
   const [textLimit, setTextLimit] = useState(700);
 
   useEffect(() => {
     const auth = getAuth();
-    
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
     });
-    return () => unsubscribe(); 
+    return () => unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ const Playlists = ({ isPlayListManager }) => {
       }
     };
 
-    fetchPlaylists(); 
+    fetchPlaylists();
   }, []);
 
   const handleDeletePlaylist = async (id) => {
@@ -58,11 +58,8 @@ const Playlists = ({ isPlayListManager }) => {
 
   useEffect(() => {
     const handleResize = () => {
-
       setTextLimit(window.innerWidth >= 900 ? 700 : 255);
     };
-
-    
 
     // Add event listener for window resize
     window.addEventListener('resize', handleResize);
@@ -92,18 +89,21 @@ const Playlists = ({ isPlayListManager }) => {
     setExpandedPlaylistIds((prevIds) => prevIds.filter((prevId) => prevId !== id));
   };
 
- return (
+  return (
     <div className='playlist-page'>
-        <Helmet>
+      <Helmet>
         <title>Playlists | Amplify Ghana</title>
-        <meta name="description" content= "Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered." />
-        <meta property="og:image" content='https://ucarecdn.com/04cd01ca-f483-421d-acad-b64ab26cd7f1/sharelogo.png'/>
+        <meta
+          name='description'
+          content='Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered.'
+        />
+        <meta property='og:image' content='https://ucarecdn.com/04cd01ca-f483-421d-acad-b64ab26cd7f1/sharelogo.png' />
       </Helmet>
-      <ScrollToTopOnMount/>
+      <ScrollToTopOnMount />
       <div className='space' />
       <div className='playlist-header'>
         <h1>Playlists</h1>
-        </div>
+      </div>
       <div className='playlist-flex'>
         {isLoading ? (
           <LoadingPlaylists />
@@ -117,10 +117,12 @@ const Playlists = ({ isPlayListManager }) => {
                   </button>
                 )}
                 <div className='playlist_image'>
-                  <img src={playlist.image} alt={playlist.altText} className='picture' loading='lazy' />
+                  <a href={playlist.link} target='_blank' rel='noopener noreferrer'>
+                    <img src={playlist.image} alt={playlist.altText} className='picture' loading='lazy' />
+                  </a>
                 </div>
                 <div className='playlist_text'>
-                {expandedPlaylistIds.includes(playlist.id) ? (
+                  {expandedPlaylistIds.includes(playlist.id) ? (
                     <>
                       {playlist.summary}
                       {playlist.summary.length >= textLimit && (
@@ -130,7 +132,6 @@ const Playlists = ({ isPlayListManager }) => {
                       )}
                     </>
                   ) : (
-
                     <>
                       {playlist.summary.slice(0, textLimit)}{' '}
                       {playlist.summary.length >= textLimit && (
