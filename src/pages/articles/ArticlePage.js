@@ -244,8 +244,8 @@ const ArticlePage = () => {
     <div className="article-page">
       <ScrollToTopOnMount/>
       <Helmet>
-        <title>{article.title}- Amplify Ghana</title>
-        <meta property="og:image" content={article.image}/>
+        {/* <title>{article.title}- Amplify Ghana</title>
+        <meta property="og:image" content={article.image}/> */}
       </Helmet>
       
       <div className='spacer' />
