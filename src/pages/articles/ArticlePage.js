@@ -243,10 +243,7 @@ const ArticlePage = () => {
   return (
     <div className="article-page">
       <ScrollToTopOnMount/>
-      <Helmet>
-        {/* <title>{article.title}- Amplify Ghana</title>
-        <meta property="og:image" content={article.image}/> */}
-      </Helmet>
+     
       
       <div className='spacer' />
       {isLoading ? (
@@ -256,6 +253,13 @@ const ArticlePage = () => {
           <div className='article-main'>
             {article && (
               <>
+              <Helmet>
+                <title>{article.title}- Amplify Ghana</title>
+                <meta property="og:image" content={article.image}/>
+                <meta property="twitter:card" content="summary_large_image"/>
+                <meta property="twitter:image" content={article.image}/>
+                <meta property="twitter:title" content={article.title}/>
+              </Helmet>
                 <h1 className='article-title'>{article.title}</h1>
                 <div className='article-image-container'>
                   <img src={article.image} alt="Article" className='article-image' />
