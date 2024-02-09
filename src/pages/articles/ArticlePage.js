@@ -32,8 +32,9 @@ const ShareButton = ({ articleTitle, articleUrl, articleImageSrc }) => {
     <div className="share-container">
       <Helmet>
         <title>{articleTitle}- Amplify Ghana</title>
+        <meta property="og:image" content={articleImageSrc}/>
         <meta name="description" content={articleTitle} />
-        {articleImageSrc && <meta property="og:image" content={articleImageSrc}/>}
+       
       </Helmet>
       <div className="share-social">
         <Share articleTitle={articleTitle} articleUrl={articleUrl} />
