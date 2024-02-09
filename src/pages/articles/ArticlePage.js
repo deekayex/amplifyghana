@@ -243,6 +243,11 @@ const ArticlePage = () => {
   return (
     <div className="article-page">
       <ScrollToTopOnMount/>
+      <Helmet>
+        <title>{article.title}- Amplify Ghana</title>
+        <meta property="og:image" content={article.image}/>
+      </Helmet>
+      
       <div className='spacer' />
       {isLoading ? (
           <LoadingScreen/>
