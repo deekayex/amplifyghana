@@ -39,12 +39,8 @@
     cursor: pointer;
     opacity: 1;
     background-position: right;
-    background-position: center center;
-    transition: 0.5s ease-in-out;
-}
-
-.left-homepage:hover{
     background-position: bottom;
+    transition: 0.5s ease-in-out;
 }
 
 
@@ -130,7 +126,7 @@
     margin-bottom: 2.3vh;
     border-radius: 20px;
     background-size:cover;
-    background-position: center 20%;
+    background-position: center;
     position: relative;
     opacity: 0.9;
     transition: 0.5s ease;
