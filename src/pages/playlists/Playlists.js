@@ -5,7 +5,6 @@ import { database } from '../../firebase/firebase';
 import { collection, getDocs, deleteDoc, doc, orderBy, query } from '@firebase/firestore';
 import LoadingPlaylists from '../../context/loading/PlayListLoad/LoadingPlaylists';
 import ScrollToTopOnMount from '../../components/ScrollToTop';
-import Blurhash from 'blurhash';
 import { Helmet } from 'react-helmet';
 
 const PLAYLIST_BUTTON_TEXT = 'LISTEN';
@@ -98,6 +97,7 @@ const Playlists = ({ isPlayListManager }) => {
           content='Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered.'
         />
         <meta property='og:image' content='https://ucarecdn.com/04cd01ca-f483-421d-acad-b64ab26cd7f1/sharelogo.png' />
+        <link rel='canonical' href='/playlists'></link>
       </Helmet>
       <ScrollToTopOnMount />
       <div className='space' />
