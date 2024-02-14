@@ -25,6 +25,6 @@ if (rootElement.hasChildNodes()) {
 //       <Analytics />
 //       <SpeedInsights />
 //     </React.StrictMode>,
-//     rootElement
+    // rootElement
 //   );
 // }
