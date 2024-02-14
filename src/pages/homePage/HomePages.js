@@ -30,8 +30,12 @@ function HomePages() {
             <div className='home-socials'><Socials/></div>
           </div>
           <Suspense fallback={<LoadingHome/>}>
-          <Home />       
+            <Home />
+          </Suspense>
+          <Suspense fallback={<LoadingHome/>}>
             <News />
+          </Suspense>
+          <Suspense fallback={<LoadingHome/>}>
             <EditorsPicks />
           </Suspense>
 
