@@ -16,13 +16,15 @@ if (rootElement.hasChildNodes()) {
     </React.StrictMode>,
     rootElement
   );
-} else {
-  ReactDOM.render(
-    <React.StrictMode>
-      <App />
-      <Analytics />
-      <SpeedInsights />
-    </React.StrictMode>,
-    rootElement
-  );
-}
+} 
+
+// else {
+//   ReactDOM.render(
+//     <React.StrictMode>
+//       <App />
+//       <Analytics />
+//       <SpeedInsights />
+//     </React.StrictMode>,
+//     rootElement
+//   );
+// }
