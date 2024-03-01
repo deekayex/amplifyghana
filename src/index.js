@@ -1,27 +1,17 @@
-import React from 'react';
-import App from './App';
-import './index.css';
+import React from 'react'
+import App from './App'
+import './index.css'
+import  ReactDOM  from 'react-dom/client'
 import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from "@vercel/speed-insights/react";
-import { hydrate, render } from "react-dom";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
-const rootElement = document.getElementById("root");
-if (rootElement.hasChildNodes()) {
-  hydrate(
-    <React.StrictMode>
-      <Analytics/>
-      <SpeedInsights/>
+
+
+ ReactDOM.hydrateRoot(document.getElementById("root"), 
+<React.StrictMode>
       <App />
-    </React.StrictMode>,
-    rootElement
-  );
-} else {
-  render(
-    <React.StrictMode>
-      <Analytics/>
-      <SpeedInsights/>
-      <App />
-    </React.StrictMode>,
-    rootElement
-  );
-}
+    <Analytics/>
+    <SpeedInsights />
+  </React.StrictMode>
+)
+  

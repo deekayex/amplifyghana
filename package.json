@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/preset-env": "^7.23.9",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/register": "^7.23.7",
     "@editorjs/editorjs": "^2.28.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
@@ -27,12 +30,14 @@
     "classnames": "^2.5.1",
     "dompurify": "^3.0.8",
     "draft-js": "^0.11.7",
-    "firebase": "^10.7.1",
+    "firebase": "^10.8.0",
     "formik": "^2.4.5",
     "html-to-react": "^1.7.0",
     "html-webpack-plugin": "^5.6.0",
+    "ignore-styles": "^5.0.1",
     "lexical": "^0.12.6",
     "memory-cache": "^0.2.0",
+    "next": "^14.1.0",
     "quill-blot-formatter": "^1.0.5",
     "quill-image-resize-module-react": "^3.0.0",
     "react": "^18.2.0",
@@ -49,7 +54,6 @@
     "react-scroll": "^1.9.0",
     "react-share": "^5.0.3",
     "react-share-social": "^0.1.55",
-    "react-snap": "^1.23.0",
     "styled-components": "^6.1.0",
     "tinymce": "^6.8.2",
     "turndown": "^7.1.2",
@@ -62,6 +66,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "ssr": "npm run build && node server/index.js",
     "postbuild": "react-snap"
   },
   "eslintConfig": {
@@ -87,5 +92,8 @@
       "--no-sandbox",
       "--disable-setuid-sandbox"
     ]
+  },
+  "devDependencies": {
+    "react-snap": "^1.23.0"
   }
 }

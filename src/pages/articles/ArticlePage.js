@@ -259,7 +259,6 @@ const ArticlePage = () => {
                 <meta property="twitter:card" content="summary_large_image"/>
                 <meta property="twitter:image" content={article.image}/>
                 <meta property="twitter:title" content={article.title}/>
-                <link rel='canonical' href={`/article/${category}/${articleId}`}></link>
                 <meta name="robots" content="index, follow"/> 
               </Helmet>
                 <h1 className='article-title'>{article.title}</h1>
