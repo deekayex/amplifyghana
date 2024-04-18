@@ -5,9 +5,10 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Socials from "../components/socials/Socials";
 import Home from "../components/Home";
 import LoadingHome from "../context/loading/HomeLoad/LoadingHome";
+import dynamic from "next/dynamic";
 
-const News = lazy(() => import("../components/news/News"));
-const EditorsPicks = lazy(() => import("../components/editors-picks/page"));
+const News = dynamic(() => import("../components/news/News"));
+const EditorsPicks = dynamic(() => import("../components/editors-picks/page"));
 
 // export const metadata = {
 //   title:
