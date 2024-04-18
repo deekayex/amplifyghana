@@ -182,7 +182,13 @@ const News = ({ isAllArticlesPage }) => {
     <section className="news-container" id="news">
       <div className="spacer" />
       <div className="page-header">
-        <Image src={newspaper} alt="News icon" className="news-icon" />
+        <Image
+          src={newspaper}
+          alt="News icon"
+          className="news-icon"
+          width={10}
+          height={10}
+        />
         <h1>NEWS</h1>
       </div>
 

@@ -6,16 +6,21 @@ import Socials from "../components/socials/Socials";
 import Home from "../components/Home";
 import LoadingHome from "../context/loading/HomeLoad/LoadingHome";
 import dynamic from "next/dynamic";
+import { Metadata } from "next";
 
 const News = dynamic(() => import("../components/news/News"));
 const EditorsPicks = dynamic(() => import("../components/editors-picks/page"));
 
-// export const metadata = {
+// export const metadata: Metadata = {
 //   title:
 //     "Amplify Ghana | Promoting African Creatives | PR Agency | Music and\
 //   Entertainment News",
 //   description:
 //     "Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered.",
+//   openGraph: {
+//     images:
+//       "https://ucarecdn.com/04cd01ca-f483-421d-acad-b64ab26cd7f1/sharelogo.png",
+//   },
 // };
 function HomePages() {
   return (
@@ -39,7 +44,7 @@ function HomePages() {
           <div className="space" />
           <div className="home-menu-icons">
             <div className="home-icon">
-              <HomeOutlinedIcon fontSize="10rem" className="home_icon" />
+              <HomeOutlinedIcon fontSize="large" className="home_icon" />
               HOME
             </div>
             <div className="home-socials">
@@ -50,10 +55,10 @@ function HomePages() {
             <Home />
           </Suspense>
           <Suspense fallback={<LoadingHome />}>
-            <News />
+            <News isAllArticlesPage={false} />
           </Suspense>
           <Suspense fallback={<LoadingHome />}>
-            <EditorsPicks />
+            <EditorsPicks isAllArticlesPage={false} />
           </Suspense>
         </div>
       </div>

@@ -8,7 +8,7 @@ const Footer = () => {
       <div>
         <Link href="/">
           <img
-            src={process.env.PUBLIC_URL + "/amplifyghlogo.png"}
+            src={"/amplifyghlogo.png"}
             alt="Amplify logo"
             className="logo-footer"
             aria-label="link-to-home-page"

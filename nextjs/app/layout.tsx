@@ -3,16 +3,23 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import Navbar from "@/components/navbar";
+import Footer from "@/components/footer/Footer";
+
+import { Metadata } from "next";
 
 // const inter = Inter({ subsets: ["latin"] });
 const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
 
-export const metadata = {
+export const metadata: Metadata = {
   title:
     "Amplify Ghana | Promoting African Creatives | PR Agency | Music and\
   Entertainment News",
   description:
     "Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered.",
+  openGraph: {
+    images:
+      "https://ucarecdn.com/04cd01ca-f483-421d-acad-b64ab26cd7f1/sharelogo.png",
+  },
 };
 export default function RootLayout({ children }) {
   return (
@@ -20,6 +27,7 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar />
         {children}
+        <Footer />
       </body>
       <Analytics />
       <SpeedInsights />

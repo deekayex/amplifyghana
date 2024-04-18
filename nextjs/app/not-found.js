@@ -1,6 +1,7 @@
 import React from "react";
 import "./Blank.css";
-import Socials from "../../components/socials/Socials";
+import "./about/About.css";
+// import Socials from "../components/socials/Socials";
 import Link from "next/link";
 
 const Blank = () => {
@@ -27,7 +28,7 @@ const Blank = () => {
                 rel="noreferrer"
               >
                 <img
-                  src={process.env.PUBLIC_URL + "/alt_instagram_logo.png"}
+                  src={"/alt_instagram_logo.png"}
                   alt="Instagram logo"
                   className="about-instagram-logo"
                 />
@@ -41,7 +42,7 @@ const Blank = () => {
                 rel="noreferrer"
               >
                 <img
-                  src={process.env.PUBLIC_URL + "/tiktok_logo.png"}
+                  src={"/tiktok_logo.png"}
                   alt="Tiktok logo"
                   className="about-tiktok-logo"
                 />
@@ -54,7 +55,7 @@ const Blank = () => {
                 rel="noreferrer"
               >
                 <img
-                  src={process.env.PUBLIC_URL + "/x_logo.png"}
+                  src={"/x_logo.png"}
                   alt="X logo"
                   className="about-x-logo"
                 />
@@ -67,7 +68,7 @@ const Blank = () => {
                 rel="noreferrer"
               >
                 <img
-                  src={process.env.PUBLIC_URL + "/email_icon.png"}
+                  src={"/email_icon.png"}
                   alt="Email icon"
                   className="about-email-icon"
                 />

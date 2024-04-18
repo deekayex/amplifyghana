@@ -1,14 +1,12 @@
-import React from "react";
-import "./About.css";
+"use client";
 import BoxContainer from "../../components/BoxText";
 import ScrollToTopOnMount from "../../components/ScrollToTop";
-import { Helmet } from "react-helmet";
-import tiktok_logo from "@/public/tiktok_logo.png";
+import "./About.css";
 
 const About = () => {
   return (
     <section className="about_us_page" id="about">
-      <Helmet>
+      {/* <Helmet>
         <title>About Us | Amplify Ghana</title>
         <meta
           name="description"
@@ -19,7 +17,7 @@ const About = () => {
           content="https://ucarecdn.com/04cd01ca-f483-421d-acad-b64ab26cd7f1/sharelogo.png"
         />
         <link rel="canonical" href="/about"></link>
-      </Helmet>
+      </Helmet> */}
       <ScrollToTopOnMount />
       <div className="about_top">
         <div className="top_header">
@@ -53,9 +51,7 @@ const About = () => {
                   rel="noreferrer"
                 >
                   <img
-                    src={
-                      process.env.NEXT_PUBLIC_URL + "/alt_instagram_logo.png"
-                    }
+                    src={"/alt_instagram_logo.png"}
                     alt="Instagram logo"
                     className="about-instagram-logo"
                   />
@@ -69,7 +65,7 @@ const About = () => {
                   rel="noreferrer"
                 >
                   <img
-                    src={process.env.NEXT_PUBLIC_URL + "/tiktok_logo.png"}
+                    src={"/tiktok_logo.png"}
                     alt="Tiktok logo"
                     className="about-tiktok-logo"
                   />
@@ -82,7 +78,7 @@ const About = () => {
                   rel="noreferrer"
                 >
                   <img
-                    src={process.env.NEXT_PUBLIC_URL + "/x_logo.png"}
+                    src={"/x_logo.png"}
                     alt="X logo"
                     className="about-x-logo"
                   />
@@ -95,7 +91,7 @@ const About = () => {
                   rel="noreferrer"
                 >
                   <img
-                    src={process.env.NEXT_PUBLIC_URL + "/email_icon.png"}
+                    src={"/email_icon.png"}
                     alt="Email icon"
                     className="about-email-icon"
                   />
