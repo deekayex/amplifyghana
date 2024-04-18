@@ -20,8 +20,8 @@ function Navbar() {
   useEffect(() => {
     // const section = location.hash.substring(1);
     setActiveSection(segment);
-    console.log(segment);
-    console.log(location);
+    // console.log(segment);
+    // console.log(location);
   }, [location]);
 
   const toggleMenu = () => {

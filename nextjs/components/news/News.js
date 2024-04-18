@@ -29,6 +29,7 @@ const News = ({ isAllArticlesPage }) => {
     try {
       console.log(articleId, "articleId now");
       const articleDocRef = doc(database, "centeredStates", articleId);
+      console.log(articleDocRef);
       const articleDoc = await getDoc(articleDocRef);
 
       if (articleDoc.exists()) {

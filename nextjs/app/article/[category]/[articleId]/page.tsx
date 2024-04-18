@@ -56,7 +56,7 @@ const fetchArticle = async (params) => {
   try {
     const { articleId, category } = params;
 
-    const articleRef = doc(database, category, articleId);
+    const articleRef = doc(database, category, decodeURI(articleId));
     const articleDoc = await getDoc(articleRef);
     // console.log(articleDoc);
     if (articleDoc.exists()) {
@@ -100,6 +100,7 @@ const ArticlePage = ({ params }) => {
   // const { articleId, category } = useParams();
   const { articleId, category } = params;
   console.log(params);
+
   const [article, setArticle] = useState(null);
   // const article = await fetchArticle(params);
   const [isLoading, setIsLoading] = useState(true);
@@ -112,7 +113,7 @@ const ArticlePage = ({ params }) => {
     const fetchArticle = async () => {
       try {
         console.log(articleId, "articleId now");
-        const articleRef = doc(database, category, articleId);
+        const articleRef = doc(database, category, decodeURI(articleId));
         const articleDoc = await getDoc(articleRef);
         console.log(articleDoc.data());
         if (articleDoc.exists()) {
