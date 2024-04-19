@@ -1,4 +1,7 @@
-
+.container{
+    /* background-color: blue; */
+    width: 100%;
+}
 .home-page{
     background: 
     linear-gradient(180deg, rgba(241, 131, 67, 0.825) 0%, rgba(211, 118, 41, 0.87) 50%, #FF8018 100%),

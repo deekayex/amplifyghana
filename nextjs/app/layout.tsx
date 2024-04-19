@@ -1,7 +1,7 @@
 import { Goldman } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/react";
+// import { Analytics } from "@vercel/analytics/react";
+// import { SpeedInsights } from "@vercel/speed-insights/react";
 import Navbar from "@/components/navbar";
 import Footer from "@/components/footer/Footer";
 
@@ -24,13 +24,21 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={goldman.className}>
+      <head>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500&display=swap" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@700&display=swap" rel="stylesheet" />
+      <link href="https://fonts.cdnfonts.com/css/monument-extended" rel="stylesheet" />
+
+
+      </head>
       <body>
         <Navbar />
         {children}
-        <Footer />
       </body>
-      <Analytics />
-      <SpeedInsights />
+      <Footer />
+      {/* <Analytics />
+      <SpeedInsights /> */}
+     
     </html>
   );
 }

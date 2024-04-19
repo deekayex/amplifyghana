@@ -39,7 +39,7 @@ function HomePages() {
           content="https://ucarecdn.com/04cd01ca-f483-421d-acad-b64ab26cd7f1/sharelogo.png"
         />
       </Helmet> */}
-      <div>
+      <div className="home-contain">
         <div className="home-page">
           <div className="space" />
           <div className="home-menu-icons">

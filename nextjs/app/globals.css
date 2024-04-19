@@ -71,16 +71,7 @@ body {
   }
 }
 
-.home-page {
-  background: linear-gradient(
-      180deg,
-      rgba(241, 131, 67, 0.825) 0%,
-      rgba(211, 118, 41, 0.87) 50%,
-      #ff8018 100%
-    ),
-    linear-gradient(0deg, rgba(255, 92, 0, 0.4), rgba(255, 92, 0, 0.4));
-  position: relative;
-}
+
 
 .space {
   height: 10vh;
