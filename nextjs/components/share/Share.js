@@ -1,4 +1,5 @@
-import React from 'react'
+// "use client";
+import React from "react";
 import {
   FacebookIcon,
   FacebookShareButton,
@@ -9,41 +10,37 @@ import {
   WhatsappIcon,
   WhatsappShareButton,
 } from "react-share";
- 
 
-const Share = ({articleTitle, articleUrl}) => {
+const Share = ({ articleTitle, articleUrl }) => {
   // Get the current domain
-  const currentDomain = window.location.origin;
+  // const currentDomain = window.location.origin;
+  const currentDomain = "/";
 
   // Concatenate the domain with the articleUrl
   const fullUrl = `${currentDomain}${articleUrl}`;
 
-
   return (
-    <div className='share-socials'>
-      <div className='share-text'>Share on</div>
-      <div className='shareable-socials'> 
-           <WhatsappShareButton title={articleTitle} url={fullUrl}>
-      <WhatsappIcon className='share-icon'/>
-    </WhatsappShareButton>
+    <div className="share-socials">
+      <div className="share-text">Share on</div>
+      <div className="shareable-socials">
+        <WhatsappShareButton title={articleTitle} url={fullUrl}>
+          <WhatsappIcon className="share-icon" />
+        </WhatsappShareButton>
 
-    <TwitterShareButton title={articleTitle} url={fullUrl}>
-      <TwitterIcon className='share-icon'/>
-    </TwitterShareButton>
+        <TwitterShareButton title={articleTitle} url={fullUrl}>
+          <TwitterIcon className="share-icon" />
+        </TwitterShareButton>
 
+        <TelegramShareButton title={articleTitle} url={fullUrl}>
+          <TelegramIcon className="share-icon" />
+        </TelegramShareButton>
 
-
-    <TelegramShareButton title={articleTitle} url={fullUrl}>
-      <TelegramIcon className='share-icon'/>
-    </TelegramShareButton>
-
-    <FacebookShareButton title={articleTitle} url={fullUrl}>
-      <FacebookIcon className='share-icon'/>
-    </FacebookShareButton>
+        <FacebookShareButton title={articleTitle} url={fullUrl}>
+          <FacebookIcon className="share-icon" />
+        </FacebookShareButton>
+      </div>
     </div>
+  );
+};
 
-    </div>
-  )
-}
-
-export default Share
+export default Share;
