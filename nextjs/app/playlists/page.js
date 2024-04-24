@@ -16,9 +16,28 @@ import ScrollToTopOnMount from "../../components/ScrollToTop";
 import { Helmet } from "react-helmet";
 
 const PLAYLIST_BUTTON_TEXT = "LISTEN";
+const fetchPlaylists = async () => {
+  try {
+    const playlistsCollection = collection(database, "playlists");
+    const playlistsQuery = query(
+      playlistsCollection,
+      orderBy("timestamp", "desc")
+    );
+    const playlistsSnapshot = await getDocs(playlistsQuery);
 
-const Playlists = ({ isPlayListManager }) => {
+    const playlistsData = playlistsSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    return playlistsData;
+  } catch (error) {
+    console.error("Error fetching playlists:", error);
+  }
+};
+const PlaylistPage = ({ isPlayListManager }) => {
   const [playlists, setPlaylists] = useState([]);
+  // const playlists = await fetchPlaylists();
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedPlaylistIds, setExpandedPlaylistIds] = useState([]);
@@ -193,4 +212,4 @@ const Playlists = ({ isPlayListManager }) => {
   );
 };
 
-export default Playlists;
+export default PlaylistPage;

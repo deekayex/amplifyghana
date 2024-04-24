@@ -1,8 +1,11 @@
-"use client";
-import BoxContainer from "../../components/BoxText";
+// "use client";
+import dynamic from "next/dynamic";
+// import BoxContainer from "../../components/BoxText";
 import ScrollToTopOnMount from "../../components/ScrollToTop";
 import "./About.css";
-
+const BoxContainer = dynamic(() => import("@/components/BoxText"), {
+  ssr: false,
+});
 const About = () => {
   return (
     <section className="about_us_page" id="about">
