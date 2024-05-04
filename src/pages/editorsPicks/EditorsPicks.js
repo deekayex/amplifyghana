@@ -1,23 +1,73 @@
 import React, { useState, useEffect } from 'react';
 import { database, storage } from '../../firebase/firebase';
-import { collection, getDocs, addDoc, deleteDoc, doc, getDoc, setDoc } from '@firebase/firestore';
+import { collection, getDocs, addDoc, deleteDoc, doc, getDoc, setDoc, orderBy, query, updateDoc } from '@firebase/firestore';
 import { Link } from 'react-router-dom';
-import CreateArticleForm from '../../components/forms/editor/createArticle/CreateArticleForm';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Import Firebase Authentication functions
-import LoadingScreen from '../../context/loading/LoadingScreen';
+import LoadingArticles from '../../context/loading/ArticlesLoad/LoadingArticles';
 
-function EditorsPicks() {
+
+function EditorsPicks({isAllArticlesPage}) {
   const [editorsArticles, setEditorsArticles] = useState([]);
-  const [isCreateFormVisible, setCreateFormVisible] = useState(false);
   const [user, setUser] = useState(null); // State to track the authenticated user
   const [isLoading, setIsLoading] = useState(true);
-  const [highlightedArticleId, setHighlightedArticleId] = useState(null);
-  const [highlightedEditors, setHighlightedEditors] = useState(null);
+  const [, setHighlightedArticleId] = useState(null);
+  const [, setHighlightedEditors] = useState(null);
+  const [centeredStates, setCenteredStates] = useState({});
+
+
+  const handleToggleClick = async (articleId) => {
+  try {
+    const articleDocRef = doc(database, 'centeredStates', articleId);
+    const articleDoc = await getDoc(articleDocRef);
+
+    if (articleDoc.exists()) {
+      // If the document exists, update the centered state
+      const currentCenteredState = articleDoc.data().centeredState;
+      const newCenteredState = !currentCenteredState;
+
+      await updateDoc(articleDocRef, {
+        centeredState: newCenteredState,
+      });
+    } else {
+      // If the document doesn't exist, create a new one
+      await setDoc(articleDocRef, {
+        centeredState: true, // Initial state
+      });
+    }
+
+    // Fetch the updated centered states
+    const updatedCenteredStates = await fetchCenteredStates();
+    setCenteredStates(updatedCenteredStates);
+
+  } catch (error) {
+    console.error('Error toggling centered state:', error);
+  }
+};
+
+const fetchCenteredStates = async () => {
+  const centeredStatesCollection = collection(database, 'centeredStates');
+  const centeredStatesSnapshot = await getDocs(centeredStatesCollection);
+
+  const centeredStates = {};
+  centeredStatesSnapshot.forEach((doc) => {
+    centeredStates[doc.id] = doc.data().centeredState;
+  });
+
+  return centeredStates;
+};
+
+// Call fetchCenteredStates once to initialize the state
+useEffect(() => {
+  const initializeCenteredStates = async () => {
+    const initialCenteredStates = await fetchCenteredStates();
+    setCenteredStates(initialCenteredStates);
+  };
+
+  initializeCenteredStates();
+}, []);
 
   const handleSetHighlight = async (articleId) => {
     try {
-      // Update the 'highlightedArticleId' in Firebase to set the currently highlighted article
       await setDoc(doc(database, 'highlighted', 'highlightedEditors' ), {
         articleId,
       });
@@ -38,7 +88,6 @@ function EditorsPicks() {
         const highlightedEditorsData = highlightedEditorsDoc.data();
 
         if (highlightedEditorsData) {
-          // Fetch the highlighted article using the articleId from the Firestore document
           const articleRef = doc(database, 'editors-picks', highlightedEditorsData.articleId);
           const articleDoc = await getDoc(articleRef);
 
@@ -54,7 +103,8 @@ function EditorsPicks() {
     const fetchData = async () => {
       try {
         const editorsCollection = collection(database, 'editors-picks');
-        const editorsSnapshot = await getDocs(editorsCollection);
+        const editorsQuery = query(editorsCollection, orderBy('timestamp', 'desc'));
+        const editorsSnapshot = await getDocs(editorsQuery);
         const articles = editorsSnapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -80,31 +130,6 @@ function EditorsPicks() {
     return () => unsubscribe();
   }, []);
 
-  const handleSaveNewArticle = async (newArticleData) => {
-    try {
-      const { title, image, summary, section } = newArticleData;
-
-      const storageRef = ref(storage, `article_images/${image.name}`);
-      await uploadBytes(storageRef, image);
-
-      // Get the download URL of the uploaded image
-      const downloadURL = await getDownloadURL(storageRef);
-
-      const collectionName = section === 'news' ? 'news' : 'editors-picks';
-
-      // Add the new article to the Firestore collection with the image URL
-      const newArticleRef = await addDoc(collection(database, collectionName), {
-        title,
-        summary,
-        image: downloadURL, // Use the URL obtained from Firebase Storage
-      });
-
-      alert('New article created successfully!');
-      setCreateFormVisible(false);
-    } catch (error) {
-      console.error('Error creating new article', error);
-    }
-  };
 
   const handleDeleteArticles = async (id) => {
     const newsDoc = doc(database, 'editors-picks', id);
@@ -134,7 +159,7 @@ function EditorsPicks() {
   const endIndex = Math.min(startIndex + articlesPerPage, totalArticles);
   const currentArticles = editorsArticles.slice(startIndex, endIndex);
 
-  const handleNextPage = () => {
+  const handleNextPage = () =>{
     setCurrentPage((prevPage) => Math.min(prevPage + 1, Math.ceil(totalArticles / articlesPerPage)));
   };
 
@@ -143,7 +168,7 @@ function EditorsPicks() {
   };
 
   function getArticlesPerRow() {
-    return window.innerWidth >= 700 ? 2 : 3;
+    return window.innerWidth >= 700 ? 3 : 2;
   }
 
   return (
@@ -151,33 +176,40 @@ function EditorsPicks() {
       <div className='editor_space' />
       <div className='page-header'>
         <img src={process.env.PUBLIC_URL + '/newspaper-folded.png'} alt='News icon' className='news-icon' />
-        EditorsPicks
+        <h1>Editor's Picks</h1>
       </div>
 
       <div className='flex-contents'>
         {isLoading ? (
-          <LoadingScreen />
+          <LoadingArticles />
         ) : (
           <div className='page-contents'>
 
-            {/* Display the rest of the articles */}
-            {Array.from({ length: Math.ceil(currentArticles.length / articlesPerRow) }).map((_, rowIndex) => (
-              <div key={rowIndex} className='news-row'>
-                {currentArticles
-                  .slice(rowIndex * articlesPerRow, (rowIndex + 1) * articlesPerRow)
-                  .map((article, colIndex) => (
-                    <Link to={`/article/editors-picks/${article.id}`} key={colIndex}>
-                      <div key={colIndex} className='content-card' style={{backgroundImage: `url(${article ? article.image : ''})`}}>
-                        {user && (
+            {Array.from({ length: articlesPerRow }).map((_, colIndex) => (
+            <div key={colIndex} className='news-row'>
+              {currentArticles
+                .filter((article, index) => index % articlesPerRow === colIndex)
+                .map((article, rowIndex) => (
+                    <Link to={user && isAllArticlesPage && !article.isHighlight ? '#' :`/article/editors-picks/${article.id}`} key={colIndex}>
+                      <div key={colIndex} className={`content-card ${centeredStates[article.id] ? 'centered' : ''}`} style={{backgroundImage: `url(${article ? article.image : ''})`}}>
+
+                      <div className='card-manager'>
+                        {user && isAllArticlesPage && (
                           <button onClick={() => handleDeleteArticles(article.id)}>Delete</button>
                         )}
-                        {user && !article.isHighlight && (
+
+                        {user && isAllArticlesPage && !article.isHighlight && (
+                          <button onClick={() => handleToggleClick(article.id)}>Change Center</button>
+                        )}
+
+                        {user && !article.isHighlight && isAllArticlesPage && (
                           <button onClick={() => handleSetHighlight(article.id)}>
-                            Set as Highlight
+                            Set as Editor's Highlight 
                           </button>
                         )}
+                        </div>
                         <div className='content-text'>
-                          <p className='content-text-header'>{article.title}</p>
+                          <h2 className='content-text-header'>{article.title}</h2>
                           <p className='content-text-body'>{article.summary}</p>
                         </div>
                       </div>
@@ -188,7 +220,7 @@ function EditorsPicks() {
           </div>
         )}
       </div>
-      <div className='pagination'>
+      <div className='pagination' >
         <button onClick={handlePrevPage} disabled={currentPage === 1} className='page-button'>
           Back
         </button>

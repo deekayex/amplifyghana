@@ -1,97 +1,99 @@
-import React, { useState, useEffect } from 'react';
-import './CreateArticleForm.css';
-import 'react-quill/dist/quill.snow.css';
-import Editor from '../../../constants/textEditor/EditorQuill';
 
+import React, { useState } from 'react';
+import CreateArticleTitle from '../../newArticle/CreateArticleTitle';
+import CreateArticleSummary from '../../newArticle/CreateArticleSummary';
+import CreateArticleContents from '../../newArticle/CreateArticleContents';
+import './CreateArticleForm.css'
 
 const CreateArticleForm = ({ onSave, onCancel }) => {
+  const [step, setStep] = useState(1);
   const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
   const [summary, setSummary] = useState('');
   const [image, setImage] = useState(null);
   const [selectedSection, setSelectedSection] = useState('news');
-  const [initialContent, setInitialContent] = useState('');
+  const [content, setContent] = useState('');
 
+  const handleTitleChange = (newTitle) => {
+    setTitle(newTitle);
+  };
 
- // Set initial content when the component mounts
- useEffect(() => {
-  // You may fetch initial content from an API or any other source here
-  const fetchedInitialContent = "Initial content fetched from a source";
-  setInitialContent(fetchedInitialContent);
-}, []); // Empty dependency array ensures that this effect runs only once when the component mounts
+  const handleSummaryChange = (newSummary) => {
+    setSummary(newSummary);
+  };
 
-const handleContentChange = (newContent) => {
-  setContent(newContent);
-};
+  const handleImageChange = (selectedImage) => {
+    setImage(selectedImage);
+  };
 
-const handleImageChange = (e) => {
-  const selectedImage = e.target.files[0];
-  setImage(selectedImage);
-};
+  const handleSectionChange = (e) => {
+    setSelectedSection(e.target.value);
+  };
 
-const handleSave = () => {
-  onSave({ title, summary, image, selectedSection, content });
-  setTitle('');
-  setSummary('');
-  setContent('');
-  setImage(null);
-  setSelectedSection('news');
-};
+  const handleContentChange = (newContent) => {
+    setContent(newContent);
+    console.log(newContent)
+  };
 
+  const handleNext = () => {
+    // Validation check for each stage
+    if (step === 1 && title.trim() === '') {
+      alert('Charley where the title dey?');
+      return;
+    }
+    if (step === 2 && (summary.trim() === '' || !image || selectedSection.trim() === '')) {
+      alert('Charley you no fill the page finish!');
+      return;
+    }
 
- 
+    setStep(step + 1);
+  };
+
+  const handlePrevious = () => {
+    setStep(step - 1);
+  };
+
+  const handleSave = () => {
+    // Validation check for the last step
+    if (content.trim() === '') {
+      alert('Charley you not type all oo!');
+      return;
+    }
+
+    onSave({ title, summary, image, selectedSection, content });
+    setStep(1); // Reset the form to Step 1
+    setTitle('');
+    setSummary('');
+    setImage(null);
+    setSelectedSection('news');
+    setContent('');
+  };
+
+  const renderStep = () => {
+    switch (step) {
+      case 1:
+        return <CreateArticleTitle title={title} onTitleChange={handleTitleChange} onNext={handleNext} />;
+      case 2:
+        return (
+          <CreateArticleSummary
+            title={title}
+            summary={summary}
+            onSummaryChange={handleSummaryChange}
+            onImageChange={handleImageChange}
+            onSectionChange={handleSectionChange}
+            onNext={handleNext}
+            onPrevious={handlePrevious}
+          />
+        );
+      case 3:
+        return <CreateArticleContents content={content} onContentChange={handleContentChange} onSave={handleSave} onPrevious={handlePrevious} onCancel={onCancel} />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="create-article-form">
-      <h2>Create New Article</h2>
-      <label>
-        Title:
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          placeholder="Article title"
-          className="article-input-title"
-        />
-      </label>
-      <label>
-        Summary:
-        <textarea
-          value={summary}
-          onChange={(e) => setSummary(e.target.value)}
-          placeholder="Article summary"
-          className="article-summary"
-        />
-      </label>
-      <label>
-        Image:
-        <input type="file" accept="image/*" onChange={handleImageChange} />
-      </label>
-      <label>
-        Section:
-        <select
-          value={selectedSection}
-          onChange={(e) => setSelectedSection(e.target.value)}
-          required
-        >
-          <option value="news">News</option>
-          <option value="editors-picks">Editors Picks</option>
-        </select>
-      </label>
-
-      <label>
-        Content:
-        <Editor 
-          theme="snow"
-          value={content}
-          onChange={handleContentChange}
-          initialValue={initialContent}
-          className="article-content"
-        />
-      </label>
-
-      <button onClick={handleSave}>Save</button>
-      <button onClick={onCancel}>Cancel</button>
+      {renderStep()}
     </div>
   );
 };

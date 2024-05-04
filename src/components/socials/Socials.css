@@ -1,11 +1,21 @@
-.socials{
+
+.social-icon, .insta-social-icon{
     display: flex;
-    flex-direction: row;
-    gap: var(--socials-gap,2vw);
 }
 
+.socials{
+    display: flex;
+    justify-content:space-between;
+}
+
+
+
+
+
+
 .instagram-logo, .tiktok-logo, .x-logo, .email-icon{
-    height: 80%;
+   height: 2vh;
+   object-fit: contain;
 }
 
 .email-icon:hover, .instagram-logo:hover, .x-logo:hover, .tiktok-logo:hover{
@@ -25,8 +35,8 @@
 
 .email-icon:hover{
   animation: shake 0.5s;
-
 }
+
 
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }

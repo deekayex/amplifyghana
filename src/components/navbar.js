@@ -7,40 +7,70 @@ import { NavLink, useLocation } from "react-router-dom";
 function Navbar() {
   const location = useLocation();
   const [activeSection, setActiveSection] = useState('');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const section = location.hash.substring(1);
     setActiveSection(section);
   }, [location.hash]);
 
-  const [active, setActive] = useState("nav__menu");
-  const [icon, setIcon] = useState("nav__toggler");
-
-  const navToggle = () => {
-    setActive(prevActive => (prevActive === "nav__menu" ? "nav__menu nav__active" : "nav__menu"));
-    setIcon(prevIcon => (prevIcon === "nav__toggler" ? "nav__toggler toggle" : "nav__toggler"));
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (menuOpen && !event.target.closest('.nav')) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('click', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('click', handleOutsideClick);
+    };
+  }, [menuOpen]);
+
+ 
+
 
   return (
     <nav className="nav">
-      <NavLink to="/" >
+      <div className="nav-small-menu">
+      <Link to="/"  aria-label="link-to-home-page">
         <img
           src={process.env.PUBLIC_URL + "/amplifyghlogo.png"}
           alt="Amplify logo"
           className="amplify-logo"
+          onClick={closeMenu}
         />
-      </NavLink>
+      </Link>
 
-      <div className="menu-icon" onClick={navToggle}>
+      <div className="menu-icon" onClick={toggleMenu}>
         <MenuIcon fontSize="large" />
       </div>
+      </div>
 
-      <ul className={active}>
+      <ul className={`nav__menu ${menuOpen ? 'nav__active' : ''}`}>
         <li className="nav__item">
           <Link
             smooth
             to="/#news"
             className={`nav__link ${activeSection === 'news' ? 'nav_active' : ''}`}
+            aria-label="link-to-news-page"
+            onClick={()=>{closeMenu(); scrollToTop();}}
           >
             NEWS
           </Link>
@@ -51,6 +81,8 @@ function Navbar() {
             smooth
             to="/#editors-pick"
             className={`nav__link ${activeSection === 'editors-pick' ? 'nav_active' : ''}`}
+            aria-label="link-to-editors-page"
+            onClick={()=>{closeMenu(); scrollToTop();}}
           >
             EDITOR'S PICKS
           </Link>
@@ -61,6 +93,8 @@ function Navbar() {
             smooth
             to="/playlists#playlists"
             className={`nav__link ${activeSection === 'playlists' ? 'nav_active' : ''}`}
+            aria-label="link-to-playlists-page"
+            onClick={closeMenu}
           >
             PLAYLISTS
           </Link>
@@ -71,6 +105,8 @@ function Navbar() {
             smooth
             to="/submissions#submissions"
             className={`nav__link ${activeSection === 'submissions' ? 'nav_active' : ''}`}
+            aria-label="link-to-submissions-page"
+            onClick={closeMenu}
           >
             SUBMISSIONS
           </Link>
@@ -81,6 +117,8 @@ function Navbar() {
             smooth
             to="/about#about"
             className={`nav__link ${activeSection === 'about' ? 'nav_active' : ''}`}
+            aria-label="link-to-about-page"
+            onClick={closeMenu}
           >
             ABOUT US
           </Link>

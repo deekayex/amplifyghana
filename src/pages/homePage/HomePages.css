@@ -7,24 +7,22 @@
 }
 
 .space{
-    height: 11.56vh;
+    height: 10vh;
 }
 
-.home-menu{
-    margin-bottom: 4vh; 
-    background-color: aliceblue;  
+.home-menu-icons{
+    height: 4vh; 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-left: 8%;
-    width: 80.4%; 
-    position: relative;
+    width: 80vw; 
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: antiquewhite; */
 }
 
 .home-icon{
     flex: 1;
-    position: absolute;
-    left: 0;
-    /* background-color: aliceblue; */
     align-items: center;
     display: flex;
     font-style:normal;
@@ -41,18 +39,53 @@
 }
 
 .home-socials{
-    flex: 1;
-    position: absolute;
-    right: 0;
-    /* background-color: pink; */
     height: 3vh;
     display: flex;
 }
 
+.socials{
+    width: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
-@media screen and (max-width: 600px) {
+
+
+ @media screen and (max-width: 1000px) {
+    .home-menu-icons{
+        width: 90vw; 
+        margin-left: 5%;
+    }
+
     .home-socials{
         height: 2vh;
+        margin-right: 0;
+        padding-right: 0;          
     }
+
+    .socials{
+        width: 30vw;  
+    }
+
+}
+
+@media screen and (max-width:700px){
+    .socials{
+        margin-left: 10%;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 1020px) and (max-height: 700px){
+
+    .instagram-logo, .tiktok-logo, .x-logo, .email-icon, .home-icon{
+        height: 3vh;
+     }
+
+     .home_icon{
+        font-size: 3vh;
+     }
+
     
 }

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { database, storage } from '../firebase/firebase';
-import { collection, addDoc } from '@firebase/firestore';
+import { collection, doc, setDoc } from '@firebase/firestore';
 import CreateArticleForm from './forms/editor/createArticle/CreateArticleForm';
+import { serverTimestamp } from 'firebase/firestore';
+
 
 const AdminPosts = () => {
   const [isArticleFormVisible, setArticleFormVisible] = useState(false);
@@ -31,17 +33,23 @@ const AdminPosts = () => {
       await uploadBytes(storageRef, image);
       const downloadURL = await getDownloadURL(storageRef);
 
-      const newArticleRef = await addDoc(collection(database, collectionName), {
+      // Generate custom document ID from title
+      const customDocId = title.toLowerCase().replace(/\s+/g, '-');
+
+      
+
+      const newArticleRef = await setDoc(doc(collection(database, collectionName), customDocId), {
         title,
         summary,
         content,
         image: downloadURL,
+        timestamp: serverTimestamp(),
       });
 
       alert('New article created successfully!');
       setArticleFormVisible(false);
     } catch (error) {
-      console.error('Error creating new article', error);
+      alert('Error creating new article', error);
     }
   };
 

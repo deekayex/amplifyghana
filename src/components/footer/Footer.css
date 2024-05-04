@@ -1,9 +1,10 @@
+
 .footer{
   background-color:black;
   color: white;
-  position: static;
-  bottom: 0;
-  width: 100%;
+  /* position: sticky;
+  bottom: 0; */
+  width: 100vw;
   text-align: center;
   z-index: 2000;
 }
@@ -14,6 +15,12 @@
 
 .logo-footer{
   width: 40%;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.logo-footer:hover{
+  opacity: 0.9;
 }
 
 .footer-links{
@@ -26,11 +33,10 @@
 
 .footer-link{
   font-size: 12px;
+  opacity: 0.7;
+  color: white;
 }
 
-.footer-link{
-  opacity: 0.7;
-}
 
 .footer-link:hover, .footer-link:active{
   text-decoration: underline;
@@ -49,7 +55,15 @@
   margin-top: 5vh;
 }
 
+@media screen and (max-width: 1030px) {
+  .footer{
+    width: 100vw;
+  }
+}
+
 @media screen and (max-width: 600px){
+
+  
   .footer-links{
     /* background-color: aliceblue; */
     width: 80%;

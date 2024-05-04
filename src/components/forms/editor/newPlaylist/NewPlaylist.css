@@ -1,8 +1,61 @@
 .playlist-form{
-  width: 60%;
-  margin-left: 20%;
+  width: 80%;
+  margin-left: 10%;
+  position: relative;
 }
 
-textarea{
-  height: 100px;
+
+
+.new-playlist-container{
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 5vh;
+  justify-content: space-between;
+  height: 20vh;
+  margin-left: 5%;
+}
+
+
+.playlist-summary{
+  background-color: black; 
+  height: 20vh;
+  width: 32vw;
+  color: white;
+  padding: 20px;
+  font-size: 1.6rem;
+}
+
+
+.new-playlist-image-container{
+ background-color: bisque;
+ width: 30%;
+ background-size: cover;
+}
+
+h{
+  font-size: 20px;
+}
+
+
+.playlist-buttons-flex{
+  display: flex;
+  justify-content: space-between;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 10vh;
+}
+
+.playlist-link{
+  border-radius: 0;
+  margin-left: 5%;
+}
+
+.playlist-title{
+  margin-left: 5%;
+}
+
+.playlist-highlighted{
+  /* height: 90vh;
+  background-color: aqua; */
 }

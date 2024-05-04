@@ -5,14 +5,16 @@
     flex-direction: column;
     text-align: center;
     margin-bottom: 20vh;
+    max-width: 100vw;
 }
+
 
 .about_top{
     margin-top: 12vh;
     height: 25%;
 }
 
-.top_header, .body_header, .box_text_header, .about-socials-header{
+ .box_text_header{
     text-transform: uppercase;
     margin-top: 2px;
     font-family: 'Goldman', sans-serif;
@@ -33,7 +35,8 @@
     margin-left: 10%;
     padding-top: 2%;
     padding-bottom: 2%;
-    max-width: 80%;
+    max-width: 99%;
+    width: 80%;
     border-radius: 20px 20px 20px 20px;
     letter-spacing: 1px;
     font-weight: 800;
@@ -49,14 +52,12 @@
 }
 
 .box_container{
-    /* background-color:blue; */
     width: 85%;
     display: flex;
     flex-direction: row;
 }
 
 .box_text{
-    /* background-color:aqua; */
     display: flex;
     flex-direction: row;
     justify-content:space-between
@@ -72,6 +73,7 @@
     padding-top: 3vh;
     padding-bottom: 1vh;
     font-size: 1.522vw;
+    text-align: left;
 }
 
 .box_text_body{
@@ -96,7 +98,7 @@
 
 .previous-button.disabled,
 .next-button.disabled {
-  opacity: 0.5; /* Adjust the opacity as needed */
+  opacity: 0.5; 
   cursor: not-allowed;
 }
 
@@ -110,22 +112,36 @@
     display: flex;   
 }
 
-.about_socials{
-    margin-top: 10%;
-    text-transform: uppercase;
-}
 
-.about-us-socials{
+.about-socials{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5vh; 
     display: flex;
-    height: 7vh;
-    justify-content: center;
-    margin-top: 5%;
-     
+    justify-content: space-evenly;
 }
 
-.about-us-socials .socials{
-    --socials-gap: 4vw;
+
+.about-x-logo, .about-email-icon, .about-tiktok-logo, .about-instagram-logo{
+    height: 10vh;
+    object-fit: contain;
 }
+
+.about-social-icon{
+    display: flex;
+    border-right: solid;
+    padding-right: 5%;
+}
+
+.about-email-icon{
+    border-right: none;
+}
+
+
+
+
+
+
 
 @media screen and (max-width: 1025px) {
     .about_us_page{
@@ -136,21 +152,15 @@
         width: 90%;
     }
 
-    .about-us-socials{
-        height: 3vh;
-    }
-    .about-us-socials .socials{
-        --socials-gap: 10vw;
-    }
 
     .box_text_body{
         line-height: 1.3vh;
         font-size: 1rem;
     }
     
-
     .body_box{
         height: 25vh;
+        margin-bottom: 5vh;
     }
 
     .next-button, .previous-button{
@@ -168,7 +178,7 @@
     .body_header, .top_header{
         font-size: 3vw;
     } 
-    
+
 }
 
 
@@ -179,23 +189,115 @@
     }
 }
 
+@media screen and (min-width: 1020px) and (max-height: 700px) {
+    .top_box{
+        height: 20vh;
+        line-height: 4vh;
+    }
 
-@media only screen and (max-width: 700px) {
-    /* .about_us_page{
-        height: 60vh;
-    } */
-    
-    .box_1, .box_2, .box_3{
-        width: 45%;
+    .body_box{
+        height: 50vh;
+    }
+
+    .body_header{
+        margin-top: 5vh;
     }
 
     .box_text_body{
-        font-size: 0.6rem;
+        line-height: 3vh;
+    }
+
+    .top_header, .body_header{
+        font-size: 2vw;
+    }
+
+
+}
+
+
+@media only screen and (max-width: 700px) {
+    .top_box{
+        width: 100%;
+        background-color: black;
+        margin-bottom: 0;
+    }
+    
+    .box_container{
+       gap: 10px;
+    }
+    .box_1, .box_2, .box_3{
+        width: 48%;
+        /* background-color: aqua; */
+    }
+
+    .box_text_body{
+        font-size: 0.9rem;
+        line-height: 2vh;
+        position: relative;
     }
     
     .box_text_header{
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
+
+    .top_box{
+        width: 95%;
+        margin-left: 2.5%;
+        font-size: 1rem;
+        line-height: 2.2vh;
+        padding: 10px;
+        margin-right: 0;
+    }
+
+    .about_us_page{
+        margin-bottom: 0;
+    }
+
+    .about_top{
+        /* background-color: blue; */
+        height: auto;
+        margin-bottom: 10vh;
+    }
+
+    .about_body{
+        /* background-color: aqua; */
+        margin-top: 0;
+    }
+
+    .body_box{
+        height: 55vh;
+    }
+
+    .previous-button, .next-button{
+        position: absolute;
+        /* padding-bottom: 20vh; */
+    }
+    .previous-button{
+        left: 0;}
+
+    .next-button{
+        right: 0;
+    }
+
+    .about_socials{
+        margin-top: 10vh;
+    }
+
+    .about-socials{
+       margin-top: 2vh;
+       width: 80%;
+       margin-left: 10%;
+    }
+
+    .about-socials-header, .top_header, .body_header{
+        font-size: 2rem;
+    }
+
+    .about-x-logo, .about-email-icon, .about-tiktok-logo, .about-instagram-logo{
+        height: 5vh;
+    }
+    
+
 
   }
   

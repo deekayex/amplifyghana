@@ -1,0 +1,1028 @@
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/pages/homePage/HomePages.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+
+.home-page{
+    background: 
+    linear-gradient(180deg, rgba(241, 131, 67, 0.825) 0%, rgba(211, 118, 41, 0.87) 50%, #FF8018 100%),
+    linear-gradient(0deg, rgba(255, 92, 0, 0.4), rgba(255, 92, 0, 0.4));
+    position: relative;
+}
+
+.space{
+    height: 10vh;
+}
+
+.home-menu-icons{
+    height: 4vh; 
+    display: flex;
+    flex-direction: row;
+    margin-left: 8%;
+    width: 80vw; 
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: antiquewhite; */
+}
+
+.home-icon{
+    flex: 1 1;
+    align-items: center;
+    display: flex;
+    font-style:normal;
+    font-size: 2.7vh;
+    font-family: 'Goldman', sans-serif;
+    text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.45);
+    font-weight: 700;
+    line-height: normal;
+}
+
+.home_icon{
+    margin-right: 5px;  
+    font-size: 2.5vh;  
+}
+
+.home-socials{
+    height: 3vh;
+    display: flex;
+}
+
+.socials{
+    width: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+ @media screen and (max-width: 1000px) {
+    .home-menu-icons{
+        width: 90vw; 
+        margin-left: 5%;
+    }
+
+    .home-socials{
+        height: 2vh;
+        margin-right: 0;
+        padding-right: 0;          
+    }
+
+    .socials{
+        width: 30vw;  
+    }
+
+}
+
+@media screen and (max-width:700px){
+    .socials{
+        margin-left: 10%;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 1020px) and (max-height: 700px){
+
+    .instagram-logo, .tiktok-logo, .x-logo, .email-icon, .home-icon{
+        height: 3vh;
+     }
+
+     .home_icon{
+        font-size: 3vh;
+     }
+
+    
+}
+/*!********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/components/socials/Socials.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************/
+
+.social-icon, .insta-social-icon{
+    display: flex;
+}
+
+.socials{
+    display: flex;
+    justify-content:space-between;
+}
+
+
+
+
+
+
+.instagram-logo, .tiktok-logo, .x-logo, .email-icon{
+   height: 2vh;
+   object-fit: contain;
+}
+
+.email-icon:hover, .instagram-logo:hover, .x-logo:hover, .tiktok-logo:hover{
+    cursor: pointer;
+    transition: 1s;
+}
+
+.x-logo:hover{
+    transform: rotateY(360deg);
+    transition: 1s;
+    
+}
+
+.tiktok-logo:hover{
+    animation: bounce 1s;
+}
+
+.email-icon:hover{
+  animation: shake 0.5s;
+}
+
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+  
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+    40% {transform: translateY(-30px);} 
+    60% {transform: translateY(-15px);} 
+ } 
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/context/loading/LoadingScreen.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.loading-screen{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dae0ea;
+}
+
+.loading-spinner{
+  width: 80px;
+  height: 80px;
+  border: 7px solid #FF7300;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spinner 0.7s linear infinite;  
+}
+
+@keyframes spinner {
+  from{}
+  to{
+    transform: rotate(360deg);
+  }
+  
+}
+
+
+.skeleton{
+  height: 100%;
+  animation: skeleton-editors 1s linear infinite alternate;
+  opacity: 0.8;
+}
+
+.editor-skeleton-text{
+ width: 100%;
+ height: 30%;
+ opacity: 1;
+ background-color:hsla(160, 100%, 75%, 0.097); 
+}
+
+.editor-skeleton-text-header{
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 10px;
+  height: 35%;
+  margin-top: 2%;
+  animation: skeleton-text-header 1s linear infinite alternate;
+}
+
+@keyframes skeleton-text-header {
+  0%{
+    background-color:#ffebcd18
+  }
+  100%{
+    background-color: #ffebcd4f
+  }
+}
+
+.editor-skeleton-text-body, .editor-skeleton-text-body2, .editor-skeleton-text-body3{
+  width: 85%;
+  margin-left: 5%;
+  border-radius: 10px;
+  height: 10%;
+  margin-top: 5px;
+  margin-bottom: 0;
+  animation: skeleton-text-header 1s linear infinite alternate;
+}
+
+.editor-skeleton-text-body3{
+  width: 70%;
+}
+
+@media screen and (max-width: 1000px) {
+  .skeleton{
+    height: 50vh;
+  }
+}
+
+@keyframes skeleton-editors {
+  0% {
+    background-color: hwb(0 100% 0% / 0.392);
+  }
+  100%{
+    background-color: hwb(0 100% 0% / 0.256);
+  }
+}
+
+
+
+.skeleton-news{
+  animation: skeleton-news 1s linear infinite alternate;
+  opacity: 0.8;
+  height: 15vh;
+}
+
+@keyframes skeleton-news {
+  0%{
+    background-color: hsla(33, 78%, 91%, 0.185);
+  }
+
+  100%{
+    background-color: rgba(250, 235, 215, 0.108);
+  }
+  
+}
+
+
+
+.skeleton-playlist{
+  animation: skeleton-playlist 1s linear infinite alternate;
+  opacity: 0.8;
+  height: 15vh;
+}
+
+@keyframes skeleton-playlist {
+  0%{
+    background-color: hsla(160, 100%, 75%, 0.097);
+  }
+
+  100%{
+    background-color: rgba(250, 235, 215, 0.178);
+  }
+}
+
+@keyframes skeleton-playlist {
+  0%{
+    background-color: hsla(160, 100%, 75%, 0.097);
+  }
+
+  100%{
+    background-color: rgba(250, 235, 215, 0.178);
+  }
+}
+
+.sketon-cards{
+  margin-bottom: 10vh;
+}
+
+.card-skeleton{
+  animation: skeleton-card 1s linear infinite alternate;
+}
+
+@keyframes skeleton-card {
+  0%{
+    background-color: rgba(0, 0, 0, 0.141);
+  }
+  
+}
+
+
+
+
+.playlist-image-skeleton{
+  animation: skeleton-playlist-image 1s linear infinite alternate;
+  
+
+}
+
+@keyframes skeleton-playlist-image{
+  0%{
+    background-color: rgba(250, 235, 215, 0.063);
+  }
+
+  100%{
+    background-color: rgba(250, 235, 215, 0.178);
+  }
+}
+
+.playlsit-text-skeleton{
+  animation: skeleton-playlist-text 1s linear infinite alternate;
+  height: 40vh;
+}
+
+@keyframes skeleton-playlist-text {
+  0%{
+    background-color: rgba(0, 0, 0, 0.295);
+  }
+
+  100%{
+    background-color: rgba(0, 0, 0, 0.048);
+  }
+  
+}
+
+/*!*********************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/App.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************/
+body{
+    font-family: 'Monument Extended', sans-serif; 
+    background: linear-gradient(180deg, rgba(255, 92, 0, 0.4) 0%, rgba(211, 118, 41, 1) 50%, #FF8018 100%),
+    linear-gradient(0deg, rgba(255, 92, 0, 0.8), rgba(255, 92, 0, 0.6));
+    display: flex;
+    min-height: 100vh;
+    flex-direction: row;
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+h1{
+  font-size: 2vw;
+  text-transform: uppercase;
+  margin-top: 2px;
+  font-family: 'Goldman', sans-serif;
+  text-decoration: solid;
+}
+
+h2{
+  font-size: 2vh;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+.blank{
+ min-height: 100vh;
+ padding-top: 40vh;
+ font-size: 5vh;
+ text-align: center;
+}
+
+
+.nav_active {
+    color:rgba(255, 115, 0) ;
+    transition: 0.5s;
+  }
+
+.playlist-page{
+    flex-grow: 1;
+}
+
+.page{
+     min-height: 70vh;
+     margin-top: 30vh;
+     max-width: 70vw;
+     margin-left: 15vw;
+}
+
+
+@media screen and (max-width: 1025px) {
+  h1{
+    font-size: 3vw;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  h1{
+    font-size: 2rem;
+  }
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/pages/about/About.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+.about_us_page{    
+    color: black;
+    height: 115vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 20vh;
+    max-width: 100vw;
+}
+
+
+.about_top{
+    margin-top: 12vh;
+    height: 25%;
+}
+
+ .box_text_header{
+    text-transform: uppercase;
+    margin-top: 2px;
+    font-family: 'Goldman', sans-serif;
+    font-size: 2vw;
+    text-decoration: solid;
+}
+
+.top_box, .body_box{
+    background-color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.4vw;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    color: white;
+}
+
+.top_box{
+    margin-left: 10%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    max-width: 99%;
+    width: 80%;
+    border-radius: 20px 20px 20px 20px;
+    letter-spacing: 1px;
+    font-weight: 800;
+    line-height: 3vh;
+    }
+
+
+.body_box{
+    height: 40vh;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.box_container{
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+}
+
+.box_text{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between
+}
+
+.box_1, .box_2, .box_3, .box_new, .box_original{
+    width: 30%;
+    text-align: left;
+}
+
+.box_text_header{
+    color: rgba(255, 115, 0, 1);
+    padding-top: 3vh;
+    padding-bottom: 1vh;
+    font-size: 1.522vw;
+    text-align: left;
+}
+
+.box_text_body{
+    font-size: 0.9vw;
+    font-weight: 800;
+    line-height: 2.5vh;
+}
+
+.box_controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 80%;
+  }
+  
+
+.next-button, .previous-button{
+    cursor: pointer;
+    width: 8vw;
+    font-size: 6rem;
+}
+
+.previous-button.disabled,
+.next-button.disabled {
+  opacity: 0.5; 
+  cursor: not-allowed;
+}
+
+
+
+.next-button:hover, .previous-button:hover{
+    cursor: pointer;
+}
+
+.box_text{
+    display: flex;   
+}
+
+
+.about-socials{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5vh; 
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+.about-x-logo, .about-email-icon, .about-tiktok-logo, .about-instagram-logo{
+    height: 10vh;
+    object-fit: contain;
+}
+
+.about-social-icon{
+    display: flex;
+    border-right: solid;
+    padding-right: 5%;
+}
+
+.about-email-icon{
+    border-right: none;
+}
+
+
+
+
+
+
+
+@media screen and (max-width: 1025px) {
+    .about_us_page{
+        height: 100%;
+    }
+
+    .box_container{
+        width: 90%;
+    }
+
+
+    .box_text_body{
+        line-height: 1.3vh;
+        font-size: 1rem;
+    }
+    
+    .body_box{
+        height: 25vh;
+        margin-bottom: 5vh;
+    }
+
+    .next-button, .previous-button{
+        font-size: 10vw;
+    }
+
+    .top_box{
+        line-height: 1.2vh;
+    }
+
+    .box_text_header{
+        font-size: 1.6vw;
+    }
+
+    .body_header, .top_header{
+        font-size: 3vw;
+    } 
+
+}
+
+
+@media screen and (max-width: 1020px){
+    .box_text_body{
+        line-height: 1.3vh;
+        font-size: 1.2vw;
+    }
+}
+
+@media screen and (min-width: 1020px) and (max-height: 700px) {
+    .top_box{
+        height: 20vh;
+        line-height: 4vh;
+    }
+
+    .body_box{
+        height: 50vh;
+    }
+
+    .body_header{
+        margin-top: 5vh;
+    }
+
+    .box_text_body{
+        line-height: 3vh;
+    }
+
+    .top_header, .body_header{
+        font-size: 2vw;
+    }
+
+
+}
+
+
+@media only screen and (max-width: 700px) {
+    .top_box{
+        width: 100%;
+        background-color: black;
+        margin-bottom: 0;
+    }
+    
+    .box_container{
+       gap: 10px;
+    }
+    .box_1, .box_2, .box_3{
+        width: 48%;
+        /* background-color: aqua; */
+    }
+
+    .box_text_body{
+        font-size: 0.9rem;
+        line-height: 2vh;
+        position: relative;
+    }
+    
+    .box_text_header{
+        font-size: 1.4rem;
+    }
+
+    .top_box{
+        width: 95%;
+        margin-left: 2.5%;
+        font-size: 1rem;
+        line-height: 2.2vh;
+        padding: 10px;
+        margin-right: 0;
+    }
+
+    .about_us_page{
+        margin-bottom: 0;
+    }
+
+    .about_top{
+        /* background-color: blue; */
+        height: auto;
+        margin-bottom: 10vh;
+    }
+
+    .about_body{
+        /* background-color: aqua; */
+        margin-top: 0;
+    }
+
+    .body_box{
+        height: 55vh;
+    }
+
+    .previous-button, .next-button{
+        position: absolute;
+        /* padding-bottom: 20vh; */
+    }
+    .previous-button{
+        left: 0;}
+
+    .next-button{
+        right: 0;
+    }
+
+    .about_socials{
+        margin-top: 10vh;
+    }
+
+    .about-socials{
+       margin-top: 2vh;
+       width: 80%;
+       margin-left: 10%;
+    }
+
+    .about-socials-header, .top_header, .body_header{
+        font-size: 2rem;
+    }
+
+    .about-x-logo, .about-email-icon, .about-tiktok-logo, .about-instagram-logo{
+        height: 5vh;
+    }
+    
+
+
+  }
+  
+/*!***********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/pages/submissions/Submissions.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************/
+.submissions-container{
+    height: 108.5vh;
+}
+
+.form-header-text{
+    text-transform: uppercase;
+    font-family: "Goldman", sans-serif;
+    font-size: 2.5rem;
+}
+
+.forms-container{
+    width: 60vw;
+    margin-left: 20%;
+    margin-top: 5%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.02);
+    align-items: center;
+    padding-top: 2%;
+}
+
+.form-container{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center; 
+    position: relative;
+}
+
+.submission-form{
+    height: 50vh;
+    width: 100%;  
+    position: relative; 
+}
+
+
+
+.input-name, .input-phone, .input-email{
+    height: 5vh;
+    border-radius: 20px 20px 20px;
+    border: none;
+    padding-left: 10px;
+}
+
+.input-name{
+    width: 100%;
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+}
+.input-phone, .input-email{
+    width: 48%;
+    margin-bottom: 2vh;
+}
+
+.input-phone{
+    margin-left: 4%;
+}
+
+.message-box{
+    height: 20vh;
+    width: 100%;
+    margin-bottom: 2vh;
+    border-radius: 20px 20px 20px;
+    border: none;
+    padding: 15px 15px 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.message-box input{
+    align-items: flex-start;
+}
+
+.form-submit{
+    position: absolute;
+    bottom: 10%;
+    left: 20%;
+    width: 20vw;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-radius: 20px 20px 20px;
+    border: none;
+}
+
+.form-submit:hover{
+    cursor: pointer;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.error-message{
+    font-size: 15px;
+    color: red;
+    position: absolute;
+    top: 0%;
+    left: 20%;
+    text-shadow: 0px 2px 4px rgba(252, 246, 246, 0.642);
+}
+
+.input-email, .input-name, .input-phone, .message-box{
+    text-transform: none;
+}
+
+@media screen and (min-width: 1020px) and (max-height: 700px) {
+    .submission-form{
+        height: 70vh;
+    }    
+    .input-email, .input-name, .input-phone{
+        height: 7vh;
+    }
+
+    .message-box{
+        height: 30vh;
+    }
+    .form-submit{
+        left: 15vw;
+    }
+}
+
+@media screen and(max-width : 1000px) {
+    .forms-container{
+        width: 400px;
+    }
+
+    .form-header-text{
+        font-size: 2rem;
+    }
+    
+}
+
+@media screen and (max-width: 600px) {
+    .forms-container{
+        width: 90%;
+        margin-left: 5%;
+    }
+    .input-phone, .input-email, .input-name, .message-box, .form-submit{
+        font-size: 1rem;
+    }    
+
+    .form-submit{
+        left: 30vw;
+    }
+
+    .form-header-text{
+        font-size: 1.7rem;
+        padding-bottom: 2vh;
+        padding-top: 2vh;
+    }
+
+    .error-message{
+        font-size: 12px;
+    }
+}
+/*!******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/components/footer/Footer.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************/
+
+.footer{
+  background-color:black;
+  color: white;
+  /* position: sticky;
+  bottom: 0; */
+  width: 100vw;
+  text-align: center;
+  z-index: 2000;
+}
+
+.logo-footer, .footer-links, .amplify-info{
+  padding-top: 20px;
+}
+
+.logo-footer{
+  width: 40%;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.logo-footer:hover{
+  opacity: 0.9;
+}
+
+.footer-links{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 25%;
+  width: 50%;
+}
+
+.footer-link{
+  font-size: 12px;
+  opacity: 0.7;
+  color: white;
+}
+
+
+.footer-link:hover, .footer-link:active{
+  text-decoration: underline;
+  opacity: 0.89;
+}
+
+.footer-link:active{
+  opacity: 1;
+}
+
+.copyright{
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top-style: solid;
+  border-color: rgba(32, 31, 31, 0.829);
+  margin-top: 5vh;
+}
+
+@media screen and (max-width: 1030px) {
+  .footer{
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 600px){
+
+  
+  .footer-links{
+    /* background-color: aliceblue; */
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .copyright{
+    font-size: 1.5vh;
+  }
+
+  .footer-link{
+    font-size: 2vw;
+  }
+}
+
+
+/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[11].oneOf[12].use[3]!./src/pages/blank/Blank.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************/
+.blank{
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.blank_error{
+  width: 90%;
+  margin-left: 5%;
+  font-size: 40vh;
+  margin-top: 0;
+  position: relative;
+  webkit-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+  opacity: 0.9;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e69900, 0 0 40px #e67f00, 0 0 50px #e68a00, 0 0 60px #e69900, 0 0 70px #e6b400;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ffaf4d, 0 0 40px #ffc44d, 0 0 50px #ffc14d, 0 0 60px #ffc74d, 0 0 70px #ffd84d, 0 0 80px #ffe44d;
+  }
+}
+
+.blank_message{
+  width: 70%;
+  margin-left: 15%;
+  font-size: 3vh;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  perspective: 500px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.links-to-web{
+  margin-top:2vh ;
+  width: 70%;
+  margin-left: 15%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.home-link,.about-link{
+  color: black;
+}
+
+.home-link:hover, .about-link:hover{
+  text-decoration: underline;
+}
+
+
+
+
+@media screen and (max-width: 1000px) {
+  .blank_error{
+    font-size: 10vh;
+  }
+
+  .blank_message{
+    font-size: 1.5vh;
+    width: 90%;
+    margin-left: 5%;
+  }
+  
+}
