@@ -35,7 +35,7 @@ const fetchPlaylists = async () => {
     console.error("Error fetching playlists:", error);
   }
 };
-const Playlists = async ({ isPlayListManager, playlists }) => {
+const Playlists =  ({ isPlayListManager, playlists }) => {
   // const [playlists, setPlaylists] = useState([]);
   //   const playlists = await fetchPlaylists();
   const [user, setUser] = useState(null);

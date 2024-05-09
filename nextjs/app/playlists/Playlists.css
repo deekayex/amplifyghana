@@ -13,6 +13,7 @@
     justify-content: center;
     word-wrap: break-word;
     /* background-color: aqua; */
+    width: 100vw;
     flex: 1;
     height: 100%;
 }
