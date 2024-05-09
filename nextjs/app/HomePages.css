@@ -1,0 +1,94 @@
+.container{
+    /* background-color: blue; */
+    width: 100%;
+}
+.home-page{
+    background: 
+    linear-gradient(180deg, rgba(241, 131, 67, 0.825) 0%, rgba(211, 118, 41, 0.87) 50%, #FF8018 100%),
+    linear-gradient(0deg, rgba(255, 92, 0, 0.4), rgba(255, 92, 0, 0.4));
+    position: relative;
+}
+
+.space{
+    height: 10vh;
+}
+
+.home-menu-icons{
+    height: 4vh; 
+    display: flex;
+    flex-direction: row;
+    margin-left: 8%;
+    width: 80vw; 
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: antiquewhite; */
+}
+
+.home-icon{
+    flex: 1;
+    align-items: center;
+    display: flex;
+    font-style:normal;
+    font-size: 2.7vh;
+    font-family: 'Goldman', sans-serif;
+    text-shadow: 0px 2px 4px rgba(255, 255, 255, 0.45);
+    font-weight: 700;
+    line-height: normal;
+}
+
+.home_icon{
+    margin-right: 5px;  
+    font-size: 2.5vh;  
+}
+
+.home-socials{
+    height: 3vh;
+    display: flex;
+}
+
+.socials{
+    width: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+ @media screen and (max-width: 1000px) {
+    .home-menu-icons{
+        width: 90vw; 
+        margin-left: 5%;
+    }
+
+    .home-socials{
+        height: 2vh;
+        margin-right: 0;
+        padding-right: 0;          
+    }
+
+    .socials{
+        width: 30vw;  
+    }
+
+}
+
+@media screen and (max-width:700px){
+    .socials{
+        margin-left: 10%;
+        justify-content: space-between;
+    }
+}
+
+@media screen and (min-width: 1020px) and (max-height: 700px){
+
+    .instagram-logo, .tiktok-logo, .x-logo, .email-icon, .home-icon{
+        height: 3vh;
+     }
+
+     .home_icon{
+        font-size: 3vh;
+     }
+
+    
+}
