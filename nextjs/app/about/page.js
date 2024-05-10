@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import ScrollToTopOnMount from "../../components/ScrollToTop";
 import "./About.css";
 const BoxContainer = dynamic(() => import("@/components/BoxText"), {
-  ssr: false,
+  ssr: true,
 });
 const About = () => {
   return (
