@@ -7,6 +7,7 @@
   display: flex;
   height: 45vw;
   min-height: 560px;
+  /* background-color: aqua; */
 }
 
 .loading-container > div {
@@ -19,7 +20,7 @@
 }
 
 .left-homepage {
-  width: 46.7%;
+  width: 45%;
   height: auto;
   border-radius: 20px;
   margin-left: 8%;
@@ -112,7 +113,7 @@
 .right-homepage {
   display: flex;
   flex-direction: column;
-  width: 30.7%;
+  width: 32%;
   margin-left: 3%;
   height: auto;
 }

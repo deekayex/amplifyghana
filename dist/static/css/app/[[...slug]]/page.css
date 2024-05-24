@@ -42,7 +42,7 @@
 }
 
 .home-socials{
-    height: 3vh;
+    height: 4vh;
     display: flex;
 }
 
@@ -110,10 +110,10 @@
 
 
 
-.instagram-logo, .tiktok-logo, .x-logo, .email-icon{
-   height: 2vh;
-   object-fit: contain;
-}
+/* .instagram-logo, .tiktok-logo, .x-logo, .email-icon{
+   /* height: 10vh; */
+   /* object-fit: contain; */
+/* } */ */
 
 .email-icon:hover, .instagram-logo:hover, .x-logo:hover, .tiktok-logo:hover{
     cursor: pointer;

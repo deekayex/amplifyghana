@@ -14,7 +14,7 @@
 
 
 .instagram-logo, .tiktok-logo, .x-logo, .email-icon{
-   height: 2vh;
+   /* height: 5vh; */
    object-fit: contain;
 }
 
