@@ -1,14 +1,16 @@
+"use client";
 import React, { useState } from 'react';
 import './Login.css';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../firebase/firebase';
-import { useNavigate } from 'react-router-dom'; // Import useHistory
+import { redirect, useRouter } from 'next/navigation';
+// import { useNavigate } from 'react-router-dom'; // Import useHistory
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useHistory
-
+  // const navigate = useNavigate(); // Initialize useHistory
+  const router=useRouter()
   const login = async (e) => {
     e.preventDefault();
 
@@ -16,7 +18,7 @@ const LoginPage = () => {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       console.log(userCredential);
       alert('Login successful');
-      navigate('/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517'); // Redirect to the dashboard or any other route
+      router.push('/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517'); // Redirect to the dashboard or any other route
     } catch (error) {
       console.log(error);
       alert('Login unsuccessful');
@@ -30,13 +32,13 @@ const LoginPage = () => {
     <div className='login-form'>
       <div className='login-form-inputs'>
         <div className='login-input'>
-          <img src={process.env.PUBLIC_URL + '/account.svg'} alt='profile' className='user-email-image'/>
+          <img src={'/account.svg'} alt='profile' className='user-email-image'/>
           <input
             type='email' placeholder='email address' value={email} onChange={(e) => setEmail(e.target.value)} className='email-input' />
           </div>
 
           <div className='login-input'>
-            <img src={process.env.PUBLIC_URL + '/password.svg'} alt='profile' className='user-email-image'/>
+            <img src={'/password.svg'} alt='profile' className='user-email-image'/>
             <input
                 type='password' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} className='password-input' />
             </div>

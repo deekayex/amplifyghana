@@ -1,6 +1,7 @@
+"use client";
 import React from "react";
-import News from "../news/News";
-import EditorsPicks from "../editors-picks/page";
+import News from "../../../components/news/News";
+import EditorsPicks from "../../../components/editors-picks/page";
 
 const ArticleList = () => {
   return (

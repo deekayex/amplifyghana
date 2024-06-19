@@ -3,7 +3,7 @@ import React from "react";
 import BasicForm from "../../components/forms/Form";
 import "./Submissions.css";
 import ScrollToTopOnMount from "../../components/ScrollToTop";
-import { Helmet } from "react-helmet";
+// import { Helmet } from "react-helmet";
 
 function Submissions() {
   const handleSubmit = async (values, setSubmitting) => {
@@ -12,7 +12,7 @@ function Submissions() {
 
   return (
     <section className="submissions-container" id="submissions">
-      <Helmet>
+      {/* <Helmet>
         <title>Submissions | Amplify Ghana</title>
         <meta
           property="og:image"
@@ -23,7 +23,7 @@ function Submissions() {
           content="Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered."
         />
         <link rel="canonical" href="/submissions"></link>
-      </Helmet>
+      </Helmet> */}
       <ScrollToTopOnMount />
       <div className="space" />
       <div className="forms-container">

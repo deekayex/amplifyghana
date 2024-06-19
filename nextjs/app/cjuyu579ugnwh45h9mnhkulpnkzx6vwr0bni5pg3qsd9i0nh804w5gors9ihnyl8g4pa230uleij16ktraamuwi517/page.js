@@ -1,9 +1,12 @@
+"use client";
 import React, { useEffect, useState } from 'react';
-import { NavLink, useNavigate, Outlet } from 'react-router-dom';
+import Link from 'next/link';
+// import { Link, useNavigate, Outlet } from 'react-router-dom';
 import { onAuthStateChanged, getIdTokenResult } from 'firebase/auth';
 import { auth } from '../../firebase/firebase';
 import { getAuth, signOut } from 'firebase/auth';
 import './Admin.css';
+import { redirect } from 'next/navigation';
 
 
 const Admin = () => {
@@ -11,7 +14,7 @@ const Admin = () => {
   const[showPosts, setShowPosts] = useState(false);
   
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleSignOut = async () => {
     // Display a confirmation dialog
@@ -37,7 +40,8 @@ const Admin = () => {
             setIsAdmin(idTokenResult.claims.admin || false);
           } else {
             // Redirect to login if the user is not signed in
-            navigate('/');
+            // navigate('/');
+            redirect('/');
           }
         });
       } catch (error) {
@@ -46,7 +50,7 @@ const Admin = () => {
     };
 
     checkAdminStatus();
-  }, [auth, navigate]);
+  }, []);
 
 
   // if (isAdmin) {
@@ -68,7 +72,7 @@ const Admin = () => {
         Admin
         </div>
           <button onClick={handleSignOut} className='sign-out'>
-            <img src={process.env.PUBLIC_URL + '/power.svg'} alt='Sign Out' className='sign-out-icon'/>
+            <img src={'/power.svg'} alt='Sign Out' className='sign-out-icon'/>
           </button>
       </div>
 
@@ -76,47 +80,47 @@ const Admin = () => {
        <div className='page-managers'>
         <div className='posts-manager'>         
           <div className='admin-link'>
-            <NavLink to= 'create-posts' >
+            <Link href= 'create-posts' >
              Create Posts
-          </NavLink>
+          </Link>
           </div>
            
-          <div className='admin-link'><NavLink to = "all-articles">Manage Posts</NavLink></div>
+          <div className='admin-link'><Link href= "cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/all-articles">Manage Posts</Link></div>
         </div>
           
         <div className='playlists-manager'>
           <div className='admin-link'>
-          <NavLink to='update-playlist'>
+          <Link href='cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist'>
              Update Playlists
-          </NavLink>  
+          </Link>  
           </div>
           <div className='admin-link'>
-          <NavLink to='all-playlists'>
+          <Link href='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/all-playlists'>
             Manage Playlists
-          </NavLink>
+          </Link>
           </div>
         </div>
 
         {/* Special Privileges */}
         <div className='admin-link'>
-          <NavLink to='top-picks'>
+          <Link href='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/top-picks'>
             Top Picks
-          </NavLink>
+          </Link>
           </div>
 
         <div className='admin-link'>
-          <NavLink to='featured-ad'>
+          <Link href='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/featured-ad'>
             Featured Ad
-          </NavLink>
+          </Link>
           </div>
 
-        <div className='page-manager'>
+        <div className='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/page-manager'>
           Edit Pages
           </div>
       </div>
 
     <div className='admin-pages'>
-    <Outlet/>
+    {/* <Outlet/> */}
    </div>
     </div>
     </div>

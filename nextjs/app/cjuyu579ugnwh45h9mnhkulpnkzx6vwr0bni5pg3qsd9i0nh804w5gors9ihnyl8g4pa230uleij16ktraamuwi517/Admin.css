@@ -1,6 +1,7 @@
 .admin-page{
   padding-top: 10vh;
-  height: 150vh;  
+  height: 150vh;
+  width: 100%;  
 }
 
 .admin-flex{

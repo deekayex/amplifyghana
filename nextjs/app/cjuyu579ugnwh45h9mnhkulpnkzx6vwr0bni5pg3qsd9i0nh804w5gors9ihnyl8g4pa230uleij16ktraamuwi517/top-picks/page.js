@@ -1,8 +1,10 @@
+"use client";
 import React, {useEffect, useState} from 'react'
-import { database } from '../../firebase/firebase';
+import { database } from '../../../firebase/firebase';
 import { doc, getDoc } from '@firebase/firestore';
-import { NavLink } from 'react-router-dom';
-import HighlightedEditors from '../../components/highlighted/HighlightedEditors';
+// import { NavLink } from 'react-router-dom';
+import HighlightedEditors from '../../../components/highlighted/HighlightedEditors';
+import Link from 'next/link';
 
 
 
@@ -67,8 +69,8 @@ const TopPicksPage = () => {
         {highlightedEditors && <HighlightedEditors highlightedEditors={highlightedEditors} />}
         {highlightedNews && <highlightedNews highlightedNews={highlightedNews} />}</div>
       <div className='top-links'>
-        <NavLink to='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/all-articles' className='link'>Highlight Article</NavLink>
-        <NavLink to= '/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/top-playlist' className='link'>Highlight Playlist</NavLink>
+        <Link href='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/all-articles' className='link'>Highlight Article</Link>
+        <Link href= '/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/top-playlist' className='link'>Highlight Playlist</Link>
       </div>
     </div>
   )
