@@ -80,7 +80,7 @@ const Admin = () => {
        <div className='page-managers'>
         <div className='posts-manager'>         
           <div className='admin-link'>
-            <Link href= 'create-posts' >
+            <Link href= 'cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/create-posts' >
              Create Posts
           </Link>
           </div>
