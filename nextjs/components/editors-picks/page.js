@@ -199,7 +199,13 @@ function EditorsPicks({ isAllArticlesPage }) {
     <section className="editor-page" id="editors-pick">
       <div className="editor_space" />
       <div className="page-header">
-        <Image src={newspaper} alt="News icon" className="news-icon" />
+        <Image
+          src={newspaper}
+          alt="News icon"
+          className="news-icon"
+          width={10}
+          height={10}
+        />
         <h1>Editor's Picks</h1>
       </div>
 
@@ -221,10 +227,10 @@ function EditorsPicks({ isAllArticlesPage }) {
                           ? "#"
                           : `/article/editors-picks/${article.id}`
                       }
-                      key={colIndex}
+                      key={`col-${colIndex}-row-${rowIndex}`}
                     >
                       <div
-                        key={colIndex}
+                        key={`col-${colIndex}-row-${rowIndex}`}
                         className={`content-card ${
                           centeredStates[article.id] ? "centered" : ""
                         }`}

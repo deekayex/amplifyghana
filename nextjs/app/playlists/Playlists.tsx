@@ -1,19 +1,17 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import "./Playlists.css";
-import { database } from "../../firebase/firebase";
 import {
   collection,
-  getDocs,
   deleteDoc,
   doc,
+  getDocs,
   orderBy,
   query,
 } from "@firebase/firestore";
-import LoadingPlaylists from "../../context/loading/PlayListLoad/LoadingPlaylists";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
 import ScrollToTopOnMount from "../../components/ScrollToTop";
-import { Helmet } from "react-helmet";
+import { database } from "../../firebase/firebase";
+import "./Playlists.css";
 
 const PLAYLIST_BUTTON_TEXT = "LISTEN";
 const fetchPlaylists = async () => {
@@ -35,7 +33,7 @@ const fetchPlaylists = async () => {
     console.error("Error fetching playlists:", error);
   }
 };
-const Playlists =  ({ isPlayListManager, playlists }) => {
+const Playlists = ({ isPlayListManager, playlists }) => {
   // const [playlists, setPlaylists] = useState([]);
   //   const playlists = await fetchPlaylists();
   const [user, setUser] = useState(null);
