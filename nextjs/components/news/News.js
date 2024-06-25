@@ -11,6 +11,8 @@ import {
   setDoc,
   orderBy,
   query,
+  limit,
+  startAfter,
 } from "@firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import LoadingArticles from "../../context/loading/ArticlesLoad/LoadingArticles";
@@ -24,16 +26,16 @@ const News = ({ isAllArticlesPage }) => {
   const [highlightedArticleId, setHighlightedArticleId] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [centeredStates, setCenteredStates] = useState({});
+  const [lastVisible, setLastVisible] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const articlesPerPage = 6;
 
   const handleToggleClick = async (articleId) => {
     try {
-      console.log(articleId, "articleId now");
       const articleDocRef = doc(database, "centeredStates", articleId);
-      console.log(articleDocRef);
       const articleDoc = await getDoc(articleDocRef);
 
       if (articleDoc.exists()) {
-        // If the document exists, update the centered state
         const currentCenteredState = articleDoc.data().centeredState;
         const newCenteredState = !currentCenteredState;
 
@@ -41,13 +43,11 @@ const News = ({ isAllArticlesPage }) => {
           centeredState: newCenteredState,
         });
       } else {
-        // If the document doesn't exist, create a new one
         await setDoc(articleDocRef, {
-          centeredState: true, // Initial state
+          centeredState: true,
         });
       }
 
-      // Fetch the updated centered states
       const updatedCenteredStates = await fetchCenteredStates();
       setCenteredStates(updatedCenteredStates);
     } catch (error) {
@@ -67,7 +67,6 @@ const News = ({ isAllArticlesPage }) => {
     return centeredStates;
   };
 
-  // Call fetchCenteredStates once to initialize the state
   useEffect(() => {
     const initializeCenteredStates = async () => {
       const initialCenteredStates = await fetchCenteredStates();
@@ -90,36 +89,46 @@ const News = ({ isAllArticlesPage }) => {
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const highlightedArticleDoc = await getDoc(
-          doc(database, "highlighted", "highlightedNews")
-        );
-        const highlightedArticleData = highlightedArticleDoc.data();
+  const fetchArticles = async (page = 1) => {
+    try {
+      setIsLoading(true);
+      const newsCollection = collection(database, "news");
+      const articlesQuery = query(newsCollection, orderBy("timestamp", "desc"), limit(articlesPerPage));
 
-        if (highlightedArticleData) {
-          setHighlightedArticleId(highlightedArticleData.articleId);
-        }
-
-        // Fetch all news articles
-        const newsCollection = collection(database, "news");
-        const newsQuery = query(newsCollection, orderBy("timestamp", "desc"));
-        const newsSnapshot = await getDocs(newsQuery);
-        const articles = newsSnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
-        setNewsArticles(articles);
-      } catch (error) {
-        console.error("Error fetching news articles", error);
-      } finally {
-        setIsLoading(false);
+      let newsQuery = articlesQuery;
+      if (page > 1 && lastVisible) {
+        newsQuery = query(articlesQuery, startAfter(lastVisible));
       }
-    };
 
-    fetchData();
+      const newsSnapshot = await getDocs(newsQuery);
+      const articles = newsSnapshot.docs.map((doc) => ({
+        id: doc.id,
+        ...doc.data(),
+      }));
 
+      const lastVisibleDoc = newsSnapshot.docs[newsSnapshot.docs.length - 1];
+      setLastVisible(lastVisibleDoc);
+
+      if (page === 1) {
+        setNewsArticles(articles);
+      } else {
+        setNewsArticles((prevArticles) => {
+          // Append only new articles that are not already in the list
+          const newArticles = articles.filter(
+            (article) => !prevArticles.some((prevArticle) => prevArticle.id === article.id)
+          );
+          return [...prevArticles, ...newArticles];
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching news articles", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchArticles();
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setUser(user);
@@ -127,6 +136,12 @@ const News = ({ isAllArticlesPage }) => {
 
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    if (currentPage > 1) {
+      fetchArticles(currentPage);
+    }
+  }, [currentPage]);
 
   const handleDeleteArticles = async (id) => {
     if (isAllArticlesPage) {
@@ -140,9 +155,14 @@ const News = ({ isAllArticlesPage }) => {
     }
   };
 
-  const articlesPerPage = 6;
-  const totalArticles = newsArticles.length;
-  const [currentPage, setCurrentPage] = useState(1);
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePrevPage = () => {
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+
   const [articlesPerRow, setArticlesPerRow] = useState(getArticlesPerRow());
 
   useEffect(() => {
@@ -156,20 +176,6 @@ const News = ({ isAllArticlesPage }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  const startIndex = (currentPage - 1) * articlesPerPage;
-  const endIndex = Math.min(startIndex + articlesPerPage, totalArticles);
-  const currentArticles = newsArticles.slice(startIndex, endIndex);
-
-  const handleNextPage = () => {
-    setCurrentPage((prevPage) =>
-      Math.min(prevPage + 1, Math.ceil(totalArticles / articlesPerPage))
-    );
-  };
-
-  const handlePrevPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-  };
 
   function getArticlesPerRow() {
     if (typeof window == "undefined") {
@@ -199,7 +205,8 @@ const News = ({ isAllArticlesPage }) => {
           <div className="page-contents">
             {Array.from({ length: articlesPerRow }).map((_, colIndex) => (
               <div key={colIndex} className="news-row">
-                {currentArticles
+                {newsArticles
+                  .slice((currentPage - 1) * articlesPerPage, currentPage * articlesPerPage)
                   .filter(
                     (article, index) => index % articlesPerRow === colIndex
                   )
@@ -272,11 +279,11 @@ const News = ({ isAllArticlesPage }) => {
           Back
         </button>
         <span className="page-number">
-          Page {currentPage} of {Math.ceil(totalArticles / articlesPerPage)}
+          Page {currentPage} of {Math.ceil(newsArticles.length / articlesPerPage)}
         </span>
         <button
           onClick={handleNextPage}
-          disabled={currentPage === Math.ceil(totalArticles / articlesPerPage)}
+          disabled={newsArticles.length < currentPage * articlesPerPage}
           className="page-button"
         >
           Next
