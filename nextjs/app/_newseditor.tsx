@@ -1,20 +1,18 @@
 import EditorsPicks from "@/components/editors-picks/page";
 import News from "@/components/news/News";
 import LoadingHome from "@/context/loading/HomeLoad/LoadingHome";
-import React, { Suspense } from "react";
-import { database, storage } from "@/firebase/firebase";
+import { database } from "@/firebase/firebase";
 import {
   collection,
-  getDocs,
-  addDoc,
-  deleteDoc,
   doc,
   getDoc,
-  setDoc,
+  getDocs,
   orderBy,
   query,
+  setDoc,
   updateDoc,
 } from "@firebase/firestore";
+import { Suspense } from "react";
 function serializeFirebaseDocument(doc) {
   // Assuming doc is a document fetched from Firestore
   const data = doc.data();
@@ -56,7 +54,7 @@ async function fetchHighlightedEditors(database) {
       const articleDoc = await getDoc(articleRef);
 
       if (articleDoc.exists()) {
-        return articleDoc.data(); // Instead of setHighlightedEditors
+        return serializeFirebaseDocument(articleDoc); // Instead of setHighlightedEditors
       }
     }
   } catch (error) {
@@ -65,14 +63,15 @@ async function fetchHighlightedEditors(database) {
   return null; // Return null if no data is fetched or in case of error
 }
 
-async function fetchData(database) {
+async function fetchEditorsData(database) {
   try {
     const editorsCollection = collection(database, "editors-picks");
     const editorsQuery = query(editorsCollection, orderBy("timestamp", "desc"));
     const editorsSnapshot = await getDocs(editorsQuery);
     const articles = editorsSnapshot.docs.map((doc) => ({
       id: doc.id,
-      ...doc.data(),
+      // ...doc.data(),
+      ...serializeFirebaseDocument(doc),
     }));
     return articles; // Instead of setEditorsArticles
   } catch (error) {
@@ -82,6 +81,7 @@ async function fetchData(database) {
 }
 
 async function handleToggleClick(database, articleId) {
+  "use server";
   try {
     const articleDocRef = doc(database, "centeredStates", articleId);
     const articleDoc = await getDoc(articleDocRef);
@@ -123,6 +123,7 @@ async function fetchCenteredStates(database) {
 }
 
 async function handleSetHighlight(database, articleId) {
+  "use server";
   try {
     await setDoc(doc(database, "highlighted", "highlightedEditors"), {
       articleId,
@@ -134,14 +135,68 @@ async function handleSetHighlight(database, articleId) {
     return null; // Return null in case of error
   }
 }
-export default function NewsEditor() {
+
+export const fetchHighlightedNews = async (database) => {
+  try {
+    const highlightedArticleDoc = await getDoc(
+      doc(database, "highlighted", "highlightedNews")
+    );
+    const highlightedArticleData = highlightedArticleDoc.data();
+
+    if (highlightedArticleData) {
+      return highlightedArticleData.articleId;
+    }
+  } catch (error) {
+    console.error("Error fetching highlighted article", error);
+    return null;
+  }
+};
+
+// Function to fetch all news articles
+export const fetchNewsData = async (database) => {
+  try {
+    const newsCollection = collection(database, "news");
+    const newsQuery = query(newsCollection, orderBy("timestamp", "desc"));
+    const newsSnapshot = await getDocs(newsQuery);
+    const articles = newsSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      // ...doc.data(),
+      ...serializeFirebaseDocument(doc),
+    }));
+    return articles;
+  } catch (error) {
+    console.error("Error fetching news articles", error);
+    return [];
+  }
+};
+export default async function NewsEditor() {
+  //write the equivalent of that for the EditorsPicks
+  const highlightedEditors = await fetchHighlightedEditors(database);
+  const editorsData = await fetchEditorsData(database);
+  const centeredStates = await fetchCenteredStates(database);
+
+  const newsArticles = await fetchNewsData(database);
+  const highlightedArticleId = await fetchHighlightedNews(database);
   return (
     <>
       <Suspense fallback={<LoadingHome />}>
-        <News isAllArticlesPage={false} />
+        <News
+          isAllArticlesPage={false}
+          handleToggleClick={handleToggleClick}
+          newsArticles={newsArticles}
+          highlightedArticleId={highlightedArticleId}
+          centeredStates={centeredStates}
+        />
       </Suspense>
       <Suspense fallback={<LoadingHome />}>
-        <EditorsPicks isAllArticlesPage={false} />
+        <EditorsPicks
+          isAllArticlesPage={false}
+          highlightedEditors={highlightedEditors}
+          editorsArticles={editorsData}
+          handleToggleClick={handleToggleClick}
+          centeredStates={centeredStates}
+          handleSetHighlight={handleSetHighlight}
+        />
       </Suspense>
     </>
   );

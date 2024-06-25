@@ -86,11 +86,6 @@ function Home({
   // const [newFeaturedAd, setFeaturedAd] = useState([]);
   const [loading, setLoading] = useState(false);
 
-  // const highlightedNews= fetchHighlightedNews(database);
-  // const highlightedEditors= fetchHighlightedEditors(database);
-  // const highlightedPlaylists= fetchHighlightedPlaylists(database);
-  // const newFeaturedAd= fetchFeaturedAd(database);
-
   // const [highlightedNews, highlightedEditors, highlightedPlaylists, newFeaturedAd] = await Promise.all([
   //   fetchHighlightedNews(database),
   //   fetchHighlightedEditors(database),

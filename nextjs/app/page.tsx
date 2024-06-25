@@ -2,13 +2,13 @@ import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { Suspense } from "react";
 import Home from "../components/Home";
-import EditorsPicks from "../components/editors-picks/page";
-import News from "../components/news/News";
+// import EditorsPicks from "../components/editors-picks/page";
+// import News from "../components/news/News";
+import { database } from "@/firebase/firebase";
 import Socials from "../components/socials/Socials";
 import { fetchDataWithCache } from "../context/cache/cacheUtils";
 import LoadingHome from "../context/loading/HomeLoad/LoadingHome";
 import "./HomePages.css";
-import { database } from "@/firebase/firebase";
 import NewsEditor from "./_newseditor";
 
 // const News = dynamic(() => import("../components/news/News"));
