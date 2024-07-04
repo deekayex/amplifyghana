@@ -1,14 +1,40 @@
-"use client";
-import React from "react";
-import News from "../../../components/news/News";
+import {
+  fetchCenteredStates,
+  fetchEditorsData,
+  fetchHighlightedEditors,
+  fetchNewsData,
+  handleSetHighlight,
+  handleToggleClick,
+} from "@/context/utils";
+import { database } from "@/firebase/firebase";
 import EditorsPicks from "../../../components/editors-picks/page";
+import News from "../../../components/news/News";
+import { Suspense } from "react";
+import LoadingScreen from "@/context/loading/LoadingScreen";
+import LoadingArticles from "@/context/loading/ArticlesLoad/LoadingArticles";
 
-const ArticleList = () => {
+const ArticleList = async () => {
+  const highlightedEditors = await fetchHighlightedEditors(database);
+  const editorsData = await fetchEditorsData(database);
+  const centeredStates = await fetchCenteredStates(database);
+
+  const newsArticles = await fetchNewsData(database);
   return (
     <div className="page-limiter">
       <div>
-        <News isAllArticlesPage={true} />
-        <EditorsPicks isAllArticlesPage={true}/>
+        <Suspense fallback={<LoadingArticles/>}>
+        <News isAllArticlesPage={true} initialNewsArticles={newsArticles}
+        />
+        </Suspense>
+        <EditorsPicks
+          isAllArticlesPage={true}
+          initialNewsArticles={newsArticles}
+          highlightedEditors={highlightedEditors}
+          editorsArticles={editorsData}
+          handleToggleClick={handleToggleClick}
+          centeredStates={centeredStates}
+          handleSetHighlight={handleSetHighlight}
+        />
       </div>
     </div>
   );

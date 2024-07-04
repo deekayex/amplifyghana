@@ -1,5 +1,6 @@
 import EditorsPicks from "@/components/editors-picks/page";
 import News from "@/components/news/News";
+import LoadingArticles from "@/context/loading/ArticlesLoad/LoadingArticles";
 import LoadingHome from "@/context/loading/HomeLoad/LoadingHome";
 import { database } from "@/firebase/firebase";
 import {
@@ -8,7 +9,8 @@ import {
   getDoc,
   getDocs,
   orderBy,
-  query,limit,
+  query,count,
+  limit,
   setDoc,
   updateDoc,
 } from "@firebase/firestore";
@@ -102,7 +104,7 @@ async function handleToggleClick(database, articleId) {
     }
 
     // Fetch the updated centered states
-    const updatedCenteredStates = await fetchCenteredStates(database);
+    const updatedCenteredStates = await fetchCenteredStates();
     return updatedCenteredStates; // Instead of setCenteredStates
   } catch (error) {
     console.error("Error toggling centered state:", error);
@@ -110,7 +112,7 @@ async function handleToggleClick(database, articleId) {
   }
 }
 
-async function fetchCenteredStates(database) {
+async function fetchCenteredStates() {
   const centeredStatesCollection = collection(database, "centeredStates");
   const centeredStatesSnapshot = await getDocs(centeredStatesCollection);
 
@@ -122,7 +124,7 @@ async function fetchCenteredStates(database) {
   return centeredStates; // Instead of setCenteredStates
 }
 
-async function handleSetHighlight(database, articleId) {
+async function handleSetHighlight(articleId) {
   "use server";
   try {
     await setDoc(doc(database, "highlighted", "highlightedEditors"), {
@@ -136,7 +138,7 @@ async function handleSetHighlight(database, articleId) {
   }
 }
 
-export const fetchHighlightedNews = async (database) => {
+export const fetchHighlightedNews = async () => {
   try {
     const highlightedArticleDoc = await getDoc(
       doc(database, "highlighted", "highlightedNews")
@@ -153,10 +155,19 @@ export const fetchHighlightedNews = async (database) => {
 };
 
 // Function to fetch all news articles
-export const fetchNewsData = async (database,page=1) => {
+export const fetchNewsData = async (database, page = 1) => {
+  "use server";
   try {
+    const articlesPerPage = 6;
     const newsCollection = collection(database, "news");
-    const newsQuery = query(newsCollection, orderBy("timestamp", "desc"),limit(6));
+    // const totalArticlesQuery = await getDocs(newsCollection);
+    // const totalArticlesCount = totalArticlesQuery.size;
+    // const totalPagesCount = Math.ceil(totalArticlesCount / articlesPerPage);
+    const newsQuery = query(
+      newsCollection,
+      orderBy("timestamp", "desc"),
+      limit(articlesPerPage)
+    );
     const newsSnapshot = await getDocs(newsQuery);
     const articles = newsSnapshot.docs.map((doc) => ({
       id: doc.id,
@@ -173,29 +184,31 @@ export default async function NewsEditor() {
   //write the equivalent of that for the EditorsPicks
   const highlightedEditors = await fetchHighlightedEditors(database);
   const editorsData = await fetchEditorsData(database);
-  const centeredStates = await fetchCenteredStates(database);
+  const centeredStates = await fetchCenteredStates();
 
   const newsArticles = await fetchNewsData(database);
   // const highlightedArticleId = await fetchHighlightedNews(database);
   return (
     <>
-      <Suspense fallback={<LoadingHome />}>
+      <Suspense fallback={<LoadingArticles />}>
         <News
           isAllArticlesPage={false}
           // handleToggleClick={handleToggleClick}
+          fetchNewsData={fetchNewsData}
           initialNewsArticles={newsArticles}
+          // totalPagesCount={totalPagesCount}
           // highlightedArticleId={highlightedArticleId}
           // centeredStates={centeredStates}
         />
       </Suspense>
-      <Suspense fallback={<LoadingHome />}>
+      <Suspense fallback={<LoadingArticles />}>
         <EditorsPicks
           isAllArticlesPage={false}
           highlightedEditors={highlightedEditors}
           editorsArticles={editorsData}
-          handleToggleClick={handleToggleClick}
-          centeredStates={centeredStates}
-          handleSetHighlight={handleSetHighlight}
+          // handleToggleClick={handleToggleClick}
+          // centeredStates={centeredStates}
+          // handleSetHighlight={handleSetHighlight}
         />
       </Suspense>
     </>

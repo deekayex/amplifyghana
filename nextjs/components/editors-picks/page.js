@@ -22,56 +22,57 @@ function EditorsPicks({
   isAllArticlesPage,
   highlightedEditors,
   editorsArticles= [],
-  handleToggleClick,
-  centeredStates,
-  handleSetHighlight,
+  // handleToggleClick,
+  // centeredStates,
+  // handleSetHighlight,
 }) {
   const [, setEditorsArticles] = useState([]);
   const [user, setUser] = useState(null); // State to track the authenticated user
   const [isLoading, setIsLoading] = useState(false);
   const [, setHighlightedArticleId] = useState(null);
   // const [, setHighlightedEditors] = useState(null);
-  // const [centeredStates, setCenteredStates] = useState({});
+  const [centeredStates, setCenteredStates] = useState({});
 
-  // const handleToggleClick = async (articleId) => {
-  //   try {
-  //     const articleDocRef = doc(database, "centeredStates", articleId);
-  //     const articleDoc = await getDoc(articleDocRef);
+  const handleToggleClick = async (articleId) => {
+    try {
+      console.log("clicked",articleId);
+      const articleDocRef = doc(database, "centeredStates", articleId);
+      const articleDoc = await getDoc(articleDocRef);
 
-  //     if (articleDoc.exists()) {
-  //       // If the document exists, update the centered state
-  //       const currentCenteredState = articleDoc.data().centeredState;
-  //       const newCenteredState = !currentCenteredState;
+      if (articleDoc.exists()) {
+        // If the document exists, update the centered state
+        const currentCenteredState = articleDoc.data().centeredState;
+        const newCenteredState = !currentCenteredState;
 
-  //       await updateDoc(articleDocRef, {
-  //         centeredState: newCenteredState,
-  //       });
-  //     } else {
-  //       // If the document doesn't exist, create a new one
-  //       await setDoc(articleDocRef, {
-  //         centeredState: true, // Initial state
-  //       });
-  //     }
+        await updateDoc(articleDocRef, {
+          centeredState: newCenteredState,
+        });
+      } else {
+        // If the document doesn't exist, create a new one
+        await setDoc(articleDocRef, {
+          centeredState: true, // Initial state
+        });
+      }
 
-  //     // Fetch the updated centered states
-  //     const updatedCenteredStates = await fetchCenteredStates();
-  //     setCenteredStates(updatedCenteredStates);
-  //   } catch (error) {
-  //     console.error("Error toggling centered state:", error);
-  //   }
-  // };
+      // Fetch the updated centered states
+      const updatedCenteredStates = await fetchCenteredStates();
+      setCenteredStates(updatedCenteredStates);
+    } catch (error) {
+      console.error("Error toggling centered state:", error);
+    }
+  };
 
-  // const fetchCenteredStates = async () => {
-  //   const centeredStatesCollection = collection(database, "centeredStates");
-  //   const centeredStatesSnapshot = await getDocs(centeredStatesCollection);
+  const fetchCenteredStates = async () => {
+    const centeredStatesCollection = collection(database, "centeredStates");
+    const centeredStatesSnapshot = await getDocs(centeredStatesCollection);
 
-  //   const centeredStates = {};
-  //   centeredStatesSnapshot.forEach((doc) => {
-  //     centeredStates[doc.id] = doc.data().centeredState;
-  //   });
+    const centeredStates = {};
+    centeredStatesSnapshot.forEach((doc) => {
+      centeredStates[doc.id] = doc.data().centeredState;
+    });
 
-  //   return centeredStates;
-  // };
+    return centeredStates;
+  };
 
   // Call fetchCenteredStates once to initialize the state
   // useEffect(() => {
@@ -83,18 +84,18 @@ function EditorsPicks({
   //   initializeCenteredStates();
   // }, []);
 
-  // const handleSetHighlight = async (articleId) => {
-  //   try {
-  //     await setDoc(doc(database, "highlighted", "highlightedEditors"), {
-  //       articleId,
-  //     });
+  const handleSetHighlight = async (articleId) => {
+    try {
+      await setDoc(doc(database, "highlighted", "highlightedEditors"), {
+        articleId,
+      });
 
-  //     setHighlightedArticleId(articleId);
-  //     alert("Article set as highlight successfully!");
-  //   } catch (error) {
-  //     console.error("Error setting highlight:", error);
-  //   }
-  // };
+      setHighlightedArticleId(articleId);
+      alert("Article set as highlight successfully!");
+    } catch (error) {
+      console.error("Error setting highlight:", error);
+    }
+  };
 
   useEffect(() => {
     // const fetchHighlightedEditors = async () => {
@@ -261,7 +262,7 @@ function EditorsPicks({
                           </button>
                         )}
 
-                        {user && !article.isHighlight && isAllArticlesPage && (
+                        {!article.isHighlight && isAllArticlesPage && (
                           <button
                             onClick={() => handleSetHighlight(article.id)}
                           >

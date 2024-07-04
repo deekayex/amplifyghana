@@ -12,6 +12,7 @@ import {
   query,
   limit,
   startAfter,
+  getCountFromServer
 } from "@firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Image from "next/image";
@@ -22,11 +23,11 @@ import "./News.css";
 import LoadingHome from "@/context/loading/HomeLoad/LoadingHome";
 import LoadingArticles from "@/context/loading/ArticlesLoad/LoadingArticles";
 
-const News = ({ isAllArticlesPage, initialNewsArticles = []}) => {
+const News = ({ isAllArticlesPage,fetchNewsData, initialNewsArticles}) => {
   const [newsArticles, setNewsArticles] = useState(initialNewsArticles);
   const [user, setUser] = useState(null);
   const [, setHighlightedArticleId] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [centeredStates, setCenteredStates] = useState({});
   const [lastVisible, setLastVisible] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -36,22 +37,29 @@ const News = ({ isAllArticlesPage, initialNewsArticles = []}) => {
   useEffect(() => {
     const initialize = async () => {
       try {
-        setIsLoading(true);
+        // setIsLoading(true);
         const newsCollection = collection(database, "news");
-        const totalArticlesQuery = await getDocs(newsCollection);
-        const totalArticlesCount = totalArticlesQuery.size;
+
+        // const coll = collection(database, "news");
+        const snapshot = await getCountFromServer(newsCollection);
+        console.log('count: ', snapshot.data().count);
+        
+        // const totalArticlesQuery = await getDocs(newsCollection);
+        const totalArticlesCount = snapshot.data().count;
+        // console.log(totalArticlesCount);
         const totalPagesCount = Math.ceil(totalArticlesCount / articlesPerPage);
         setTotalPages(totalPagesCount);
 
-        const { articles, lastVisible } = await fetchArticles(1);
-        setNewsArticles(articles);
-        setLastVisible(lastVisible);
+        // const { articles, lastVisible } = await fetchArticles(1);
+        // setNewsArticles(articles);
+        // setLastVisible(lastVisible);
 
         setIsLoading(false);
 
         // Automatically load more articles if there are more pages
         if (totalPagesCount > 1) {
-          handleNextPage();
+          // handleNextPage();
+          fetchArticles(currentPage+1);
         }
       } catch (error) {
         setIsLoading(false);
@@ -77,7 +85,7 @@ const News = ({ isAllArticlesPage, initialNewsArticles = []}) => {
 
   const fetchArticles = async (page = 1) => {
     try {
-      setIsLoading(true);
+      // setIsLoading(true);
       const newsCollection = collection(database, "news");
       const articlesQuery = query(newsCollection, orderBy("timestamp", "desc"), limit(articlesPerPage));
       let newsQuery = articlesQuery;
@@ -187,6 +195,7 @@ const News = ({ isAllArticlesPage, initialNewsArticles = []}) => {
   const currentArticles = newsArticles.slice(startIndex, endIndex);
 
   return (
+    <Suspense fallback={<LoadingArticles/>}>
     <section className="news-container" id="news">
       <div className="spacer" />
       <div className="page-header">
@@ -201,15 +210,15 @@ const News = ({ isAllArticlesPage, initialNewsArticles = []}) => {
       </div>
 
       <div className="flex-contents">
-        <Suspense>
+        <Suspense fallback={<LoadingArticles/>}>
           <div className="page-contents">
-            {isLoading ? (
+            {/* {isLoading ? (
               // <p>Loading...</p>
               <LoadingArticles/>
             ) : currentArticles.length === 0 ? (
               <p>Error Loading Articles Please reload.</p>
-            ) : (
-              currentArticles.map((article, rowIndex) => (
+            ) : ( */}
+             { currentArticles.map((article, rowIndex) => (
                 <div key={rowIndex} className="news-row">
                   <Link
                     href={
@@ -251,8 +260,8 @@ const News = ({ isAllArticlesPage, initialNewsArticles = []}) => {
                     </div>
                   </Link>
                 </div>
-              ))
-            )}
+              ))}
+            {/* )} */}
           </div>
         </Suspense>
       </div>
@@ -276,6 +285,7 @@ const News = ({ isAllArticlesPage, initialNewsArticles = []}) => {
         </button>
       </div>
     </section>
+    </Suspense>
   );
 };
 
