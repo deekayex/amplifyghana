@@ -43,10 +43,14 @@ a{
     justify-content: space-between;
   }
 
-  
-  .amplify-logo{
+  .home-link{
     width: 12%;
     margin-left: 5vw;
+  }
+  
+  .amplify-logo{
+    width: 90%;
+    /* margin-left: 5vw; */
     opacity: 0.9;
   }
 
@@ -103,9 +107,12 @@ a{
 
 /* Add responsive styles for smaller screens */
 @media (max-width: 768px) {
+  .home-link{
+    width: 15vh;
+  }
   .amplify-logo{
     /* margin-left: 10vw; */
-    width: 15vh;
+    
   }
 
   .nav__menu {
@@ -169,8 +176,11 @@ a{
 
 
 @media screen and (min-width: 1020px) and (max-height: 700px){
-  .amplify-logo{
+  .home-link{
     width: 13%;
+  }
+  .amplify-logo{
+   
   }
 
   .nav{

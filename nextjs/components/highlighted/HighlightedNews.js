@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 
 const HighlightedNews = ({highlightedNews}) => {
-  const newsLink = highlightedNews ? `/article/news/${highlightedNews.id}` : '';
+  const newsLink = highlightedNews ? `article/news/${highlightedNews.id}` : '';
 
   return(
   <div className='right-highlighted'>

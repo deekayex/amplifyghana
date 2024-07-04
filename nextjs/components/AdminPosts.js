@@ -34,9 +34,8 @@ const AdminPosts = () => {
       const downloadURL = await getDownloadURL(storageRef);
 
       // Generate custom document ID from title
-      const customDocId = title.toLowerCase().replace(/\s+/g, '-');
+      const customDocId = title.toLowerCase().replace(/[^\w\s-"]/g, '').replace(/\s+/g, '-');
 
-      
 
       const newArticleRef = await setDoc(doc(collection(database, collectionName), customDocId), {
         title,

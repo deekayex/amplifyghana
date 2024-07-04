@@ -1,11 +1,11 @@
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import ArticleSide from "@/components/ArticleSide";
-import ScrollToTopOnMount from "@/components/ScrollToTop";
-import Connect from "@/components/connect/Connect";
-import Share from "@/components/share/Share";
-import { database } from "@/firebase/firebase";
-import ArticleContent from "@/app/[articleId]/Article";
-// import "@/app/[articleId]/ArticlePage.css";
+import ArticleSide from "../../components/ArticleSide";
+import ScrollToTopOnMount from "../../components/ScrollToTop";
+import Connect from "../../components/connect/Connect";
+import Share from "../../components/share/Share";
+import { database } from "../../firebase/firebase";
+import ArticleContent from "./Article";
+import "./ArticlePage.css";
 import { Metadata, ResolvingMetadata } from "next";
 import { Suspense } from "react";
 import LoadingScreen from "@/context/loading/LoadingScreen";

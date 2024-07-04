@@ -148,7 +148,7 @@ export default function ArticleContent({ article, featuredAdElements }) {
             <div className="read-article">
               <ShareButton
                 articleTitle={article.title}
-                articleUrl={`/article/${category}/${articleId}`}
+                articleUrl={`article/${category}/${articleId}`}
                 articleImageSrc={article.image}
                 // className="external-share"
               />

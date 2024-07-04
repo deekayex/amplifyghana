@@ -24,7 +24,7 @@ import "./Home.css";
 //       ),
 //       fetchDataWithCache("featuredAdCache", () =>
 //         getDocs(collection(database, "FeaturedAd"))
-//       ),
+//       ),f
 //     ]);
 
 //     // Fetch and set highlightedNews
@@ -168,9 +168,9 @@ function Home({
   // }, []);
 
   const editorsLink = highlightedEditors
-    ? `/article/editors-picks/${highlightedEditors.id}`
+    ? `/${highlightedEditors.id}`
     : "";
-  const newsLink = highlightedNews ? `/article/news/${highlightedNews.id}` : "";
+  const newsLink = highlightedNews ? `/${highlightedNews.id}` : "";
 
   return (
     <div className="homepage-components">
@@ -201,6 +201,7 @@ function Home({
             <Link
               href={editorsLink}
               style={{ position: "absolute", width: "100%", height: "100%" }}
+              prefetch
             />
             <div className="editor">
               <Link
@@ -235,6 +236,7 @@ function Home({
                   width: "100%",
                   height: "100%",
                 }}
+                prefetch
               />
               <div className="editor">
                 <Link

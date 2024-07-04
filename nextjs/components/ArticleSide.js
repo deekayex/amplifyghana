@@ -100,9 +100,9 @@ const ArticleSide = () => {
   }, []);
 
   const editorsLink = highlightedEditors
-    ? `/article/editors-picks/${highlightedEditors.id}`
+    ? `article/editors-picks/${highlightedEditors.id}`
     : "";
-  const newsLink = highlightedNews ? `/article/news/${highlightedNews.id}` : "";
+  const newsLink = highlightedNews ? `article/news/${highlightedNews.id}` : "";
 
   return (
     <div className="article-side">
@@ -126,7 +126,7 @@ const ArticleSide = () => {
             <Link href={newsLink} className="article-description">
               {highlightedNews ? highlightedNews.title : ""}
             </Link>
-            <Link href="/news" className="link-to-section">
+            <Link href="/#news" className="link-to-section">
               See more News
             </Link>
           </div>

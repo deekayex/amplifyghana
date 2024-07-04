@@ -1,8 +1,9 @@
+"use client";
 import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { database } from '../../firebase/firebase';
 import { collection, addDoc } from '@firebase/firestore';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const BasicForm = ({ onSubmit }) => {
   const [submittedMessage, setSubmittedMessage] = useState('');
@@ -46,14 +47,17 @@ const BasicForm = ({ onSubmit }) => {
             });
         }}
       >
-        {({ isSubmitting }) => (
+        {({
+         isSubmitting,
+         /* and other goodies */
+       }) => (
           <Form className="submission-form">
-            <Field type="name" name="name" placeholder="Your name" className="input-name" />
+            <Field type="text" name="name" placeholder="Your name" className="input-name" />
 
-            <Field type="text" name="email" placeholder="Email" className="input-email" />
+            <Field type="email" name="email" placeholder="Email" className="input-email" />
             <ErrorMessage name="email" component="div" className="error-message" />
 
-            <Field type="text" name="phone" placeholder="Phone number" className="input-phone" />
+            <Field type="email" name="phone" placeholder="Phone number" className="input-phone" />
             <ErrorMessage name="phone" component="div" className="error-message" />
 
             <Field
@@ -73,7 +77,7 @@ const BasicForm = ({ onSubmit }) => {
           <p>Well done! Message contains the required content.</p>
 
           {/* Link is displayed here */}
-          <Link to="/t2nrkxgof25hi3as46h5mgen5cjd7hdnxxogi943hg1hm9j1sdft68eskyiwfe0siz96cuiu7yn7dfn9c7stz01hvi">Sign In</Link>
+          <Link href="/t2nrkxgof25hi3as46h5mgen5cjd7hdnxxogi943hg1hm9j1sdft68eskyiwfe0siz96cuiu7yn7dfn9c7stz01hvi">Sign In</Link>
         </div>
       )}
     </div>

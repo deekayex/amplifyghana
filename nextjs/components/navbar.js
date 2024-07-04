@@ -5,24 +5,27 @@ import "./navbar.css";
 import { NavLink, useLocation } from "react-router-dom";
 import Link from "next/link";
 import {
+  useParams,
   usePathname,
   useSelectedLayoutSegment,
   useSelectedLayoutSegments,
 } from "next/navigation";
 
 function Navbar() {
-  const location = usePathname();
-  const segment = useSelectedLayoutSegments();
   // const isActive = slug === segment
-  const [activeSection, setActiveSection] = useState("");
+  const [activeSection, setActiveSection] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const params=useParams();
+  // const section = window.location.hash.substring(1);
+  // console.log(section);
+  // console.log('hello');
   useEffect(() => {
-    // const section = location.hash.substring(1);
-    setActiveSection(segment);
+    const section = window.location.hash.substring(1);
+    console.log(section);
+    setActiveSection(section);
     // console.log(segment);
     // console.log(location);
-  }, [location]);
+  }, [params]);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -56,7 +59,7 @@ function Navbar() {
   return (
     <nav className="nav">
       <div className="nav-small-menu">
-        <Link href="/" aria-label="link-to-home-page">
+        <Link href="/" aria-label="link-to-home-page" className="home-link" prefetch>
           <img
             src={"/amplifyghlogo.png"}
             alt="Amplify logo"
@@ -82,6 +85,7 @@ function Navbar() {
               closeMenu();
               scrollToTop();
             }}
+            prefetch
           >
             NEWS
           </Link>
@@ -98,6 +102,7 @@ function Navbar() {
               closeMenu();
               scrollToTop();
             }}
+            prefetch
           >
             EDITOR'S PICKS
           </Link>
@@ -111,6 +116,7 @@ function Navbar() {
             }`}
             aria-label="link-to-playlists-page"
             onClick={closeMenu}
+            prefetch
           >
             PLAYLISTS
           </Link>
@@ -124,6 +130,7 @@ function Navbar() {
             }`}
             aria-label="link-to-submissions-page"
             onClick={closeMenu}
+            prefetch
           >
             SUBMISSIONS
           </Link>
@@ -137,6 +144,7 @@ function Navbar() {
             }`}
             aria-label="link-to-about-page"
             onClick={closeMenu}
+            prefetch
           >
             ABOUT US
           </Link>

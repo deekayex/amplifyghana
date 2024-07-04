@@ -1,5 +1,6 @@
+
 import React from "react";
-import Playlists from "../playlists/page";
+import Playlists from "./page";
 
 const PlaylistList = () => {
   return (

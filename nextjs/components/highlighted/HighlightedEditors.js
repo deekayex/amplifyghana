@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 const HighlightedEditors = ({highlightedEditors}) => {
-  const editorsLink = highlightedEditors ? `/article/editors-picks/${highlightedEditors.id}` : '';
+  const editorsLink = highlightedEditors ? `article/editors-picks${highlightedEditors.id}` : '';
   return (
 
     <Link to={editorsLink}  >

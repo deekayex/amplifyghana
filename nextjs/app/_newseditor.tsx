@@ -8,7 +8,7 @@ import {
   getDoc,
   getDocs,
   orderBy,
-  query,
+  query,limit,
   setDoc,
   updateDoc,
 } from "@firebase/firestore";
@@ -153,10 +153,10 @@ export const fetchHighlightedNews = async (database) => {
 };
 
 // Function to fetch all news articles
-export const fetchNewsData = async (database) => {
+export const fetchNewsData = async (database,page=1) => {
   try {
     const newsCollection = collection(database, "news");
-    const newsQuery = query(newsCollection, orderBy("timestamp", "desc"));
+    const newsQuery = query(newsCollection, orderBy("timestamp", "desc"),limit(6));
     const newsSnapshot = await getDocs(newsQuery);
     const articles = newsSnapshot.docs.map((doc) => ({
       id: doc.id,
@@ -176,16 +176,16 @@ export default async function NewsEditor() {
   const centeredStates = await fetchCenteredStates(database);
 
   const newsArticles = await fetchNewsData(database);
-  const highlightedArticleId = await fetchHighlightedNews(database);
+  // const highlightedArticleId = await fetchHighlightedNews(database);
   return (
     <>
       <Suspense fallback={<LoadingHome />}>
         <News
           isAllArticlesPage={false}
-          handleToggleClick={handleToggleClick}
-          newsArticles={newsArticles}
-          highlightedArticleId={highlightedArticleId}
-          centeredStates={centeredStates}
+          // handleToggleClick={handleToggleClick}
+          initialNewsArticles={newsArticles}
+          // highlightedArticleId={highlightedArticleId}
+          // centeredStates={centeredStates}
         />
       </Suspense>
       <Suspense fallback={<LoadingHome />}>

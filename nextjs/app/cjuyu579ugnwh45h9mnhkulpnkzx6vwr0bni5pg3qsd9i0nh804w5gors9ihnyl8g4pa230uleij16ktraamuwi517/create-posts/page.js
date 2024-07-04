@@ -1,8 +1,8 @@
-
+"use client";
 import React, { useState } from 'react';
-import CreateArticleTitle from '../../newArticle/CreateArticleTitle';
-import CreateArticleSummary from '../../newArticle/CreateArticleSummary';
-import CreateArticleContents from '../../newArticle/CreateArticleContents';
+import CreateArticleTitle from '../../../components/forms/newArticle/CreateArticleTitle';
+import CreateArticleSummary from '../../../components/forms/newArticle/CreateArticleSummary';
+import CreateArticleContents from '../../../components/forms/newArticle/CreateArticleContents';
 import './CreateArticleForm.css'
 
 const CreateArticleForm = ({ onSave, onCancel }) => {

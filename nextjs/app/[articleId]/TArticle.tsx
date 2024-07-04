@@ -3,15 +3,15 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import { database } from "../../../../firebase/firebase";
+import { database } from "@/firebase/firebase";
 import DOMPurify from "isomorphic-dompurify";
 import "./ArticlePage.css";
-import LoadingScreen from "../../../../context/loading/LoadingScreen";
-import ArticleSide from "../../../../components/ArticleSide";
-import Share from "../../../../components/share/Share";
-import Connect from "../../../../components/connect/Connect";
+import LoadingScreen from "@/context/loading/LoadingScreen";
+import ArticleSide from "@/components/ArticleSide";
+import Share from "@/components/share/Share";
+import Connect from "@/components/connect/Connect";
 import { useLocation } from "react-router-dom";
-import ScrollToTopOnMount from "../../../../components/ScrollToTop";
+import ScrollToTopOnMount from "@/components/ScrollToTop";
 import Article from "./TArticle";
 
 export const ShareButton = ({ articleTitle, articleUrl, articleImageSrc }) => {
@@ -319,7 +319,7 @@ const ArticlePage = ({ params, article, featuredAdElements }) => {
               <div className="read-article">
                 <ShareButton
                   articleTitle={article.title}
-                  articleUrl={`/article/${category}/${articleId}`}
+                  articleUrl={`/{articleId}`}
                   articleImageSrc={article.image}
                   // className="external-share"
                 />

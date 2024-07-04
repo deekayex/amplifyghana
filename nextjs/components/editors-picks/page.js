@@ -1,6 +1,16 @@
 "use client";
 import newspaper from "@/public/newspaper-folded.png";
-import { deleteDoc, doc } from "@firebase/firestore";
+import { collection,
+  deleteDoc,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+  updateDoc,
+  orderBy,
+  query,
+  limit,
+  startAfter, } from "@firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth"; // Import Firebase Authentication functions
 import Image from "next/image";
 import Link from "next/link";
@@ -11,7 +21,7 @@ import { database } from "../../firebase/firebase";
 function EditorsPicks({
   isAllArticlesPage,
   highlightedEditors,
-  editorsArticles,
+  editorsArticles= [],
   handleToggleClick,
   centeredStates,
   handleSetHighlight,
@@ -154,7 +164,7 @@ function EditorsPicks({
   };
 
   const articlesPerPage = 6;
-  const totalArticles = editorsArticles.length;
+
   const [currentPage, setCurrentPage] = useState(1);
   // const [articlesPerRow, setArticlesPerRow] = useState(getArticlesPerRow());
 
@@ -170,9 +180,7 @@ function EditorsPicks({
   //   };
   // }, []);
 
-  const startIndex = (currentPage - 1) * articlesPerPage;
-  const endIndex = Math.min(startIndex + articlesPerPage, totalArticles);
-  const currentArticles = editorsArticles.slice(startIndex, endIndex);
+  
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) =>
@@ -190,6 +198,10 @@ function EditorsPicks({
   //   } //hydration issues
   //   return window.innerWidth >= 700 ? 3 : 2;
   // }
+  const totalArticles = editorsArticles.length;
+  const startIndex = (currentPage - 1) * articlesPerPage;
+  const endIndex = Math.min(startIndex + articlesPerPage, totalArticles);
+  const currentArticles = editorsArticles.slice(startIndex, endIndex);
 
   return (
     <section className="editor-page" id="editors-pick">
@@ -221,7 +233,7 @@ function EditorsPicks({
                     href={
                       user && isAllArticlesPage && !article.isHighlight
                         ? "#"
-                        : `/article/editors-picks/${article.id}`
+                        : `article/editors-picks/${article.id}`
                     }
                     key={`col--row-${rowIndex}`}
                   >
