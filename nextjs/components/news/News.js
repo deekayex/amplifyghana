@@ -224,9 +224,10 @@ const News = ({ isAllArticlesPage,fetchNewsData, initialNewsArticles}) => {
                     href={
                       user && isAllArticlesPage && !article.isHighlight
                         ? "#"
-                        : `article/news/${article.id}`
+                        : `news/${article.id}`
                     }
                     key={rowIndex}
+                    prefetch
                   >
                     <div
                       className={`content-card ${

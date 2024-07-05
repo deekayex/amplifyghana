@@ -168,9 +168,9 @@ function Home({
   // }, []);
 
   const editorsLink = highlightedEditors
-    ? `/${highlightedEditors.id}`
+    ? `editors-picks/${highlightedEditors.id}`
     : "";
-  const newsLink = highlightedNews ? `/${highlightedNews.id}` : "";
+  const newsLink = highlightedNews ? `news/${highlightedNews.id}` : "";
 
   return (
     <div className="homepage-components">
@@ -212,12 +212,17 @@ function Home({
                 <h3>EDITOR'S PICKS</h3>
               </Link>
             </div>
+            <Link
+              href={editorsLink}
+              prefetch
+            >
             <div className="editor-text">
               <h2 className="editor-text-header">
                 {highlightedEditors.title || "Loading..."}
               </h2>
               <p className="editor-text-body">{highlightedEditors.summary}</p>
             </div>
+            </Link>
           </div>
         )}
         <div className="right-homepage">
@@ -247,6 +252,11 @@ function Home({
                   <h3>NEWS</h3>
                 </Link>
               </div>
+
+              <Link
+              href={newsLink}
+              prefetch
+            >
               <div className="news-text">
                 <h2 className="news-text-header">
                   {highlightedNews.title || "Loading..."}
@@ -255,6 +265,7 @@ function Home({
                   {highlightedNews.summary || ""}
                 </p>
               </div>
+              </Link>
             </div>
           )}
 

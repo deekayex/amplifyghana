@@ -234,9 +234,10 @@ function EditorsPicks({
                     href={
                       user && isAllArticlesPage && !article.isHighlight
                         ? "#"
-                        : `article/editors-picks/${article.id}`
+                        : `editors-picks/${article.id}`
                     }
                     key={`col--row-${rowIndex}`}
+                    prefetch
                   >
                     <div
                       key={`col--row-${rowIndex}`}

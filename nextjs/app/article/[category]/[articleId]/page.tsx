@@ -4,7 +4,7 @@ import ScrollToTopOnMount from "@/components/ScrollToTop";
 import Connect from "@/components/connect/Connect";
 import Share from "@/components/share/Share";
 import { database } from "@/firebase/firebase";
-import ArticleContent from "@/app/[articleId]/Article";
+import ArticleContent from "@/app/[category]/[articleId]/Article";
 // import "@/app/[articleId]/ArticlePage.css";
 import { Metadata, ResolvingMetadata } from "next";
 import { Suspense } from "react";
