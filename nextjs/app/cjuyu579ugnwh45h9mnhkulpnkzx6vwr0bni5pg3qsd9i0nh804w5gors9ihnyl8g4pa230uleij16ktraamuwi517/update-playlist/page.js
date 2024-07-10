@@ -4,6 +4,7 @@ import { database, storage } from "../../../firebase/firebase";
 import { collection, addDoc, setDoc, getDocs } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import Link from "next/link";
+import AdminLayout from "@/components/admin/AdminLayout";
 
 const HighlightPlaylist = ({ onSave, onCancel }) => {
   const initialHighlight = {
@@ -82,6 +83,7 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
   };
 
   return (
+    <AdminLayout>
     <div className="playlist-highlighted">
       <form onSubmit={handleSubmit} className="playlist-form">
         <h className>Create New Playlist Highlight</h>
@@ -141,6 +143,7 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
         </div>
       </form>
     </div>
+    </AdminLayout>
   );
 };
 

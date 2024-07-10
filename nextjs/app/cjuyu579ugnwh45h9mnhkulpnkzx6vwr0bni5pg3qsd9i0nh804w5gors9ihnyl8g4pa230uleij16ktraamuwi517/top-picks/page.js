@@ -5,6 +5,7 @@ import { doc, getDoc } from '@firebase/firestore';
 // import { NavLink } from 'react-router-dom';
 import HighlightedEditors from '../../../components/highlighted/HighlightedEditors';
 import Link from 'next/link';
+import AdminLayout from '@/components/admin/AdminLayout';
 
 
 
@@ -63,6 +64,7 @@ const TopPicksPage = () => {
   }, []);
 
   return (
+    <AdminLayout>
     <div className='top-picks-page'>TopPicksPage
       <div className='top-picks-container'>
         
@@ -73,6 +75,7 @@ const TopPicksPage = () => {
         <Link href= '/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/top-playlist' className='link'>Highlight Playlist</Link>
       </div>
     </div>
+    </AdminLayout>
   )
 }
 

@@ -4,6 +4,7 @@ import CreateArticleTitle from '../../../components/forms/newArticle/CreateArtic
 import CreateArticleSummary from '../../../components/forms/newArticle/CreateArticleSummary';
 import CreateArticleContents from '../../../components/forms/newArticle/CreateArticleContents';
 import './CreateArticleForm.css'
+import AdminLayout from '@/components/admin/AdminLayout';
 
 const CreateArticleForm = ({ onSave, onCancel }) => {
   const [step, setStep] = useState(1);
@@ -92,9 +93,11 @@ const CreateArticleForm = ({ onSave, onCancel }) => {
   };
 
   return (
+    <AdminLayout>
     <div className="create-article-form">
       {renderStep()}
     </div>
+    </AdminLayout>
   );
 };
 

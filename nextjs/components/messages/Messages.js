@@ -1,29 +1,42 @@
-import React from 'react'
+// components/Messages.js
+import React, { useEffect, useState } from "react";
+import { fetchMessages } from "./messagesService";
 import './Messages.css'
 
 const Messages = () => {
+  const [messages, setMessages] = useState([]);
+
+  useEffect(() => {
+    const getMessages = async () => {
+      const messagesList = await fetchMessages();
+      setMessages(messagesList);
+    };
+    getMessages();
+  }, []);
+
+  useEffect(() => {
+    console.log("Messages state updated:", messages);
+  }, [messages]);
+
   return (
-    <div>
-      <div className='spacer' />
-      <div className='messages'>Messages
-        <div className='inox-header'>
-          <div className='inbox-menu'>
-            <div>All</div>
-            <div>New</div>
-            <div>Read</div>
-          </div>
-        </div>
+    <div className="inbox-menu">
+      <h1 className="inbox-text">Inbox</h1>
+      {messages.length > 0 ? (
+        <ul>
+          {messages.map(message => (
+            <li key={message.id} className="inbox-message">
+              <h2>{message.message}</h2>
+              <p><strong>From:</strong> {message.senderName}</p>  <p>{message.email}</p>
+              <p>{message.contactNumber}</p>
+              <p>{message.timestamp}</p>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No messages found.</p>
+      )}
+    </div>
+  );
+};
 
-        <div className='inbox-message'>
-          <div>Message</div>
-          <div>Name</div>
-          <div>Email</div>
-          <div>Phone number</div>
-          <div>Date and Time</div>
-        </div>
-       </div>
-     </div>
-  )
-}
-
-export default Messages
+export default Messages;

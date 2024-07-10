@@ -31,8 +31,10 @@ const BasicForm = ({ onSubmit }) => {
           // Modify values object to include sender information
           const senderName = values.name;
           const contactNumber = values.phone;
+          const timestamp = new Date().toISOString(); // Generate current timestamp
           values.senderName = senderName;
           values.contactNumber = contactNumber;
+          values.timestamp = timestamp;
 
           addDoc(messagesCollection, values)
             .then(() => {
