@@ -1,4 +1,0 @@
-# https://www.robotstxt.org/robotstxt.html
-User-agent: *
-Disallow: /cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517
-Disallow: /2nrkxgof25hi3as46h5mgen5cjd7hdnxxogi943hg1hm9j1sdft68eskyiwfe0siz96cuiu7yn7dfn9c7stz01hvi

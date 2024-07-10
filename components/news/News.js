@@ -12,18 +12,23 @@ import {
   query,
   limit,
   startAfter,
-  getCountFromServer
+  getCountFromServer,
 } from "@firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
-import React, { Suspense, useEffect, useState } from "react";
+import React, { Suspense, useCallback, useEffect, useState } from "react";
 import { database } from "../../firebase/firebase";
 import "./News.css";
 import LoadingHome from "@/context/loading/HomeLoad/LoadingHome";
 import LoadingArticles from "@/context/loading/ArticlesLoad/LoadingArticles";
 
-const News = ({ isAllArticlesPage,fetchNewsData, initialNewsArticles}) => {
+const News = ({
+  isAllArticlesPage,
+  fetchNewsData,
+  initialNewsArticles,
+  totalPagesCount,
+}) => {
   const [newsArticles, setNewsArticles] = useState(initialNewsArticles);
   const [user, setUser] = useState(null);
   const [, setHighlightedArticleId] = useState(null);
@@ -31,43 +36,92 @@ const News = ({ isAllArticlesPage,fetchNewsData, initialNewsArticles}) => {
   const [centeredStates, setCenteredStates] = useState({});
   const [lastVisible, setLastVisible] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(1);
+  const [totalPages, setTotalPages] = useState(totalPagesCount || 1);
   const articlesPerPage = 6;
 
-  useEffect(() => {
-    const initialize = async () => {
+  const fetchArticles = useCallback(
+    async (page = 1) => {
       try {
         // setIsLoading(true);
         const newsCollection = collection(database, "news");
+        const articlesQuery = query(
+          newsCollection,
+          orderBy("timestamp", "desc"),
+          limit(articlesPerPage)
+        );
+        let newsQuery = articlesQuery;
 
-        // const coll = collection(database, "news");
-        const snapshot = await getCountFromServer(newsCollection);
-        console.log('count: ', snapshot.data().count);
-        
-        // const totalArticlesQuery = await getDocs(newsCollection);
-        const totalArticlesCount = snapshot.data().count;
-        // console.log(totalArticlesCount);
-        const totalPagesCount = Math.ceil(totalArticlesCount / articlesPerPage);
-        setTotalPages(totalPagesCount);
+        if (page > 1 && lastVisible) {
+          newsQuery = query(articlesQuery, startAfter(lastVisible));
+        }
 
-        // const { articles, lastVisible } = await fetchArticles(1);
-        // setNewsArticles(articles);
-        // setLastVisible(lastVisible);
+        const newsSnapshot = await getDocs(newsQuery);
+        const articles = newsSnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
 
-        setIsLoading(false);
+        const lastVisibleDoc =
+          newsSnapshot.docs[newsSnapshot.docs.length - 1] || null;
+        setLastVisible(lastVisibleDoc);
 
-        // Automatically load more articles if there are more pages
-        if (totalPagesCount > 1) {
-          // handleNextPage();
-          fetchArticles(currentPage+1);
+        if (page === 1) {
+          // Always show at least the first 6 articles
+          const initialArticles = articles.slice(0, articlesPerPage);
+          setNewsArticles(initialArticles);
+        } else {
+          setNewsArticles((prevArticles) => {
+            const newArticles = articles.filter(
+              (article) =>
+                !prevArticles.some(
+                  (prevArticle) => prevArticle.id === article.id
+                )
+            );
+            return [...prevArticles, ...newArticles];
+          });
         }
       } catch (error) {
+        console.error("Error fetching news articles", error);
+      } finally {
         setIsLoading(false);
-        console.error("Error initializing news articles", error);
       }
-    };
+    },
+    [lastVisible]
+  );
+  useEffect(() => {
+    // const initialize = async () => {
+    //   try {
+    //     // setIsLoading(true);
+    //     const newsCollection = collection(database, "news");
 
-    initialize();
+    //     // const coll = collection(database, "news");
+    //     const snapshot = await getCountFromServer(newsCollection);
+    //     console.log("count: ", snapshot.data().count);
+
+    //     // const totalArticlesQuery = await getDocs(newsCollection);
+    //     const totalArticlesCount = snapshot.data().count;
+    //     // console.log(totalArticlesCount);
+    //     const totalPagesCount = Math.ceil(totalArticlesCount / articlesPerPage);
+    //     setTotalPages(totalPagesCount);
+
+    //     // const { articles, lastVisible } = await fetchArticles(1);
+    //     // setNewsArticles(articles);
+    //     // setLastVisible(lastVisible);
+
+    //     setIsLoading(false);
+
+    //     // Automatically load more articles if there are more pages
+    //     if (totalPagesCount > 1) {
+    //       // handleNextPage();
+    //       fetchArticles(currentPage + 1);
+    //     }
+    //   } catch (error) {
+    //     setIsLoading(false);
+    //     console.error("Error initializing news articles", error);
+    //   }
+    // };
+
+    // initialize();
 
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -75,52 +129,13 @@ const News = ({ isAllArticlesPage,fetchNewsData, initialNewsArticles}) => {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [currentPage, fetchArticles]);
 
   useEffect(() => {
     if (currentPage > 1) {
       fetchArticles(currentPage);
     }
-  }, [currentPage]);
-
-  const fetchArticles = async (page = 1) => {
-    try {
-      // setIsLoading(true);
-      const newsCollection = collection(database, "news");
-      const articlesQuery = query(newsCollection, orderBy("timestamp", "desc"), limit(articlesPerPage));
-      let newsQuery = articlesQuery;
-
-      if (page > 1 && lastVisible) {
-        newsQuery = query(articlesQuery, startAfter(lastVisible));
-      }
-
-      const newsSnapshot = await getDocs(newsQuery);
-      const articles = newsSnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-
-      const lastVisibleDoc = newsSnapshot.docs[newsSnapshot.docs.length - 1] || null;
-      setLastVisible(lastVisibleDoc);
-
-      if (page === 1) {
-        // Always show at least the first 6 articles
-        const initialArticles = articles.slice(0, articlesPerPage);
-        setNewsArticles(initialArticles);
-      } else {
-        setNewsArticles((prevArticles) => {
-          const newArticles = articles.filter(
-            (article) => !prevArticles.some((prevArticle) => prevArticle.id === article.id)
-          );
-          return [...prevArticles, ...newArticles];
-        });
-      }
-    } catch (error) {
-      console.error("Error fetching news articles", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  }, [currentPage, fetchArticles]);
 
   const handleNextPage = () => {
     setCurrentPage((prevPage) => prevPage + 1);
@@ -195,30 +210,30 @@ const News = ({ isAllArticlesPage,fetchNewsData, initialNewsArticles}) => {
   const currentArticles = newsArticles.slice(startIndex, endIndex);
 
   return (
-    <Suspense fallback={<LoadingArticles/>}>
-    <section className="news-container" id="news">
-      <div className="spacer" />
-      <div className="page-header">
-        <Image
-          src={newspaper}
-          alt="News icon"
-          className="news-icon"
-          width={10}
-          height={10}
-        />
-        <h1>NEWS</h1>
-      </div>
+    <Suspense fallback={<LoadingArticles />}>
+      <section className="news-container" id="news">
+        <div className="spacer" />
+        <div className="page-header">
+          <Image
+            src={newspaper}
+            alt="News icon"
+            className="news-icon"
+            width={10}
+            height={10}
+          />
+          <h1>NEWS</h1>
+        </div>
 
-      <div className="flex-contents">
-        <Suspense fallback={<LoadingArticles/>}>
-          <div className="page-contents">
-            {/* {isLoading ? (
+        <div className="flex-contents">
+          <Suspense fallback={<LoadingArticles />}>
+            <div className="page-contents">
+              {/* {isLoading ? (
               // <p>Loading...</p>
               <LoadingArticles/>
             ) : currentArticles.length === 0 ? (
               <p>Error Loading Articles Please reload.</p>
             ) : ( */}
-             { currentArticles.map((article, rowIndex) => (
+              {currentArticles.map((article, rowIndex) => (
                 <div key={rowIndex} className="news-row">
                   <Link
                     href={
@@ -239,7 +254,9 @@ const News = ({ isAllArticlesPage,fetchNewsData, initialNewsArticles}) => {
                     >
                       <div className="card-manager">
                         {user && isAllArticlesPage && (
-                          <button onClick={() => handleDeleteArticles(article.id)}>
+                          <button
+                            onClick={() => handleDeleteArticles(article.id)}
+                          >
                             Delete
                           </button>
                         )}
@@ -249,7 +266,9 @@ const News = ({ isAllArticlesPage,fetchNewsData, initialNewsArticles}) => {
                           </button>
                         )}
                         {user && isAllArticlesPage && !article.isHighlight && (
-                          <button onClick={() => handleSetHighlight(article.id)}>
+                          <button
+                            onClick={() => handleSetHighlight(article.id)}
+                          >
                             Set as News Highlight
                           </button>
                         )}
@@ -262,30 +281,30 @@ const News = ({ isAllArticlesPage,fetchNewsData, initialNewsArticles}) => {
                   </Link>
                 </div>
               ))}
-            {/* )} */}
-          </div>
-        </Suspense>
-      </div>
-      <div className="pagination">
-        <button
-          onClick={handlePrevPage}
-          disabled={currentPage === 1}
-          className="page-button"
-        >
-          Back
-        </button>
-        <span className="page-number">
-          Page {currentPage} of {totalPages}
-        </span>
-        <button
-          onClick={handleNextPage}
-          disabled={currentPage === totalPages}
-          className="page-button"
-        >
-          Next
-        </button>
-      </div>
-    </section>
+              {/* )} */}
+            </div>
+          </Suspense>
+        </div>
+        <div className="pagination">
+          <button
+            onClick={handlePrevPage}
+            disabled={currentPage === 1}
+            className="page-button"
+          >
+            Back
+          </button>
+          <span className="page-number">
+            Page {currentPage} of {totalPages}
+          </span>
+          <button
+            onClick={handleNextPage}
+            disabled={currentPage === totalPages}
+            className="page-button"
+          >
+            Next
+          </button>
+        </div>
+      </section>
     </Suspense>
   );
 };

@@ -1,12 +1,11 @@
-import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import { Suspense } from "react";
-import Home from "../components/Home";
 // import EditorsPicks from "../components/editors-picks/page";
 // import News from "../components/news/News";
-import { database } from "@/firebase/firebase";
+import Home from "@/components/Home";
+import { fetchDataWithCache } from "@/context/cache/cacheUtils";
+import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
 import Socials from "../components/socials/Socials";
-import { fetchDataWithCache } from "../context/cache/cacheUtils";
 import LoadingHome from "../context/loading/HomeLoad/LoadingHome";
 import "./HomePages.css";
 import NewsEditor from "./_newseditor";
@@ -25,6 +24,7 @@ import NewsEditor from "./_newseditor";
 //       "https://ucarecdn.com/04cd01ca-f483-421d-acad-b64ab26cd7f1/sharelogo.png",
 //   },
 // };
+
 async function fetchHighlightedNews(database) {
   const highlightedNewsDoc = await fetchDataWithCache(
     "highlightedNewsCache",
@@ -122,34 +122,8 @@ async function fetchFeaturedAd(database) {
   }));
 }
 async function HomePages() {
-  const [
-    highlightedNews,
-    highlightedEditors,
-    highlightedPlaylists,
-    newFeaturedAd,
-  ] = await Promise.all([
-    fetchHighlightedNews(database),
-    fetchHighlightedEditors(database),
-    fetchHighlightedPlaylists(database),
-    fetchFeaturedAd(database),
-  ]);
-
   return (
     <div className="container" id="home">
-      {/* <Helmet>
-        <title>
-          Amplify Ghana | Promoting African Creatives | PR Agency | Music and
-          Entertainment News
-        </title>
-        <meta
-          name="description"
-          content="Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered."
-        />
-        <meta
-          property="og:image"
-          content="https://ucarecdn.com/04cd01ca-f483-421d-acad-b64ab26cd7f1/sharelogo.png"
-        />
-      </Helmet> */}
       <div className="home-contain">
         <div className="home-page">
           <div className="space" />
@@ -164,10 +138,10 @@ async function HomePages() {
           </div>
           <Suspense fallback={<LoadingHome />}>
             <Home
-              highlightedNews={highlightedNews}
-              highlightedEditors={highlightedEditors}
-              highlightedPlaylists={highlightedPlaylists}
-              newFeaturedAd={newFeaturedAd}
+            // highlightedNews={highlightedNews}
+            // highlightedEditors={highlightedEditors}
+            // highlightedPlaylists={highlightedPlaylists}
+            // newFeaturedAd={newFeaturedAd}
             />
           </Suspense>
           {/* <Suspense fallback={<LoadingHome />}>

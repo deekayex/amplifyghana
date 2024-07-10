@@ -1,9 +1,11 @@
-"use client";
+import { database } from "@/firebase/firebase";
+import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
 import Link from "next/link";
-import { useState } from "react";
-import LoadingHome from "../context/loading/HomeLoad/LoadingHome";
+// import LoadingHome from "../../context/loading/HomeLoad/LoadingHome";
 import FeaturedAd from "./FeaturedAd";
 import "./Home.css";
+
+import { fetchDataWithCache } from "@/context/cache/cacheUtils";
 
 // const fetchData = async () => {
 //   try {
@@ -74,17 +76,124 @@ import "./Home.css";
 //     setLoading(false);
 //   }
 // };
-function Home({
-  highlightedNews,
-  highlightedEditors,
-  highlightedPlaylists,
-  newFeaturedAd,
-}) {
+
+async function fetchHighlightedNews(database) {
+  const highlightedNewsDoc = await fetchDataWithCache(
+    "highlightedNewsCache",
+    () => getDoc(doc(database, "highlighted", "highlightedNews"))
+  );
+  if (highlightedNewsDoc.exists()) {
+    const articleRef = doc(
+      database,
+      "news",
+      highlightedNewsDoc.data().articleId
+    );
+    const articleDoc = await getDoc(articleRef);
+    if (articleDoc.exists()) {
+      return {
+        id: articleDoc.id,
+        // ...articleDoc.data(),
+        ...serializeFirebaseDocument(articleDoc),
+      };
+    }
+  }
+  return null; // Return null if no data is found
+}
+
+// Fetch highlighted editors
+async function fetchHighlightedEditors(database) {
+  const highlightedEditorsDoc = await fetchDataWithCache(
+    "highlightedEditorsCache",
+    () => getDoc(doc(database, "highlighted", "highlightedEditors"))
+  );
+  if (highlightedEditorsDoc.exists()) {
+    const articleRef = doc(
+      database,
+      "editors-picks",
+      highlightedEditorsDoc.data().articleId
+    );
+    const articleDoc = await getDoc(articleRef);
+    if (articleDoc.exists()) {
+      return {
+        id: articleDoc.id,
+        // ...articleDoc.data(),
+        ...serializeFirebaseDocument(articleDoc),
+      };
+    }
+  }
+  return null; // Return null if no data is found
+}
+
+// Fetch highlighted playlists
+async function fetchHighlightedPlaylists(database) {
+  const playlistsSnapshot = await fetchDataWithCache("playlistsCache", () =>
+    getDocs(collection(database, "Playlisthighlights"))
+  );
+
+  return playlistsSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    // ...doc.data(),
+    ...serializeFirebaseDocument(doc),
+  }));
+}
+// Function to serialize Firebase document data
+function serializeFirebaseDocument(doc) {
+  // Assuming doc is a document fetched from Firestore
+  const data = doc.data();
+
+  // Serialize the Timestamp field
+  const serializedTimestamp = data.timestamp
+    ? {
+        seconds: data.timestamp.seconds,
+        nanoseconds: data.timestamp.nanoseconds,
+        // Optionally convert to ISO string or milliseconds for easier handling on the client side
+        // ISO string example:
+        isoString: data.timestamp.toDate().toISOString(),
+        // Milliseconds example:
+        milliseconds: data.timestamp.toMillis(),
+      }
+    : null;
+
+  // Return a new object with all data serialized
+  return {
+    ...data,
+    // Replace the original timestamp with the serialized version
+    timestamp: serializedTimestamp,
+    // Ensure any other complex types are also serialized
+  };
+}
+// Fetch featured ads
+async function fetchFeaturedAd(database) {
+  const featuredAdSnapshot = await fetchDataWithCache("featuredAdCache", () =>
+    getDocs(collection(database, "FeaturedAd"))
+  );
+  return featuredAdSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    // ...doc.data(),
+    ...serializeFirebaseDocument(doc),
+  }));
+}
+async function Home() {
+// highlightedNews,
+// highlightedEditors,
+// highlightedPlaylists,
+// newFeaturedAd,
   // const [highlightedNews, setHighlightedNews] = useState(null);
   // const [highlightedEditors, setHighlightedEditors] = useState(null);
   // const [highlightedPlaylists, setHighlightedPlaylists] = useState([]);
   // const [newFeaturedAd, setFeaturedAd] = useState([]);
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  // const [
+  //   highlightedNews,
+  //   highlightedEditors,
+  //   highlightedPlaylists,
+  //   newFeaturedAd,
+  // ] = await Promise.all([
+  //   fetchHighlightedNews(database),
+  //   fetchHighlightedEditors(database),
+  //   fetchHighlightedPlaylists(database),
+  //   fetchFeaturedAd(database),
+  // ]);
 
   // const [highlightedNews, highlightedEditors, highlightedPlaylists, newFeaturedAd] = await Promise.all([
   //   fetchHighlightedNews(database),
@@ -167,6 +276,18 @@ function Home({
   //   fetchData();
   // }, []);
 
+  const [
+    highlightedNews,
+    highlightedEditors,
+    highlightedPlaylists,
+    newFeaturedAd,
+  ] = await Promise.all([
+    fetchHighlightedNews(database),
+    fetchHighlightedEditors(database),
+    fetchHighlightedPlaylists(database),
+    fetchFeaturedAd(database),
+  ]);
+
   const editorsLink = highlightedEditors
     ? `editors-picks/${highlightedEditors.id}`
     : "";
@@ -188,9 +309,9 @@ function Home({
           content="https://ucarecdn.com/04cd01ca-f483-421d-acad-b64ab26cd7f1/sharelogo.png"
         />
       </Helmet> */}
-      {loading && <LoadingHome />}
+      {/* {loading && <LoadingHome />} */}
       <div className="homepage-contents">
-        {highlightedEditors && !loading && (
+        {highlightedEditors && (
           <div
             className="left-homepage"
             aria-label="link-to-featured-editors-pick"
@@ -212,21 +333,18 @@ function Home({
                 <h3>EDITOR'S PICKS</h3>
               </Link>
             </div>
-            <Link
-              href={editorsLink}
-              prefetch
-            >
-            <div className="editor-text">
-              <h2 className="editor-text-header">
-                {highlightedEditors.title || "Loading..."}
-              </h2>
-              <p className="editor-text-body">{highlightedEditors.summary}</p>
-            </div>
+            <Link href={editorsLink} prefetch>
+              <div className="editor-text">
+                <h2 className="editor-text-header">
+                  {highlightedEditors.title || "Loading..."}
+                </h2>
+                <p className="editor-text-body">{highlightedEditors.summary}</p>
+              </div>
             </Link>
           </div>
         )}
         <div className="right-homepage">
-          {highlightedNews && !loading && (
+          {highlightedNews && (
             <div
               className="news-component"
               aria-label="link-to-featured-news"
@@ -253,18 +371,15 @@ function Home({
                 </Link>
               </div>
 
-              <Link
-              href={newsLink}
-              prefetch
-            >
-              <div className="news-text">
-                <h2 className="news-text-header">
-                  {highlightedNews.title || "Loading..."}
-                </h2>
-                <p className="news-text-body">
-                  {highlightedNews.summary || ""}
-                </p>
-              </div>
+              <Link href={newsLink} prefetch>
+                <div className="news-text">
+                  <h2 className="news-text-header">
+                    {highlightedNews.title || "Loading..."}
+                  </h2>
+                  <p className="news-text-body">
+                    {highlightedNews.summary || ""}
+                  </p>
+                </div>
               </Link>
             </div>
           )}
@@ -286,12 +401,20 @@ function Home({
                     <h3>PLAYLISTS</h3>
                   </Link>
                 </div>
-                <button
+                {/* <button
                   className="playlist-button"
                   onClick={() => window.open(playlist.link, "_blank")}
+                  // make the onclick a link instead
                 >
                   Listen
-                </button>
+                </button> */}
+                <Link
+                  href={playlist.link}
+                  className="playlist-button"
+                  target="_blank"
+                >
+                  Listen
+                </Link>
                 <img
                   src={playlist.imageUrl}
                   alt={playlist.title}

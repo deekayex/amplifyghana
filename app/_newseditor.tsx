@@ -1,18 +1,18 @@
 import EditorsPicks from "@/components/editors-picks/page";
 import News from "@/components/news/News";
 import LoadingArticles from "@/context/loading/ArticlesLoad/LoadingArticles";
-import LoadingHome from "@/context/loading/HomeLoad/LoadingHome";
 import { database } from "@/firebase/firebase";
 import {
   collection,
   doc,
   getDoc,
   getDocs,
-  orderBy,
-  query,count,
   limit,
+  orderBy,
+  query,
   setDoc,
   updateDoc,
+  getCountFromServer,
 } from "@firebase/firestore";
 import { Suspense } from "react";
 function serializeFirebaseDocument(doc) {
@@ -168,13 +168,20 @@ export const fetchNewsData = async (database, page = 1) => {
       orderBy("timestamp", "desc"),
       limit(articlesPerPage)
     );
+    const snapshot = await getCountFromServer(newsCollection);
+    console.log("count: ", snapshot.data().count);
+
+    const totalArticlesCount = snapshot.data().count;
+    // console.log(totalArticlesCount);
+    const totalPagesCount = Math.ceil(totalArticlesCount / articlesPerPage);
+
     const newsSnapshot = await getDocs(newsQuery);
     const articles = newsSnapshot.docs.map((doc) => ({
       id: doc.id,
       // ...doc.data(),
       ...serializeFirebaseDocument(doc),
     }));
-    return articles;
+    return [articles, totalPagesCount];
   } catch (error) {
     console.error("Error fetching news articles", error);
     return [];
@@ -186,7 +193,7 @@ export default async function NewsEditor() {
   const editorsData = await fetchEditorsData(database);
   const centeredStates = await fetchCenteredStates();
 
-  const newsArticles = await fetchNewsData(database);
+  const [newsArticles, totalPagesCount] = await fetchNewsData(database);
   // const highlightedArticleId = await fetchHighlightedNews(database);
   return (
     <>
@@ -196,7 +203,7 @@ export default async function NewsEditor() {
           // handleToggleClick={handleToggleClick}
           fetchNewsData={fetchNewsData}
           initialNewsArticles={newsArticles}
-          // totalPagesCount={totalPagesCount}
+          totalPagesCount={totalPagesCount}
           // highlightedArticleId={highlightedArticleId}
           // centeredStates={centeredStates}
         />

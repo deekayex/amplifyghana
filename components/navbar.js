@@ -1,21 +1,15 @@
 "use client";
-import React, { useState, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
-import "./navbar.css";
-import { NavLink, useLocation } from "react-router-dom";
 import Link from "next/link";
-import {
-  useParams,
-  usePathname,
-  useSelectedLayoutSegment,
-  useSelectedLayoutSegments,
-} from "next/navigation";
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+import "./navbar.css";
 
 function Navbar() {
   // const isActive = slug === segment
-  const [activeSection, setActiveSection] = useState('');
+  const [activeSection, setActiveSection] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
-  const params=useParams();
+  const params = useParams();
   // const section = window.location.hash.substring(1);
   // console.log(section);
   // console.log('hello');
@@ -59,7 +53,12 @@ function Navbar() {
   return (
     <nav className="nav">
       <div className="nav-small-menu">
-        <Link href="/" aria-label="link-to-home-page" className="home-link" prefetch>
+        <Link
+          href="/"
+          aria-label="link-to-home-page"
+          className="home-link"
+          prefetch
+        >
           <img
             src={"/amplifyghlogo.png"}
             alt="Amplify logo"
