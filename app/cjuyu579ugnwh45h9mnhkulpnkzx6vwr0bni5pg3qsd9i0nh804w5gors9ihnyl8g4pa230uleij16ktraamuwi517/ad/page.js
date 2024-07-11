@@ -1,7 +1,7 @@
 "use client";
 import { addDoc, collection, getDocs, setDoc } from '@firebase/firestore';
 import React, { useState } from 'react'
-import { database, storage } from '../../firebase/firebase';
+import { database, storage } from '@/firebase/firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 
 const FeatureAd = (onSave, onCancel) => {
