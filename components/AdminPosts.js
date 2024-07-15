@@ -37,7 +37,7 @@ const AdminPosts = () => {
       const customDocId = title.toLowerCase().replace(/[^\w\s-"]/g, '').replace(/\s+/g, '-');
 
 
-      const newArticleRef = await setDoc(doc(collection(database, collectionName), customDocId), {
+      await setDoc(doc(collection(database, collectionName), customDocId), {
         title,
         summary,
         content,

@@ -5,10 +5,14 @@ import { onAuthStateChanged, getIdTokenResult, getAuth, signOut } from 'firebase
 import { auth } from '@/firebase/firebase';
 import './Admin.css';
 import { redirect } from 'next/navigation';
+import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 
 const AdminLayout = ({ children }) => {
-  const [isAdmin, setIsAdmin] = useState(false);
-  const[showPosts, setShowPosts] = useState(false);
+  const [setIsAdmin] = useState(false);
+  // const[showPosts, setShowPosts] = useState(false);
+
+  const router= useRouter();
 
 
   const handleSignOut = async () => {
@@ -50,7 +54,7 @@ const AdminLayout = ({ children }) => {
           Admin
         </div>
         <button onClick={handleSignOut} className='sign-out'>
-          <img src={'/power.svg'} alt='Sign Out' className='sign-out-icon'/>
+          <Image src={'/power.svg'} alt='Sign Out' className='sign-out-icon' width={100} height={100}/>
         </button>
       </div>
 

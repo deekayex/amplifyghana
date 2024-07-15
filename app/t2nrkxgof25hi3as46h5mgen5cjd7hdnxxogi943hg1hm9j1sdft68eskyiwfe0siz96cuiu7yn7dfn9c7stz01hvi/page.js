@@ -4,6 +4,7 @@ import './Login.css';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../firebase/firebase';
 import { redirect, useRouter } from 'next/navigation';
+import Image from 'next/image';
 // import { useNavigate } from 'react-router-dom'; // Import useHistory
 
 const LoginPage = () => {
@@ -32,13 +33,13 @@ const LoginPage = () => {
     <div className='login-form'>
       <div className='login-form-inputs'>
         <div className='login-input'>
-          <img src={'/account.svg'} alt='profile' className='user-email-image'/>
+          <Image src={'/account.svg'} alt='profile' className='user-email-image'/>
           <input
             type='email' placeholder='email address' value={email} onChange={(e) => setEmail(e.target.value)} className='email-input' />
           </div>
 
           <div className='login-input'>
-            <img src={'/password.svg'} alt='profile' className='user-email-image'/>
+            <Image src={'/password.svg'} alt='profile' className='user-email-image'/>
             <input
                 type='password' placeholder='password' value={password} onChange={(e) => setPassword(e.target.value)} className='password-input' />
             </div>

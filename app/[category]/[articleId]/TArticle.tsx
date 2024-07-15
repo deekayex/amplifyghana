@@ -13,6 +13,7 @@ import Connect from "@/components/connect/Connect";
 import { useLocation } from "react-router-dom";
 import ScrollToTopOnMount from "@/components/ScrollToTop";
 import Article from "./TArticle";
+import Image from "next/image";
 
 export const ShareButton = ({ articleTitle, articleUrl, articleImageSrc }) => {
   const handleShare = () => {
@@ -42,7 +43,7 @@ export const ShareButton = ({ articleTitle, articleUrl, articleImageSrc }) => {
         <Share articleTitle={articleTitle} articleUrl={articleUrl} />
       </div>
       <button className="share-button" onClick={handleShare}>
-        <img
+        <Image
           src={"/share.svg"}
           alt="Share This Article"
           className="share-icon"
