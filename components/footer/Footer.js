@@ -1,17 +1,20 @@
 import React from "react";
 import "./Footer.css";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <div className="footer">
       <div>
         <Link href="/">
-          <img
+          <Image
             src={"/amplifyghlogo.png"}
             alt="Amplify logo"
             className="logo-footer"
             aria-label="link-to-home-page"
+            width={100}
+            height={100}
           />
         </Link>
       </div>

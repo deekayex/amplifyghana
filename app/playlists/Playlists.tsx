@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import ScrollToTopOnMount from "../../components/ScrollToTop";
 import { database } from "../../firebase/firebase";
 import "./Playlists.css";
+import Image from "next/image";
 
 const PLAYLIST_BUTTON_TEXT = "LISTEN";
 const fetchPlaylists = async () => {
@@ -160,11 +161,13 @@ const Playlists = ({ isPlayListManager, playlists }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img
+                  <Image
                     src={playlist.image}
                     alt={playlist.altText}
                     className="picture"
                     loading="lazy"
+                    width={400}
+                    height={100}
                   />
                 </a>
               </div>

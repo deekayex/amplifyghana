@@ -3,7 +3,7 @@ import { Editor } from '@tinymce/tinymce-react';
 
 export function TinyEditor({ value, onChange }) {
   const editorRef = useRef(null);
-  const [imageAlt, setImageAlt] = useState('');
+  const [ setImageAlt] = useState('');
 
   const handleContentChange = (content) => {
     if (onChange) {

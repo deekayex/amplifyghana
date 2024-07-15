@@ -3,6 +3,7 @@ import "./Blank.css";
 import "./about/About.css";
 // import Socials from "../components/socials/Socials";
 import Link from "next/link";
+import Image from "next/image";
 
 const Blank = () => {
   return (
@@ -27,10 +28,12 @@ const Blank = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
+                <Image
                   src={"/alt_instagram_logo.png"}
                   alt="Instagram logo"
                   className="about-instagram-logo"
+                  width={100}
+                  height={100}
                 />
               </a>
             </div>
@@ -41,10 +44,12 @@ const Blank = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
+                <Image
                   src={"/tiktok_logo.png"}
                   alt="Tiktok logo"
                   className="about-tiktok-logo"
+                  width={100}
+                  height={100}
                 />
               </a>
             </div>
@@ -54,10 +59,12 @@ const Blank = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
+                <Image
                   src={"/x_logo.png"}
                   alt="X logo"
                   className="about-x-logo"
+                  width={100}
+                  height={100}
                 />
               </a>
             </div>
@@ -67,10 +74,12 @@ const Blank = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img
+                <Image
                   src={"/email_icon.png"}
                   alt="Email icon"
                   className="about-email-icon"
+                  width={100}
+                  height={100}
                 />
               </a>
             </div>

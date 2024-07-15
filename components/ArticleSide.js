@@ -4,8 +4,9 @@ import React, { useEffect, useState } from "react";
 
 import { database } from "../firebase/firebase";
 import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
-import { Share } from "@mui/icons-material";
+// import { Share } from "@mui/icons-material";
 import Link from "next/link";
+import Image from "next/image";
 
 const ArticleSide = () => {
   const [highlightedNews, setHighlightedNews] = useState(null);
@@ -100,9 +101,9 @@ const ArticleSide = () => {
   }, []);
 
   const editorsLink = highlightedEditors
-    ? `article/editors-picks/${highlightedEditors.id}`
+    ? `/editors-picks/${highlightedEditors.id}`
     : "";
-  const newsLink = highlightedNews ? `article/news/${highlightedNews.id}` : "";
+  const newsLink = highlightedNews ? `/news/${highlightedNews.id}` : "";
 
   return (
     <div className="article-side">
@@ -160,10 +161,12 @@ const ArticleSide = () => {
           {highlightedPlaylists.map((playlist) => (
             <div key={playlist.id} className="aside-playlist">
               <a href={playlist.link} target="_blank" rel="noopener noreferrer">
-                <img
+                <Image
                   src={playlist.imageUrl}
                   alt={playlist.title}
                   className="aside-playlist-image"
+                  width={100}
+                  height={100}
                 />
               </a>
             </div>

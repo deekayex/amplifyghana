@@ -6,6 +6,7 @@ import FeaturedAd from "./FeaturedAd";
 import "./Home.css";
 
 import { fetchDataWithCache } from "@/context/cache/cacheUtils";
+import Image from "next/image";
 
 // const fetchData = async () => {
 //   try {
@@ -415,10 +416,12 @@ async function Home() {
                 >
                   Listen
                 </Link>
-                <img
+                <Image
                   src={playlist.imageUrl}
                   alt={playlist.title}
                   className="highlighted-playlist-image"
+                  width={400}
+                  height={100}
                 />
               </div>
             </div>

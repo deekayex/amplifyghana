@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { useState } from 'react';
 
 const CreateArticleSummary = ({ title, summary, onSummaryChange, onImageChange, onSectionChange, onNext, onPrevious, setImage }) => {
@@ -31,7 +32,8 @@ const CreateArticleSummary = ({ title, summary, onSummaryChange, onImageChange, 
         </label>
         {imagePreview && (
           <div>
-            <img src={imagePreview} alt="Image Preview" className='set-image' />
+            <Image src={imagePreview} alt="Image Preview" className='set-image'    width={100}
+                  height={100}/>
           </div>
         )}
         <label>

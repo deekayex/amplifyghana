@@ -47,6 +47,8 @@ export const ShareButton = ({ articleTitle, articleUrl, articleImageSrc }) => {
           src={"/share.svg"}
           alt="Share This Article"
           className="share-icon"
+          width={100}
+          height={100}
         />
       </button>
     </div>
@@ -216,7 +218,7 @@ const ArticlePage = ({ params, article, featuredAdElements }) => {
           container.className = "image-container";
 
           // Append the image to the container
-          const styledImage = image.cloneNode(true);
+          const styledImage = image.cloneNode(true) as HTMLIFrameElement;
           styledImage.style.margin = "0";
           styledImage.style.padding = "0";
           // styledImage.style.marginBottom = '10px';
@@ -253,7 +255,7 @@ const ArticlePage = ({ params, article, featuredAdElements }) => {
         // Add additional styles as needed
 
         // Append the iframe to the container
-        const styledIframe = iframe.cloneNode(true);
+        const styledIframe = iframe.cloneNode(true) as HTMLIFrameElement;
         // Apply styles to the iframe as needed
         styledIframe.style.margin = "0";
         styledIframe.style.padding = "0";
@@ -311,10 +313,12 @@ const ArticlePage = ({ params, article, featuredAdElements }) => {
                 </Helmet> */}
               <h1 className="article-title">{article.title}</h1>
               <div className="article-image-container">
-                <img
+                <Image
                   src={article.image}
                   alt="Article"
                   className="article-image"
+                  width={100}
+                  height={100}
                 />
               </div>
               <div className="read-article">

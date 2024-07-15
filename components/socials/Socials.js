@@ -20,6 +20,8 @@ const Socials = () => {
             alt="Instagram logo"
             className="instagram-logo"
             style={{ width: "15px", height: "15px" }}
+            width={100}
+            height={100}
           />
         </a>
       </div>
@@ -35,6 +37,8 @@ const Socials = () => {
             alt="Tiktok logo"
             className="tiktok-logo"
             style={{ width: "15px", height: "15px" }}
+            width={100}
+            height={100}
           />
         </a>
       </div>
@@ -45,6 +49,8 @@ const Socials = () => {
             alt="X logo"
             className="x-logo"
             style={{ width: "15px", height: "15px" }}
+            width={100}
+            height={100}
           />
         </a>
       </div>
@@ -55,6 +61,8 @@ const Socials = () => {
             alt="Email icon"
             className="email-icon"
             style={{ width: "15px", height: "15px" }}
+            width={100}
+            height={100}
           />
         </a>
       </div>

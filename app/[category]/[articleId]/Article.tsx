@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import * as cheerio from "cheerio";
 import LoadingScreen from "@/context/loading/LoadingScreen";
 import { Suspense } from "react";
+import Image from "next/image";
 
 export default function ArticleContent({ article, featuredAdElements }) {
   const { articleId, category } = useParams();
@@ -139,10 +140,14 @@ export default function ArticleContent({ article, featuredAdElements }) {
             </Helmet> */}
             <h1 className="article-title">{article.title}</h1>
             <div className="article-image-container">
-              <img
+              <Image
                 src={article.image}
                 alt="Article"
                 className="article-image"
+                layout="responsive"
+                objectFit="cover"
+                width={4000}
+                height={100}
               />
             </div>
             <div className="read-article">

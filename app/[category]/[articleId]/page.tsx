@@ -74,6 +74,8 @@ export const ShareButton = ({ articleTitle, articleUrl }) => {
           src={"/share.svg"}
           alt="Share This Article"
           className="share-icon"
+          width={100}
+          height={100}
         />
       </button>
     </div>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import "./navbar.css";
+import Image from "next/image";
 
 function Navbar() {
   // const isActive = slug === segment
@@ -59,11 +60,13 @@ function Navbar() {
           className="home-link"
           prefetch
         >
-          <img
+          <Image
             src={"/amplifyghlogo.png"}
             alt="Amplify logo"
             className="amplify-logo"
             onClick={closeMenu}
+            width={400}
+            height={35}
           />
         </Link>
 

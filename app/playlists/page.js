@@ -14,6 +14,7 @@ import {
 import LoadingPlaylists from "../../context/loading/PlayListLoad/LoadingPlaylists";
 import ScrollToTopOnMount from "../../components/ScrollToTop";
 import { Helmet } from "react-helmet";
+import Image from "next/image";
 
 const PLAYLIST_BUTTON_TEXT = "LISTEN";
 const fetchPlaylists = async () => {
@@ -162,11 +163,13 @@ const PlaylistPage = ({ isPlayListManager }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <img
+                    <Image
                       src={playlist.image}
                       alt={playlist.altText}
                       className="picture"
                       loading="lazy"
+                      width={100}
+                      height={100}
                     />
                   </a>
                 </div>

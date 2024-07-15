@@ -24,6 +24,8 @@ const Connect = () => {
               src={tiktok_logo}
               alt="Follow us on TIktok"
               className="tiktok"
+              width={100}
+              height={100}
             />
           </a>
           <a
@@ -48,6 +50,8 @@ const Connect = () => {
               src={instagram_logo}
               alt="Follow us on Instagram"
               className="instagram"
+              width={100}
+              height={100}
             />
           </a>
           <a
@@ -72,6 +76,8 @@ const Connect = () => {
               src={x_logo}
               alt="Follow us on Twitter"
               className="twitter"
+              width={100}
+              height={100}
             />
           </a>
           <a
@@ -96,6 +102,8 @@ const Connect = () => {
               src={email_icon}
               alt="Send us a mail"
               className="email"
+              width={100}
+              height={100}
             />
           </a>
           <a

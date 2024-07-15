@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import { database, storage } from '../firebase/firebase';
 import { collection, doc, setDoc } from '@firebase/firestore';
@@ -7,7 +7,7 @@ import { serverTimestamp } from 'firebase/firestore';
 
 
 const AdminPosts = () => {
-  const [isArticleFormVisible, setArticleFormVisible] = useState(false);
+  const [setArticleFormVisible] = useState(false);
 
   const handleCreateFormCancel = () => {
     setArticleFormVisible(false);

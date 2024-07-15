@@ -9,6 +9,7 @@ import ArticleContent from "@/app/[category]/[articleId]/Article";
 import { Metadata, ResolvingMetadata } from "next";
 import { Suspense } from "react";
 import LoadingScreen from "@/context/loading/LoadingScreen";
+import Image from "next/image";
 
 type Props = {
   params: { category: string; articleId: string };
@@ -20,7 +21,7 @@ export async function generateMetadata(
   // read route params
   const article = await fetchArticle(params);
 
-  const featuredAdElements = await fetchData();
+  await fetchData();
 
   // optionally access and extend (rather than replace) parent metadata
   const previousImages = (await parent).openGraph?.images || [];
@@ -39,7 +40,7 @@ export async function generateMetadata(
   };
 }
 
-export const ShareButton = ({ articleTitle, articleUrl, articleImageSrc }) => {
+export const ShareButton = ({ articleTitle, articleUrl }) => {
   const handleShare = () => {
     if (navigator.share) {
       navigator
@@ -67,10 +68,12 @@ export const ShareButton = ({ articleTitle, articleUrl, articleImageSrc }) => {
         <Share articleTitle={articleTitle} articleUrl={articleUrl} />
       </div>
       <button className="share-button" onClick={handleShare}>
-        <img
+        <Image
           src={"/share.svg"}
           alt="Share This Article"
           className="share-icon"
+          width={100}
+          height={100}
         />
       </button>
     </div>
