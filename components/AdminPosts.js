@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import { database, storage } from '../firebase/firebase';
+import { database, storage } from '@/firebase/firebase';
+import { serverTimestamp } from '@/firebase/firestore';
 import { collection, doc, setDoc } from '@firebase/firestore';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import React, { useState } from 'react';
 import CreateArticleForm from './forms/editor/createArticle/CreateArticleForm';
-import { serverTimestamp } from 'firebase/firestore';
 
 
 const AdminPosts = () => {

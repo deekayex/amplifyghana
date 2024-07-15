@@ -1,11 +1,14 @@
 "use client";
 import React, { useState } from "react";
-import { database, storage } from "../../../firebase/firebase";
+import { database, storage } from "@/firebase/firebase";
 import { collection, addDoc, setDoc, getDocs } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import Link from "next/link";
 import AdminLayout from "@/components/admin/AdminLayout";
 
+//where are the props supposed to come from?
+//or they're not needed at all?
+// const HighlightPlaylist = ({ onSave, onCancel }) => {
 const HighlightPlaylist = ({ onSave, onCancel }) => {
   const initialHighlight = {
     title: "",
@@ -147,4 +150,23 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
   );
 };
 
-export default HighlightPlaylist;
+
+const UpdatePlaylist = () => {
+  const handleSave = (playlistData) => {
+    // Handle save logic here
+    console.log('Save playlist:', playlistData);
+  };
+
+  const handleCancel = () => {
+    // Handle cancel logic here
+    console.log('Cancel playlist creation');
+  };
+
+  return (
+    <div>
+      <HighlightPlaylist onSave={handleSave} onCancel={handleCancel} />
+    </div>
+  );
+};
+
+export default UpdatePlaylist;
