@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 const AdminLayout = ({ children }) => {
-  const [setIsAdmin] = useState(false);
+  const [isAdmin,setIsAdmin] = useState(false);
   // const[showPosts, setShowPosts] = useState(false);
 
   const router= useRouter();
