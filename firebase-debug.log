@@ -81,3 +81,222 @@ https://nextjs.org/docs/messages/module-not-found
 [debug] [2024-07-11T12:32:37.910Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
 [debug] [2024-07-11T12:32:37.911Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
 [debug] [2024-07-11T12:32:38.440Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2024-07-11T12:33:50.323Z] ----------------------------------------------------------------------
+[debug] [2024-07-11T12:33:50.326Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2024-07-11T12:33:50.326Z] CLI Version:   13.13.1
+[debug] [2024-07-11T12:33:50.326Z] Platform:      win32
+[debug] [2024-07-11T12:33:50.326Z] Node Version:  v20.6.1
+[debug] [2024-07-11T12:33:50.326Z] Time:          Thu Jul 11 2024 12:33:50 GMT+0000 (Greenwich Mean Time)
+[debug] [2024-07-11T12:33:50.327Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-11T12:33:50.430Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-11T12:33:50.430Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2024-07-11T12:33:50.430Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-07-11T12:33:50.432Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2024-07-11T12:33:50.433Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2024-07-11T12:33:50.433Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-07-11T12:33:51.602Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2024-07-11T12:33:51.602Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-07-11T12:33:51.603Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2024-07-11T12:33:52.163Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2024-07-11T12:33:52.164Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_5575c24f-5eec-4648-a3ff-74d0baa33164"}
+[debug] [2024-07-11T12:33:55.702Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2024-07-11T12:33:57.416Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2024-07-11T12:33:57.416Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2024-07-11T12:33:57.417Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2024-07-11T12:33:58.865Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2024-07-11T12:33:58.865Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 14.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-07-11T12:34:06.586Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2024-07-11T12:34:08.100Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2024-07-11T12:34:08.100Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]    ▲ Next.js 14.1.4
+
+[info]    - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info]  ⚠ For production Image Optimization with Next.js, the optional 'sharp' package is strongly recommended. Run 'npm i sharp', and Next.js will use it automatically for Image Optimization.
+Read more: https://nextjs.org/docs/messages/sharp-missing-in-production
+
+[info] Compiler client unexpectedly exited with code: null and signal: SIGTERM
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+Failed to compile.
+
+[info] 
+./app/about/layout.tsx
+7:55  Warning: 'params' is defined but never used.  no-unused-vars
+
+./app/about/page.js
+56:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+70:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+83:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+96:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/article/[category]/[articleId]/page.tsx
+23:9  Warning: 'featuredAdElements' is assigned a value but never used.  no-unused-vars
+42:57  Warning: 'articleImageSrc' is defined but never used.  no-unused-vars
+70:9  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/page.js
+13:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+
+./app/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist/page.js
+9:30  Warning: 'onSave' is defined but never used.  no-unused-vars
+
+./app/layout.tsx
+6:8  Warning: 'Footer' is defined but never used.  no-unused-vars
+28:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+32:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+./app/not-found.js
+30:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+44:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+57:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+70:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/page.tsx
+28:16  Warning: 'fetchHighlightedNews' is defined but never used.  no-unused-vars
+52:16  Warning: 'fetchHighlightedEditors' is defined but never used.  no-unused-vars
+76:16  Warning: 'fetchHighlightedPlaylists' is defined but never used.  no-unused-vars
+114:16  Warning: 'fetchFeaturedAd' is defined but never used.  no-unused-vars
+
+./app/playlists/layout.tsx
+31:48  Warning: 'children' is defined but never used.  no-unused-vars
+
+./app/playlists/page.js
+16:10  Warning: 'Helmet' is defined but never used.  no-unused-vars
+19:7  Warning: 'fetchPlaylists' is assigned a value but never used.  no-unused-vars
+165:21  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/playlists/Playlists.tsx
+17:7  Warning: 'fetchPlaylists' is assigned a value but never used.  no-unused-vars
+40:10  Warning: 'isLoading' is assigned a value but never used.  no-unused-vars
+40:21  Warning: 'setIsLoading' is assigned a value but never used.  no-unused-vars
+163:19  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/submissions/page.js
+9:31  Warning: 'values' is defined but never used.  no-unused-vars
+9:39  Warning: 'setSubmitting' is defined but never used.  no-unused-vars
+
+./app/t2nrkxgof25hi3as46h5mgen5cjd7hdnxxogi943hg1hm9j1sdft68eskyiwfe0siz96cuiu7yn7dfn9c7stz01hvi/page.js
+6:10  Warning: 'redirect' is defined but never used.  no-unused-vars
+35:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+41:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/[category]/[articleId]/Article.tsx
+142:15  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/[category]/[articleId]/layout.tsx
+2:8  Warning: 'ArticlePage' is defined but never used.  no-unused-vars
+7:10  Warning: 'Suspense' is defined but never used.  no-unused-vars
+8:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+56:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+56:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+
+./app/[category]/[articleId]/page.tsx
+24:9  Warning: 'featuredAdElements' is assigned a value but never used.  no-unused-vars
+43:57  Warning: 'articleImageSrc' is defined but never used.  no-unused-vars
+71:9  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/[category]/[articleId]/TArticle.tsx
+2:17  Warning: 'useEffect' is defined but never used.  no-unused-vars
+3:10  Warning: 'useParams' is defined but never used.  no-unused-vars
+4:10  Warning: 'Helmet' is defined but never used.  no-unused-vars
+9:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+13:10  Warning: 'useLocation' is defined but never used.  no-unused-vars
+15:8  Warning: 'Article' is defined but never used.  no-unused-vars
+17:57  Warning: 'articleImageSrc' is defined but never used.  no-unused-vars
+45:9  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+55:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+74:7  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+100:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+100:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+106:10  Warning: 'isLoading' is assigned a value but never used.  no-unused-vars
+106:21  Warning: 'setIsLoading' is assigned a value but never used.  no-unused-vars
+313:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./app/_newseditor.tsx
+85:16  Warning: 'handleToggleClick' is defined but never used.  no-unused-vars
+127:16  Warning: 'handleSetHighlight' is defined but never used.  no-unused-vars
+158:47  Warning: 'page' is assigned a value but never used.  no-unused-vars
+194:9  Warning: 'centeredStates' is assigned a value but never used.  no-unused-vars
+
+./components/admin/AdminLayout.js
+10:10  Warning: 'isAdmin' is assigned a value but never used.  no-unused-vars
+11:9  Warning: 'showPosts' is assigned a value but never used.  no-unused-vars
+11:20  Warning: 'setShowPosts' is assigned a value but never used.  no-unused-vars
+20:9  Error: 'router' is not defined.  no-undef
+53:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/AdminPosts.js
+1:27  Warning: 'useEffect' is defined but never used.  no-unused-vars
+10:10  Warning: 'isArticleFormVisible' is assigned a value but never used.  no-unused-vars
+40:13  Warning: 'newArticleRef' is assigned a value but never used.  no-unused-vars
+
+./components/ArticleSide.js
+7:10  Warning: 'Share' is defined but never used.  no-unused-vars
+163:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/editors-picks/page.js
+10:3  Warning: 'orderBy' is defined but never used.  no-unused-vars
+11:3  Warning: 'query' is defined but never used.  no-unused-vars
+12:3  Warning: 'limit' is defined but never used.  no-unused-vars
+13:3  Warning: 'startAfter' is defined but never used.  no-unused-vars
+23:3  Warning: 'highlightedEditors' is defined but never used.  no-unused-vars
+31:21  Warning: 'setIsLoading' is assigned a value but never used.  no-unused-vars
+
+./components/FeaturedAd.js
+6:5  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/footer/Footer.js
+10:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/forms/newArticle/CreateArticleSummary.js
+3:118  Warning: 'setImage' is defined but never used.  no-unused-vars
+34:13  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/Home.tsx
+418:17  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/modals/NewArticle.js
+10:10  Warning: 'image' is assigned a value but never used.  no-unused-vars
+
+./components/navbar.js
+62:11  Warning: Using `<img>` could result in slower LCP and higher bandwidth. Consider using `<Image />` from `next/image` to automatically optimize images. This may incur additional usage or cost from your provider. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
+
+./components/news/News.js
+15:3  Warning: 'getCountFromServer' is defined but never used.  no-unused-vars
+23:8  Warning: 'LoadingHome' is defined but never used.  no-unused-vars
+28:3  Warning: 'fetchNewsData' is defined but never used.  no-unused-vars
+35:10  Warning: 'isLoading' is assigned a value but never used.  no-unused-vars
+39:22  Warning: 'setTotalPages' is assigned a value but never used.  no-unused-vars
+
+./components/textEditor/Editor.jsx
+6:10  Warning: 'imageAlt' is assigned a value but never used.  no-unused-vars
+
+./components/UpdatePlaylists.js
+10:10  Warning: 'playlistData' is assigned a value but never used.  no-unused-vars
+28:13  Warning: 'newPlaylistRef' is assigned a value but never used.  no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[debug] [2024-07-11T12:34:36.878Z] Error: ENOENT: no such file or directory, open 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.

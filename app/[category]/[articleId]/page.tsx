@@ -27,15 +27,15 @@ export async function generateMetadata(
   const previousImages = (await parent).openGraph?.images || [];
 
   return {
-    title: `${article.title}- Amplify Ghana`,
+    title: `${article?.title}- Amplify Ghana`,
     twitter: {
       card: "summary_large_image",
-      images: [article.image],
-      title: article.title,
+      images: [article?.image],
+      title: article?.title,
     },
     robots: { index: true, follow: true },
     openGraph: {
-      images: [article.image, ...previousImages],
+      images: [article?.image, ...previousImages],
     },
   };
 }
