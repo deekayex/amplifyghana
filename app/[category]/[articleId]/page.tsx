@@ -42,7 +42,7 @@ export async function generateMetadata(
   };
 }
 
-export const ShareButton = ({ articleTitle, articleUrl }) => {
+const ShareButton = ({ articleTitle, articleUrl }) => {
   const handleShare = () => {
     if (navigator.share) {
       navigator

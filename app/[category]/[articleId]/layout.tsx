@@ -4,10 +4,10 @@ import ArticlePage from "./TArticle";
 export const metadata: Metadata = {};
 import { database } from "@/firebase/firebase";
 import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
-import { Suspense } from "react";
+import { ReactNode, Suspense } from "react";
 import LoadingScreen from "@/context/loading/LoadingScreen";
 
-export const fetchArticle = async (params) => {
+const fetchArticle = async (params) => {
   try {
     const { articleId, category } = params;
 
@@ -27,7 +27,7 @@ export const fetchArticle = async (params) => {
   }
 };
 
-export const fetchData = async () => {
+ const fetchData = async () => {
   try {
     // Fetch FeaturedAd data
     const featuredAdSnapshot = await getDocs(
@@ -52,7 +52,7 @@ export const fetchData = async () => {
   }
 };
 
-export default async function ArticleLayout({ children, params }) {
+export default async function ArticleLayout({ children, params }: {children: ReactNode, params: { articleId: string, category: string } }) {
   const { articleId, category } = params;
   // const article = await fetchArticle(params);
 

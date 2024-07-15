@@ -40,7 +40,7 @@ export async function generateMetadata(
   };
 }
 
-export const ShareButton = ({ articleTitle, articleUrl }) => {
+const ShareButton = ({ articleTitle, articleUrl }) => {
   const handleShare = () => {
     if (navigator.share) {
       navigator
@@ -79,7 +79,7 @@ export const ShareButton = ({ articleTitle, articleUrl }) => {
     </div>
   );
 };
-export const fetchArticle = async (params) => {
+const fetchArticle = async (params) => {
   try {
     const { articleId, category } = params;
 
@@ -99,7 +99,7 @@ export const fetchArticle = async (params) => {
   }
 };
 
-export const fetchData = async () => {
+const fetchData = async () => {
   try {
     // Fetch FeaturedAd data
     const featuredAdSnapshot = await getDocs(
