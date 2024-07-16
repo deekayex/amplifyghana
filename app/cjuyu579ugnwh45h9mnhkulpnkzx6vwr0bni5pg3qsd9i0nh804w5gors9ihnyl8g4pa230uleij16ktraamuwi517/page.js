@@ -10,7 +10,7 @@ import { database } from "@/firebase/firebase";
 import EditorsPicks from "../../components/editors-picks/page";
 import News from "../../components/news/News";
 import { Suspense } from "react";
-import LoadingScreen from "@/context/loading/LoadingScreen";
+// import LoadingScreen from "@/context/loading/LoadingScreen";
 import LoadingArticles from "@/context/loading/ArticlesLoad/LoadingArticles";
 import AdminLayout from "@/components/admin/AdminLayout";
 
