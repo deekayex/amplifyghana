@@ -3,7 +3,7 @@ import ArticlePage from "./TArticle";
 
 export const metadata: Metadata = {};
 import { database } from "@/firebase/firebase";
-import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { ReactNode, Suspense } from "react";
 import LoadingScreen from "@/context/loading/LoadingScreen";
 
