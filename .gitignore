@@ -37,3 +37,5 @@ next-env.d.ts
 
 
 .firebase/amplify-ghana/functions/node_modules/
+.firebase/amplify-ghana/functions/node_modules/
+12.pack
