@@ -1,5 +1,5 @@
 "use client";
-import newspaper from "@/public/newspaper-folded.png";
+import newspaper from "/public/newspaper-folded.png";
 import { collection,
   deleteDoc,
   doc,

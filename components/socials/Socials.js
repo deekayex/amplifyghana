@@ -1,9 +1,9 @@
 import React from "react";
 import "./Socials.css";
-import tiktok_logo from "@/public/tiktok_logo.png";
-import instagram_logo from "@/public/instagram_logo.png";
-import x_logo from "@/public/x_logo.png";
-import email_icon from "@/public/email_icon.png";
+import tiktok_logo from "/public/tiktok_logo.png";
+import instagram_logo from "/public/instagram_logo.png";
+import x_logo from "/public/x_logo.png";
+import email_icon from "/public/email_icon.png";
 import Image from "next/image";
 
 const Socials = () => {
