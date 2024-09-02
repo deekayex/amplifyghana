@@ -1,0 +1,100 @@
+[debug] [2024-07-16T11:46:00.852Z] ----------------------------------------------------------------------
+[debug] [2024-07-16T11:46:00.856Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2024-07-16T11:46:00.857Z] CLI Version:   13.13.3
+[debug] [2024-07-16T11:46:00.857Z] Platform:      win32
+[debug] [2024-07-16T11:46:00.857Z] Node Version:  v20.6.1
+[debug] [2024-07-16T11:46:00.857Z] Time:          Tue Jul 16 2024 11:46:00 GMT+0000 (Greenwich Mean Time)
+[debug] [2024-07-16T11:46:00.857Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-16T11:46:00.948Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-16T11:46:00.949Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2024-07-16T11:46:00.949Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-07-16T11:46:00.951Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2024-07-16T11:46:00.952Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2024-07-16T11:46:00.952Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-07-16T11:46:02.416Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2024-07-16T11:46:02.417Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-07-16T11:46:02.418Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2024-07-16T11:46:03.232Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2024-07-16T11:46:03.232Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_5575c24f-5eec-4648-a3ff-74d0baa33164"}
+[debug] [2024-07-16T11:46:10.397Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2024-07-16T11:46:12.059Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2024-07-16T11:46:12.060Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2024-07-16T11:46:12.061Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2024-07-16T11:46:13.262Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2024-07-16T11:46:13.262Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[debug] [2024-07-16T11:46:25.978Z] ----------------------------------------------------------------------
+[debug] [2024-07-16T11:46:25.988Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2024-07-16T11:46:25.989Z] CLI Version:   13.13.3
+[debug] [2024-07-16T11:46:25.989Z] Platform:      win32
+[debug] [2024-07-16T11:46:25.989Z] Node Version:  v20.6.1
+[debug] [2024-07-16T11:46:25.990Z] Time:          Tue Jul 16 2024 11:46:25 GMT+0000 (Greenwich Mean Time)
+[debug] [2024-07-16T11:46:25.990Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-16T11:46:26.202Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-16T11:46:26.205Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2024-07-16T11:46:26.205Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-07-16T11:46:26.211Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2024-07-16T11:46:26.212Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2024-07-16T11:46:26.212Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-07-16T11:46:27.677Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2024-07-16T11:46:27.677Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-07-16T11:46:27.678Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2024-07-16T11:46:28.374Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2024-07-16T11:46:28.374Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_5575c24f-5eec-4648-a3ff-74d0baa33164"}
+[debug] [2024-07-16T11:46:35.584Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2024-07-16T11:46:37.047Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2024-07-16T11:46:37.047Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2024-07-16T11:46:37.048Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2024-07-16T11:46:38.130Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2024-07-16T11:46:38.130Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[debug] [2024-07-16T11:47:04.914Z] ----------------------------------------------------------------------
+[debug] [2024-07-16T11:47:04.920Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2024-07-16T11:47:04.921Z] CLI Version:   13.13.3
+[debug] [2024-07-16T11:47:04.921Z] Platform:      win32
+[debug] [2024-07-16T11:47:04.921Z] Node Version:  v20.6.1
+[debug] [2024-07-16T11:47:04.921Z] Time:          Tue Jul 16 2024 11:47:04 GMT+0000 (Greenwich Mean Time)
+[debug] [2024-07-16T11:47:04.921Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-07-16T11:47:05.077Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-07-16T11:47:05.083Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2024-07-16T11:47:05.083Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2024-07-16T11:47:05.090Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2024-07-16T11:47:05.091Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2024-07-16T11:47:05.136Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-07-16T11:47:06.673Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2024-07-16T11:47:06.673Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2024-07-16T11:47:06.675Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2024-07-16T11:47:07.777Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2024-07-16T11:47:07.777Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_5575c24f-5eec-4648-a3ff-74d0baa33164"}
+[debug] [2024-07-16T11:47:16.517Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2024-07-16T11:47:18.036Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2024-07-16T11:47:18.036Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2024-07-16T11:47:18.037Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2024-07-16T11:47:19.344Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2024-07-16T11:47:19.344Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 14.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2024-07-16T11:47:34.277Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2024-07-16T11:47:35.673Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2024-07-16T11:47:35.673Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]    ▲ Next.js 14.1.4
+
+[info]    - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+

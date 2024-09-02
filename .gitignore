@@ -12,10 +12,6 @@
 # next.js
 /.next/
 /out/
-.next/
-node_modules/
-.firebase/amplify-ghana/functions/.next/cache/
-firebase/amplify-ghana/functions/.next/cache/
 
 # production
 /build
@@ -38,8 +34,3 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-
-
-.firebase/amplify-ghana/functions/node_modules/
-.firebase/amplify-ghana/functions/node_modules/
-12.pack
