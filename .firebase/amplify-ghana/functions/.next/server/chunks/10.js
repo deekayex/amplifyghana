@@ -1,1 +1,0 @@
-"use strict";exports.id=10,exports.ids=[10],exports.modules={41010:(e,t,s)=>{s.r(t),s.d(t,{$$typeof:()=>p,__esModule:()=>r,default:()=>a});let o=(0,s(86843).createProxy)(String.raw`C:\Users\Dan\Desktop\projects\amplify-gh-app\components\BoxText.js`),{__esModule:r,$$typeof:p}=o,a=o.default}};
