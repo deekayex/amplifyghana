@@ -13,6 +13,7 @@
 /.next/
 /out/
 .next/
+node_modules/
 
 # production
 /build
