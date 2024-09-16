@@ -5,7 +5,13 @@
   background-color: aqua;
   /* margin-top: 20vh; */
   /* margin-left: 10%; */
+  overflow-y: scroll;
+  
 }
+
+/* .inbox-list{
+  overflow-y: scroll;
+} */
 
 .inbox-text{
   background-color: blueviolet;

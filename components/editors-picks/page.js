@@ -209,11 +209,12 @@ function EditorsPicks({
       <div className="editor_space" />
       <div className="page-header">
         <Image
-          src={newspaper}
+          src='/newspaper-folded.png'
           alt="News icon"
           className="news-icon"
           width={10}
           height={10}
+          unoptimized
         />
         <h1>Editor's Picks</h1>
       </div>

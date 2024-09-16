@@ -21,6 +21,7 @@ const Messages = () => {
   return (
     <div className="inbox-menu">
       <h1 className="inbox-text">Inbox</h1>
+      <div className="inbox-list">
       {messages.length > 0 ? (
         <ul>
           {messages.map(message => (
@@ -35,6 +36,7 @@ const Messages = () => {
       ) : (
         <p>No messages found.</p>
       )}
+      </div>
     </div>
   );
 };

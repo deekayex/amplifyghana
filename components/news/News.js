@@ -1,5 +1,5 @@
 "use client";
-import newspaper from "@/public/newspaper-folded.png";
+// import newspaper from "@/public/newspaper-folded.png";
 import {
   collection,
   deleteDoc,
@@ -215,11 +215,12 @@ const News = ({
         <div className="spacer" />
         <div className="page-header">
           <Image
-            src={newspaper}
+            src= '/newspaper-folded.png'
             alt="News icon"
             className="news-icon"
             width={10}
             height={10}
+            unoptimized
           />
           <h1>NEWS</h1>
         </div>

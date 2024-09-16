@@ -1,78 +1,27 @@
-[debug] [2024-07-16T11:46:00.852Z] ----------------------------------------------------------------------
-[debug] [2024-07-16T11:46:00.856Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
-[debug] [2024-07-16T11:46:00.857Z] CLI Version:   13.13.3
-[debug] [2024-07-16T11:46:00.857Z] Platform:      win32
-[debug] [2024-07-16T11:46:00.857Z] Node Version:  v20.6.1
-[debug] [2024-07-16T11:46:00.857Z] Time:          Tue Jul 16 2024 11:46:00 GMT+0000 (Greenwich Mean Time)
-[debug] [2024-07-16T11:46:00.857Z] ----------------------------------------------------------------------
+[debug] [2024-09-16T15:29:44.874Z] ----------------------------------------------------------------------
+[debug] [2024-09-16T15:29:44.877Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2024-09-16T15:29:44.877Z] CLI Version:   13.15.4
+[debug] [2024-09-16T15:29:44.877Z] Platform:      win32
+[debug] [2024-09-16T15:29:44.877Z] Node Version:  v20.6.1
+[debug] [2024-09-16T15:29:44.878Z] Time:          Mon Sep 16 2024 15:29:44 GMT+0000 (Greenwich Mean Time)
+[debug] [2024-09-16T15:29:44.878Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2024-07-16T11:46:00.948Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2024-07-16T11:46:00.949Z] > authorizing via signed-in user (deekayexq@gmail.com)
-[debug] [2024-07-16T11:46:00.949Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2024-07-16T11:46:00.951Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
-[debug] [2024-07-16T11:46:00.952Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
-[debug] [2024-07-16T11:46:00.952Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2024-07-16T11:46:02.416Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
-[debug] [2024-07-16T11:46:02.417Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2024-07-16T11:46:02.418Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
-[debug] [2024-07-16T11:46:03.232Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
-[debug] [2024-07-16T11:46:03.232Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_5575c24f-5eec-4648-a3ff-74d0baa33164"}
-[debug] [2024-07-16T11:46:10.397Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
-[debug] [2024-07-16T11:46:12.059Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
-[debug] [2024-07-16T11:46:12.060Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
-[debug] [2024-07-16T11:46:12.061Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
-[debug] [2024-07-16T11:46:13.262Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
-[debug] [2024-07-16T11:46:13.262Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
-[debug] [2024-07-16T11:46:25.978Z] ----------------------------------------------------------------------
-[debug] [2024-07-16T11:46:25.988Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
-[debug] [2024-07-16T11:46:25.989Z] CLI Version:   13.13.3
-[debug] [2024-07-16T11:46:25.989Z] Platform:      win32
-[debug] [2024-07-16T11:46:25.989Z] Node Version:  v20.6.1
-[debug] [2024-07-16T11:46:25.990Z] Time:          Tue Jul 16 2024 11:46:25 GMT+0000 (Greenwich Mean Time)
-[debug] [2024-07-16T11:46:25.990Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2024-07-16T11:46:26.202Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2024-07-16T11:46:26.205Z] > authorizing via signed-in user (deekayexq@gmail.com)
-[debug] [2024-07-16T11:46:26.205Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2024-07-16T11:46:26.211Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
-[debug] [2024-07-16T11:46:26.212Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
-[debug] [2024-07-16T11:46:26.212Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2024-07-16T11:46:27.677Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
-[debug] [2024-07-16T11:46:27.677Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2024-07-16T11:46:27.678Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
-[debug] [2024-07-16T11:46:28.374Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
-[debug] [2024-07-16T11:46:28.374Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_5575c24f-5eec-4648-a3ff-74d0baa33164"}
-[debug] [2024-07-16T11:46:35.584Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
-[debug] [2024-07-16T11:46:37.047Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
-[debug] [2024-07-16T11:46:37.047Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
-[debug] [2024-07-16T11:46:37.048Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
-[debug] [2024-07-16T11:46:38.130Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
-[debug] [2024-07-16T11:46:38.130Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
-[debug] [2024-07-16T11:47:04.914Z] ----------------------------------------------------------------------
-[debug] [2024-07-16T11:47:04.920Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
-[debug] [2024-07-16T11:47:04.921Z] CLI Version:   13.13.3
-[debug] [2024-07-16T11:47:04.921Z] Platform:      win32
-[debug] [2024-07-16T11:47:04.921Z] Node Version:  v20.6.1
-[debug] [2024-07-16T11:47:04.921Z] Time:          Tue Jul 16 2024 11:47:04 GMT+0000 (Greenwich Mean Time)
-[debug] [2024-07-16T11:47:04.921Z] ----------------------------------------------------------------------
-[debug] 
-[debug] [2024-07-16T11:47:05.077Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2024-07-16T11:47:05.083Z] > authorizing via signed-in user (deekayexq@gmail.com)
-[debug] [2024-07-16T11:47:05.083Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
-[debug] [2024-07-16T11:47:05.090Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
-[debug] [2024-07-16T11:47:05.091Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
-[debug] [2024-07-16T11:47:05.136Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2024-07-16T11:47:06.673Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
-[debug] [2024-07-16T11:47:06.673Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
-[debug] [2024-07-16T11:47:06.675Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
-[debug] [2024-07-16T11:47:07.777Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
-[debug] [2024-07-16T11:47:07.777Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_5575c24f-5eec-4648-a3ff-74d0baa33164"}
-[debug] [2024-07-16T11:47:16.517Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
-[debug] [2024-07-16T11:47:18.036Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
-[debug] [2024-07-16T11:47:18.036Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
-[debug] [2024-07-16T11:47:18.037Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
-[debug] [2024-07-16T11:47:19.344Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
-[debug] [2024-07-16T11:47:19.344Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[debug] [2024-09-16T15:29:44.977Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-09-16T15:29:44.978Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[info] i  emulators: Starting emulators: functions, hosting {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, hosting"}}
+[debug] [2024-09-16T15:29:44.986Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-09-16T15:29:44.986Z] [hosting] Hosting Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-09-16T15:29:44.987Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-09-16T15:29:44.993Z] [hub] writing locator at C:\Users\Dan\AppData\Local\Temp\hub-amplify-ghana.json
+[debug] [2024-09-16T15:29:45.010Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2024-09-16T15:29:46.027Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2024-09-16T15:29:46.027Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2024-09-16T15:29:49.984Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2024-09-16T15:29:51.750Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2024-09-16T15:29:51.751Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2024-09-16T15:29:51.751Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2024-09-16T15:29:53.191Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2024-09-16T15:29:53.192Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
 [info] 
    Thank you for trying our early preview of Next.js support on Firebase Hosting.
    During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
@@ -84,17 +33,201 @@
 
    We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
 
-[debug] [2024-07-16T11:47:34.277Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
-[debug] [2024-07-16T11:47:35.673Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
-[debug] [2024-07-16T11:47:35.673Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
-[info]    ▲ Next.js 14.1.4
+[debug] [2024-09-16T15:30:56.604Z] [web frameworks] effective firebase.json:  {
+  "hosting": [
+    {
+      "source": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "function": {
+            "functionId": "nextjsFunction"
+          }
+        },
+        {
+          "source": "**",
+          "function": {
+            "functionId": "ssramplifyghana",
+            "region": "us-central1",
+            "pinTag": true
+          }
+        }
+      ],
+      "site": "amplify-ghana",
+      "redirects": [],
+      "headers": [
+        {
+          "source": "**/*.[jt]s",
+          "headers": [
+            {
+              "key": "Set-Cookie",
+              "value": "__FIREBASE_DEFAULTS__=eyJjb25maWciOnsicHJvamVjdElkIjoiYW1wbGlmeS1naGFuYSIsImFwcElkIjoiMToyNzg3OTA4MzgwNTY6d2ViOmQxMjY4NzA1M2Y1OWUzM2VjYzYyMWQiLCJzdG9yYWdlQnVja2V0IjoiYW1wbGlmeS1naGFuYS5hcHBzcG90LmNvbSIsImxvY2F0aW9uSWQiOiJldXJvcGUtd2VzdDYiLCJhcGlLZXkiOiJBSXphU3lCRExQZ0VMd2lLV3hHajlhakRFSjJsaWlNc2wyYUwzRjAiLCJhdXRoRG9tYWluIjoiYW1wbGlmeS1naGFuYS5maXJlYmFzZWFwcC5jb20iLCJtZXNzYWdpbmdTZW5kZXJJZCI6IjI3ODc5MDgzODA1NiJ9LCJfYXV0aFRva2VuU3luY1VSTCI6Ii9fX3Nlc3Npb24ifQ; SameSite=Strict; Expires=2026-08-12T02:10:56.604Z; Path=/;"
+            }
+          ]
+        }
+      ],
+      "cleanUrls": true,
+      "public": ".firebase\\amplify-ghana\\hosting",
+      "webFramework": "next_ssr"
+    }
+  ],
+  "functions": [
+    {
+      "source": "functions",
+      "ignore": [
+        "node_modules",
+        ".git",
+        "firebase-debug.log",
+        "firebase-debug.*.log",
+        "*.local"
+      ],
+      "predeploy": [
+        "npm --prefix \"$RESOURCE_DIR\" run lint"
+      ]
+    },
+    {
+      "source": ".firebase\\amplify-ghana\\functions",
+      "codebase": "firebase-frameworks-amplify-ghana"
+    }
+  ]
+}
+[debug] [2024-09-16T15:30:56.616Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-09-16T15:30:56.616Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-09-16T15:30:56.616Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"hosting":[{"address":"127.0.0.1","family":"IPv4","port":5000}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: auth, firestore, database, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mauth, firestore, database, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2024-09-16T15:30:56.638Z] defaultcredentials: writing to file C:\Users\Dan\AppData\Roaming\firebase\deekayexq_gmail_com_application_default_credentials.json
+[debug] [2024-09-16T15:30:56.657Z] Setting GAC to C:\Users\Dan\AppData\Roaming\firebase\deekayexq_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Dan\\AppData\\Roaming\\firebase\\deekayexq_gmail_com_application_default_credentials.json"}}
+[debug] [2024-09-16T15:30:56.659Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana/adminSdkConfig [none]
+[debug] [2024-09-16T15:30:59.254Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana/adminSdkConfig 200
+[debug] [2024-09-16T15:30:59.255Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana/adminSdkConfig {"projectId":"amplify-ghana","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6"}
+[debug] [2024-09-16T15:30:59.286Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 
+[debug] [2024-09-16T15:31:04.231Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2024-09-16T15:31:04.232Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2024-09-16T15:31:04.232Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2024-09-16T15:31:05.158Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2024-09-16T15:31:05.158Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] i  hosting[amplify-ghana]: Serving hosting files from: .firebase\amplify-ghana\hosting {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1m.firebase\\amplify-ghana\\hosting\u001b[22m"}}
+[info] +  hosting[amplify-ghana]: Local server: http://127.0.0.1:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://127.0.0.1:5000\u001b[22m\u001b[24m"}}
+[debug] [2024-09-16T15:31:05.209Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-09-16T15:31:05.209Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2024-09-16T15:31:05.209Z] Starting Emulator UI with command {"binary":"node","args":["C:\\Users\\Dan\\.cache\\firebase\\emulators\\ui-v1.13.0\\server\\server.mjs"],"optionalArgs":[],"joinArgs":false,"shell":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"C:\\\\Users\\\\Dan\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.13.0\\\\server\\\\server.mjs\"],\"optionalArgs\":[],\"joinArgs\":false,\"shell\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2024-09-16T15:31:05.337Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2024-09-16T15:31:05.338Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] i  functions: Watching "C:\Users\Dan\Desktop\projects\amplify-gh-app\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\Dan\\Desktop\\projects\\amplify-gh-app\\functions\" for Cloud Functions..."}}
+[debug] [2024-09-16T15:31:05.437Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2024-09-16T15:31:08.248Z] > [functions] package.json contents: {
+  "name": "functions",
+  "description": "Cloud Functions for Firebase",
+  "scripts": {
+    "lint": "eslint .",
+    "serve": "firebase emulators:start --only functions",
+    "shell": "firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^5.0.0",
+    "next": "^14.2.7",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-google": "^0.14.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-09-16T15:31:08.248Z] Building nodejs source
+[debug] [2024-09-16T15:31:08.248Z] Failed to find version of module node: reached end of search path C:\Users\Dan\Desktop\projects\amplify-gh-app\functions\node_modules
+[warn] !  functions: Your requested "node" version "18" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2024-09-16T15:31:08.251Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-09-16T15:31:08.259Z] Found firebase-functions binary at 'C:\Users\Dan\Desktop\projects\amplify-gh-app\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8196
 
-[info]    - Environments: .env
+[debug] [2024-09-16T15:31:08.942Z] Got response from /__/functions.yaml {"endpoints":{"nextjsFunction":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"nextjsFunction"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[info] +  functions: Loaded functions definitions from source: nextjsFunction. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: nextjsFunction."}}
+[info] +  functions[us-central1-nextjsFunction]: http function initialized (http://127.0.0.1:5001/amplify-ghana/us-central1/nextjsFunction). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/amplify-ghana/us-central1/nextjsFunction)."}}
+[info] i  functions: Watching "C:\Users\Dan\Desktop\projects\amplify-gh-app\.firebase\amplify-ghana\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\Dan\\Desktop\\projects\\amplify-gh-app\\.firebase\\amplify-ghana\\functions\" for Cloud Functions..."}}
+[debug] [2024-09-16T15:31:13.995Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2024-09-16T15:31:15.696Z] > [functions] package.json contents: {
+  "main": "server.js",
+  "dependencies": {
+    "firebase-frameworks": "^0.11.0",
+    "firebase-functions": "^4.5.0",
+    "firebase-admin": "^11.11.1"
+  },
+  "engines": {
+    "node": "20"
+  }
+}
+[debug] [2024-09-16T15:31:15.696Z] Building nodejs source
+[debug] [2024-09-16T15:31:15.696Z] Failed to find version of module node: reached end of search path C:\Users\Dan\Desktop\projects\amplify-gh-app\.firebase\amplify-ghana\functions\node_modules
+[info] +  functions: Using node@20 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2024-09-16T15:31:15.701Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-09-16T15:31:15.710Z] Found firebase-functions binary at 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.firebase\amplify-ghana\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8249
 
+[debug] [2024-09-16T15:31:16.174Z] Got response from /__/functions.yaml {"endpoints":{"ssramplifyghana":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"ssramplifyghana"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] +  functions: Loaded functions definitions from source: ssramplifyghana. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: ssramplifyghana."}}
+[info] +  functions[us-central1-ssramplifyghana]: http function initialized (http://127.0.0.1:5001/amplify-ghana/us-central1/ssramplifyghana). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/amplify-ghana/us-central1/ssramplifyghana)."}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
 
-[info]    Creating an optimized production build ...
+┌───────────┬────────────────┬─────────────────────────────────┐
+│ Emulator  │ Host:Port      │ View in Emulator UI             │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Functions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions │
+├───────────┼────────────────┼─────────────────────────────────┤
+│ Hosting   │ 127.0.0.1:5000 │ n/a                             │
+└───────────┴────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
 
-[info]  ✓ Compiled successfully
-
-[info]    Linting and checking validity of types ...
-
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/css/cd2ab59c501d6dfc.css HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/css/cd2ab59c501d6dfc.css HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/css/77a32c35bda0757d.css HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/css/77a32c35bda0757d.css HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/webpack-b7037c628c8b5a12.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/webpack-b7037c628c8b5a12.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/main-app-da46cc27fbc780fb.js HTTP/1.1" 200 462 "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/main-app-da46cc27fbc780fb.js HTTP/1.1\" 200 462 \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/749-95e7b0518610265c.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/749-95e7b0518610265c.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/69-74ca4604bfee766d.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/69-74ca4604bfee766d.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/fd9d1056-708d600bd2810c79.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/fd9d1056-708d600bd2810c79.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/250-b574435acf6f6550.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/250-b574435acf6f6550.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/app/layout-9e94240d8a31738b.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/app/layout-9e94240d8a31738b.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/943-e2b7d684e67fc9d3.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/943-e2b7d684e67fc9d3.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET / HTTP/1.1\" 200 - \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/948-e3aef9adb8ce8ab2.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/948-e3aef9adb8ce8ab2.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/e8149b54-8af17e425f253818.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/e8149b54-8af17e425f253818.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/bc9e92e6-45308ba4edaae2dc.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/bc9e92e6-45308ba4edaae2dc.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/app/page-aea34328a72a6bff.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/app/page-aea34328a72a6bff.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] "GET /_next/static/chunks/949-7c0faa8d94db7aae.js HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:25 +0000] \"GET /_next/static/chunks/949-7c0faa8d94db7aae.js HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] "GET /_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Famplify-ghana.appspot.com%2Fo%2Fhighlight%252FDISCOVERYUPDATE.jpg%3Falt%3Dmedia%26token%3D22188b6f-f0ff-4862-a69b-ac212b042c5d&w=640&q=75 HTTP/1.1" 304 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] \"GET /_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Famplify-ghana.appspot.com%2Fo%2Fhighlight%252FDISCOVERYUPDATE.jpg%3Falt%3Dmedia%26token%3D22188b6f-f0ff-4862-a69b-ac212b042c5d&w=640&q=75 HTTP/1.1\" 304 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] "GET /_next/image?url=%2Famplifyghlogo.png&w=640&q=75 HTTP/1.1" 304 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] \"GET /_next/image?url=%2Famplifyghlogo.png&w=640&q=75 HTTP/1.1\" 304 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] "GET /_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Famplify-ghana.appspot.com%2Fo%2Fhighlight%252Fstallionad.jpg%3Falt%3Dmedia%26token%3Dd7a84d01-25d4-449e-8cbf-20bc065f09ac&w=3840&q=75 HTTP/1.1" 304 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] \"GET /_next/image?url=https%3A%2F%2Ffirebasestorage.googleapis.com%2Fv0%2Fb%2Famplify-ghana.appspot.com%2Fo%2Fhighlight%252Fstallionad.jpg%3Falt%3Dmedia%26token%3Dd7a84d01-25d4-449e-8cbf-20bc065f09ac&w=3840&q=75 HTTP/1.1\" 304 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] "GET /playlists?_rsc=9ehs5 HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] \"GET /playlists?_rsc=9ehs5 HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] "GET /submissions?_rsc=9ehs5 HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] \"GET /submissions?_rsc=9ehs5 HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] "GET /about?_rsc=9ehs5 HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] \"GET /about?_rsc=9ehs5 HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
+[info] i  hosting: 127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] "GET /?_rsc=9ehs5 HTTP/1.1" 200 - "http://127.0.0.1:5000/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [16/Sep/2024:15:31:26 +0000] \"GET /?_rsc=9ehs5 HTTP/1.1\" 200 - \"http://127.0.0.1:5000/\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36\""}}
