@@ -8,6 +8,18 @@
     ],
     "rewrites": [
       {
+        "source": "/_next/static/**",
+        "destination": "/_next/static/**"
+      },
+      {
+        "source": "/news/**",
+        "function": "nextjsFunction"
+      },
+      {
+        "source": "/editors/**",
+        "function": "nextjsFunction"
+      },
+      {
         "source": "**",
         "function": "nextjsFunction" 
       }
