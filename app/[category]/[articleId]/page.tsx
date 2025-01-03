@@ -1,5 +1,5 @@
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import ArticleSide from "../../../components/ArticleSide";
+import ArticleSide from "../../../components/article/ArticleSide";
 import ScrollToTopOnMount from "../../../components/ScrollToTop";
 import Connect from "../../../components/connect/Connect";
 import Share from "../../../components/share/Share";
@@ -160,9 +160,7 @@ const Article = ({ params }: Props) => {
     <div className="article-page">
       <ScrollToTopOnMount />
       <div className="spacer" />
-      <Suspense fallback={<LoadingScreen />}>
         <ArticleContentWrapper resource={resource} />
-      </Suspense>
     </div>
   );
 };

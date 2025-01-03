@@ -4,8 +4,8 @@ import ArticlePage from "./TArticle";
 export const metadata: Metadata = {};
 import { database } from "@/firebase/firebase";
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import { ReactNode, Suspense } from "react";
-import LoadingScreen from "@/context/loading/LoadingScreen";
+import { ReactNode} from "react";
+
 
 const fetchArticle = async (params) => {
   try {
@@ -54,21 +54,9 @@ const fetchArticle = async (params) => {
 
 export default async function ArticleLayout({ children, params }: {children: ReactNode, params: { articleId: string, category: string } }) {
   const { articleId, category } = params;
-  // const article = await fetchArticle(params);
-
-  // const featuredAdElements = await fetchData();
 
   return (
     <>
-      {/* <Suspense>
-        <ArticlePage
-          params={params}
-          article={JSON.parse(JSON.stringify(article))}
-          featuredAdElements={featuredAdElements}
-        />
-      </Suspense> */}
-      {/* <Suspense fallback={<LoadingScreen />}>
-        </Suspense> */}
       {children}
     </>
   );

@@ -165,9 +165,12 @@ const Playlists = ({ isPlayListManager, playlists }) => {
                     src={playlist.image}
                     alt={playlist.altText}
                     className="picture"
-                    loading="lazy"
-                    width={400}
-                    height={100}
+                    // loading="lazy"
+                    width={0}
+  height={0}
+  sizes="100vw"
+  style={{ width: '100%', height: 'auto' }}
+                    priority
                   />
                 </a>
               </div>

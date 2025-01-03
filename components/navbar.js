@@ -60,14 +60,16 @@ function Navbar() {
           className="home-link"
           prefetch
         >
-          <Image
-            src={"/amplifyghlogo.png"}
-            alt="Amplify logo"
-            className="amplify-logo"
-            onClick={closeMenu}
-            width={400}
-            height={35}
-          />
+       <Image
+          src="/amplifyghlogo.png"
+          alt="Amplify logo"
+          className="amplify-logo"
+          onClick={closeMenu}
+          width={0}
+          height={0}
+          sizes="100vw"
+          style={{ width: '100%', height: 'auto' }}
+        />
         </Link>
 
         <div className="menu-icon" onClick={toggleMenu}>

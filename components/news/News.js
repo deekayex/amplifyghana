@@ -17,7 +17,7 @@ import {
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
-import React, { Suspense, useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { database } from "../../firebase/firebase";
 import "./News.css";
 import LoadingHome from "@/context/loading/HomeLoad/LoadingHome";
@@ -210,9 +210,7 @@ const News = ({
   const currentArticles = newsArticles.slice(startIndex, endIndex);
 
   return (
-    <Suspense fallback={<LoadingArticles />}>
-      <section className="news-container" id="news">
-        <div className="spacer" />
+  <>
         <div className="page-header">
           <Image
             src= '/newspaper-folded.png'
@@ -221,12 +219,13 @@ const News = ({
             width={10}
             height={10}
             unoptimized
+            priority
           />
           <h1>NEWS</h1>
         </div>
 
         <div className="flex-contents">
-          <Suspense fallback={<LoadingArticles />}>
+        
             <div className="page-contents">
               {/* {isLoading ? (
               // <p>Loading...</p>
@@ -284,7 +283,7 @@ const News = ({
               ))}
               {/* )} */}
             </div>
-          </Suspense>
+    
         </div>
         <div className="pagination">
           <button
@@ -305,8 +304,8 @@ const News = ({
             Next
           </button>
         </div>
-      </section>
-    </Suspense>
+
+        </>
   );
 };
 

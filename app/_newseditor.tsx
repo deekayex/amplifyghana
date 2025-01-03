@@ -14,7 +14,6 @@ import {
   updateDoc,
   getCountFromServer,
 } from "@firebase/firestore";
-import { Suspense } from "react";
 function serializeFirebaseDocument(doc) {
   // Assuming doc is a document fetched from Firestore
   const data = doc.data();
@@ -197,7 +196,7 @@ export default async function NewsEditor() {
   // const highlightedArticleId = await fetchHighlightedNews(database);
   return (
     <>
-      <Suspense fallback={<LoadingArticles />}>
+      <section className="news-container" id="news">
         <News
           isAllArticlesPage={false}
           // handleToggleClick={handleToggleClick}
@@ -207,8 +206,9 @@ export default async function NewsEditor() {
           // highlightedArticleId={highlightedArticleId}
           // centeredStates={centeredStates}
         />
-      </Suspense>
-      <Suspense fallback={<LoadingArticles />}>
+        </section>
+
+      <section className="editor-page" id="editors-pick">
         <EditorsPicks
           isAllArticlesPage={false}
           highlightedEditors={highlightedEditors}
@@ -217,7 +217,7 @@ export default async function NewsEditor() {
           // centeredStates={centeredStates}
           // handleSetHighlight={handleSetHighlight}
         />
-      </Suspense>
+        </section>
     </>
   );
 }

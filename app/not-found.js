@@ -1,7 +1,7 @@
 import React from "react";
 import "./Blank.css";
 import "./about/About.css";
-// import Socials from "../components/socials/Socials";
+
 import Link from "next/link";
 import Image from "next/image";
 

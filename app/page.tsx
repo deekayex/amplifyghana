@@ -1,29 +1,11 @@
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import { Suspense } from "react";
-// import EditorsPicks from "../components/editors-picks/page";
-// import News from "../components/news/News";
-import Home from "@/components/Home";
+
+import Home from "@/components/home/Home";
 import { fetchDataWithCache } from "@/context/cache/cacheUtils";
 import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
 import Socials from "../components/socials/Socials";
-import LoadingHome from "../context/loading/HomeLoad/LoadingHome";
 import "./HomePages.css";
 import NewsEditor from "./_newseditor";
-
-// const News = dynamic(() => import("../components/news/News"));
-// const EditorsPicks = dynamic(() => import("../components/editors-picks/page"));
-
-// export const metadata: Metadata = {
-//   title:
-//     "Amplify Ghana | Promoting African Creatives | PR Agency | Music and\
-//   Entertainment News",
-//   description:
-//     "Amplify Ghana is an Online Creative’s Promotion and Public Relations Agency Founded in 2020. Our Primary Mission is to Elevate Creatives Throughout Africa, With a Special Focus on Ghana, As that is Where We are Headquartered.",
-//   openGraph: {
-//     images:
-//       "https://ucarecdn.com/04cd01ca-f483-421d-acad-b64ab26cd7f1/sharelogo.png",
-//   },
-// };
 
 async function fetchHighlightedNews(database) {
   const highlightedNewsDoc = await fetchDataWithCache(
@@ -94,8 +76,6 @@ function serializeFirebaseDocument(doc) {
     ? {
         seconds: data.timestamp.seconds,
         nanoseconds: data.timestamp.nanoseconds,
-        // Optionally convert to ISO string or milliseconds for easier handling on the client side
-        // ISO string example:
         isoString: data.timestamp.toDate().toISOString(),
         // Milliseconds example:
         milliseconds: data.timestamp.toMillis(),
@@ -105,9 +85,7 @@ function serializeFirebaseDocument(doc) {
   // Return a new object with all data serialized
   return {
     ...data,
-    // Replace the original timestamp with the serialized version
     timestamp: serializedTimestamp,
-    // Ensure any other complex types are also serialized
   };
 }
 // Fetch featured ads
@@ -136,20 +114,7 @@ async function HomePages() {
               <Socials />
             </div>
           </div>
-          <Suspense fallback={<LoadingHome />}>
-            <Home
-            // highlightedNews={highlightedNews}
-            // highlightedEditors={highlightedEditors}
-            // highlightedPlaylists={highlightedPlaylists}
-            // newFeaturedAd={newFeaturedAd}
-            />
-          </Suspense>
-          {/* <Suspense fallback={<LoadingHome />}>
-            <News isAllArticlesPage={false} />
-          </Suspense>
-          <Suspense fallback={<LoadingHome />}>
-            <EditorsPicks isAllArticlesPage={false} />
-          </Suspense> */}
+            <Home/>
           <NewsEditor />
         </div>
       </div>

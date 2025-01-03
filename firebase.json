@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "source": ".", 
+    "source": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -12,30 +12,14 @@
         "destination": "/_next/static/**"
       },
       {
-        "source": "/news/**",
-        "function": "nextjsFunction"
-      },
-      {
-        "source": "/editors/**",
-        "function": "nextjsFunction"
-      },
-      {
         "source": "**",
-        "function": "nextjsFunction" 
+        "function": "ssramplifyghana"
       }
     ]
   },
-  "functions": {
-    "source": "functions", 
-    "ignore": [
-      "node_modules",
-      ".git",
-      "firebase-debug.log",
-      "firebase-debug.*.log",
-      "*.local"
-    ],
-    "predeploy": [
-      "npm --prefix \"$RESOURCE_DIR\" run lint"
-    ]
+  "frameworks": {
+    "webFrameworks": {
+      "framework": "next"
+    }
   }
 }

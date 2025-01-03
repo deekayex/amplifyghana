@@ -1,5 +1,5 @@
 import { collection, doc, getDoc, getDocs } from "firebase/firestore";
-import ArticleSide from "@/components/ArticleSide";
+import ArticleSide from "@/components/article/ArticleSide";
 import ScrollToTopOnMount from "@/components/ScrollToTop";
 import Connect from "@/components/connect/Connect";
 import Share from "@/components/share/Share";
@@ -320,11 +320,6 @@ const Article = async ({ params }: Props) => {
     <div className="article-page">
       <ScrollToTopOnMount />
       <div className="spacer" />
-      {/* {isLoading ? (
-        <LoadingScreen />
-      ) : ( */}
-
-      <Suspense fallback={<LoadingScreen />}>
         <div className="article-flex">
           <div className="article-main">
             <ArticleContent
@@ -340,8 +335,6 @@ const Article = async ({ params }: Props) => {
             <ArticleSide />
           </div>
         </div>
-        {/* )}{" "} */}
-      </Suspense>
     </div>
   );
 };

@@ -7,7 +7,7 @@ import { database } from "@/firebase/firebase";
 import DOMPurify from "isomorphic-dompurify";
 import "./ArticlePage.css";
 import LoadingScreen from "@/context/loading/LoadingScreen";
-import ArticleSide from "@/components/ArticleSide";
+import ArticleSide from "@/components/article/ArticleSide";
 import Share from "@/components/share/Share";
 import Connect from "@/components/connect/Connect";
 import { useLocation } from "react-router-dom";

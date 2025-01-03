@@ -13,15 +13,13 @@ const Footer = () => {
             alt="Amplify logo"
             className="logo-footer"
             aria-label="link-to-home-page"
-            width={100}
-            height={100}
+            width={0}
+            height={0}
+            sizes="100vw"
+            style={{ width: '40%', height: 'auto' }}
           />
         </Link>
       </div>
-      {/* <div className='amplify-info'>
-        AMPLIFY GHANA IS AN ONLINE CREATIVE’S 
-        PROMOTION AND PUBLIC RELATIONS AGENCY FOUNDED IN 2020
-      </div> */}
       <div>
         <div className="footer-links">
           <li className="footer-nav__item">
@@ -75,7 +73,7 @@ const Footer = () => {
           </li>
         </div>
         {/* <div><p>Social logos are obtained from freepiks</p></div> */}
-        <div className="copyright">© 2024 Amplify Ghana</div>
+        <p className="copyright">© 2024 Amplify Ghana. All rights reserved.</p>
       </div>
     </div>
   );

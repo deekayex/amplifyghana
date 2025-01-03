@@ -1,0 +1,380 @@
+.homnepage-components {
+  display: flex;
+  flex-direction: column;
+}
+
+.homepage-contents {
+  display: flex;
+  height: 45vw;
+  min-height: 560px;
+  /* background-color: aqua; */
+}
+
+.loading-container > div {
+  width: 100%;
+  height: 100%;
+  background-color: lightgray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.left-homepage {
+  width: 45%;
+  height: auto;
+  border-radius: 20px;
+  margin-left: 8%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  opacity: 0.95;
+  transition: 0.5s ease-in-out;
+  background-image: url("../../public/compressed-background.png");
+}
+
+.left-homepage:hover,
+.news-component:hover {
+  cursor: pointer;
+  opacity: 1;
+  background-position: right;
+  background-position: bottom;
+  transition: 0.5s ease-in-out;
+}
+
+.editor,
+.playlist-text {
+  position: absolute;
+  right: 0;
+  background-color: #ff7300;
+  border-top-right-radius: 18px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-left: 20px;
+  padding-bottom: 5px;
+  font-family: "hanson", sans-serif;
+  font-weight: bolder;
+  letter-spacing: 2px;
+}
+
+.sticker {
+  font-size: 13px;
+}
+
+.editor-text,
+.news-text {
+  background-color: black;
+  position: absolute;
+  bottom: 0;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  opacity: 0.9;
+}
+
+.news-text {
+  overflow-y: hidden;
+  padding-bottom: 10px;
+}
+
+.editor-text-body,
+.editor-text-header,
+.news-text-header,
+.news-text-body {
+  margin: 10px;
+  text-align: left;
+}
+
+.news-sticker {
+  font-size: 1.4vh;
+}
+
+.editor-text-header {
+  font-size: 2.4vw;
+  font-family: "Monument Extended";
+  color: #ff7300;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.editor-text-body,
+.news-text-body {
+  font-size: 0.9vw;
+  font-weight: 400;
+  margin-top: 0;
+  padding-top: 0;
+  color: white;
+  font-family: "Montserrat", sans-serif;
+}
+
+.editor-text-body {
+  font-size: 1.2vw;
+}
+
+.right-homepage {
+  display: flex;
+  flex-direction: column;
+  width: 32%;
+  margin-left: 3%;
+  height: auto;
+}
+
+.news-component {
+  flex: 1;
+  margin-bottom: 2.3vh;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  opacity: 0.9;
+  transition: 0.5s ease;
+}
+
+.news-text-header {
+  font-size: 1.5vw;
+  font-family: "Monument Extended";
+  color: #ff7300;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.news-text-body {
+  font-size: 0.9vw;
+  margin-bottom: 0;
+}
+
+.playlist-component {
+  background-color: #df6b0d;
+  border-radius: 20px;
+  flex: 1;
+  position: relative;
+  z-index: 2;
+  opacity: 0.95;
+}
+
+.playlist-component:hover {
+  opacity: 0.99;
+  transition: opacity 0.5s;
+}
+
+.playlist-component:active {
+  opacity: 1;
+}
+
+.playlist-button {
+  position: absolute;
+  width: 20%;
+  bottom: 10px;
+  right: 35%;
+  border-radius: 20px;
+  padding: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: rgba(255, 115, 0, 1);
+  color: white;
+  font-family: "Monument Extended";
+  font-size: 0.7vw;
+  border: white;
+  border-style: solid;
+  border-width: 0.12vw;
+  opacity: 0.8;
+}
+
+.playlist-button:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+.playlist-button:active {
+  opacity: 1s;
+}
+
+.playlist-text {
+  position: absolute;
+  background-color: black;
+  padding: 1px;
+  right: 0;
+  top: 0;
+  padding-left: 10px;
+  padding-right: 12px;
+  font-size: 1.4vw;
+  letter-spacing: 1px;
+}
+
+.highlighted-playlist-image {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  border-radius: 20px;
+}
+
+.bottom-homepage {
+  margin-top: 2.3vh;
+  height: auto;
+  width: 80%;
+  margin-left: 8%;
+}
+
+.ad {
+  object-fit: contain;
+  width: 100%;
+  /* border-radius: 5% 5% 5% 5%; */
+  height: auto;
+  border-radius: 15px;
+}
+
+.rent-space {
+  margin-top: 0;
+  padding-top: 0;
+  font-size: 1vw;
+}
+
+.playlist-text:hover,
+.editor:hover {
+  color: white;
+}
+
+.playlist-text:hover,
+.editor:hover,
+.news-text-header:hover,
+.editor-text-header:hover,
+.content-text-header:hover {
+  text-decoration: underline;
+}
+
+/* @media screen and (min-width: 1400px) {
+    .homepage-contents{
+        min-height: 100vh;
+    }    
+} */
+
+/* @media screen and (min-width: 1020px) and (max-height: 700px){
+    .homepage-contents{
+        min-height: 120vh;
+    }
+
+  
+} */
+
+@media screen and (max-width: 1000px) {
+  .homepage-contents {
+    flex-direction: column;
+    height: 75vh;
+    align-items: center;
+  }
+
+  .editor-text-body {
+    font-size: 1.6rem;
+  }
+
+  .left-homepage {
+    width: 90%;
+    margin-left: 0;
+    height: 100%;
+  }
+
+  .right-homepage {
+    margin-top: 3%;
+    width: 90%;
+    height: auto;
+    margin-left: 0%;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 5%;
+  }
+
+  .news-component,
+  .playlist-component {
+    width: 100%;
+    height: 100%;
+  }
+
+  .news-text {
+    padding-bottom: 0;
+  }
+
+  .bottom-homepage {
+    margin-left: 5%;
+    width: 90%;
+  }
+
+  .editor-text-header {
+    font-size: 4vh;
+  }
+
+  .news-text-header {
+    margin-top: 0;
+    font-size: 2.2vw;
+    overflow-y: hidden;
+  }
+
+  .news-text-body {
+    font-size: 1.4vw;
+    margin-bottom: 5px;
+  }
+
+  .highlighted-playlist-image {
+    object-fit: contain;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .editor-text-header {
+    font-size: 2rem;
+  }
+
+  .editor-text-body {
+    font-size: 0.9rem;
+  }
+
+  .sticker {
+    font-size: 6px;
+  }
+
+  .news-text-body {
+    font-size: 0.8rem;
+  }
+
+  .playlist-text {
+    font-size: 0.1rem;
+  }
+
+  .ad {
+    border-radius: 10px;
+  }
+
+  .editor {
+    padding-left: 10px;
+    padding-right: 12px;
+  }
+
+  .news-sticker {
+    font-size: 5px;
+    padding-left: 2px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .playlist-button {
+    padding: 2%;
+    font-size: 0.5rem;
+    bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .playlist-button {
+    font-size: 0.4rem;
+  }
+}
+@media screen and (max-width: 300px) {
+  .editor-text-header {
+    font-size: 1.7rem;
+  }
+
+  .editor-text-body {
+    font-size: 0.8rem;
+  }
+
+  .bottom-homepage {
+    padding-top: 1.5vh;
+  }
+}

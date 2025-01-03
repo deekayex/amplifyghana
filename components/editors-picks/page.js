@@ -205,8 +205,8 @@ function EditorsPicks({
   const currentArticles = editorsArticles.slice(startIndex, endIndex);
 
   return (
-    <section className="editor-page" id="editors-pick">
-      <div className="editor_space" />
+   
+     <div className="editor_spac">
       <div className="page-header">
         <Image
           src='/newspaper-folded.png'
@@ -215,6 +215,7 @@ function EditorsPicks({
           width={10}
           height={10}
           unoptimized
+          priority
         />
         <h1>Editor's Picks</h1>
       </div>
@@ -302,7 +303,7 @@ function EditorsPicks({
           Next
         </button>
       </div>
-    </section>
+    </div>
   );
 }
 

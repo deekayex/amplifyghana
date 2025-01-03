@@ -1,17 +1,19 @@
-const functions = require("firebase-functions");
-const next = require("next");
-const cors = require("cors")({origin: true}); // CORS middleware
+/**
+ * Import function triggers from their respective submodules:
+ *
+ * const {onCall} = require("firebase-functions/v2/https");
+ * const {onDocumentWritten} = require("firebase-functions/v2/firestore");
+ *
+ * See a full list of supported triggers at https://firebase.google.com/docs/functions
+ */
 
-const dev = process.env.NODE_ENV !== "production"; // Detect if it's in dev mode
-const nextApp = next({dev}); // Initialize Next.js app based on environment
-const handle = nextApp.getRequestHandler();
+const {onRequest} = require("firebase-functions/v2/https");
+const logger = require("firebase-functions/logger");
 
-// Ensure Next.js is prepared before handling any requests and apply CORS
-exports.nextjsFunction = functions.https.onRequest((req, res) => {
-  return nextApp.prepare().then(() => {
-    // Apply CORS middleware before handling the request
-    cors(req, res, () => {
-      return handle(req, res); // Handle the request with Next.js
-    });
-  });
-});
+// Create and deploy your first functions
+// https://firebase.google.com/docs/functions/get-started
+
+// exports.helloWorld = onRequest((request, response) => {
+//   logger.info("Hello logs!", {structuredData: true});
+//   response.send("Hello from Firebase!");
+// });
