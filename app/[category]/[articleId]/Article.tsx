@@ -127,7 +127,6 @@ export default function ArticleContent({ article, featuredAdElements }) {
   return (
     <>
       {" "}
-      <Suspense fallback={<LoadingScreen />}>
         {article && (
           <>
             {/* <Helmet>
@@ -153,7 +152,7 @@ export default function ArticleContent({ article, featuredAdElements }) {
             <div className="read-article">
               <ShareButton
                 articleTitle={article.title}
-                articleUrl={`article/${category}/${articleId}`}
+                articleUrl={`/${category}/${articleId}`}
                 articleImageSrc={article.image}
                 // className="external-share"
               />
@@ -161,7 +160,6 @@ export default function ArticleContent({ article, featuredAdElements }) {
             </div>
           </>
         )}
-      </Suspense>
     </>
   );
 }
