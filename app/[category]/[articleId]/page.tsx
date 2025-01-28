@@ -89,14 +89,14 @@ export async function generateMetadata(
     title: `${article.title} - Amplify Ghana`,
     description: article.description || "Read the latest news and updates.",
     openGraph: {
-      title: article.title,
+      title: `${article.title} - Amplify Ghana`,
       description: article.description,
-      images: [article.image, ...previousImages],
-      url: `https://aplifyghana.com/${params.category}/${params.articleId}`,
+      images: [article.image, ...previousImages], 
+      url: `https://amplifyghana.com/${params.category}/${params.articleId}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: article.title,
+      title: `${article.title} - Amplify Ghana`,
       description: article.description,
       images: [article.image],
     },
