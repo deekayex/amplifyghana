@@ -92,7 +92,7 @@ const fetchArticle = async (params) => {
     console.error("Error fetching article", error);
     return {};
   } finally {
-    // setIsLoading(false);
+    setIsLoading(false);
   }
 };
 
@@ -114,7 +114,7 @@ const fetchData = async () => {
       console.error("No documents found in FeaturedAd collection");
     }
 
-    // setIsLoading(false);
+    setIsLoading(false);
   } catch (error) {
     console.error("Error fetching data", error);
     // setIsLoading(false);

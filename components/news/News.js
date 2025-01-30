@@ -28,7 +28,7 @@ const News = ({
   initialNewsArticles,
   totalPagesCount,
 }) => {
-  const [newsArticles, setNewsArticles] = useState(initialNewsArticles);
+  const [newsArticles, setNewsArticles] = useState(initialNewsArticles || []);
   const [user, setUser] = useState(null);
   const [, setHighlightedArticleId] = useState(null);
   const [isLoading, setIsLoading] = useState(false);

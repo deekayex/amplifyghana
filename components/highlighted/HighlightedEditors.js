@@ -6,7 +6,7 @@ const HighlightedEditors = ({highlightedEditors}) => {
   const editorsLink = highlightedEditors ? `article/editors-picks${highlightedEditors.id}` : '';
   return (
 
-    <Link to={editorsLink}  >
+    <Link to={editorsLink}>
       <div className='editors-highlighted' tyle={{ backgroundImage: `url(${highlightedEditors ? highlightedEditors.image : ''})` }}>
       <div className='editor'>
         <Link  to="/#editors-pick" className='footer-link'>

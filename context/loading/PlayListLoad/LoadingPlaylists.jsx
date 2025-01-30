@@ -6,15 +6,15 @@ const LoadingPlaylists = () => {
     <div className='playlist-container'>
       <div className='playlist_component'>
       <div className='playlist_image playlist-image-skeleton'></div>
-      <div className='playlist_text playlsit-text-skeleton'></div>
+      <div className=' playlsit-text-skeleton'></div>
       </div>
       <div className='playlist_component'>
       <div className='playlist_image playlist-image-skeleton'></div>
-      <div className='playlist_text playlsit-text-skeleton'></div>
+      <div className=' playlsit-text-skeleton'></div>
       </div>
       <div className='playlist_component'>
       <div className='playlist_image playlist-image-skeleton'></div>
-      <div className='playlist_text playlsit-text-skeleton'></div>
+      <div className=' playlsit-text-skeleton'></div>
       </div>
     </div>
     </div>
