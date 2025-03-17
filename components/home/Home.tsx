@@ -1,12 +1,10 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import { database } from "@/firebase/firebase";
-import LoadingHome from "../../context/loading/HomeLoad/LoadingHome";
 import FeaturedAd from "../FeaturedAd";
 import "./Home.css";
 import Link from "next/link";
 import Image from "next/image";
-
 import { fetchDataWithCache } from "@/context/cache/cacheUtils";
 import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
 
@@ -16,11 +14,7 @@ async function fetchHighlightedNews(database) {
     () => getDoc(doc(database, "highlighted", "highlightedNews"))
   );
   if (highlightedNewsDoc.exists()) {
-    const articleRef = doc(
-      database,
-      "news",
-      highlightedNewsDoc.data().articleId
-    );
+    const articleRef = doc(database, "news", highlightedNewsDoc.data().articleId);
     const articleDoc = await getDoc(articleRef);
     if (articleDoc.exists()) {
       return { id: articleDoc.id, ...serializeFirebaseDocument(articleDoc) };
@@ -35,11 +29,7 @@ async function fetchHighlightedEditors(database) {
     () => getDoc(doc(database, "highlighted", "highlightedEditors"))
   );
   if (highlightedEditorsDoc.exists()) {
-    const articleRef = doc(
-      database,
-      "editors-picks",
-      highlightedEditorsDoc.data().articleId
-    );
+    const articleRef = doc(database, "editors-picks", highlightedEditorsDoc.data().articleId);
     const articleDoc = await getDoc(articleRef);
     if (articleDoc.exists()) {
       return { id: articleDoc.id, ...serializeFirebaseDocument(articleDoc) };
@@ -84,12 +74,17 @@ function serializeFirebaseDocument(doc) {
 }
 
 export default function HomeWrapper() {
-  const [loading, setLoading] = useState(true);
-  const [homeData, setHomeData] = useState(null);
+  const [homeData, setHomeData] = useState({
+    highlightedNews: null,
+    highlightedEditors: null,
+    highlightedPlaylists: [],
+    newFeaturedAd: [],
+  });
 
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchData() {
-      setLoading(true);
       const [highlightedNews, highlightedEditors, highlightedPlaylists, newFeaturedAd] =
         await Promise.all([
           fetchHighlightedNews(database),
@@ -97,61 +92,54 @@ export default function HomeWrapper() {
           fetchHighlightedPlaylists(database),
           fetchFeaturedAd(database),
         ]);
-      setHomeData({ highlightedNews, highlightedEditors, highlightedPlaylists, newFeaturedAd });
-      setLoading(false);
+
+      if (isMounted) {
+        setHomeData({ highlightedNews, highlightedEditors, highlightedPlaylists, newFeaturedAd });
+      }
     }
 
     fetchData();
-  }, []);
 
-  if (loading) {
-    return <LoadingHome />;
-  }
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   return <Home {...homeData} />;
 }
 
-function Home({ highlightedNews, highlightedEditors, highlightedPlaylists, newFeaturedAd }) {
-  const editorsLink = highlightedEditors ? `editors-picks/${highlightedEditors.id}` : "";
-  const newsLink = highlightedNews ? `news/${highlightedNews.id}` : "";
-
+function Home({ highlightedNews, highlightedEditors, highlightedPlaylists = [], newFeaturedAd = [] }) {
   return (
     <div className="homepage-components">
       <div className="homepage-contents">
         {highlightedEditors && (
-          <Link href={editorsLink}
-            className="left-homepage"
+          <Link href={`editors-picks/${highlightedEditors.id}`} className="left-homepage"
             aria-label="link-to-featured-editors-pick"
             style={{ backgroundImage: `url(${highlightedEditors.image || ""})` }}
           >
-            <Link href={editorsLink} className="editor-text-link">
-              <div className="editor-text">
-                <h2 className="editor-text-header">{highlightedEditors.title || "Loading..."}</h2>
-                <p className="editor-text-body">{highlightedEditors.summary}</p>
-              </div>
-            </Link>
+            <div className="editor-text">
+              <h2 className="editor-text-header">{highlightedEditors.title || ""}</h2>
+              <p className="editor-text-body">{highlightedEditors.summary}</p>
+            </div>
           </Link>
         )}
+
         <div className="right-homepage">
           {highlightedNews && (
-            <Link href={newsLink} 
-              className="news-component"
+            <Link href={`news/${highlightedNews.id}`} className="news-component"
               aria-label="link-to-featured-news"
               style={{ backgroundImage: `url(${highlightedNews.image || ""})` }}
             >
-              <Link href={newsLink} className="news-text-link">
-                <div className="news-text">
-                  <h2 className="news-text-header">{highlightedNews.title || "Loading..."}</h2>
-                  <p className="news-text-body">{highlightedNews.summary || ""}</p>
-                </div>
-              </Link>
+              <div className="news-text">
+                <h2 className="news-text-header">{highlightedNews.title || ""}</h2>
+                <p className="news-text-body">{highlightedNews.summary || ""}</p>
+              </div>
             </Link>
           )}
-          {highlightedPlaylists.map((playlist) => (
+
+          {highlightedPlaylists.map((playlist, index) => (
             <Link href={playlist.link} key={playlist.id} className="playlist-component">
-              <Link href={playlist.link} className="playlist-button" target="_blank">
-                Listen
-              </Link>
+              <button className="playlist-button">Listen</button>
               <Image
                 src={playlist.imageUrl}
                 alt={playlist.title}
@@ -160,12 +148,13 @@ function Home({ highlightedNews, highlightedEditors, highlightedPlaylists, newFe
                 height={0}
                 sizes="100vw"
                 style={{ width: "100%", height: "auto" }}
-                priority
+                priority={index === 0}
               />
             </Link>
           ))}
         </div>
       </div>
+
       <div className="bottom-homepage">
         {newFeaturedAd.map((ad) => (
           <FeaturedAd key={ad.id} ad={ad} />
