@@ -1,0 +1,12 @@
+{
+  "projects": {
+    "default": "amplify-ghana"
+  },
+  "targets": {},
+  "etags": {
+    "amplify-ghana": {
+      "extensionInstances": {}
+    }
+  },
+  "dataconnectEmulatorConfig": {}
+}

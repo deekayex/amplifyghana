@@ -1,0 +1,26 @@
+.inbox-menu{
+  gap: 1%;
+  /* width: 80vw; */
+  height: 70vh; 
+  background-color: aqua;
+  /* margin-top: 20vh; */
+  /* margin-left: 10%; */
+  overflow-y: scroll;
+  
+}
+
+/* .inbox-list{
+  overflow-y: scroll;
+} */
+
+.inbox-text{
+  background-color: blueviolet;
+  text-align: center;
+}
+
+
+.inbox-message{
+  margin-bottom: 2vh;
+  background-color: bisque;
+}
+

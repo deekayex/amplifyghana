@@ -1,0 +1,25 @@
+{
+  "hosting": {
+    "source": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "/_next/static/**",
+        "destination": "/_next/static/**"
+      },
+      {
+        "source": "**",
+        "function": "ssramplifyghana"
+      }
+    ]
+  },
+  "frameworks": {
+    "webFrameworks": {
+      "framework": "next"
+    }
+  }
+}
