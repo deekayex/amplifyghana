@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: "Article Not Found",
         description: "The article you are looking for does not exist.",
         images: ["/default-thumbnail.jpg"],
-        url: `https://mywebsite.com/news/${category}/${articleId}`,
+        url: `https://amplifyghana.com/news/${category}/${articleId}`,
       },
       twitter: {
         card: "summary_large_image",
@@ -37,18 +37,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${article.title} | Amplify Ghana`,
-    description: article.description || "Read the latest news and articles here!",
+    description: article.summary || "Read the latest news and articles here!",
     openGraph: {
       title: article.title,
-      description: article.description || "Read the latest news and articles here!",
+      description: article.summary || "Read the latest news and articles here!",
       images: [article.image || "/default-thumbnail.jpg"],
-      url: `https://mywebsite.com/news/${category}/${articleId}`,
+      url: `https://www.amplifyghana.com/${category}/${articleId}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
-      description: article.description || "Check out this article!",
+      description: article.summary || "Check out this article!",
       images: [article.image || "/default-thumbnail.jpg"],
     },
   };

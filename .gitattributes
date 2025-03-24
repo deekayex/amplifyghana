@@ -1,5 +1,0 @@
-.firebase/amplify-ghana/functions/node_modules/@next/swc-win32-x64-msvc/next-swc.win32-x64-msvc.node filter=lfs diff=lfs merge=lfs -text
-.firebase/amplify-ghana/functions/.next/cache/webpack/server-production/0.pack filter=lfs diff=lfs merge=lfs -text
-.firebase/amplify-ghana/functions/.next/cache/webpack/client-production/0.pack filter=lfs diff=lfs merge=lfs -text
-.firebase/amplify-ghana/functions/.next/cache/webpack/server-production/12.pack filter=lfs diff=lfs merge=lfs -text
-.firebase/amplify-ghana/functions/node_modules/ filter=lfs diff=lfs merge=lfs -text
