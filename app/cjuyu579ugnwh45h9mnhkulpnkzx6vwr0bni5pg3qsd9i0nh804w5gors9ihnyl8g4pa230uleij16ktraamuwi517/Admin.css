@@ -9,8 +9,6 @@
   justify-content: center;
   flex-direction: row;
   gap: 1%;
-  margin-bottom: 2vh;
-  margin-top: 2vh;
   /* background-color: aqua; */
   text-align: center;
 }
@@ -75,15 +73,17 @@
   font-size: 2.8rem;
 }
 .page-limiter{
-  max-height: 80vh;
+  /* max-height: 80vh;
   min-width: 30vw;
   overflow-x: scroll;
-  overflow-y: scroll;
+  overflow-y: scroll; */
 }
 
 .top-picks-page{
 margin-left: 10%;
 }
+
+
 .top-picks-container{
   display: flex;
   flex-direction: row;

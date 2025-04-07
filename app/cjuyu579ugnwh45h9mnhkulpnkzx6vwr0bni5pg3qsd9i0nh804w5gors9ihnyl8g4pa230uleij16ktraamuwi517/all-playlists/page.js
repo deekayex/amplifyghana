@@ -1,12 +1,14 @@
 
 import React from "react";
-import Playlists from "./page";
+import Playlists from "../../playlists/page";
+import AdminLayout from "@/components/admin/AdminLayout";
 
 const PlaylistList = () => {
   return (
     <div className="page-limiter">
-      {/* Pass isPlayListManager as a prop to Playlists */}
+      <AdminLayout>
       <Playlists isPlayListManager={true} />
+      </AdminLayout>
     </div>
   );
 };
