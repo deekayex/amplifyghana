@@ -4,9 +4,22 @@ import Link from "next/link";
 // import LoadingHome from "../../context/loading/HomeLoad/LoadingHome";
 import FeaturedAd from "../FeaturedAd";
 import "./Home.css";
-
-import { fetchDataWithCache } from "@/context/cache/cacheUtils";
+// import { fetchDataWithCache } from "@/context/cache/cacheUtils";
 import Image from "next/image";
+
+// Simple in-memory cache with maxAge support (in seconds)
+const cache = new Map();
+async function fetchDataWithCache(key, fetchFn, maxAge = 60) {
+  const cached = cache.get(key);
+  const now = Date.now();
+  if (cached && now - cached.timestamp < maxAge * 1000) {
+    return cached.data;
+  }
+  const data = await fetchFn();
+  cache.set(key, { data, timestamp: now });
+  return data;
+}
+
 
 async function fetchHighlightedNews(database) {
   const highlightedNewsDoc = await fetchDataWithCache(

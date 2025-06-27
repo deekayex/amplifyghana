@@ -14,7 +14,11 @@
 /out/
 
 # firebase
+<<<<<<< HEAD
 .firebase/
+=======
+.firebase
+>>>>>>> a01724bb8ae2e78ae0646862e816360def73b6de
 
 # production
 /build

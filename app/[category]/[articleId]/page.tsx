@@ -22,7 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         title: "Article Not Found",
         description: "The article you are looking for does not exist.",
         images: ["/default-thumbnail.jpg"],
+<<<<<<< HEAD
         url: `https://amplifyghana.com/news/${category}/${articleId}`,
+=======
+        url: `https://mywebsite.com/news/${category}/${articleId}`,
+>>>>>>> a01724bb8ae2e78ae0646862e816360def73b6de
       },
       twitter: {
         card: "summary_large_image",
@@ -37,18 +41,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   return {
     title: `${article.title} | Amplify Ghana`,
+<<<<<<< HEAD
     description: article.summary || "Read the latest news and articles here!",
     openGraph: {
       title: article.title,
       description: article.summary || "Read the latest news and articles here!",
       images: [article.image || "/default-thumbnail.jpg"],
       url: `https://www.amplifyghana.com/${category}/${articleId}`,
+=======
+    description: article.description || "Read the latest news and articles here!",
+    openGraph: {
+      title: article.title,
+      description: article.description || "Read the latest news and articles here!",
+      images: [article.image || "/default-thumbnail.jpg"],
+      url: `https://mywebsite.com/news/${category}/${articleId}`,
+>>>>>>> a01724bb8ae2e78ae0646862e816360def73b6de
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
       title: article.title,
+<<<<<<< HEAD
       description: article.summary || "Check out this article!",
+=======
+      description: article.description || "Check out this article!",
+>>>>>>> a01724bb8ae2e78ae0646862e816360def73b6de
       images: [article.image || "/default-thumbnail.jpg"],
     },
   };

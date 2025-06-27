@@ -13,10 +13,12 @@ const PLAYLIST_BUTTON_TEXT = "LISTEN";
 
 const Playlists = ({ isPlayListManager, playlists }) => {
   const [user, setUser] = useState(null);
+  const [playlists, setPlaylists] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedPlaylistIds, setExpandedPlaylistIds] = useState([]);
   const [textLimit, setTextLimit] = useState(700);
 
+  // ✅ Fix: Ensure authentication state is handled properly
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -31,6 +33,7 @@ const Playlists = ({ isPlayListManager, playlists }) => {
     }
   }, [playlists]);
 
+  // ✅ Fix: Ensure UI updates based on screen size
   useEffect(() => {
     const handleResize = () => {
       setTextLimit(window.innerWidth >= 900 ? 700 : 255);
@@ -40,6 +43,7 @@ const Playlists = ({ isPlayListManager, playlists }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Handle playlist expansion
   const handleTogglePlaylist = (id) => {
     setExpandedPlaylistIds((prevIds) =>
       prevIds.includes(id) ? prevIds.filter((prevId) => prevId !== id) : [...prevIds, id]
