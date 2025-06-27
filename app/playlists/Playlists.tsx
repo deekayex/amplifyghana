@@ -13,7 +13,7 @@ const PLAYLIST_BUTTON_TEXT = "LISTEN";
 
 const Playlists = ({ isPlayListManager, playlists }) => {
   const [user, setUser] = useState(null);
-  const [playlists, setPlaylists] = useState([]);
+  const [, setPlaylists] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedPlaylistIds, setExpandedPlaylistIds] = useState([]);
   const [textLimit, setTextLimit] = useState(700);
