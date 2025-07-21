@@ -13,8 +13,6 @@ type Props = {
   articleId: string;
 };
 
-
-
 const ClientArticle = ({ category, articleId }: Props) => {
   const [article, setArticle] = useState(null);
   const [ads, setAds] = useState([]);

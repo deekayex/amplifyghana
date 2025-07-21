@@ -197,7 +197,7 @@ function EditorsPicks({ isAllArticlesPage, highlightedEditors, totalPagesCount, 
         unoptimized
         priority
       />
-      <h1>Editor's Picks</h1>
+      <h1>Editor's Pcks</h1>
     </div>
 
     <div className="flex-contents">

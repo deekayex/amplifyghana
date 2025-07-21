@@ -1,0 +1,183 @@
+.loading-screen{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #dae0ea;
+}
+
+.loading-spinner{
+  width: 80px;
+  height: 80px;
+  border: 7px solid #FF7300;
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spinner 0.7s linear infinite;  
+}
+
+@keyframes spinner {
+  from{}
+  to{
+    transform: rotate(360deg);
+  }
+  
+}
+
+
+.skeleton{
+  height: 100%;
+  animation: skeleton-editors 1s linear infinite alternate;
+  opacity: 0.8;
+}
+
+.editor-skeleton-text{
+ width: 100%;
+ height: 30%;
+ opacity: 1;
+ background-color:hsla(160, 100%, 75%, 0.097); 
+}
+
+.editor-skeleton-text-header{
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 10px;
+  height: 35%;
+  margin-top: 2%;
+  animation: skeleton-text-header 1s linear infinite alternate;
+}
+
+@keyframes skeleton-text-header {
+  0%{
+    background-color:#ffebcd18
+  }
+  100%{
+    background-color: #ffebcd4f
+  }
+}
+
+.editor-skeleton-text-body, .editor-skeleton-text-body2, .editor-skeleton-text-body3{
+  width: 85%;
+  margin-left: 5%;
+  border-radius: 10px;
+  height: 10%;
+  margin-top: 5px;
+  margin-bottom: 0;
+  animation: skeleton-text-header 1s linear infinite alternate;
+}
+
+.editor-skeleton-text-body3{
+  width: 70%;
+}
+
+@media screen and (max-width: 1000px) {
+  .skeleton{
+    height: 50vh;
+  }
+}
+
+@keyframes skeleton-editors {
+  0% {
+    background-color: hwb(0 100% 0% / 0.392);
+  }
+  100%{
+    background-color: hwb(0 100% 0% / 0.256);
+  }
+}
+
+
+
+.skeleton-news{
+  animation: skeleton-news 1s linear infinite alternate;
+  opacity: 0.8;
+  height: 15vh;
+}
+
+@keyframes skeleton-news {
+  0%{
+    background-color: hsla(33, 78%, 91%, 0.185);
+  }
+
+  100%{
+    background-color: rgba(250, 235, 215, 0.108);
+  }
+  
+}
+
+
+
+.skeleton-playlist{
+  animation: skeleton-playlist 1s linear infinite alternate;
+  opacity: 0.8;
+  height: 15vh;
+}
+
+@keyframes skeleton-playlist {
+  0%{
+    background-color: hsla(160, 100%, 75%, 0.097);
+  }
+
+  100%{
+    background-color: rgba(250, 235, 215, 0.178);
+  }
+}
+
+@keyframes skeleton-playlist {
+  0%{
+    background-color: hsla(160, 100%, 75%, 0.097);
+  }
+
+  100%{
+    background-color: rgba(250, 235, 215, 0.178);
+  }
+}
+
+.sketon-cards{
+  margin-bottom: 10vh;
+}
+
+.card-skeleton{
+  animation: skeleton-card 1s linear infinite alternate;
+}
+
+@keyframes skeleton-card {
+  0%{
+    background-color: rgba(0, 0, 0, 0.141);
+  }
+  
+}
+
+
+
+
+.playlist-image-skeleton{
+  animation: skeleton-playlist-image 1s linear infinite alternate;
+  
+
+}
+
+@keyframes skeleton-playlist-image{
+  0%{
+    background-color: rgba(250, 235, 215, 0.063);
+  }
+
+  100%{
+    background-color: rgba(250, 235, 215, 0.178);
+  }
+}
+
+.playlsit-text-skeleton{
+  animation: skeleton-playlist-text 1s linear infinite alternate;
+  height: 40vh;
+}
+
+@keyframes skeleton-playlist-text {
+  0%{
+    background-color: rgba(0, 0, 0, 0.295);
+  }
+
+  100%{
+    background-color: rgba(0, 0, 0, 0.048);
+  }
+  
+}

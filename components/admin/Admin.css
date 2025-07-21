@@ -16,32 +16,30 @@
 }
 
 .admin-page-links{
- /* display: flex;  */
+ display: flex; 
   justify-content: space-around;
     /* background-color: aqua; */
-  position: relative;
+    position: relative;
 }
 
 .page-managers{
   color: white;
+  height: 80vh;
   position: sticky;
   display: flex;
-  /* flex-direction: column; */
+  flex-direction: column;
   justify-content: space-between;
   padding: 1%;
   padding-left: 10px;
   background-color: black;
-  width: 100%;
+  width: 15%;
   position: static;
   z-index: 25;
-  margin-bottom: 5%;
 }
 
 .admin-pages{
-  width: 90vw;
-  margin-left: 5vw;
-  display: flex;
-  justify-content: center;
+  width: 90%;
+  margin-left: 0;
   /* background-color: aqua; */
 }
 
@@ -89,7 +87,7 @@
 }
 .page-limiter{
   max-height: 80vh;
-  /* min-width: 30vw; */
+  min-width: 30vw;
   overflow-x: scroll;
   overflow-y: scroll;
 

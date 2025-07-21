@@ -1,5 +1,5 @@
 .create-article-form-container, .create-article-title-container{
-  width: 80vw;
+  width: 60vw;
   /* background-color: aqua; */
  display: flex;
  flex-direction: column;
@@ -9,13 +9,13 @@
 }
 
 .create-article-title-container{
-/* height: 50vh; */
+ margin-top: 20vh;
 }
 
 .create-article-step2{
  background-color: rgba(107, 106, 106, 0.99);
- width: 100%;
- height: 70vh;
+ width: 40vw;
+ height: 60vh;
  position: relative;
  color: white;
 }
@@ -30,8 +30,7 @@
 .image-picker{
   position: absolute;
   left: 0;
-  bottom: 58vh; 
-  z-index: 300; 
+  bottom: 58vh;  
 }
 
 .article-section{
@@ -58,8 +57,8 @@ label{
 }
 
 input{
-  width: 60vw;
-  height: 7vh;
+  width: 50vw;
+  height: 5vh;
   border-radius: 20px;
   border: none;
   padding-left: 20px;
@@ -68,7 +67,7 @@ input{
 
 .create-article-bottom{
   position: absolute;
-  width: 60vw;
+  width: 100%;
   bottom: 0;
   left: 0;
   /* background-color: aliceblue; */
@@ -101,11 +100,12 @@ input{
   margin: 0;
   margin-bottom: 0;
   position: absolute;
-  width: 80vw;
+  width: 100%;
   bottom: 0;
   left: 0;
   background-color: black;
   height: 100px;
+  width: 615px;
   color: white;
 }
 
@@ -115,16 +115,16 @@ h2{
 }
 
 .create-article-contents-container{
-  width: 90vw;
+  width: 60vw;
   margin-left: 5vw;
 }
-
-.article-content{
+.aarticle-content{
   max-width: 100%;
   overflow-y: auto;
-  max-height: 80vh;
+  max-height: 50vh;
   background-color: aliceblue;
 }
+
 
 
 .btn{

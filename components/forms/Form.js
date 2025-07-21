@@ -59,7 +59,7 @@ const BasicForm = ({ onSubmit }) => {
             <Field type="email" name="email" placeholder="Email" className="input-email" />
             <ErrorMessage name="email" component="div" className="error-message" />
 
-            <Field type="tel" name="phone" placeholder="Phone number" className="input-phone" />
+            <Field type="email" name="phone" placeholder="Phone number" className="input-phone" />
             <ErrorMessage name="phone" component="div" className="error-message" />
 
             <Field

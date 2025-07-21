@@ -86,13 +86,13 @@ const AdminLayout = ({ children }) => {
             </div>
           </div>
 
-          {/* <div className='admin-link'>
+          <div className='admin-link'>
             <Link href='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/top-picks'>
               Top Picks
             </Link>
-          </div> */}
+          </div>
           <div className='admin-link'>
-            <Link href='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/set-ad'>
+            <Link href='/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/featured-ad'>
               Featured Ad
             </Link>
           </div>

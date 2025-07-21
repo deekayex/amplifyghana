@@ -24,8 +24,10 @@ const ArticleList = async () => {
     <AdminLayout>
     <div className="page-limiter">
       <div>
+        <Suspense fallback={<LoadingArticles/>}>
         <News isAllArticlesPage={true} initialNewsArticles={newsArticles}
         />
+        </Suspense>
         <EditorsPicks
           isAllArticlesPage={true}
           initialNewsArticles={newsArticles}

@@ -212,8 +212,7 @@ export default async function NewsEditor() {
         <EditorsPicks
           isAllArticlesPage={false}
           highlightedEditors={highlightedEditors}
-          editorsArticles={editorsData} 
-          totalPagesCount={totalPagesCount}
+          editorsArticles={editorsData}
           // handleToggleClick={handleToggleClick}
           // centeredStates={centeredStates}
           // handleSetHighlight={handleSetHighlight}

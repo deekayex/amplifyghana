@@ -5,7 +5,7 @@ import { doc, getDoc } from '@firebase/firestore';
 // import { NavLink } from 'react-router-dom';
 import HighlightedEditors from '../../../components/highlighted/HighlightedEditors';
 import Link from 'next/link';
-import AdminLayout from '../../..//components/admin/AdminLayout';
+import AdminLayout from '@/components/admin/AdminLayout';
 
 
 
