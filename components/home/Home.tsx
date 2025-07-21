@@ -253,11 +253,12 @@ async function Home() {
                 </button> */}
                 <Link
                   href={playlist.link}
-                  className="playlist-button"
                   target="_blank"
                 >
-                  Listen
-                </Link>
+                  <div className="playlist-button">
+                    Listen
+                  </div>
+                  
                 <Image
                   src={playlist.imageUrl}
                   alt={playlist.title}
@@ -268,6 +269,7 @@ async function Home() {
                   style={{ width: '100%', height: 'auto' }}
                   priority
                 />
+                 </Link>
               </div>
             </div>
           ))}

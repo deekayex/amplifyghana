@@ -1,5 +1,3 @@
-export const revalidate = 60; // or 30, or 10 — depending on your freshness need
-
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 
 import Home from "@/components/home/Home";
