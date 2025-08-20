@@ -213,6 +213,7 @@ export default async function NewsEditor() {
           isAllArticlesPage={false}
           highlightedEditors={highlightedEditors}
           editorsArticles={editorsData}
+          totalPagesCount={totalPagesCount}
           // handleToggleClick={handleToggleClick}
           // centeredStates={centeredStates}
           // handleSetHighlight={handleSetHighlight}

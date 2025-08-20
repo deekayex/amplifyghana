@@ -1,0 +1,1498 @@
+[debug] [2025-08-17T16:49:38.334Z] ----------------------------------------------------------------------
+[debug] [2025-08-17T16:49:38.347Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-08-17T16:49:38.347Z] CLI Version:   13.29.3
+[debug] [2025-08-17T16:49:38.347Z] Platform:      win32
+[debug] [2025-08-17T16:49:38.347Z] Node Version:  v20.6.1
+[debug] [2025-08-17T16:49:38.348Z] Time:          Sun Aug 17 2025 16:49:38 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-08-17T16:49:38.348Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-17T16:49:38.352Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2025-08-17T16:49:38.656Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"frameworks"}
+[debug] [2025-08-17T16:49:38.677Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-17T16:49:38.678Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2025-08-17T16:49:38.678Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-17T16:49:38.679Z] Checked if tokens are valid: false, expires at: 1753109318850
+[debug] [2025-08-17T16:49:38.679Z] Checked if tokens are valid: false, expires at: 1753109318850
+[debug] [2025-08-17T16:49:38.680Z] > refreshing access token with scopes: []
+[debug] [2025-08-17T16:49:38.681Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-08-17T16:49:38.681Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-17T16:49:39.095Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-08-17T16:49:39.095Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-17T16:49:39.106Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2025-08-17T16:49:39.106Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2025-08-17T16:49:39.106Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:49:39.188Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-08-17T16:49:39.188Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2025-08-17T16:49:40.312Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2025-08-17T16:49:40.312Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:49:40.313Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:49:40.314Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:49:40.314Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2025-08-17T16:49:40.863Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2025-08-17T16:49:40.864Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2025-08-17T16:49:48.257Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:49:48.258Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:49:48.262Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2025-08-17T16:49:49.669Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2025-08-17T16:49:49.669Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2025-08-17T16:49:49.669Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:49:49.669Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:49:49.669Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2025-08-17T16:49:50.676Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2025-08-17T16:49:50.677Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-08-17T16:50:04.463Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:50:04.463Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:50:04.464Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2025-08-17T16:50:05.452Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2025-08-17T16:50:05.452Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.23
+
+[info]   - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+Failed to compile.
+
+[info] 
+./app/article/[category]/[articleId]/page.tsx
+40:7  Warning: 'ShareButton' is assigned a value but never used.  no-unused-vars
+95:5  Error: 'setIsLoading' is not defined.  no-undef
+117:5  Error: 'setIsLoading' is not defined.  no-undef
+
+./app/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist/page.js
+12:30  Warning: 'onSave' is defined but never used.  no-unused-vars
+
+./app/layout.tsx
+28:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+32:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+./app/page.tsx
+10:16  Warning: 'fetchHighlightedNews' is defined but never used.  no-unused-vars
+34:16  Warning: 'fetchHighlightedEditors' is defined but never used.  no-unused-vars
+58:16  Warning: 'fetchHighlightedPlaylists' is defined but never used.  no-unused-vars
+92:16  Warning: 'fetchFeaturedAd' is defined but never used.  no-unused-vars
+
+./app/playlists/layout.tsx
+31:48  Warning: 'children' is defined but never used.  no-unused-vars
+
+./app/playlists/_oldpage.js
+19:7  Warning: 'fetchPlaylists' is assigned a value but never used.  no-unused-vars
+
+./app/submissions/page.js
+9:31  Warning: 'values' is defined but never used.  no-unused-vars
+9:39  Warning: 'setSubmitting' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/Article.tsx
+6:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+7:10  Warning: 'Suspense' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/layout.tsx
+2:8  Warning: 'ArticlePage' is defined but never used.  no-unused-vars
+10:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+30:8  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+56:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+56:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+
+./app/[category]/[articleId]/TArticle.tsx
+2:17  Warning: 'useEffect' is defined but never used.  no-unused-vars
+3:10  Warning: 'useParams' is defined but never used.  no-unused-vars
+4:10  Warning: 'Helmet' is defined but never used.  no-unused-vars
+9:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+13:10  Warning: 'useLocation' is defined but never used.  no-unused-vars
+15:8  Warning: 'Article' is defined but never used.  no-unused-vars
+18:57  Warning: 'articleImageSrc' is defined but never used.  no-unused-vars
+58:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+77:7  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+103:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+103:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+109:10  Warning: 'isLoading' is assigned a value but never used.  no-unused-vars
+109:21  Warning: 'setIsLoading' is assigned a value but never used.  no-unused-vars
+
+./app/_newseditor.tsx
+3:8  Warning: 'LoadingArticles' is defined but never used.  no-unused-vars
+84:16  Warning: 'handleToggleClick' is defined but never used.  no-unused-vars
+126:16  Warning: 'handleSetHighlight' is defined but never used.  no-unused-vars
+157:47  Warning: 'page' is assigned a value but never used.  no-unused-vars
+193:9  Warning: 'centeredStates' is assigned a value but never used.  no-unused-vars
+
+./components/admin/AdminLayout.js
+12:10  Warning: 'isAdmin' is assigned a value but never used.  no-unused-vars
+
+./components/editors-picks/page.js
+2:8  Warning: 'newspaper' is defined but never used.  no-unused-vars
+11:44  Warning: 'highlightedEditors' is defined but never used.  no-unused-vars
+21:12  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/forms/newArticle/CreateArticleSummary.js
+4:118  Warning: 'setImage' is defined but never used.  no-unused-vars
+
+./components/modals/NewArticle.js
+10:10  Warning: 'image' is assigned a value but never used.  no-unused-vars
+
+./components/news/News.js
+19:51  Warning: 'useRef' is defined but never used.  no-unused-vars
+22:8  Warning: 'LoadingHome' is defined but never used.  no-unused-vars
+27:3  Warning: 'fetchNewsData' is defined but never used.  no-unused-vars
+40:10  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/UpdatePlaylists.js
+10:10  Warning: 'playlistData' is assigned a value but never used.  no-unused-vars
+28:13  Warning: 'newPlaylistRef' is assigned a value but never used.  no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[debug] [2025-08-17T16:50:46.900Z] Error: ENOENT: no such file or directory, open 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-08-17T16:51:12.241Z] ----------------------------------------------------------------------
+[debug] [2025-08-17T16:51:12.244Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-08-17T16:51:12.245Z] CLI Version:   13.29.3
+[debug] [2025-08-17T16:51:12.245Z] Platform:      win32
+[debug] [2025-08-17T16:51:12.245Z] Node Version:  v20.6.1
+[debug] [2025-08-17T16:51:12.245Z] Time:          Sun Aug 17 2025 16:51:12 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-08-17T16:51:12.245Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-17T16:51:12.491Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"frameworks"}
+[debug] [2025-08-17T16:51:12.496Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-17T16:51:12.496Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2025-08-17T16:51:12.497Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-17T16:51:12.498Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:51:12.498Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:51:12.499Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2025-08-17T16:51:12.499Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2025-08-17T16:51:12.499Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:51:13.549Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2025-08-17T16:51:13.549Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:51:13.550Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:51:13.550Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:51:13.551Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2025-08-17T16:51:14.076Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2025-08-17T16:51:14.077Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2025-08-17T16:51:20.111Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:51:20.111Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:51:20.111Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2025-08-17T16:51:21.218Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2025-08-17T16:51:21.218Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2025-08-17T16:51:21.220Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:51:21.220Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:51:21.221Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2025-08-17T16:51:22.135Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2025-08-17T16:51:22.136Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-08-17T16:51:35.003Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:51:35.004Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:51:35.004Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2025-08-17T16:51:36.072Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2025-08-17T16:51:36.072Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.23
+
+[info]   - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+Failed to compile.
+
+[info] 
+./app/article/[category]/[articleId]/page.tsx
+40:7  Warning: 'ShareButton' is assigned a value but never used.  no-unused-vars
+95:5  Error: 'setIsLoading' is not defined.  no-undef
+117:5  Error: 'setIsLoading' is not defined.  no-undef
+
+./app/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist/page.js
+12:30  Warning: 'onSave' is defined but never used.  no-unused-vars
+
+./app/layout.tsx
+28:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+32:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+./app/page.tsx
+10:16  Warning: 'fetchHighlightedNews' is defined but never used.  no-unused-vars
+34:16  Warning: 'fetchHighlightedEditors' is defined but never used.  no-unused-vars
+58:16  Warning: 'fetchHighlightedPlaylists' is defined but never used.  no-unused-vars
+92:16  Warning: 'fetchFeaturedAd' is defined but never used.  no-unused-vars
+
+./app/playlists/layout.tsx
+31:48  Warning: 'children' is defined but never used.  no-unused-vars
+
+./app/playlists/_oldpage.js
+19:7  Warning: 'fetchPlaylists' is assigned a value but never used.  no-unused-vars
+
+./app/submissions/page.js
+9:31  Warning: 'values' is defined but never used.  no-unused-vars
+9:39  Warning: 'setSubmitting' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/Article.tsx
+6:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+7:10  Warning: 'Suspense' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/layout.tsx
+2:8  Warning: 'ArticlePage' is defined but never used.  no-unused-vars
+10:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+30:8  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+56:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+56:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+
+./app/[category]/[articleId]/TArticle.tsx
+2:17  Warning: 'useEffect' is defined but never used.  no-unused-vars
+3:10  Warning: 'useParams' is defined but never used.  no-unused-vars
+4:10  Warning: 'Helmet' is defined but never used.  no-unused-vars
+9:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+13:10  Warning: 'useLocation' is defined but never used.  no-unused-vars
+15:8  Warning: 'Article' is defined but never used.  no-unused-vars
+18:57  Warning: 'articleImageSrc' is defined but never used.  no-unused-vars
+58:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+77:7  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+103:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+103:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+109:10  Warning: 'isLoading' is assigned a value but never used.  no-unused-vars
+109:21  Warning: 'setIsLoading' is assigned a value but never used.  no-unused-vars
+
+./app/_newseditor.tsx
+3:8  Warning: 'LoadingArticles' is defined but never used.  no-unused-vars
+84:16  Warning: 'handleToggleClick' is defined but never used.  no-unused-vars
+126:16  Warning: 'handleSetHighlight' is defined but never used.  no-unused-vars
+157:47  Warning: 'page' is assigned a value but never used.  no-unused-vars
+193:9  Warning: 'centeredStates' is assigned a value but never used.  no-unused-vars
+
+./components/admin/AdminLayout.js
+12:10  Warning: 'isAdmin' is assigned a value but never used.  no-unused-vars
+
+./components/editors-picks/page.js
+2:8  Warning: 'newspaper' is defined but never used.  no-unused-vars
+11:44  Warning: 'highlightedEditors' is defined but never used.  no-unused-vars
+21:12  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/forms/newArticle/CreateArticleSummary.js
+4:118  Warning: 'setImage' is defined but never used.  no-unused-vars
+
+./components/modals/NewArticle.js
+10:10  Warning: 'image' is assigned a value but never used.  no-unused-vars
+
+./components/news/News.js
+19:51  Warning: 'useRef' is defined but never used.  no-unused-vars
+22:8  Warning: 'LoadingHome' is defined but never used.  no-unused-vars
+27:3  Warning: 'fetchNewsData' is defined but never used.  no-unused-vars
+40:10  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/UpdatePlaylists.js
+10:10  Warning: 'playlistData' is assigned a value but never used.  no-unused-vars
+28:13  Warning: 'newPlaylistRef' is assigned a value but never used.  no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[debug] [2025-08-17T16:52:02.458Z] Error: ENOENT: no such file or directory, open 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-08-17T16:52:58.569Z] ----------------------------------------------------------------------
+[debug] [2025-08-17T16:52:58.573Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-08-17T16:52:58.573Z] CLI Version:   13.29.3
+[debug] [2025-08-17T16:52:58.573Z] Platform:      win32
+[debug] [2025-08-17T16:52:58.574Z] Node Version:  v20.6.1
+[debug] [2025-08-17T16:52:58.574Z] Time:          Sun Aug 17 2025 16:52:58 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-08-17T16:52:58.574Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-17T16:52:58.823Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"frameworks"}
+[debug] [2025-08-17T16:52:58.829Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-17T16:52:58.829Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2025-08-17T16:52:58.830Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-17T16:52:58.831Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:52:58.831Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:52:58.833Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2025-08-17T16:52:58.833Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2025-08-17T16:52:58.834Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:52:59.429Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2025-08-17T16:52:59.429Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:52:59.431Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:52:59.431Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:52:59.432Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2025-08-17T16:53:00.032Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2025-08-17T16:53:00.032Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2025-08-17T16:53:05.971Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:53:05.971Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:53:05.972Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2025-08-17T16:53:07.101Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2025-08-17T16:53:07.101Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2025-08-17T16:53:07.102Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:53:07.102Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:53:07.102Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2025-08-17T16:53:08.204Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2025-08-17T16:53:08.204Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-08-17T16:53:21.099Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:53:21.099Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:53:21.099Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2025-08-17T16:53:22.156Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2025-08-17T16:53:22.156Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.23
+
+[info]   - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+Failed to compile.
+
+[info] 
+./app/article/[category]/[articleId]/page.tsx
+40:7  Warning: 'ShareButton' is assigned a value but never used.  no-unused-vars
+95:5  Error: 'setIsLoading' is not defined.  no-undef
+117:5  Error: 'setIsLoading' is not defined.  no-undef
+
+./app/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist/page.js
+12:30  Warning: 'onSave' is defined but never used.  no-unused-vars
+
+./app/layout.tsx
+28:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+32:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+./app/page.tsx
+10:16  Warning: 'fetchHighlightedNews' is defined but never used.  no-unused-vars
+34:16  Warning: 'fetchHighlightedEditors' is defined but never used.  no-unused-vars
+58:16  Warning: 'fetchHighlightedPlaylists' is defined but never used.  no-unused-vars
+92:16  Warning: 'fetchFeaturedAd' is defined but never used.  no-unused-vars
+
+./app/playlists/layout.tsx
+31:48  Warning: 'children' is defined but never used.  no-unused-vars
+
+./app/playlists/_oldpage.js
+19:7  Warning: 'fetchPlaylists' is assigned a value but never used.  no-unused-vars
+
+./app/submissions/page.js
+9:31  Warning: 'values' is defined but never used.  no-unused-vars
+9:39  Warning: 'setSubmitting' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/Article.tsx
+6:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+7:10  Warning: 'Suspense' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/layout.tsx
+2:8  Warning: 'ArticlePage' is defined but never used.  no-unused-vars
+10:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+30:8  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+56:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+56:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+
+./app/[category]/[articleId]/TArticle.tsx
+2:17  Warning: 'useEffect' is defined but never used.  no-unused-vars
+3:10  Warning: 'useParams' is defined but never used.  no-unused-vars
+4:10  Warning: 'Helmet' is defined but never used.  no-unused-vars
+9:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+13:10  Warning: 'useLocation' is defined but never used.  no-unused-vars
+15:8  Warning: 'Article' is defined but never used.  no-unused-vars
+18:57  Warning: 'articleImageSrc' is defined but never used.  no-unused-vars
+58:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+77:7  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+103:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+103:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+109:10  Warning: 'isLoading' is assigned a value but never used.  no-unused-vars
+109:21  Warning: 'setIsLoading' is assigned a value but never used.  no-unused-vars
+
+./app/_newseditor.tsx
+3:8  Warning: 'LoadingArticles' is defined but never used.  no-unused-vars
+84:16  Warning: 'handleToggleClick' is defined but never used.  no-unused-vars
+126:16  Warning: 'handleSetHighlight' is defined but never used.  no-unused-vars
+157:47  Warning: 'page' is assigned a value but never used.  no-unused-vars
+193:9  Warning: 'centeredStates' is assigned a value but never used.  no-unused-vars
+
+./components/admin/AdminLayout.js
+12:10  Warning: 'isAdmin' is assigned a value but never used.  no-unused-vars
+
+./components/editors-picks/page.js
+2:8  Warning: 'newspaper' is defined but never used.  no-unused-vars
+11:44  Warning: 'highlightedEditors' is defined but never used.  no-unused-vars
+21:12  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/forms/newArticle/CreateArticleSummary.js
+4:118  Warning: 'setImage' is defined but never used.  no-unused-vars
+
+./components/modals/NewArticle.js
+10:10  Warning: 'image' is assigned a value but never used.  no-unused-vars
+
+./components/news/News.js
+19:51  Warning: 'useRef' is defined but never used.  no-unused-vars
+22:8  Warning: 'LoadingHome' is defined but never used.  no-unused-vars
+27:3  Warning: 'fetchNewsData' is defined but never used.  no-unused-vars
+40:10  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/UpdatePlaylists.js
+10:10  Warning: 'playlistData' is assigned a value but never used.  no-unused-vars
+28:13  Warning: 'newPlaylistRef' is assigned a value but never used.  no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[debug] [2025-08-17T16:53:44.890Z] Error: ENOENT: no such file or directory, open 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-08-17T16:55:06.103Z] ----------------------------------------------------------------------
+[debug] [2025-08-17T16:55:06.106Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2025-08-17T16:55:06.106Z] CLI Version:   13.29.3
+[debug] [2025-08-17T16:55:06.107Z] Platform:      win32
+[debug] [2025-08-17T16:55:06.107Z] Node Version:  v20.6.1
+[debug] [2025-08-17T16:55:06.107Z] Time:          Sun Aug 17 2025 16:55:06 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-08-17T16:55:06.107Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-17T16:55:06.362Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"frameworks"}
+[debug] [2025-08-17T16:55:06.368Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-17T16:55:06.368Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2025-08-17T16:55:06.368Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-17T16:55:06.369Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:55:06.370Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:55:06.371Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2025-08-17T16:55:06.371Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2025-08-17T16:55:06.371Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:55:07.631Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2025-08-17T16:55:07.631Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:55:07.631Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:55:07.631Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:55:07.632Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2025-08-17T16:55:08.240Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2025-08-17T16:55:08.240Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2025-08-17T16:55:14.101Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:55:14.102Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:55:14.103Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2025-08-17T16:55:15.435Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2025-08-17T16:55:15.436Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2025-08-17T16:55:15.436Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:55:15.436Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:55:15.437Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2025-08-17T16:55:16.327Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2025-08-17T16:55:16.328Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-08-17T16:55:29.800Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:55:29.801Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:55:29.801Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2025-08-17T16:55:30.779Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2025-08-17T16:55:30.779Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.23
+
+[info]   - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+Failed to compile.
+
+[info] 
+./app/article/[category]/[articleId]/page.tsx
+40:7  Warning: 'ShareButton' is assigned a value but never used.  no-unused-vars
+95:5  Error: 'setIsLoading' is not defined.  no-undef
+117:5  Error: 'setIsLoading' is not defined.  no-undef
+
+./app/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist/page.js
+12:30  Warning: 'onSave' is defined but never used.  no-unused-vars
+
+./app/layout.tsx
+28:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+32:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+./app/page.tsx
+10:16  Warning: 'fetchHighlightedNews' is defined but never used.  no-unused-vars
+34:16  Warning: 'fetchHighlightedEditors' is defined but never used.  no-unused-vars
+58:16  Warning: 'fetchHighlightedPlaylists' is defined but never used.  no-unused-vars
+92:16  Warning: 'fetchFeaturedAd' is defined but never used.  no-unused-vars
+
+./app/playlists/layout.tsx
+31:48  Warning: 'children' is defined but never used.  no-unused-vars
+
+./app/playlists/_oldpage.js
+19:7  Warning: 'fetchPlaylists' is assigned a value but never used.  no-unused-vars
+
+./app/submissions/page.js
+9:31  Warning: 'values' is defined but never used.  no-unused-vars
+9:39  Warning: 'setSubmitting' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/Article.tsx
+6:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+7:10  Warning: 'Suspense' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/layout.tsx
+2:8  Warning: 'ArticlePage' is defined but never used.  no-unused-vars
+10:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+30:8  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+56:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+56:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+
+./app/[category]/[articleId]/TArticle.tsx
+2:17  Warning: 'useEffect' is defined but never used.  no-unused-vars
+3:10  Warning: 'useParams' is defined but never used.  no-unused-vars
+4:10  Warning: 'Helmet' is defined but never used.  no-unused-vars
+9:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+13:10  Warning: 'useLocation' is defined but never used.  no-unused-vars
+15:8  Warning: 'Article' is defined but never used.  no-unused-vars
+18:57  Warning: 'articleImageSrc' is defined but never used.  no-unused-vars
+58:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+77:7  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+103:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+103:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+109:10  Warning: 'isLoading' is assigned a value but never used.  no-unused-vars
+109:21  Warning: 'setIsLoading' is assigned a value but never used.  no-unused-vars
+
+./app/_newseditor.tsx
+3:8  Warning: 'LoadingArticles' is defined but never used.  no-unused-vars
+84:16  Warning: 'handleToggleClick' is defined but never used.  no-unused-vars
+126:16  Warning: 'handleSetHighlight' is defined but never used.  no-unused-vars
+157:47  Warning: 'page' is assigned a value but never used.  no-unused-vars
+193:9  Warning: 'centeredStates' is assigned a value but never used.  no-unused-vars
+
+./components/admin/AdminLayout.js
+12:10  Warning: 'isAdmin' is assigned a value but never used.  no-unused-vars
+
+./components/editors-picks/page.js
+2:8  Warning: 'newspaper' is defined but never used.  no-unused-vars
+11:44  Warning: 'highlightedEditors' is defined but never used.  no-unused-vars
+21:12  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/forms/newArticle/CreateArticleSummary.js
+4:118  Warning: 'setImage' is defined but never used.  no-unused-vars
+
+./components/modals/NewArticle.js
+10:10  Warning: 'image' is assigned a value but never used.  no-unused-vars
+
+./components/news/News.js
+19:51  Warning: 'useRef' is defined but never used.  no-unused-vars
+22:8  Warning: 'LoadingHome' is defined but never used.  no-unused-vars
+27:3  Warning: 'fetchNewsData' is defined but never used.  no-unused-vars
+40:10  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/UpdatePlaylists.js
+10:10  Warning: 'playlistData' is assigned a value but never used.  no-unused-vars
+28:13  Warning: 'newPlaylistRef' is assigned a value but never used.  no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[debug] [2025-08-17T16:55:54.050Z] Error: ENOENT: no such file or directory, open 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-08-17T16:58:24.684Z] ----------------------------------------------------------------------
+[debug] [2025-08-17T16:58:24.687Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2025-08-17T16:58:24.688Z] CLI Version:   13.29.3
+[debug] [2025-08-17T16:58:24.688Z] Platform:      win32
+[debug] [2025-08-17T16:58:24.688Z] Node Version:  v20.6.1
+[debug] [2025-08-17T16:58:24.688Z] Time:          Sun Aug 17 2025 16:58:24 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-08-17T16:58:24.689Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-17T16:58:24.928Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"frameworks"}
+[debug] [2025-08-17T16:58:24.934Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-17T16:58:24.935Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2025-08-17T16:58:24.935Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-17T16:58:24.936Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:58:24.936Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:58:24.937Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2025-08-17T16:58:24.937Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2025-08-17T16:58:24.938Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:58:25.978Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2025-08-17T16:58:25.978Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:58:25.979Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:58:25.979Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:58:25.979Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2025-08-17T16:58:26.588Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2025-08-17T16:58:26.589Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2025-08-17T16:58:32.813Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:58:32.813Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:58:32.814Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2025-08-17T16:58:33.956Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2025-08-17T16:58:33.957Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2025-08-17T16:58:33.957Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:58:33.957Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:58:33.958Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2025-08-17T16:58:34.979Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2025-08-17T16:58:34.979Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-08-17T16:58:48.443Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:58:48.443Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:58:48.444Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2025-08-17T16:58:49.430Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2025-08-17T16:58:49.430Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.23
+
+[info]   - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+Failed to compile.
+
+[info] 
+./app/article/[category]/[articleId]/page.tsx
+40:7  Warning: 'ShareButton' is assigned a value but never used.  no-unused-vars
+95:5  Error: 'setIsLoading' is not defined.  no-undef
+117:5  Error: 'setIsLoading' is not defined.  no-undef
+
+./app/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist/page.js
+12:30  Warning: 'onSave' is defined but never used.  no-unused-vars
+
+./app/layout.tsx
+28:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+32:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+./app/page.tsx
+10:16  Warning: 'fetchHighlightedNews' is defined but never used.  no-unused-vars
+34:16  Warning: 'fetchHighlightedEditors' is defined but never used.  no-unused-vars
+58:16  Warning: 'fetchHighlightedPlaylists' is defined but never used.  no-unused-vars
+92:16  Warning: 'fetchFeaturedAd' is defined but never used.  no-unused-vars
+
+./app/playlists/layout.tsx
+31:48  Warning: 'children' is defined but never used.  no-unused-vars
+
+./app/playlists/_oldpage.js
+19:7  Warning: 'fetchPlaylists' is assigned a value but never used.  no-unused-vars
+
+./app/submissions/page.js
+9:31  Warning: 'values' is defined but never used.  no-unused-vars
+9:39  Warning: 'setSubmitting' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/Article.tsx
+6:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+7:10  Warning: 'Suspense' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/layout.tsx
+2:8  Warning: 'ArticlePage' is defined but never used.  no-unused-vars
+10:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+30:8  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+56:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+56:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+
+./app/[category]/[articleId]/TArticle.tsx
+2:17  Warning: 'useEffect' is defined but never used.  no-unused-vars
+3:10  Warning: 'useParams' is defined but never used.  no-unused-vars
+4:10  Warning: 'Helmet' is defined but never used.  no-unused-vars
+9:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+13:10  Warning: 'useLocation' is defined but never used.  no-unused-vars
+15:8  Warning: 'Article' is defined but never used.  no-unused-vars
+18:57  Warning: 'articleImageSrc' is defined but never used.  no-unused-vars
+58:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+77:7  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+103:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+103:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+109:10  Warning: 'isLoading' is assigned a value but never used.  no-unused-vars
+109:21  Warning: 'setIsLoading' is assigned a value but never used.  no-unused-vars
+
+./app/_newseditor.tsx
+3:8  Warning: 'LoadingArticles' is defined but never used.  no-unused-vars
+84:16  Warning: 'handleToggleClick' is defined but never used.  no-unused-vars
+126:16  Warning: 'handleSetHighlight' is defined but never used.  no-unused-vars
+157:47  Warning: 'page' is assigned a value but never used.  no-unused-vars
+193:9  Warning: 'centeredStates' is assigned a value but never used.  no-unused-vars
+
+./components/admin/AdminLayout.js
+12:10  Warning: 'isAdmin' is assigned a value but never used.  no-unused-vars
+
+./components/editors-picks/page.js
+2:8  Warning: 'newspaper' is defined but never used.  no-unused-vars
+11:44  Warning: 'highlightedEditors' is defined but never used.  no-unused-vars
+21:12  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/forms/newArticle/CreateArticleSummary.js
+4:118  Warning: 'setImage' is defined but never used.  no-unused-vars
+
+./components/modals/NewArticle.js
+10:10  Warning: 'image' is assigned a value but never used.  no-unused-vars
+
+./components/news/News.js
+19:51  Warning: 'useRef' is defined but never used.  no-unused-vars
+22:8  Warning: 'LoadingHome' is defined but never used.  no-unused-vars
+27:3  Warning: 'fetchNewsData' is defined but never used.  no-unused-vars
+40:10  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/UpdatePlaylists.js
+10:10  Warning: 'playlistData' is assigned a value but never used.  no-unused-vars
+28:13  Warning: 'newPlaylistRef' is assigned a value but never used.  no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[debug] [2025-08-17T16:59:19.246Z] Error: ENOENT: no such file or directory, open 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-08-17T16:59:56.834Z] ----------------------------------------------------------------------
+[debug] [2025-08-17T16:59:56.840Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2025-08-17T16:59:56.840Z] CLI Version:   13.29.3
+[debug] [2025-08-17T16:59:56.840Z] Platform:      win32
+[debug] [2025-08-17T16:59:56.840Z] Node Version:  v20.6.1
+[debug] [2025-08-17T16:59:56.840Z] Time:          Sun Aug 17 2025 16:59:56 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-08-17T16:59:56.841Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-17T16:59:57.080Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"frameworks"}
+[debug] [2025-08-17T16:59:57.087Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-17T16:59:57.088Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2025-08-17T16:59:57.088Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-17T16:59:57.089Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:59:57.090Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:59:57.091Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2025-08-17T16:59:57.091Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2025-08-17T16:59:57.091Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:59:58.052Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2025-08-17T16:59:58.053Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T16:59:58.054Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:59:58.055Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T16:59:58.055Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2025-08-17T16:59:58.644Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2025-08-17T16:59:58.644Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2025-08-17T17:00:04.508Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:00:04.508Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:00:04.509Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2025-08-17T17:00:05.606Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2025-08-17T17:00:05.607Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2025-08-17T17:00:05.607Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:00:05.607Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:00:05.607Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2025-08-17T17:00:06.547Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2025-08-17T17:00:06.547Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-08-17T17:00:19.377Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:00:19.377Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:00:19.377Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2025-08-17T17:00:20.756Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2025-08-17T17:00:20.757Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.23
+
+[info]   - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+Failed to compile.
+
+[info] 
+./app/article/[category]/[articleId]/page.tsx
+40:7  Warning: 'ShareButton' is assigned a value but never used.  no-unused-vars
+95:5  Error: 'setIsLoading' is not defined.  no-undef
+117:5  Error: 'setIsLoading' is not defined.  no-undef
+
+./app/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist/page.js
+12:30  Warning: 'onSave' is defined but never used.  no-unused-vars
+
+./app/layout.tsx
+28:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+32:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+./app/page.tsx
+10:16  Warning: 'fetchHighlightedNews' is defined but never used.  no-unused-vars
+34:16  Warning: 'fetchHighlightedEditors' is defined but never used.  no-unused-vars
+58:16  Warning: 'fetchHighlightedPlaylists' is defined but never used.  no-unused-vars
+92:16  Warning: 'fetchFeaturedAd' is defined but never used.  no-unused-vars
+
+./app/playlists/layout.tsx
+31:48  Warning: 'children' is defined but never used.  no-unused-vars
+
+./app/playlists/_oldpage.js
+19:7  Warning: 'fetchPlaylists' is assigned a value but never used.  no-unused-vars
+
+./app/submissions/page.js
+9:31  Warning: 'values' is defined but never used.  no-unused-vars
+9:39  Warning: 'setSubmitting' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/Article.tsx
+6:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+7:10  Warning: 'Suspense' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/layout.tsx
+2:8  Warning: 'ArticlePage' is defined but never used.  no-unused-vars
+10:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+30:8  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+56:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+56:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+
+./app/[category]/[articleId]/TArticle.tsx
+2:17  Warning: 'useEffect' is defined but never used.  no-unused-vars
+3:10  Warning: 'useParams' is defined but never used.  no-unused-vars
+4:10  Warning: 'Helmet' is defined but never used.  no-unused-vars
+9:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+13:10  Warning: 'useLocation' is defined but never used.  no-unused-vars
+15:8  Warning: 'Article' is defined but never used.  no-unused-vars
+18:57  Warning: 'articleImageSrc' is defined but never used.  no-unused-vars
+58:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+77:7  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+103:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+103:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+109:10  Warning: 'isLoading' is assigned a value but never used.  no-unused-vars
+109:21  Warning: 'setIsLoading' is assigned a value but never used.  no-unused-vars
+
+./app/_newseditor.tsx
+3:8  Warning: 'LoadingArticles' is defined but never used.  no-unused-vars
+84:16  Warning: 'handleToggleClick' is defined but never used.  no-unused-vars
+126:16  Warning: 'handleSetHighlight' is defined but never used.  no-unused-vars
+157:47  Warning: 'page' is assigned a value but never used.  no-unused-vars
+193:9  Warning: 'centeredStates' is assigned a value but never used.  no-unused-vars
+
+./components/admin/AdminLayout.js
+12:10  Warning: 'isAdmin' is assigned a value but never used.  no-unused-vars
+
+./components/editors-picks/page.js
+2:8  Warning: 'newspaper' is defined but never used.  no-unused-vars
+11:44  Warning: 'highlightedEditors' is defined but never used.  no-unused-vars
+21:12  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/forms/newArticle/CreateArticleSummary.js
+4:118  Warning: 'setImage' is defined but never used.  no-unused-vars
+
+./components/modals/NewArticle.js
+10:10  Warning: 'image' is assigned a value but never used.  no-unused-vars
+
+./components/news/News.js
+19:51  Warning: 'useRef' is defined but never used.  no-unused-vars
+22:8  Warning: 'LoadingHome' is defined but never used.  no-unused-vars
+27:3  Warning: 'fetchNewsData' is defined but never used.  no-unused-vars
+40:10  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/UpdatePlaylists.js
+10:10  Warning: 'playlistData' is assigned a value but never used.  no-unused-vars
+28:13  Warning: 'newPlaylistRef' is assigned a value but never used.  no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[debug] [2025-08-17T17:00:48.635Z] Error: ENOENT: no such file or directory, open 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-08-17T17:01:37.321Z] ----------------------------------------------------------------------
+[debug] [2025-08-17T17:01:37.325Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2025-08-17T17:01:37.325Z] CLI Version:   13.29.3
+[debug] [2025-08-17T17:01:37.325Z] Platform:      win32
+[debug] [2025-08-17T17:01:37.325Z] Node Version:  v20.6.1
+[debug] [2025-08-17T17:01:37.325Z] Time:          Sun Aug 17 2025 17:01:37 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-08-17T17:01:37.326Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-17T17:01:37.586Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"frameworks"}
+[debug] [2025-08-17T17:01:37.594Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-17T17:01:37.594Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2025-08-17T17:01:37.595Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-17T17:01:37.596Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:01:37.597Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:01:37.599Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2025-08-17T17:01:37.599Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2025-08-17T17:01:37.599Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T17:01:38.900Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2025-08-17T17:01:38.900Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T17:01:38.901Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:01:38.901Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:01:38.901Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2025-08-17T17:01:39.505Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2025-08-17T17:01:39.506Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2025-08-17T17:01:46.220Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:01:46.220Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:01:46.221Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2025-08-17T17:01:47.390Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2025-08-17T17:01:47.390Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2025-08-17T17:01:47.391Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:01:47.391Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:01:47.391Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2025-08-17T17:01:48.398Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2025-08-17T17:01:48.398Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-08-17T17:02:02.336Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:02:02.336Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:02:02.337Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2025-08-17T17:02:03.369Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2025-08-17T17:02:03.370Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.23
+
+[info]   - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info] Failed to compile.
+
+
+[info] Error: Cannot find module 'C:\Users\Dan\Desktop\projects\amplify-gh-app\app\article\[category]\[articleId]\page.tsx'
+Require stack:
+- C:\Users\Dan\Desktop\projects\amplify-gh-app\node_modules\next\dist\build\entries.js
+- C:\Users\Dan\Desktop\projects\amplify-gh-app\node_modules\next\dist\build\webpack-config.js
+- C:\Users\Dan\Desktop\projects\amplify-gh-app\node_modules\next\dist\build\webpack-build\impl.js
+- C:\Users\Dan\Desktop\projects\amplify-gh-app\node_modules\next\dist\compiled\jest-worker\processChild.js
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1048:15)
+    at C:\Users\Dan\Desktop\projects\amplify-gh-app\node_modules\next\dist\server\require-hook.js:55:36
+    at Function.resolve (node:internal/modules/helpers:136:19)
+    at getPageFilePath (C:\Users\Dan\Desktop\projects\amplify-gh-app\node_modules\next\dist\build\entries.js:181:20)
+    at C:\Users\Dan\Desktop\projects\amplify-gh-app\node_modules\next\dist\build\webpack\plugins\next-trace-entrypoints-plugin.js:217:91
+    at Map.forEach (<anonymous>)
+    at C:\Users\Dan\Desktop\projects\amplify-gh-app\node_modules\next\dist\build\webpack\plugins\next-trace-entrypoints-plugin.js:203:41
+    at Span.traceFn (C:\Users\Dan\Desktop\projects\amplify-gh-app\node_modules\next\dist\trace\trace.js:147:20)
+    at C:\Users\Dan\Desktop\projects\amplify-gh-app\node_modules\next\dist\build\webpack\plugins\next-trace-entrypoints-plugin.js:202:61
+    at Span.traceAsyncFn (C:\Users\Dan\Desktop\projects\amplify-gh-app\node_modules\next\dist\trace\trace.js:154:26)
+
+
+[info] 
+
+[info] > Build failed because of webpack errors
+
+[debug] [2025-08-17T17:04:16.975Z] ----------------------------------------------------------------------
+[debug] [2025-08-17T17:04:16.978Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-08-17T17:04:16.979Z] CLI Version:   13.29.3
+[debug] [2025-08-17T17:04:16.979Z] Platform:      win32
+[debug] [2025-08-17T17:04:16.979Z] Node Version:  v20.6.1
+[debug] [2025-08-17T17:04:16.979Z] Time:          Sun Aug 17 2025 17:04:16 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-08-17T17:04:16.979Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-17T17:04:17.233Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"frameworks"}
+[debug] [2025-08-17T17:04:17.240Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-17T17:04:17.240Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2025-08-17T17:04:17.240Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-17T17:04:17.242Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:04:17.242Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:04:17.244Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2025-08-17T17:04:17.244Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2025-08-17T17:04:17.244Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T17:04:18.336Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2025-08-17T17:04:18.336Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T17:04:18.336Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:04:18.336Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:04:18.337Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2025-08-17T17:04:18.943Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2025-08-17T17:04:18.943Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2025-08-17T17:04:24.813Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:04:24.814Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:04:24.814Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2025-08-17T17:04:25.844Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2025-08-17T17:04:25.845Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2025-08-17T17:04:25.846Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:04:25.846Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:04:25.846Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2025-08-17T17:04:26.961Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2025-08-17T17:04:26.962Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-08-17T17:04:39.558Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:04:39.559Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:04:39.559Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2025-08-17T17:04:40.655Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2025-08-17T17:04:40.656Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.23
+
+[info]   - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+./app/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist/page.js
+12:30  Warning: 'onSave' is defined but never used.  no-unused-vars
+
+./app/layout.tsx
+28:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+32:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+./app/page.tsx
+10:16  Warning: 'fetchHighlightedNews' is defined but never used.  no-unused-vars
+34:16  Warning: 'fetchHighlightedEditors' is defined but never used.  no-unused-vars
+58:16  Warning: 'fetchHighlightedPlaylists' is defined but never used.  no-unused-vars
+92:16  Warning: 'fetchFeaturedAd' is defined but never used.  no-unused-vars
+
+./app/playlists/layout.tsx
+31:48  Warning: 'children' is defined but never used.  no-unused-vars
+
+./app/playlists/_oldpage.js
+19:7  Warning: 'fetchPlaylists' is assigned a value but never used.  no-unused-vars
+
+./app/submissions/page.js
+9:31  Warning: 'values' is defined but never used.  no-unused-vars
+9:39  Warning: 'setSubmitting' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/Article.tsx
+6:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+7:10  Warning: 'Suspense' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/layout.tsx
+2:8  Warning: 'ArticlePage' is defined but never used.  no-unused-vars
+10:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+30:8  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+56:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+56:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+
+./app/[category]/[articleId]/TArticle.tsx
+2:17  Warning: 'useEffect' is defined but never used.  no-unused-vars
+3:10  Warning: 'useParams' is defined but never used.  no-unused-vars
+4:10  Warning: 'Helmet' is defined but never used.  no-unused-vars
+9:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+13:10  Warning: 'useLocation' is defined but never used.  no-unused-vars
+15:8  Warning: 'Article' is defined but never used.  no-unused-vars
+18:57  Warning: 'articleImageSrc' is defined but never used.  no-unused-vars
+58:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+77:7  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+103:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+103:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+109:10  Warning: 'isLoading' is assigned a value but never used.  no-unused-vars
+109:21  Warning: 'setIsLoading' is assigned a value but never used.  no-unused-vars
+
+./app/_newseditor.tsx
+3:8  Warning: 'LoadingArticles' is defined but never used.  no-unused-vars
+84:16  Warning: 'handleToggleClick' is defined but never used.  no-unused-vars
+126:16  Warning: 'handleSetHighlight' is defined but never used.  no-unused-vars
+157:47  Warning: 'page' is assigned a value but never used.  no-unused-vars
+193:9  Warning: 'centeredStates' is assigned a value but never used.  no-unused-vars
+
+./components/admin/AdminLayout.js
+12:10  Warning: 'isAdmin' is assigned a value but never used.  no-unused-vars
+
+./components/editors-picks/page.js
+2:8  Warning: 'newspaper' is defined but never used.  no-unused-vars
+11:44  Warning: 'highlightedEditors' is defined but never used.  no-unused-vars
+21:12  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/forms/newArticle/CreateArticleSummary.js
+4:118  Warning: 'setImage' is defined but never used.  no-unused-vars
+
+./components/modals/NewArticle.js
+10:10  Warning: 'image' is assigned a value but never used.  no-unused-vars
+
+./components/news/News.js
+19:51  Warning: 'useRef' is defined but never used.  no-unused-vars
+22:8  Warning: 'LoadingHome' is defined but never used.  no-unused-vars
+27:3  Warning: 'fetchNewsData' is defined but never used.  no-unused-vars
+40:10  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/UpdatePlaylists.js
+10:10  Warning: 'playlistData' is assigned a value but never used.  no-unused-vars
+28:13  Warning: 'newPlaylistRef' is assigned a value but never used.  no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[info] Failed to compile.
+
+
+[info] ./app/_newseditor.tsx:212:10
+Type error: Property 'totalPagesCount' is missing in type '{ isAllArticlesPage: boolean; highlightedEditors: any; editorsArticles: any[]; }' but required in type '{ isAllArticlesPage: any; highlightedEditors: any; totalPagesCount: any; editorsArticles?: any[]; }'.
+
+  210 |
+  211 |       <section className="editor-page" id="editors-pick">
+> 212 |         <EditorsPicks
+      |          ^
+  213 |           isAllArticlesPage={false}
+  214 |           highlightedEditors={highlightedEditors}
+  215 |           editorsArticles={editorsData}
+
+[info] Static worker exited with code: 1 and signal: null
+
+[debug] [2025-08-17T17:05:13.930Z] Error: ENOENT: no such file or directory, open 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-08-17T17:06:19.613Z] ----------------------------------------------------------------------
+[debug] [2025-08-17T17:06:19.619Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-08-17T17:06:19.619Z] CLI Version:   13.29.3
+[debug] [2025-08-17T17:06:19.619Z] Platform:      win32
+[debug] [2025-08-17T17:06:19.619Z] Node Version:  v20.6.1
+[debug] [2025-08-17T17:06:19.619Z] Time:          Sun Aug 17 2025 17:06:19 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-08-17T17:06:19.619Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-17T17:06:19.873Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"frameworks"}
+[debug] [2025-08-17T17:06:19.879Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-17T17:06:19.879Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2025-08-17T17:06:19.879Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-17T17:06:19.881Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:06:19.881Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:06:19.883Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2025-08-17T17:06:19.883Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2025-08-17T17:06:19.884Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T17:06:20.918Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2025-08-17T17:06:20.919Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T17:06:20.919Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:06:20.919Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:06:20.920Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2025-08-17T17:06:21.723Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2025-08-17T17:06:21.724Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2025-08-17T17:06:27.554Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:06:27.554Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:06:27.555Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2025-08-17T17:06:28.891Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2025-08-17T17:06:28.892Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2025-08-17T17:06:28.892Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:06:28.893Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:06:28.893Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2025-08-17T17:06:29.710Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2025-08-17T17:06:29.710Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-08-17T17:06:42.473Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:06:42.473Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:06:42.473Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2025-08-17T17:06:43.532Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2025-08-17T17:06:43.533Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.23
+
+[info]   - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[info]  ✓ Compiled successfully
+
+[info]    Linting and checking validity of types ...
+
+[info] 
+./app/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist/page.js
+12:30  Warning: 'onSave' is defined but never used.  no-unused-vars
+
+./app/layout.tsx
+28:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+32:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+./app/page.tsx
+10:16  Warning: 'fetchHighlightedNews' is defined but never used.  no-unused-vars
+34:16  Warning: 'fetchHighlightedEditors' is defined but never used.  no-unused-vars
+58:16  Warning: 'fetchHighlightedPlaylists' is defined but never used.  no-unused-vars
+92:16  Warning: 'fetchFeaturedAd' is defined but never used.  no-unused-vars
+
+./app/playlists/layout.tsx
+31:48  Warning: 'children' is defined but never used.  no-unused-vars
+
+./app/playlists/_oldpage.js
+19:7  Warning: 'fetchPlaylists' is assigned a value but never used.  no-unused-vars
+
+./app/submissions/page.js
+9:31  Warning: 'values' is defined but never used.  no-unused-vars
+9:39  Warning: 'setSubmitting' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/Article.tsx
+6:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+7:10  Warning: 'Suspense' is defined but never used.  no-unused-vars
+
+./app/[category]/[articleId]/layout.tsx
+2:8  Warning: 'ArticlePage' is defined but never used.  no-unused-vars
+10:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+30:8  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+56:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+56:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+
+./app/[category]/[articleId]/TArticle.tsx
+2:17  Warning: 'useEffect' is defined but never used.  no-unused-vars
+3:10  Warning: 'useParams' is defined but never used.  no-unused-vars
+4:10  Warning: 'Helmet' is defined but never used.  no-unused-vars
+9:8  Warning: 'LoadingScreen' is defined but never used.  no-unused-vars
+13:10  Warning: 'useLocation' is defined but never used.  no-unused-vars
+15:8  Warning: 'Article' is defined but never used.  no-unused-vars
+18:57  Warning: 'articleImageSrc' is defined but never used.  no-unused-vars
+58:7  Warning: 'fetchArticle' is assigned a value but never used.  no-unused-vars
+77:7  Warning: 'fetchData' is assigned a value but never used.  no-unused-vars
+103:11  Warning: 'articleId' is assigned a value but never used.  no-unused-vars
+103:22  Warning: 'category' is assigned a value but never used.  no-unused-vars
+109:10  Warning: 'isLoading' is assigned a value but never used.  no-unused-vars
+109:21  Warning: 'setIsLoading' is assigned a value but never used.  no-unused-vars
+
+./app/_newseditor.tsx
+3:8  Warning: 'LoadingArticles' is defined but never used.  no-unused-vars
+84:16  Warning: 'handleToggleClick' is defined but never used.  no-unused-vars
+126:16  Warning: 'handleSetHighlight' is defined but never used.  no-unused-vars
+157:47  Warning: 'page' is assigned a value but never used.  no-unused-vars
+193:9  Warning: 'centeredStates' is assigned a value but never used.  no-unused-vars
+
+./components/admin/AdminLayout.js
+12:10  Warning: 'isAdmin' is assigned a value but never used.  no-unused-vars
+
+./components/editors-picks/page.js
+2:8  Warning: 'newspaper' is defined but never used.  no-unused-vars
+11:44  Warning: 'highlightedEditors' is defined but never used.  no-unused-vars
+21:12  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/forms/newArticle/CreateArticleSummary.js
+4:118  Warning: 'setImage' is defined but never used.  no-unused-vars
+
+./components/modals/NewArticle.js
+10:10  Warning: 'image' is assigned a value but never used.  no-unused-vars
+
+./components/news/News.js
+19:51  Warning: 'useRef' is defined but never used.  no-unused-vars
+22:8  Warning: 'LoadingHome' is defined but never used.  no-unused-vars
+27:3  Warning: 'fetchNewsData' is defined but never used.  no-unused-vars
+40:10  Warning: 'fetchError' is assigned a value but never used.  no-unused-vars
+
+./components/UpdatePlaylists.js
+10:10  Warning: 'playlistData' is assigned a value but never used.  no-unused-vars
+28:13  Warning: 'newPlaylistRef' is assigned a value but never used.  no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+
+[info] Failed to compile.
+
+
+[info] ./app/playlists/layout.tsx:38:9
+Type error: Type '{ isPlayListManager: boolean; playlists: any; }' is not assignable to type 'IntrinsicAttributes & { isPlayListManager: any; }'.
+  Property 'playlists' does not exist on type 'IntrinsicAttributes & { isPlayListManager: any; }'.
+
+  36 |       <Playlists
+  37 |         isPlayListManager={false}
+> 38 |         playlists={JSON.parse(JSON.stringify(playlists))}
+     |         ^
+  39 |       />
+  40 |     </section>
+  41 |   );
+
+[info] Static worker exited with code: 1 and signal: null
+
+[debug] [2025-08-17T17:07:12.420Z] Error: ENOENT: no such file or directory, open 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-08-17T17:24:12.783Z] ----------------------------------------------------------------------
+[debug] [2025-08-17T17:24:12.787Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-08-17T17:24:12.787Z] CLI Version:   13.29.3
+[debug] [2025-08-17T17:24:12.787Z] Platform:      win32
+[debug] [2025-08-17T17:24:12.787Z] Node Version:  v20.6.1
+[debug] [2025-08-17T17:24:12.788Z] Time:          Sun Aug 17 2025 17:24:12 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-08-17T17:24:12.788Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-17T17:24:13.045Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"frameworks"}
+[debug] [2025-08-17T17:24:13.052Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-17T17:24:13.053Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2025-08-17T17:24:13.053Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-17T17:24:13.054Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:24:13.054Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:24:13.056Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2025-08-17T17:24:13.056Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2025-08-17T17:24:13.056Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T17:24:15.193Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2025-08-17T17:24:15.193Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T17:24:15.194Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:24:15.195Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:24:15.195Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2025-08-17T17:24:15.733Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2025-08-17T17:24:15.733Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2025-08-17T17:24:21.738Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:24:21.739Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:24:21.739Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2025-08-17T17:24:23.035Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2025-08-17T17:24:23.035Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2025-08-17T17:24:23.035Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:24:23.035Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:24:23.036Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2025-08-17T17:24:24.110Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2025-08-17T17:24:24.110Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-08-17T17:24:36.886Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:24:36.886Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:24:36.886Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2025-08-17T17:24:37.901Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2025-08-17T17:24:37.901Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.23
+
+[info]   - Environments: .env
+
+
+[info]    Creating an optimized production build ...
+
+[info] Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+[info] uncaughtException [Error: EPERM: operation not permitted, open 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.next\trace'] {
+  errno: -4048,
+  code: 'EPERM',
+  syscall: 'open',
+  path: 'C:\\Users\\Dan\\Desktop\\projects\\amplify-gh-app\\.next\\trace'
+}
+
+[debug] [2025-08-17T17:24:54.511Z] Error: ENOENT: no such file or directory, open 'C:\Users\Dan\Desktop\projects\amplify-gh-app\.next\export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2025-08-17T17:25:14.820Z] ----------------------------------------------------------------------
+[debug] [2025-08-17T17:25:14.824Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Dan\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-08-17T17:25:14.824Z] CLI Version:   13.29.3
+[debug] [2025-08-17T17:25:14.824Z] Platform:      win32
+[debug] [2025-08-17T17:25:14.824Z] Node Version:  v20.6.1
+[debug] [2025-08-17T17:25:14.825Z] Time:          Sun Aug 17 2025 17:25:14 GMT+0000 (Greenwich Mean Time)
+[debug] [2025-08-17T17:25:14.825Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-17T17:25:15.072Z] Object "" in "firebase.json" has unknown property: {"additionalProperty":"frameworks"}
+[debug] [2025-08-17T17:25:15.082Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-17T17:25:15.082Z] > authorizing via signed-in user (deekayexq@gmail.com)
+[debug] [2025-08-17T17:25:15.083Z] [iam] checking project amplify-ghana for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-17T17:25:15.085Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:25:15.085Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:25:15.086Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions [none]
+[debug] [2025-08-17T17:25:15.087Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions x-goog-quota-user=projects/amplify-ghana
+[debug] [2025-08-17T17:25:15.087Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T17:25:16.069Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions 200
+[debug] [2025-08-17T17:25:16.070Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/amplify-ghana:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-17T17:25:16.071Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:25:16.071Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:25:16.071Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana [none]
+[debug] [2025-08-17T17:25:16.623Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana 200
+[debug] [2025-08-17T17:25:16.623Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/amplify-ghana {"projectId":"amplify-ghana","projectNumber":"278790838056","displayName":"Amplify-Ghana","name":"projects/amplify-ghana","resources":{"hostingSite":"amplify-ghana","locationId":"europe-west6"},"state":"ACTIVE","etag":"1_3d8dcd6e-2509-4f8c-930a-b7688a352170"}
+[debug] [2025-08-17T17:25:22.525Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:25:22.526Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:25:22.528Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites pageToken=&pageSize=10
+[debug] [2025-08-17T17:25:23.585Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites 200
+[debug] [2025-08-17T17:25:23.585Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites {"sites":[{"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}]}
+[debug] [2025-08-17T17:25:23.586Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:25:23.586Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:25:23.587Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config [none]
+[debug] [2025-08-17T17:25:24.508Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config 200
+[debug] [2025-08-17T17:25:24.509Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/-/webApps/1:278790838056:web:d12687053f59e33ecc621d/config {"projectId":"amplify-ghana","appId":"1:278790838056:web:d12687053f59e33ecc621d","storageBucket":"amplify-ghana.appspot.com","locationId":"europe-west6","apiKey":"AIzaSyBDLPgELwiKWxGj9ajDEJ2liiMsl2aL3F0","authDomain":"amplify-ghana.firebaseapp.com","messagingSenderId":"278790838056"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-08-17T17:25:37.132Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:25:37.133Z] Checked if tokens are valid: true, expires at: 1755452978095
+[debug] [2025-08-17T17:25:37.133Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana [none]
+[debug] [2025-08-17T17:25:38.139Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana 200
+[debug] [2025-08-17T17:25:38.139Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/amplify-ghana/sites/amplify-ghana {"name":"projects/amplify-ghana/sites/amplify-ghana","defaultUrl":"https://amplify-ghana.web.app","appId":"1:278790838056:web:d12687053f59e33ecc621d","type":"DEFAULT_SITE"}
+[info]   ▲ Next.js 14.2.23
+
+[info]   - Environments: .env
+
+
