@@ -39,6 +39,9 @@ function serializeFirebaseDocument(doc) {
     // Ensure any other complex types are also serialized
   };
 }
+export const revalidate = 60;
+
+
 async function fetchHighlightedEditors(database) {
   try {
     const highlightedEditorsDoc = await getDoc(

@@ -1,51 +1,80 @@
-import ArticleContent from "./Article";
-import ArticleSide from "@/components/article/ArticleSide";
-import Connect from "@/components/connect/Connect";
+import { database } from "@/firebase/firebase";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
+import ClientArticle from "./ClientArticle";
 import ScrollToTopOnMount from "@/components/ScrollToTop";
+import type { Metadata } from "next";
 
-interface Article {
+type Props = {
+  params: { category: string; articleId: string };
+};
+
+type Article = {
   title: string;
-  content: string;
+  excerpt: string;
   image: string;
-  excerpt?: string;
-  author?: string;
-  datePublished?: string;
-  dateModified?: string;
-}
+  author: string;
+  datePublished: string;
+  content: string;
+};
 
-interface ArticlePageProps {
-  params: { articleId: string; category: string };
-}
+// 🔹 Base domain (use your production domain!)
+const baseUrl = "https://amplify-ghana.web.app";
 
-// 🔹 Example fetcher – replace with your Firestore logic
-async function getArticle(category: string, articleId: string): Promise<Article | null> {
-  // TODO: fetch from Firebase/Firestore here
-  return {
-    title: "Demo Title",
-    content: "Demo content",
-    image: "/demo.jpg",
-    excerpt: "Demo excerpt",
-    author: "Amplify Ghana",
-    datePublished: new Date().toISOString(),
-  };
-}
+// ✅ Generate SEO metadata dynamically
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { category, articleId } = params;
 
-// ✅ App Router SEO
-export async function generateMetadata({ params }: ArticlePageProps) {
-  const article = await getArticle(params.category, params.articleId);
+  const articleRef = doc(database, category, decodeURIComponent(articleId));
+  const articleSnap = await getDoc(articleRef);
+  const article = articleSnap.exists() ? (articleSnap.data() as Article) : null;
 
   if (!article) {
     return {
-      title: "Not Found - Amplify Ghana",
-      description: "The requested article could not be found.",
+      title: "Article Not Found - Amplify Ghana",
+      description: "This article could not be found.",
+      robots: "noindex, nofollow",
     };
   }
 
+  const articleUrl = `${baseUrl}/${category}/${articleId}`;
+  const imageUrl = article.image?.startsWith("http")
+    ? article.image
+    : `${baseUrl}${article.image}`;
+
+  const description =
+    article.excerpt?.slice(0, 160) || article.content?.slice(0, 160) || article.title;
+
+  return {
+    title: `${article.title} - Amplify Ghana`,
+    description,
+    openGraph: {
+      title: article.title,
+      description,
+      url: articleUrl,
+      images: [{ url: imageUrl }],
+      type: "article",
+      siteName: "Amplify Ghana",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description,
+      images: [imageUrl],
+    },
+    alternates: {
+      canonical: articleUrl,
+    },
+    robots: "index, follow",
+  };
+}
+
+// ✅ JSON-LD Structured Data for Articles
+function ArticleSchema({ article, url }: { article: Article; url: string }) {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "NewsArticle",
     headline: article.title,
-    description: article.excerpt || article.title,
+    description: article.excerpt || article.content?.slice(0, 150),
     image: [article.image],
     author: {
       "@type": "Person",
@@ -56,60 +85,50 @@ export async function generateMetadata({ params }: ArticlePageProps) {
       name: "Amplify Ghana",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.amplifyghana.com/logo.png",
+        url: `${baseUrl}/logo.png`, // 🔹 Replace with your actual logo
       },
     },
-    datePublished: article.datePublished || new Date().toISOString(),
-    dateModified: article.dateModified || article.datePublished || new Date().toISOString(),
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://www.amplifyghana.com/${params.category}/${params.articleId}`,
-    },
+    datePublished: article.datePublished,
+    dateModified: article.datePublished,
+    mainEntityOfPage: url,
   };
 
-  return {
-    title: `${article.title} - Amplify Ghana`,
-    description: article.excerpt || article.title,
-    openGraph: {
-      title: article.title,
-      description: article.excerpt || article.title,
-      images: [article.image],
-      type: "article",
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: article.title,
-      description: article.excerpt || article.title,
-      images: [article.image],
-    },
-    other: {
-      "robots": "index, follow",
-      "script:ld+json": JSON.stringify(jsonLd), // ✅ JSON-LD inject
-    },
-  };
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+    />
+  );
 }
 
-export default async function ArticlePage({ params }: ArticlePageProps) {
-  const article = await getArticle(params.category, params.articleId);
+// 🔹 Main Page
+export default async function ArticlePage({ params }: Props) {
+  const { category, articleId } = params;
 
-  if (!article) return <div>Article not found</div>;
+  // 🟢 Fetch article server-side
+  const articleRef = doc(database, category, decodeURIComponent(articleId));
+  const articleSnap = await getDoc(articleRef);
+  const article = articleSnap.exists() ? (articleSnap.data() as Article) : null;
+
+  // 🟢 Fetch ads server-side
+  const adsSnap = await getDocs(collection(database, "FeaturedAd"));
+  const ads = !adsSnap.empty ? [adsSnap.docs[0].data()] : [];
+
+  if (!article) {
+    return <div>Article not found</div>;
+  }
+
+  const articleUrl = `${baseUrl}/${category}/${articleId}`;
 
   return (
     <div className="article-page">
       <ScrollToTopOnMount />
-
       <div className="spacer" />
 
-      <div className="article-flex">
-        <div className="article-main">
-          <ArticleContent article={article} featuredAdElements={[]} />
-          <Connect />
-        </div>
+      {/* ✅ Inject SEO structured data for crawlers */}
+      <ArticleSchema article={article} url={articleUrl} />
 
-        <div className="article-aside">
-          <ArticleSide />
-        </div>
-      </div>
+      <ClientArticle article={article} featuredAdElements={ads} />
     </div>
   );
 }
