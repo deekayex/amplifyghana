@@ -24,6 +24,12 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+# Ignore Firebase debug logs
+firebase-debug.log
+
+# Firebase build output
+.firebase/
+functions/.next/
 
 # local env files
 .env*.local
