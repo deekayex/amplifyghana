@@ -20,6 +20,10 @@ const BasicForm = ({ onSubmit }) => {
           } else if (values.email && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
             errors.email = 'Invalid email address';
           }
+
+          if (values.phone && !/^\+?[0-9\s\-()]{7,20}$/.test(values.phone)) {
+    errors.phone = 'Invalid phone number';
+  }
           return errors;
         }}
         onSubmit={(values, { setSubmitting }) => {
@@ -59,7 +63,7 @@ const BasicForm = ({ onSubmit }) => {
             <Field type="email" name="email" placeholder="Email" className="input-email" />
             <ErrorMessage name="email" component="div" className="error-message" />
 
-            <Field type="email" name="phone" placeholder="Phone number" className="input-phone" />
+            <Field type="tel" name="phone" placeholder="Phone number" className="input-phone" />
             <ErrorMessage name="phone" component="div" className="error-message" />
 
             <Field

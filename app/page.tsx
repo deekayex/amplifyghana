@@ -1,17 +1,23 @@
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+// app/home/page.js or wherever your HomePages component lives
 
+export const revalidate = 10; // Regenerate page every 10 seconds
+
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import Home from "@/components/home/Home";
+import NewsEditor from "./_newseditor";
+import Socials from "../components/socials/Socials";
+import { database } from "@/firebase/firebase";
 import { fetchDataWithCache } from "@/context/cache/cacheUtils";
 import { collection, doc, getDoc, getDocs } from "@firebase/firestore";
-import Socials from "../components/socials/Socials";
 import "./HomePages.css";
-import NewsEditor from "./_newseditor";
 
+// --- Firestore fetchers ---
 async function fetchHighlightedNews(database) {
   const highlightedNewsDoc = await fetchDataWithCache(
     "highlightedNewsCache",
     () => getDoc(doc(database, "highlighted", "highlightedNews"))
   );
+
   if (highlightedNewsDoc.exists()) {
     const articleRef = doc(
       database,
@@ -20,22 +26,18 @@ async function fetchHighlightedNews(database) {
     );
     const articleDoc = await getDoc(articleRef);
     if (articleDoc.exists()) {
-      return {
-        id: articleDoc.id,
-        // ...articleDoc.data(),
-        ...serializeFirebaseDocument(articleDoc),
-      };
+      return { id: articleDoc.id, ...serializeFirebaseDocument(articleDoc) };
     }
   }
-  return null; // Return null if no data is found
+  return null;
 }
 
-// Fetch highlighted editors
 async function fetchHighlightedEditors(database) {
   const highlightedEditorsDoc = await fetchDataWithCache(
     "highlightedEditorsCache",
     () => getDoc(doc(database, "highlighted", "highlightedEditors"))
   );
+
   if (highlightedEditorsDoc.exists()) {
     const articleRef = doc(
       database,
@@ -44,17 +46,12 @@ async function fetchHighlightedEditors(database) {
     );
     const articleDoc = await getDoc(articleRef);
     if (articleDoc.exists()) {
-      return {
-        id: articleDoc.id,
-        // ...articleDoc.data(),
-        ...serializeFirebaseDocument(articleDoc),
-      };
+      return { id: articleDoc.id, ...serializeFirebaseDocument(articleDoc) };
     }
   }
-  return null; // Return null if no data is found
+  return null;
 }
 
-// Fetch highlighted playlists
 async function fetchHighlightedPlaylists(database) {
   const playlistsSnapshot = await fetchDataWithCache("playlistsCache", () =>
     getDocs(collection(database, "Playlisthighlights"))
@@ -62,44 +59,46 @@ async function fetchHighlightedPlaylists(database) {
 
   return playlistsSnapshot.docs.map((doc) => ({
     id: doc.id,
-    // ...doc.data(),
     ...serializeFirebaseDocument(doc),
   }));
 }
-// Function to serialize Firebase document data
-function serializeFirebaseDocument(doc) {
-  // Assuming doc is a document fetched from Firestore
-  const data = doc.data();
 
-  // Serialize the Timestamp field
-  const serializedTimestamp = data.timestamp
-    ? {
-        seconds: data.timestamp.seconds,
-        nanoseconds: data.timestamp.nanoseconds,
-        isoString: data.timestamp.toDate().toISOString(),
-        // Milliseconds example:
-        milliseconds: data.timestamp.toMillis(),
-      }
-    : null;
-
-  // Return a new object with all data serialized
-  return {
-    ...data,
-    timestamp: serializedTimestamp,
-  };
-}
-// Fetch featured ads
 async function fetchFeaturedAd(database) {
   const featuredAdSnapshot = await fetchDataWithCache("featuredAdCache", () =>
     getDocs(collection(database, "FeaturedAd"))
   );
+
   return featuredAdSnapshot.docs.map((doc) => ({
     id: doc.id,
-    // ...doc.data(),
     ...serializeFirebaseDocument(doc),
   }));
 }
-async function HomePages() {
+
+// --- Serializer ---
+function serializeFirebaseDocument(doc) {
+  const data = doc.data();
+  return {
+    ...data,
+    timestamp: data.timestamp
+      ? {
+          seconds: data.timestamp.seconds,
+          nanoseconds: data.timestamp.nanoseconds,
+          isoString: data.timestamp.toDate().toISOString(),
+          milliseconds: data.timestamp.toMillis(),
+        }
+      : null,
+  };
+}
+
+// --- Page Component ---
+export default async function HomePages() {
+  const [highlightedNews, highlightedEditors, playlists, featuredAd] = await Promise.all([
+    fetchHighlightedNews(database),
+    fetchHighlightedEditors(database),
+    fetchHighlightedPlaylists(database),
+    fetchFeaturedAd(database),
+  ]);
+
   return (
     <div className="container" id="home">
       <div className="home-contain">
@@ -114,12 +113,16 @@ async function HomePages() {
               <Socials />
             </div>
           </div>
-            <Home/>
-          <NewsEditor />
+
+          <Home
+            highlightedNews={highlightedNews}
+            highlightedEditors={highlightedEditors}
+            playlists={playlists}
+            featuredAd={featuredAd}
+          />
+          <NewsEditor highlightedEditors={highlightedEditors} />
         </div>
       </div>
     </div>
   );
 }
-
-export default HomePages;
