@@ -17,7 +17,7 @@ type Article = {
   content: string;
 };
 
-// 🔹 Base domain (use your production domain!)
+
 const baseUrl = "https://amplify-ghana.web.app";
 
 // ✅ Generate SEO metadata dynamically
@@ -85,7 +85,7 @@ function ArticleSchema({ article, url }: { article: Article; url: string }) {
       name: "Amplify Ghana",
       logo: {
         "@type": "ImageObject",
-        url: `${baseUrl}/logo.png`, // 🔹 Replace with your actual logo
+        url: `${baseUrl}/logo.png`, 
       },
     },
     datePublished: article.datePublished,

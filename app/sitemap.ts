@@ -37,12 +37,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       }));
 
     // ✅ Editors pages with valid slugs only
-    const editorsSnapshot = await getDocs(collection(database, "editors"));
+    const editorsSnapshot = await getDocs(collection(database, "editors-picks"));
     const editorsPages: MetadataRoute.Sitemap = editorsSnapshot.docs
       .map((doc) => doc.id)
       .filter((id) => isValidSlug(id))
       .map((id) => ({
-        url: encodeUrl(`/editors/${id}`),
+        url: encodeUrl(`/editors-picks/${id}`),
         lastModified: new Date(),
       }));
 
@@ -57,7 +57,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     if (invalidNews.length || invalidEditors.length) {
       console.warn("⚠️ Skipped invalid slugs:", {
         news: invalidNews,
-        editors: invalidEditors,
+        editorspicks: invalidEditors,
       });
     }
 
