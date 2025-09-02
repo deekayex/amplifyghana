@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { getDocs, collection } from "@firebase/firestore";
+import { getDocs, collection, addDoc } from "@firebase/firestore";
 import { database } from "@/firebase/firebase";
 
 // ✅ Helper: validate slug format
@@ -11,6 +11,20 @@ function isValidSlug(text: string): boolean {
 // ✅ Helper: wrap URL
 const encodeUrl = (path: string) =>
   `https://amplifyghana.com${encodeURI(path)}`;
+
+// ✅ Helper: log invalid slugs into Firestore
+async function logInvalidSlugs(type: string, ids: string[]) {
+  if (ids.length === 0) return;
+  try {
+    await addDoc(collection(database, "sitemap-logs"), {
+      type,
+      invalidSlugs: ids,
+      timestamp: new Date().toISOString(),
+    });
+  } catch (err) {
+    console.error("⚠️ Failed to log invalid slugs:", err);
+  }
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   try {
@@ -46,7 +60,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         lastModified: new Date(),
       }));
 
-    // ✅ Optional: log invalid IDs (helps you track them)
+    // ✅ Collect invalid slugs
     const invalidNews = newsSnapshot.docs
       .map((doc) => doc.id)
       .filter((id) => !isValidSlug(id));
@@ -54,11 +68,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       .map((doc) => doc.id)
       .filter((id) => !isValidSlug(id));
 
-    if (invalidNews.length || invalidEditors.length) {
-      console.warn("⚠️ Skipped invalid slugs:", {
-        news: invalidNews,
-        editorspicks: invalidEditors,
-      });
+    // ✅ Log invalid slugs into Firestore
+    if (invalidNews.length) {
+      await logInvalidSlugs("news", invalidNews);
+    }
+    if (invalidEditors.length) {
+      await logInvalidSlugs("editors-picks", invalidEditors);
     }
 
     // ✅ Return sitemap
