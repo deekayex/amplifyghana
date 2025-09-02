@@ -40,7 +40,7 @@
   transition: 0.5s ease-in-out;
 }
 
-.editor,
+.sticker,
 .playlist-text {
   position: absolute;
   right: 0;
@@ -232,7 +232,7 @@
 }
 
 .playlist-text:hover,
-.editor:hover,
+.sticker:hover,
 .news-text-header:hover,
 .editor-text-header:hover,
 .content-text-header:hover {

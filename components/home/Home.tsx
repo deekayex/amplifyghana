@@ -124,6 +124,13 @@ function Home({ highlightedNews, highlightedEditors, highlightedPlaylists, newFe
             aria-label="link-to-featured-editors-pick"
             style={{ backgroundImage: `url(${highlightedEditors.image || ""})` }}
           >
+             <Link
+                  href="#/editors-pick"
+                  aria-label="link-to-editors-page"
+                  className="sticker"
+                >
+                  <h3>EDITOR'S PICKS</h3>
+                </Link>
             <Link href={editorsLink} className="editor-text-link">
               <div className="editor-text">
                 <h2 className="editor-text-header">{highlightedEditors.title || "Loading..."}</h2>
@@ -139,6 +146,13 @@ function Home({ highlightedNews, highlightedEditors, highlightedPlaylists, newFe
               aria-label="link-to-featured-news"
               style={{ backgroundImage: `url(${highlightedNews.image || ""})` }}
             >
+              <Link
+                  href="#/news"
+                  aria-label="link-to-news-page"
+                  className="sticker"
+                >
+                  <h3>NEWS</h3>
+              </Link>
               <Link href={newsLink} className="news-text-link">
                 <div className="news-text">
                   <h2 className="news-text-header">{highlightedNews.title || "Loading..."}</h2>
@@ -149,6 +163,16 @@ function Home({ highlightedNews, highlightedEditors, highlightedPlaylists, newFe
           )}
           {highlightedPlaylists.map((playlist) => (
             <Link href={playlist.link} key={playlist.id} className="playlist-component">
+              <div className="playlist-text">
+                <Link
+                  href="/playlists"
+                  // className="sticker"
+                  aria-label="link-to-playlists-page"
+                >
+                  <h3>PLAYLISTS</h3>
+                </Link>
+              </div>
+
               <Link href={playlist.link} className="playlist-button" target="_blank">
                 Listen
               </Link>
