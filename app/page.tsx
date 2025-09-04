@@ -127,9 +127,9 @@ async function HomePages() {
             <Home/>
           <NewsEditor />
 
-          <div className="debug-timestamp">
+          {/* <div className="debug-timestamp">
             <p>Page last built at: {buildTime}</p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
