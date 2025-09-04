@@ -7,6 +7,10 @@ import Socials from "../components/socials/Socials";
 import "./HomePages.css";
 import NewsEditor from "./_newseditor";
 
+
+export const revalidate = 30; // Rebuild every 30 seconds
+
+
 async function fetchHighlightedNews(database) {
   const highlightedNewsDoc = await fetchDataWithCache(
     "highlightedNewsCache",
@@ -93,6 +97,7 @@ async function fetchFeaturedAd(database) {
   const featuredAdSnapshot = await fetchDataWithCache("featuredAdCache", () =>
     getDocs(collection(database, "FeaturedAd"))
   );
+
   return featuredAdSnapshot.docs.map((doc) => ({
     id: doc.id,
     // ...doc.data(),
@@ -100,6 +105,11 @@ async function fetchFeaturedAd(database) {
   }));
 }
 async function HomePages() {
+    const buildTime = new Date().toISOString();
+
+  // Log to server console (during ISR rebuilds)
+  console.log("Home page built at:", buildTime);
+
   return (
     <div className="container" id="home">
       <div className="home-contain">
@@ -116,6 +126,10 @@ async function HomePages() {
           </div>
             <Home/>
           <NewsEditor />
+
+          <div className="debug-timestamp">
+            <p>Page last built at: {buildTime}</p>
+          </div>
         </div>
       </div>
     </div>
