@@ -3,6 +3,8 @@ import { addDoc, collection, getDocs, setDoc } from '@firebase/firestore';
 import React, { useState } from 'react'
 import { database, storage } from '@/firebase/firebase';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import AdminLayout from '@/components/admin/AdminLayout';
+import '../update-playlist/playlist-form.css'
 
 const FeatureAd = (onSave, onCancel) => {
   const initialFeature ={
@@ -82,41 +84,48 @@ const FeatureAd = (onSave, onCancel) => {
 
 
   return (
-    <div className='featured-ad'>
-      <form onSubmit={handleSubmit} className='playlist-form'>
-      <h className>Feature Ad</h>
-      <div className='new-playlist-container'>
-        <div className='featured-ad-container'style={{
-            backgroundImage: featuredAd.image ? `url(${URL.createObjectURL(featuredAd.image)})` : 'none',
-          }}>
-          
+    <AdminLayout>
+        <div className='featured-ad'>
+          <form onSubmit={handleSubmit} className='featured-ad-form'>
+          <h1 className>Feature Ad</h1>
+          <div className='new-playlist-container'>
+            <div className='featured-ad-container'style={{
+                backgroundImage: featuredAd.image ? `url(${URL.createObjectURL(featuredAd.image)})` : 'none',
+              }}>
+              
+            </div>
+
+          </div>
+
+       <input type='file' name='image' accept='image/*' onChange={handleImageChange} required />
+
+        <div className='playlist-title'>
+          <label>Title:</label>           
+          <input type='text' name='title' value={featuredAd.title} onChange={handleInputChange} required placeholder='Type the Playlist title' className='playlist-title'/>
+          </div>
+
+        <div className='playlist-link'>
+          <label>Link:</label>
+          <input type='text' name='link' value={featuredAd.link} onChange={handleInputChange}
+          required placeholder='Insert Playlist Link here' className='playlist-link'/>
         </div>
 
-      </div>
+          <div className='form-buttons'>
+          <div className='playlist-buttons-flex'>
+          <button type='button' onClick={handleCancel} className='featured-btn'>
+              Cancel
+            </button>
+            
+            <button type='submit' className='featured-btn'>
+              Create 
+            </button>
 
-      
-      <input type='file' name='image' accept='image/*' onChange={handleImageChange} required />
-      
-      <input type='text' name='title' value={featuredAd.title} onChange={handleInputChange} required placeholder='Type the Playlist title' className='playlist-title'/>
+          </div>
 
-      <label>Link:</label>
-      <input type='text' name='link' value={featuredAd.link} onChange={handleInputChange} className='playlist-link'/>
-
-      <div className='form-buttons'>
-      <div className='playlist-buttons-flex'>
-      <button type='button' onClick={handleCancel} className='btn'>
-          Cancel
-        </button>
-        
-        <button type='submit' className='btn'>
-          Create 
-        </button>
-
-      </div>
-
-    </div>
-    </form>
-    </div>
+        </div>
+        </form>
+        </div>
+    </AdminLayout>
   )
 }
 
