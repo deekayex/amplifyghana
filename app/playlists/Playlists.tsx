@@ -3,7 +3,7 @@
 import {
   collection,
   deleteDoc,
-  doc,
+  doc, setDoc,
   getDocs,
   orderBy,
   query,
@@ -20,6 +20,7 @@ const PLAYLIST_BUTTON_TEXT = "LISTEN";
 
 const Playlists = ({ isPlayListManager }) => {
   const [user, setUser] = useState(null);
+    const [, setHighlightedPlaylistId] = useState([]);
   const [playlists, setPlaylists] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [expandedPlaylistIds, setExpandedPlaylistIds] = useState([]);
@@ -101,6 +102,19 @@ const Playlists = ({ isPlayListManager }) => {
     );
   };
 
+  const handleSetHighlight = async (id) => {
+         try {
+           await setDoc(doc(database, "highlighted", "highlightedPlaylist"), {
+             id,
+           });
+     
+           setHighlightedPlaylistId(id);
+           alert("Playlist set as highlight successfully!");
+         } catch (error) {
+           console.error("Error setting highlight:", error);
+         }
+       };
+
   return (
     <div className="playlist-page">
       <ScrollToTopOnMount />
@@ -117,15 +131,26 @@ const Playlists = ({ isPlayListManager }) => {
           <div className="playlist-container">
             {playlists.map((playlist) => (
               <div className="playlist_component" key={playlist.id}>
-                {isPlayListManager && user && (
-                  <button
-                    className="delete-button"
-                    onClick={() => handleDeletePlaylist(playlist.id)}
-                  >
-                    Delete
-                  </button>
-                )}
-                <div className="playlist_image">
+                <div className="admin-options">
+                  {isPlayListManager && user && (
+                    <button
+                      className="delete-button"
+                      onClick={() => handleDeletePlaylist(playlist.id)}
+                    >
+                      Delete
+                    </button>
+                  )}
+
+                  {isPlayListManager && user && (
+                    <button
+                      className="delete-button"
+                      onClick={() => handleSetHighlight(playlist.id)}
+                    >
+                      Set Highlighted Playlist
+                    </button>
+                  )}
+                </div>
+                  <div className="playlist_image">
                   <a
                     href={playlist.link}
                     target="_blank"

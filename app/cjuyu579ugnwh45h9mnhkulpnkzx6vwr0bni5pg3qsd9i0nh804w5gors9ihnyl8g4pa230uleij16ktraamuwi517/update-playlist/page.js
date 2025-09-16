@@ -5,6 +5,7 @@ import { collection, addDoc, setDoc, getDocs } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import Link from "next/link";
 import AdminLayout from "@/components/admin/AdminLayout";
+import './playlist-form.css'
 
 //where are the props supposed to come from?
 //or they're not needed at all?
@@ -89,7 +90,7 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
     <AdminLayout>
     <div className="playlist-highlighted">
       <form onSubmit={handleSubmit} className="playlist-form">
-        <h className>Create New Playlist Highlight</h>
+        <h1 className>Create New Playlist Highlight</h1>
         <div className="new-playlist-container">
           <div
             className="new-playlist-image-container"
@@ -109,25 +110,32 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
           required
         />
 
-        <input
-          type="text"
-          name="title"
-          value={playlistData.title}
-          onChange={handleInputChange}
-          required
-          placeholder="Type the Playlist title"
-          className="playlist-title"
-        />
+        <div className="playlist-title">
+          <label>Title: </label>
+          <input
+            type="text"
+            name="title"
+            value={playlistData.title}
+            onChange={handleInputChange}
+            required
+            placeholder="Type the Playlist title"
+            className="playlist-title"
+          />
+        </div>
 
-        <label>Link:</label>
-        <input
-          type="text"
-          name="link"
-          value={playlistData.link}
-          onChange={handleInputChange}
-          required
-          className="playlist-link"
-        />
+
+        <div className="playlist-link">
+          <label>Link: </label>
+          <input
+            type="text"
+            name="link"
+            value={playlistData.link}
+            onChange={handleInputChange}
+            placeholder="Insert the Playlist link here"
+            required
+            className="playlist-link"
+          />
+        </div>
 
         <div className="form-buttons">
           <div className="playlist-buttons-flex">

@@ -1,4 +1,4 @@
-.create-article-form-container, .create-article-title-container{
+.create-article-form-container, .create-article-title-container, .playlist-highlighted{
   width: 60vw;
   /* background-color: aqua; */
  display: flex;
