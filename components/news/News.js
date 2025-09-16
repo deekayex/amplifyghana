@@ -248,19 +248,29 @@ const News = ({
                         <div className="card-manager">
                           {user && isAllArticlesPage && (
                             <button
-                              onClick={() => handleDeleteArticles(article.id)}
+                              onClick={(e) => {
+                              e.preventDefault(); // stop Link navigation
+                              e.stopPropagation();
+                              handleDeleteArticles(article.id);}}
                             >
                               Delete
                             </button>
                           )}
                           {user && isAllArticlesPage && !article.isHighlight && (
-                            <button onClick={() => handleToggleClick(article.id)}>
+                            <button onClick={(e) => {
+                              e.preventDefault(); // stop Link navigation
+                              e.stopPropagation();
+                              handleToggleClick(article.id);
+                              }}>
                               Change Center
                             </button>
                           )}
                           {user && isAllArticlesPage && !article.isHighlight && (
                             <button
-                              onClick={() => handleSetHighlight(article.id)}
+                              onClick={(e) => {
+                                e.preventDefault(); // stop Link navigation
+                                e.stopPropagation();
+                                handleSetHighlight(article.id)}}
                             >
                               Set as News Highlight
                             </button>

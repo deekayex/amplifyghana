@@ -135,7 +135,10 @@ const Playlists = ({ isPlayListManager }) => {
                   {isPlayListManager && user && (
                     <button
                       className="delete-button"
-                      onClick={() => handleDeletePlaylist(playlist.id)}
+                      onClick={(e) => {
+                      e.preventDefault(); // stop Link navigation
+                      e.stopPropagation();
+                      handleDeletePlaylist(playlist.id)}}
                     >
                       Delete
                     </button>
@@ -144,7 +147,10 @@ const Playlists = ({ isPlayListManager }) => {
                   {isPlayListManager && user && (
                     <button
                       className="delete-button"
-                      onClick={() => handleSetHighlight(playlist.id)}
+                      onClick={(e) => {
+                      e.preventDefault(); // stop Link navigation
+                      e.stopPropagation();
+                      handleSetHighlight(playlist.id)}}
                     >
                       Set Highlighted Playlist
                     </button>
