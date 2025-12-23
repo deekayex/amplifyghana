@@ -8,7 +8,7 @@ import "./HomePages.css";
 import NewsEditor from "./_newseditor";
 
 
-export const revalidate = 30; // Rebuild every 30 seconds
+// export const revalidate = 30; // Rebuild every 30 seconds
 
 
 async function fetchHighlightedNews(database) {

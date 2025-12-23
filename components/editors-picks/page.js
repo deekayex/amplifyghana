@@ -8,8 +8,8 @@ import { useCallback, useEffect, useState } from "react";
 import LoadingArticles from "../../context/loading/ArticlesLoad/LoadingArticles";
 import { database } from "../../firebase/firebase";
 
-function EditorsPicks({ isAllArticlesPage, highlightedEditors, totalPagesCount, editorsArticles = [] }) {
-  const [, setEditorsArticles] = useState([]);
+function EditorsPicks({ isAllArticlesPage, highlightedEditors, totalPagesCount }) {
+  const [editorsArticles, setEditorsArticles] = useState([]);
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [, setHighlightedArticleId] = useState(null);
