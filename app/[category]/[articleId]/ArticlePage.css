@@ -255,22 +255,11 @@
   background-size: contain;
 }
 
-/* .article-figure {
-  margin: 0;
-  padding: 0;
-  justify-content: start;
-  align-items: start;
-  /* text-align: center; */
-  /* background-color: aqua; */
-
 .article-caption {
-  /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
-  font-style: italic;
+  font-style:italic;
   text-align:center;
-  text-decoration: wavy;
-  font-size: 9px;
-  /* background-color: aliceblue; */
-  
+  font-size: 12px;
+  font-family: "Lora", serif;
 }
 
 @media screen and (max-width: 1000px) {

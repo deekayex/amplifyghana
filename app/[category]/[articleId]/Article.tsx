@@ -74,6 +74,7 @@ export default function ArticleContent({
     ) {
       return;
     }
+    
       const alt = $(img).attr("alt"); 
 
       if (alt && alt.trim() !== "") {
