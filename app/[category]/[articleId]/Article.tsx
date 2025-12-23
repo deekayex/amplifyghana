@@ -10,6 +10,7 @@ interface Article {
   title: string;
   content: string;
   image: string;
+  imageAlt: string;
 }
 
 interface FeaturedAd {

@@ -123,7 +123,7 @@ function EditorsPicks({ isAllArticlesPage, highlightedEditors, totalPagesCount }
    
      const handleDeleteArticles = async (id) => {
        if (isAllArticlesPage) {
-         const newsDoc = doc(database, "news", id);
+         const newsDoc = doc(database, "editors-picks", id);
          await deleteDoc(newsDoc);
          setEditorsArticles((prevArticles) =>
            prevArticles.filter((article) => article.id !== id)
