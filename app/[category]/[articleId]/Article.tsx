@@ -64,7 +64,17 @@ export default function ArticleContent({
     const $ = cheerio.load(content);
 
     $("img").each((_, img) => {
-      const alt = $(img).attr("alt");
+
+      const $img = $(img);
+
+    // ❌ Skip featured ads
+    if (
+      $img.hasClass("ad") ||
+      $img.closest(".featured-ad").length > 0
+    ) {
+      return;
+    }
+      const alt = $(img).attr("alt"); 
 
       if (alt && alt.trim() !== "") {
         if ($(img).parent("figure").length === 0) {
