@@ -1,5 +1,5 @@
 "use client";
-import newspaper from "/public/newspaper-folded.png";
+// import newspaper from "/public/newspaper-folded.png";
 import { collection, deleteDoc, doc, getCountFromServer, getDoc, getDocs, limit, orderBy, query, setDoc, startAfter, updateDoc } from "@firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Image from "next/image";
@@ -14,12 +14,14 @@ function EditorsPicks({ isAllArticlesPage, highlightedEditors, totalPagesCount }
   const [isLoading, setIsLoading] = useState(false);
   const [, setHighlightedArticleId] = useState(null);
   const [centeredStates, setCenteredStates] = useState({});
-   const [lastVisible, setLastVisible] = useState({});
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(totalPagesCount || 1);
-    const [fetchedPages, setFetchedPages] = useState(new Set());
-    const [fetchError, setFetchError] = useState(null);
-    const articlesPerPage = 6;
+  const [lastVisible, setLastVisible] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(totalPagesCount || 1);
+  const [fetchedPages, setFetchedPages] = useState(new Set());
+  const [fetchError, setFetchError] = useState(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const articlesPerPage = 6;
 
    const fetchArticles = useCallback(
      async (page = 1) => {
@@ -121,19 +123,29 @@ function EditorsPicks({ isAllArticlesPage, highlightedEditors, totalPagesCount }
      setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
    };
    
-     const handleDeleteArticles = async (id) => {
-       if (isAllArticlesPage) {
-         const newsDoc = doc(database, "editors-picks", id);
-         await deleteDoc(newsDoc);
-         setEditorsArticles((prevArticles) =>
-           prevArticles.filter((article) => article.id !== id)
-         );
-       } else {
-         alert("You are not allowed to delete any article here");
-       }
-     };
+  const handleDeleteArticles = async (id) => {
+    if (!isAllArticlesPage) {
+      alert("You are not allowed to delete any article here");
+      return;
+    }
+
+    try {
+      setIsDeleting(true);
+      const newsDoc = doc(database, "editors-picks", id);
+      await deleteDoc(newsDoc);
+
+      setEditorsArticles((prev) => prev.filter((a) => a.id !== id));
+      setConfirmDeleteId(null);
+    } catch (err) {
+      alert("Delete failed. Try again.");
+      console.error(err);
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
    
-     const handleToggleClick = async (articleId) => {
+  const handleToggleClick = async (articleId) => {
        try {
          const articleDocRef = doc(database, "centeredStates", articleId);
          const articleDoc = await getDoc(articleDocRef);
@@ -230,7 +242,7 @@ function EditorsPicks({ isAllArticlesPage, highlightedEditors, totalPagesCount }
                         onClick={(e) => {
                         e.preventDefault(); // stop Link navigation
                         e.stopPropagation();
-                        handleDeleteArticles(article.id);}}
+                        setConfirmDeleteId(article.id);}}
                       >
                         Delete
                       </button>
@@ -284,6 +296,28 @@ function EditorsPicks({ isAllArticlesPage, highlightedEditors, totalPagesCount }
         Next
       </button>
     </div>
+
+    {confirmDeleteId && (
+  <div className="delete-modal-backdrop">
+    <div className="delete-modal">
+      <h3>Delete Article?</h3>
+      <p>This action cannot be undone.</p>
+
+      <div className="delete-modal-actions">
+        <button onClick={() => setConfirmDeleteId(null)}>Cancel</button>
+
+        <button
+          className="danger"
+          disabled={isDeleting}
+          onClick={() => handleDeleteArticles(confirmDeleteId)}
+        >
+          {isDeleting ? "Deleting..." : "Delete"}
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
 
     </>
   );

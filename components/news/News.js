@@ -38,6 +38,9 @@ const News = ({
   const [totalPages, setTotalPages] = useState(totalPagesCount || 1);
   const [fetchedPages, setFetchedPages] = useState(new Set());
   const [fetchError, setFetchError] = useState(null);
+  const [confirmDeleteId, setConfirmDeleteId] = useState(null);
+  const [isDeleting, setIsDeleting] = useState(false);
+
   const articlesPerPage = 6;
 
 
@@ -142,17 +145,27 @@ const News = ({
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
   
-    const handleDeleteArticles = async (id) => {
-      if (isAllArticlesPage) {
-        const newsDoc = doc(database, "news", id);
-        await deleteDoc(newsDoc);
-        setNewsArticles((prevArticles) =>
-          prevArticles.filter((article) => article.id !== id)
-        );
-      } else {
-        alert("You are not allowed to delete any article here");
-      }
-    };
+   const handleDeleteArticles = async (id) => {
+  if (!isAllArticlesPage) {
+    alert("You are not allowed to delete any article here");
+    return;
+  }
+
+  try {
+    setIsDeleting(true);
+    const newsDoc = doc(database, "news", id);
+    await deleteDoc(newsDoc);
+
+    setNewsArticles((prev) => prev.filter((a) => a.id !== id));
+    setConfirmDeleteId(null);
+  } catch (err) {
+    alert("Delete failed. Try again.");
+    console.error(err);
+  } finally {
+    setIsDeleting(false);
+  }
+};
+
   
     const handleToggleClick = async (articleId) => {
       try {
@@ -251,7 +264,7 @@ const News = ({
                               onClick={(e) => {
                               e.preventDefault(); // stop Link navigation
                               e.stopPropagation();
-                              handleDeleteArticles(article.id);}}
+                              setConfirmDeleteId(article.id);}}
                             >
                               Delete
                             </button>
@@ -306,6 +319,28 @@ const News = ({
               Next
             </button>
           </div>
+
+          {confirmDeleteId && (
+  <div className="delete-modal-backdrop">
+    <div className="delete-modal">
+      <h3>Delete Article?</h3>
+      <p>This action cannot be undone.</p>
+
+      <div className="delete-modal-actions">
+        <button onClick={() => setConfirmDeleteId(null)}>Cancel</button>
+
+        <button
+          className="danger"
+          disabled={isDeleting}
+          onClick={() => handleDeleteArticles(confirmDeleteId)}
+        >
+          {isDeleting ? "Deleting..." : "Delete"}
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
   
           </>
     );

@@ -87,7 +87,7 @@ const FeatureAd = (onSave, onCancel) => {
     <AdminLayout>
         <div className='featured-ad'>
           <form onSubmit={handleSubmit} className='featured-ad-form'>
-          <h1 className>Feature Ad</h1>
+          <h1 className= 'featured-ad-text'>Feature Ad</h1>
           <div className='new-playlist-container'>
             <div className='featured-ad-container'style={{
                 backgroundImage: featuredAd.image ? `url(${URL.createObjectURL(featuredAd.image)})` : 'none',
