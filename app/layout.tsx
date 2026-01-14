@@ -1,4 +1,4 @@
-import { Goldman } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 // import { Analytics } from "@vercel/analytics/react";
 // import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -7,8 +7,18 @@ import Footer from "@/components/footer/Footer";
 
 import { Metadata } from "next";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 // const inter = Inter({ subsets: ["latin"] });
-const goldman = Goldman({ subsets: ["latin"], weight: ["400", "700"] });
+const goldman = localFont({
+  src: [
+    { path: "./fonts/Goldman-Regular.ttf", weight: "400" },
+    { path: "./fonts/Goldman-Bold.ttf", weight: "700" }
+  ],
+  variable: "--font-goldman",
+  display: "swap"
+});
 
 export const metadata: Metadata = {
   title:
@@ -23,7 +33,8 @@ export const metadata: Metadata = {
 };
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={goldman.className}>
+    // <html lang="en" className={goldman.className}>
+    <html lang="en" className={goldman.variable}>
       <head>
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;500&display=swap"

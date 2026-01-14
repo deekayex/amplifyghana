@@ -6,7 +6,8 @@
  *
  * See a full list of supported triggers at https://firebase.google.com/docs/functions
  */
-
+export const ssramplifyghana = functions.https.onRequest(app);
+export const ssramplifystaging = functions.https.onRequest(app);
 const {onRequest} = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 

@@ -1,25 +1,68 @@
 {
-  "hosting": {
-    "source": ".",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
-    "rewrites": [
-      {
-        "source": "/_next/static/**",
-        "destination": "/_next/static/**"
-      },
-      {
-        "source": "**",
-        "function": "ssramplifyghana"
-      }
-    ]
-  },
+  "hosting": [
+    {
+      "target": "functions/functions-prod",
+      "source": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "/_next/static/**",
+          "destination": "/_next/static/**"
+        },
+        {
+          "source": "**",
+          "function": "ssramplifyghana"
+        }
+      ]
+    },
+    {
+      "target": "functions/functions-staging",
+      "source": ".",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "/_next/static/**",
+          "destination": "/_next/static/**"
+        },
+        {
+          "source": "**",
+          "function": "ssramplifystaging"
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "source": "functions/functions-prod",
+      "codebase": "prod"
+    },
+    {
+      "source": "functions/functions-staging",
+      "codebase": "staging"
+    }
+  ],
   "frameworks": {
     "webFrameworks": {
       "framework": "next"
     }
+  },
+  "apphosting": {
+    "backendId": "amplify-server",
+    "rootDir": "/",
+    "ignore": [
+      "node_modules",
+      ".git",
+      "firebase-debug.log",
+      "firebase-debug.*.log",
+      "functions"
+    ]
   }
 }

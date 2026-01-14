@@ -2,11 +2,25 @@
   "projects": {
     "default": "amplify-ghana"
   },
-  "targets": {},
-  "etags": {
+  "targets": {
     "amplify-ghana": {
-      "extensionInstances": {}
+      "hosting": {
+        "prod": [
+          "amplify-ghana"
+        ],
+        "staging": [
+          "amplify-staging"
+        ]
+      }
     }
   },
-  "dataconnectEmulatorConfig": {}
+  "funtions": {
+    "prod": [
+      "ssramplifyghana"
+    ],
+    "staging": [
+      "ssramplifystaging"
+    ]
+  },
+  "etags": {}
 }

@@ -2,12 +2,15 @@ import { NextResponse } from "next/server";
 import { getDocs, collection } from "@firebase/firestore";
 import { database } from "@/firebase/firebase";
 
+
 // Helper
 function isValidSlug(text: string): boolean {
   return /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(text);
 }
 
 export const dynamic = "force-dynamic"; // ✅ Required for Firestore fetch
+export const revalidate = 0;
+
 
 export async function GET() {
   try {
