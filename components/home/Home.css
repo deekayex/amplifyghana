@@ -199,9 +199,9 @@
 }
 
 .highlighted-playlist-image {
-  height: 100%;
+  /* height: 100%; */
   width: 100%;
-  object-fit: fill;
+  object-fit:fill;
   border-radius: 20px;
 }
 

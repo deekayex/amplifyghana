@@ -258,7 +258,7 @@ return (
               </Link>
 
               <Image
-                src={playlist.imageUrl}
+                src={playlist.image }
                 alt={playlist.title}
                 className="highlighted-playlist-image"
                 width={0}
