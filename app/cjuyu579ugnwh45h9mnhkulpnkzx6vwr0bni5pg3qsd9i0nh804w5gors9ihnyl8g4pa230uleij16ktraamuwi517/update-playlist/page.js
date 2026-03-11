@@ -35,45 +35,54 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
     });
   };
 
-  const handleSave = async () => {
-    try {
-      // Upload image to Firebase Storage
-      const storageRef = ref(storage, "highlight/" + playlistData.image.name);
-      await uploadBytes(storageRef, playlistData.image);
-      const downloadURL = await getDownloadURL(storageRef);
+ const handleSave = async () => {
+  try {
+    // Upload image to Firebase Storage
+    const storageRef = ref(storage, "highlight/" + playlistData.image.name);
+    await uploadBytes(storageRef, playlistData.image);
+    const downloadURL = await getDownloadURL(storageRef);
 
-      // Check if a document already exists in the collection
-      const highlightsCollectionRef = collection(
-        database,
-        "Playlisthighlights"
-      );
-      const querySnapshot = await getDocs(highlightsCollectionRef);
+    const highlightData = {
+      title: playlistData.title,
+      link: playlistData.link,
+      imageUrl: downloadURL,
+      createdAt: new Date()
+    };
 
-      if (querySnapshot.empty) {
-        // If no document exists, create a new one
-        const newHighlightRef = await addDoc(highlightsCollectionRef, {
-          title: playlistData.title,
-          link: playlistData.link,
-          imageUrl: downloadURL,
-        });
-        alert("Document written with ID: ", newHighlightRef.id);
-      } else {
-        // If a document exists, update its fields
-        const existingDoc = querySnapshot.docs[0];
-        await setDoc(existingDoc.ref, {
-          title: playlistData.title,
-          link: playlistData.link,
-          imageUrl: downloadURL,
-        });
-        console.log("Document updated with ID: ", existingDoc.id);
-      }
+    // ----------------------------
+    // 1️⃣ Save / update highlighted playlist
+    // ----------------------------
+    const highlightsCollectionRef = collection(database, "Playlisthighlights");
+    const querySnapshot = await getDocs(highlightsCollectionRef);
 
-      // Reset form state on successful save
-      setPlaylistData({ ...initialHighlight });
-    } catch (error) {
-      alert("Error saving playlist:", error);
+    if (querySnapshot.empty) {
+      const newHighlightRef = await addDoc(highlightsCollectionRef, highlightData);
+      console.log("Highlight created with ID:", newHighlightRef.id);
+    } else {
+      const existingDoc = querySnapshot.docs[0];
+      await setDoc(existingDoc.ref, highlightData);
+      console.log("Highlight updated:", existingDoc.id);
     }
-  };
+
+    // ----------------------------
+    // 2️⃣ ALSO add to playlists collection
+    // ----------------------------
+    const playlistsCollectionRef = collection(database, "playlists");
+
+    await addDoc(playlistsCollectionRef, highlightData);
+
+    console.log("Playlist added to playlists collection");
+
+    // Reset form
+    setPlaylistData({ ...initialHighlight });
+
+    if (onSave) onSave(highlightData);
+
+  } catch (error) {
+    console.error("Error saving playlist:", error);
+    alert("Error saving playlist");
+  }
+};
 
   const handleCancel = () => {
     // Reset form state on cancel

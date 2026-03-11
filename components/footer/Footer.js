@@ -73,7 +73,9 @@ const Footer = () => {
           </li>
         </div>
         {/* <div><p>Social logos are obtained from freepiks</p></div> */}
-        <p className="copyright">© 2024 Amplify Ghana. All rights reserved.</p>
+      <p className="copyright">
+  © {new Date().getFullYear()} Amplify Ghana. All rights reserved.
+</p>
       </div>
     </div>
   );
