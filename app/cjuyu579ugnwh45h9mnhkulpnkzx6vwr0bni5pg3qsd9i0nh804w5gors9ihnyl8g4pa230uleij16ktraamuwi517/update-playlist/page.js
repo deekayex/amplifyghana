@@ -1,26 +1,27 @@
 "use client";
+
 import React, { useState } from "react";
 import { database, storage } from "@/firebase/firebase";
-import { collection, addDoc, setDoc, getDocs } from "firebase/firestore";
+import { collection, addDoc, setDoc, getDocs, Timestamp } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import Link from "next/link";
 import AdminLayout from "@/components/admin/AdminLayout";
-import './playlist-form.css'
+import "./playlist-form.css";
 
-//where are the props supposed to come from?
-//or they're not needed at all?
-// const HighlightPlaylist = ({ onSave, onCancel }) => {
 const HighlightPlaylist = ({ onSave, onCancel }) => {
+
   const initialHighlight = {
     title: "",
     image: null,
     link: "",
+    summary: "",
   };
 
   const [playlistData, setPlaylistData] = useState({ ...initialHighlight });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
     setPlaylistData({
       ...playlistData,
       [name]: value,
@@ -29,65 +30,87 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
 
   const handleImageChange = (e) => {
     const image = e.target.files[0];
+
     setPlaylistData({
       ...playlistData,
       image,
     });
   };
 
- const handleSave = async () => {
-  try {
-    // Upload image to Firebase Storage
-    const storageRef = ref(storage, "highlight/" + playlistData.image.name);
-    await uploadBytes(storageRef, playlistData.image);
-    const downloadURL = await getDownloadURL(storageRef);
+  const handleSave = async () => {
+    try {
 
-    const highlightData = {
-      title: playlistData.title,
-      link: playlistData.link,
-      imageUrl: downloadURL,
-      createdAt: new Date()
-    };
+      if (!playlistData.image) {
+        alert("Please upload an image");
+        return;
+      }
 
-    // ----------------------------
-    // 1️⃣ Save / update highlighted playlist
-    // ----------------------------
-    const highlightsCollectionRef = collection(database, "Playlisthighlights");
-    const querySnapshot = await getDocs(highlightsCollectionRef);
+      // Create unique filename
+      const fileName = `${Date.now()}-${playlistData.image.name}`;
 
-    if (querySnapshot.empty) {
-      const newHighlightRef = await addDoc(highlightsCollectionRef, highlightData);
-      console.log("Highlight created with ID:", newHighlightRef.id);
-    } else {
-      const existingDoc = querySnapshot.docs[0];
-      await setDoc(existingDoc.ref, highlightData);
-      console.log("Highlight updated:", existingDoc.id);
+      // Upload image to storage
+      const storageRef = ref(storage, `playlist_images/${fileName}`);
+      await uploadBytes(storageRef, playlistData.image);
+
+      // Get image URL
+      const downloadURL = await getDownloadURL(storageRef);
+
+      // Firestore references
+      const playlistsCollectionRef = collection(database, "playlists");
+      const highlightsCollectionRef = collection(database, "Playlisthighlights");
+
+      // Save playlist
+      await addDoc(playlistsCollectionRef, {
+        image: downloadURL,
+        link: playlistData.link,
+        summary: playlistData.summary,
+        timestamp: Timestamp.now(),
+        title: playlistData.title,
+      });
+
+      // Check highlight collection
+      const querySnapshot = await getDocs(highlightsCollectionRef);
+
+      if (querySnapshot.empty) {
+
+        await addDoc(highlightsCollectionRef, {
+          image: downloadURL,
+          link: playlistData.link,
+          title: playlistData.title,
+        });
+
+      } else {
+
+        const existingDoc = querySnapshot.docs[0];
+
+        await setDoc(existingDoc.ref, {
+          image: downloadURL,
+          link: playlistData.link,
+          title: playlistData.title,
+        });
+
+      }
+
+      alert("Playlist created successfully!");
+
+      setPlaylistData({ ...initialHighlight });
+
+      if (onSave) {
+        onSave(playlistData);
+      }
+
+    } catch (error) {
+      console.error(error);
+      alert("Error saving playlist");
     }
-
-    // ----------------------------
-    // 2️⃣ ALSO add to playlists collection
-    // ----------------------------
-    const playlistsCollectionRef = collection(database, "playlists");
-
-    await addDoc(playlistsCollectionRef, highlightData);
-
-    console.log("Playlist added to playlists collection");
-
-    // Reset form
-    setPlaylistData({ ...initialHighlight });
-
-    if (onSave) onSave(highlightData);
-
-  } catch (error) {
-    console.error("Error saving playlist:", error);
-    alert("Error saving playlist");
-  }
-};
+  };
 
   const handleCancel = () => {
-    // Reset form state on cancel
     setPlaylistData({ ...initialHighlight });
-    onCancel();
+
+    if (onCancel) {
+      onCancel();
+    }
   };
 
   const handleSubmit = (e) => {
@@ -97,91 +120,117 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
 
   return (
     <AdminLayout>
-    <div className="playlist-highlighted">
-      <form onSubmit={handleSubmit} className="playlist-form">
-        <h1 className>Create New Playlist Highlight</h1>
-        <div className="new-playlist-container">
-          <div
-            className="new-playlist-image-container"
-            style={{
-              backgroundImage: playlistData.image
-                ? `url(${URL.createObjectURL(playlistData.image)})`
-                : "none",
-            }}
-          ></div>
-        </div>
 
-        <input
-          type="file"
-          name="image"
-          accept="image/*"
-          onChange={handleImageChange}
-          required
-        />
+      <div className="playlist-highlighted">
 
-        <div className="playlist-title">
-          <label>Title: </label>
+        <form onSubmit={handleSubmit} className="playlist-form">
+
+          <h1>Create New Playlist</h1>
+
+          <div className="new-playlist-container">
+            <div
+              className="new-playlist-image-container"
+              style={{
+                backgroundImage: playlistData.image
+                  ? `url(${URL.createObjectURL(playlistData.image)})`
+                  : "none",
+              }}
+            ></div>
+          </div>
+
           <input
-            type="text"
-            name="title"
-            value={playlistData.title}
-            onChange={handleInputChange}
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
             required
-            placeholder="Type the Playlist title"
-            className="playlist-title"
           />
-        </div>
 
+          <div className="playlist-title">
+            <label>Title</label>
 
-        <div className="playlist-link">
-          <label>Link: </label>
-          <input
-            type="text"
-            name="link"
-            value={playlistData.link}
-            onChange={handleInputChange}
-            placeholder="Insert the Playlist link here"
-            required
-            className="playlist-link"
-          />
-        </div>
+            <input
+              type="text"
+              name="title"
+              value={playlistData.title}
+              onChange={handleInputChange}
+              required
+              placeholder="Playlist title"
+            />
+          </div>
 
-        <div className="form-buttons">
-          <div className="playlist-buttons-flex">
-            <button type="button" onClick={handleCancel} className="btn">
+          <div className="playlist-link">
+            <label>Link</label>
+
+            <input
+              type="text"
+              name="link"
+              value={playlistData.link}
+              onChange={handleInputChange}
+              required
+              placeholder="Playlist link"
+            />
+          </div>
+
+          <div className="playlist-summary">
+            <label>Summary</label>
+
+            <textarea
+              name="summary"
+              value={playlistData.summary}
+              onChange={handleInputChange}
+              placeholder="Write playlist summary"
+              required
+            />
+          </div>
+
+          <div className="form-buttons">
+
+            <button
+              type="button"
+              onClick={handleCancel}
+              className="btn"
+            >
               Cancel
             </button>
 
-            <button type="submit" className="btn">
+            <button
+              type="submit"
+              className="btn"
+            >
               Create
             </button>
+
           </div>
 
           <Link href="/cjuyu579ugnwh45h9mnhkulpnkzx6vwr0bni5pg3qsd9i0nh804w5gors9ihnyl8g4pa230uleij16ktraamuwi517/update-playlist">
             Update Playlists
           </Link>
-        </div>
-      </form>
-    </div>
+
+        </form>
+
+      </div>
+
     </AdminLayout>
   );
 };
 
 
 const UpdatePlaylist = () => {
+
   const handleSave = (playlistData) => {
-    // Handle save logic here
-    console.log('Save playlist:', playlistData);
+    console.log("Saved playlist:", playlistData);
   };
 
   const handleCancel = () => {
-    // Handle cancel logic here
-    console.log('Cancel playlist creation');
+    console.log("Playlist creation cancelled");
   };
 
   return (
     <div>
-      <HighlightPlaylist onSave={handleSave} onCancel={handleCancel} />
+      <HighlightPlaylist
+        onSave={handleSave}
+        onCancel={handleCancel}
+      />
     </div>
   );
 };
