@@ -6,7 +6,9 @@ import AdminLayout from "@/components/admin/AdminLayout";
 const PlaylistList = () => {
   return (
     <AdminLayout>
+        <div className="page-limiter">
       <Playlists isPlayListManager={true} />
+      </div>
     </AdminLayout>
     );
 };
