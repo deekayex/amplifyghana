@@ -1,4 +1,4 @@
-
+"use client";
 import React from "react";
 import Playlists from "../../playlists/Playlists";
 import AdminLayout from "@/components/admin/AdminLayout";

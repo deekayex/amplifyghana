@@ -52,10 +52,15 @@ async function fetchHighlightedPlaylists(database) {
   const playlistsSnapshot = await fetchDataWithCache("playlistsCache", () =>
     getDocs(collection(database, "Playlisthighlights"))
   );
-  return playlistsSnapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...serializeFirebaseDocument(doc),
-  }));
+
+  if (playlistsSnapshot.empty) return null;
+
+  const playlistDoc = playlistsSnapshot.docs[0];
+
+  return {
+    id: playlistDoc.id,
+    ...serializeFirebaseDocument(playlistDoc),
+  };
 }
 
 async function fetchFeaturedAd(database) {
@@ -115,90 +120,6 @@ function Home({ highlightedNews, highlightedEditors, highlightedPlaylists, newFe
   const editorsLink = highlightedEditors ? `editors-picks/${highlightedEditors.id}` : "";
   const newsLink = highlightedNews ? `news/${highlightedNews.id}` : "";
 
-//   return (
-//     <div className="homepage-components">
-//       <div className="homepage-contents">
-//         {highlightedEditors && (
-//           <Link href={editorsLink}
-//             className="left-homepage"
-//             aria-label="link-to-featured-editors-pick"
-//             style={{ backgroundImage: `url(${highlightedEditors.image || ""})` }}
-//           >
-//              <Link
-//                   href="#/editors-pick"
-//                   aria-label="link-to-editors-page"
-//                   className="sticker"
-//                 >
-//                   <h3>EDITOR'S PICKS</h3>
-//                 </Link>
-//             <Link href={editorsLink} className="editor-text-link">
-//               <div className="editor-text">
-//                 <h2 className="editor-text-header">{highlightedEditors.title || "Loading..."}</h2>
-//                 <p className="editor-text-body">{highlightedEditors.summary}</p>
-//               </div>
-//             </Link>
-//           </Link>
-//         )}
-//         <div className="right-homepage">
-//           {highlightedNews && (
-//             <Link href={newsLink} 
-//               className="news-component"
-//               aria-label="link-to-featured-news"
-//               style={{ backgroundImage: `url(${highlightedNews.image || ""})` }}
-//             >
-//               <Link
-//                   href="#/news"
-//                   aria-label="link-to-news-page"
-//                   className="sticker"
-//                 >
-//                   <h3>NEWS</h3>
-//               </Link>
-//               <Link href={newsLink} className="news-text-link">
-//                 <div className="news-text">
-//                   <h2 className="news-text-header">{highlightedNews.title || "Loading..."}</h2>
-//                   <p className="news-text-body">{highlightedNews.summary || ""}</p>
-//                 </div>
-//               </Link>
-//             </Link>
-//           )}
-//           {highlightedPlaylists.map((playlist) => (
-//             <Link href={playlist.link} key={playlist.id} className="playlist-component">
-//               <div className="playlist-text">
-//                 <Link
-//                   href="/playlists"
-//                   // className="sticker"
-//                   aria-label="link-to-playlists-page"
-//                 >
-//                   <h3>PLAYLISTS</h3>
-//                 </Link>
-//               </div>
-
-//               <Link href={playlist.link} className="playlist-button" target="_blank">
-//                 Listen
-//               </Link>
-//               <Image
-//                 src={playlist.imageUrl}
-//                 alt={playlist.title}
-//                 className="highlighted-playlist-image"
-//                 width={0}
-//                 height={0}
-//                 sizes="100vw"
-//                 style={{ width: "100%", height: "auto" }}
-//                 priority
-//               />
-//             </Link>
-//           ))}
-//         </div>
-//       </div>
-//       <div className="bottom-homepage">
-//         {newFeaturedAd.map((ad) => (
-//           <FeaturedAd key={ad.id} ad={ad} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
 return (
     <div className="homepage-components">
       <div className="homepage-contents">
@@ -245,21 +166,21 @@ return (
           )}
 
           {/* PLAYLISTS */}
-          {highlightedPlaylists.map((playlist) => (
-            <div className="playlist-component" key={playlist.id}>
-              <Link href={playlist.link} className="card-link" />
+          {highlightedPlaylists && (
+            <div className="playlist-component" key={highlightedPlaylists.id}>
+              <Link href={highlightedPlaylists.link} className="card-link" />
 
               <Link href="/playlists" className="sticker">
                 <h3>PLAYLISTS</h3>
               </Link>
 
-              <Link href={playlist.link} className="playlist-button" target="_blank">
+              <Link href={highlightedPlaylists.link} className="playlist-button" target="_blank">
                 Listen
               </Link>
 
               <Image
-                src={playlist.image }
-                alt={playlist.title}
+                src={highlightedPlaylists.image }
+                alt={highlightedPlaylists.title}
                 className="highlighted-playlist-image"
                 width={0}
                 height={0}
@@ -268,7 +189,7 @@ return (
                 priority
               />
             </div>
-          ))}
+          )}
         </div>
       </div>
 

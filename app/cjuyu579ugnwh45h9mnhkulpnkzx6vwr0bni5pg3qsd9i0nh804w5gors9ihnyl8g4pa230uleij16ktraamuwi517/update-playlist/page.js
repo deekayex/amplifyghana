@@ -2,7 +2,13 @@
 
 import React, { useState } from "react";
 import { database, storage } from "@/firebase/firebase";
-import { collection, addDoc, setDoc, getDocs, Timestamp } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  setDoc,
+  getDocs,
+  Timestamp,
+} from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import Link from "next/link";
 import AdminLayout from "@/components/admin/AdminLayout";
@@ -12,7 +18,8 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
 
   const initialHighlight = {
     title: "",
-    image: null,
+    playlistImage: null,
+    highlightImage: null,
     link: "",
     summary: "",
   };
@@ -28,40 +35,51 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
     });
   };
 
-  const handleImageChange = (e) => {
+  const handlePlaylistImageChange = (e) => {
     const image = e.target.files[0];
 
     setPlaylistData({
       ...playlistData,
-      image,
+      playlistImage: image,
+    });
+  };
+
+  const handleHighlightImageChange = (e) => {
+    const image = e.target.files[0];
+
+    setPlaylistData({
+      ...playlistData,
+      highlightImage: image,
     });
   };
 
   const handleSave = async () => {
     try {
 
-      if (!playlistData.image) {
-        alert("Please upload an image");
+      if (!playlistData.playlistImage || !playlistData.highlightImage) {
+        alert("Please upload both images");
         return;
       }
 
-      // Create unique filename
-      const fileName = `${Date.now()}-${playlistData.image.name}`;
+      const playlistFileName = `${Date.now()}-${playlistData.playlistImage.name}`;
+      const highlightFileName = `${Date.now()}-${playlistData.highlightImage.name}`;
 
-      // Upload image to storage
-      const storageRef = ref(storage, `playlist_images/${fileName}`);
-      await uploadBytes(storageRef, playlistData.image);
+      // Upload playlist image
+      const playlistStorageRef = ref(storage, `playlist_images/${playlistFileName}`);
+      await uploadBytes(playlistStorageRef, playlistData.playlistImage);
+      const playlistImageURL = await getDownloadURL(playlistStorageRef);
 
-      // Get image URL
-      const downloadURL = await getDownloadURL(storageRef);
+      // Upload highlight image
+      const highlightStorageRef = ref(storage, `playlist_highlight_images/${highlightFileName}`);
+      await uploadBytes(highlightStorageRef, playlistData.highlightImage);
+      const highlightImageURL = await getDownloadURL(highlightStorageRef);
 
-      // Firestore references
       const playlistsCollectionRef = collection(database, "playlists");
       const highlightsCollectionRef = collection(database, "Playlisthighlights");
 
       // Save playlist
       await addDoc(playlistsCollectionRef, {
-        image: downloadURL,
+        image: playlistImageURL,
         link: playlistData.link,
         summary: playlistData.summary,
         timestamp: Timestamp.now(),
@@ -74,7 +92,7 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
       if (querySnapshot.empty) {
 
         await addDoc(highlightsCollectionRef, {
-          image: downloadURL,
+          image: highlightImageURL,
           link: playlistData.link,
           title: playlistData.title,
         });
@@ -84,7 +102,7 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
         const existingDoc = querySnapshot.docs[0];
 
         await setDoc(existingDoc.ref, {
-          image: downloadURL,
+          image: highlightImageURL,
           link: playlistData.link,
           title: playlistData.title,
         });
@@ -106,11 +124,13 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
   };
 
   const handleCancel = () => {
+
     setPlaylistData({ ...initialHighlight });
 
     if (onCancel) {
       onCancel();
     }
+
   };
 
   const handleSubmit = (e) => {
@@ -127,25 +147,30 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
 
           <h1>Create New Playlist</h1>
 
+          {/* Playlist Image Preview */}
           <div className="new-playlist-container">
             <div
               className="new-playlist-image-container"
               style={{
-                backgroundImage: playlistData.image
-                  ? `url(${URL.createObjectURL(playlistData.image)})`
+                backgroundImage: playlistData.playlistImage
+                  ? `url(${URL.createObjectURL(playlistData.playlistImage)})`
                   : "none",
               }}
-            ></div>
-          </div>
-
+            >
+               <label>Playlist Image</label>
           <input
             type="file"
             accept="image/*"
-            onChange={handleImageChange}
+            onChange={handlePlaylistImageChange}
             required
           />
+            </div>
+          </div>
+
+         
 
           <div className="playlist-title">
+
             <label>Title</label>
 
             <input
@@ -156,9 +181,11 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
               required
               placeholder="Playlist title"
             />
+
           </div>
 
           <div className="playlist-link">
+
             <label>Link</label>
 
             <input
@@ -169,9 +196,11 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
               required
               placeholder="Playlist link"
             />
+
           </div>
 
           <div className="playlist-summary">
+
             <label>Summary</label>
 
             <textarea
@@ -181,8 +210,16 @@ const HighlightPlaylist = ({ onSave, onCancel }) => {
               placeholder="Write playlist summary"
               required
             />
+
           </div>
 
+ <label>Highlighted Image</label>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleHighlightImageChange}
+            required
+          />
           <div className="form-buttons">
 
             <button
@@ -227,10 +264,12 @@ const UpdatePlaylist = () => {
 
   return (
     <div>
+
       <HighlightPlaylist
         onSave={handleSave}
         onCancel={handleCancel}
       />
+
     </div>
   );
 };
