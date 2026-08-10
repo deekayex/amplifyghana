@@ -5,10 +5,10 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
-import LoadingArticles from "../../context/loading/ArticlesLoad/LoadingArticles";
+import LoadingScreen from "../../context/loading/LoadingScreen";
 import { database } from "../../firebase/firebase";
 
-function EditorsPicks({ isAllArticlesPage, highlightedEditors, totalPagesCount }) {
+function EditorsPicks({ isAllArticlesPage, totalPagesCount }) {
   const [editorsArticles, setEditorsArticles] = useState([]);
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,9 +29,7 @@ function EditorsPicks({ isAllArticlesPage, highlightedEditors, totalPagesCount }
  
        setIsLoading(true);
        setFetchError(null);
- 
-       console.log(`Fetching data for page: ${page}`);
- 
+
        try {
          const editorsCollection = collection(database, "editors-picks");
          const articlesQuery = query(
@@ -215,8 +213,9 @@ function EditorsPicks({ isAllArticlesPage, highlightedEditors, totalPagesCount }
     <div className="flex-contents">
     
         <div className="page-contents">
-        {isLoading && <LoadingArticles />} 
-        {!isLoading &&               
+        {isLoading && <LoadingScreen />}
+        {fetchError && <p className="fetch-error">{fetchError}</p>}
+        {!isLoading &&
           currentArticles.map((article, rowIndex) => (
             <div key={rowIndex} className="news-row">
               <Link

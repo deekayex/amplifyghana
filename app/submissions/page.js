@@ -6,7 +6,7 @@ import ScrollToTopOnMount from "../../components/ScrollToTop";
 // import { Helmet } from "react-helmet";
 
 function Submissions() {
-  const handleSubmit = async (values, setSubmitting) => {
+  const handleSubmit = async () => {
     // Form submission logic here
   };
 

@@ -43,7 +43,6 @@ const BasicForm = ({ onSubmit }) => {
           addDoc(messagesCollection, values)
             .then(() => {
               alert('Nice! Your submission has been successfully received. We will respond to you as soon as possible!');
-              console.log(values);
             })
             .catch((error) => {
               console.error('Error submitting form:', error);

@@ -1,6 +1,6 @@
 import React from 'react';
-import LoadingArticles from '../../context/loading/ArticlesLoad/LoadingArticles';
+import LoadingScreen from '../../context/loading/LoadingScreen';
 
 export default function Loading() {
-  return <LoadingArticles />;
+  return <LoadingScreen />;
 }

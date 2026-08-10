@@ -15,7 +15,7 @@
 .article-flex{
   display: flex;
   flex-direction: row;
-  gap: 10%;
+  column-gap: 10%;
 }
 
 .article-main{

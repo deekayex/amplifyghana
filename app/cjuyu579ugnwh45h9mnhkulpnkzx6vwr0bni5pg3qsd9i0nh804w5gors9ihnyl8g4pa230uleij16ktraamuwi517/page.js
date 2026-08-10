@@ -10,8 +10,7 @@ import { database } from "@/firebase/firebase";
 import EditorsPicks from "../../components/editors-picks/page";
 import News from "../../components/news/News";
 import { Suspense } from "react";
-// import LoadingScreen from "@/context/loading/LoadingScreen";
-import LoadingArticles from "@/context/loading/ArticlesLoad/LoadingArticles";
+import LoadingScreen from "@/context/loading/LoadingScreen";
 import AdminLayout from "@/components/admin/AdminLayout";
 
 const ArticleList = async () => {
@@ -24,7 +23,7 @@ const ArticleList = async () => {
     <AdminLayout>
     <div className="page-limiter">
       <div>
-        <Suspense fallback={<LoadingArticles/>}>
+        <Suspense fallback={<LoadingScreen/>}>
         <News isAllArticlesPage={true} initialNewsArticles={newsArticles}
         />
         </Suspense>
