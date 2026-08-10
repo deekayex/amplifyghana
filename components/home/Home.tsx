@@ -132,7 +132,7 @@ return (
           >
             <Link href={editorsLink} className="card-link" aria-label="Featured editors pick" />
 
-            <Link href="/editors-picks" className="sticker">
+            <Link href="/#editors-picks" className="sticker">
               <h3>EDITOR'S PICKS</h3>
             </Link>
 
@@ -154,7 +154,7 @@ return (
             >
               <Link href={newsLink} className="card-link" aria-label="Featured news" />
 
-              <Link href="/news" className="sticker">
+              <Link href="/#news" className="sticker">
                 <h3>NEWS</h3>
               </Link>
 
@@ -170,7 +170,7 @@ return (
             <div className="playlist-component" key={highlightedPlaylists.id}>
               <Link href={highlightedPlaylists.link} className="card-link" />
 
-              <Link href="/playlists" className="sticker">
+              <Link href="/playlists" className="playlist-text">
                 <h3>PLAYLISTS</h3>
               </Link>
 

@@ -14,10 +14,6 @@ const Messages = () => {
     getMessages();
   }, []);
 
-  useEffect(() => {
-    console.log("Messages state updated:", messages);
-  }, [messages]);
-
   return (
     <div className="inbox-menu">
       <h1 className="inbox-text">Inbox</h1>

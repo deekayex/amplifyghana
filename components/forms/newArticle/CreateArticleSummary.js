@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 
-const CreateArticleSummary = ({ title, summary, onSummaryChange, onImageChange, onSectionChange, onNext, onPrevious, setImage }) => {
+const CreateArticleSummary = ({ title, summary, onSummaryChange, onImageChange, onSectionChange, onNext, onPrevious }) => {
   const [imagePreview, setImagePreview] = useState(null);
 
   const handleImageChange = (e) => {

@@ -144,17 +144,18 @@ export default function ArticleContent({
           <h1 className="article-title">{article.title}</h1>
 
           <div className="article-image-container">
-            <Image
-              src={article.image}
-              alt={article.title}
-              className="article-image"
-              layout="responsive"
-              objectFit="cover"
-              width={4000}
-              height={100}
-              priority
-            />
-      
+            {article.image && (
+              <Image
+                src={article.image}
+                alt={article.title}
+                className="article-image"
+                layout="responsive"
+                objectFit="cover"
+                width={4000}
+                height={100}
+                priority
+              />
+            )}
           </div>
 
           <div className="read-article">

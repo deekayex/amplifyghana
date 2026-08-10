@@ -23,12 +23,9 @@ export const ShareButton: React.FC<ShareButtonProps> = ({
           text: "Check out this article!",
           url: articleUrl,
         });
-        console.log("Successful share");
       } catch (error) {
         console.error("Error sharing", error);
       }
-    } else {
-      console.log("Web Share API not supported on this device.");
     }
   };
 

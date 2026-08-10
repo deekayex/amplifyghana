@@ -1,6 +1,5 @@
 import EditorsPicks from "@/components/editors-picks/page";
 import News from "@/components/news/News";
-import LoadingArticles from "@/context/loading/ArticlesLoad/LoadingArticles";
 import { database } from "@/firebase/firebase";
 import {
   collection,
@@ -41,31 +40,6 @@ function serializeFirebaseDocument(doc) {
 }
 export const revalidate = 60;
 
-
-async function fetchHighlightedEditors(database) {
-  try {
-    const highlightedEditorsDoc = await getDoc(
-      doc(database, "highlighted", "highlightedEditors")
-    );
-    const highlightedEditorsData = highlightedEditorsDoc.data();
-
-    if (highlightedEditorsData) {
-      const articleRef = doc(
-        database,
-        "editors-picks",
-        highlightedEditorsData.articleId
-      );
-      const articleDoc = await getDoc(articleRef);
-
-      if (articleDoc.exists()) {
-        return serializeFirebaseDocument(articleDoc); // Instead of setHighlightedEditors
-      }
-    }
-  } catch (error) {
-    console.error("Error fetching highlighted article", error);
-  }
-  return null; // Return null if no data is fetched or in case of error
-}
 
 async function fetchEditorsData(database) {
   try {
@@ -171,10 +145,8 @@ export const fetchNewsData = async (database, page = 1) => {
       limit(articlesPerPage)
     );
     const snapshot = await getCountFromServer(newsCollection);
-    console.log("count: ", snapshot.data().count);
 
     const totalArticlesCount = snapshot.data().count;
-    // console.log(totalArticlesCount);
     const totalPagesCount = Math.ceil(totalArticlesCount / articlesPerPage);
 
     const newsSnapshot = await getDocs(newsQuery);
@@ -190,8 +162,6 @@ export const fetchNewsData = async (database, page = 1) => {
   }
 };
 export default async function NewsEditor() {
-  //write the equivalent of that for the EditorsPicks
-  const highlightedEditors = await fetchHighlightedEditors(database);
   const editorsData = await fetchEditorsData(database);
   const centeredStates = await fetchCenteredStates();
 
@@ -203,7 +173,6 @@ export default async function NewsEditor() {
         <News
           isAllArticlesPage={false}
           // handleToggleClick={handleToggleClick}
-          fetchNewsData={fetchNewsData}
           initialNewsArticles={newsArticles}
           totalPagesCount={totalPagesCount}
           // highlightedArticleId={highlightedArticleId}
@@ -214,7 +183,6 @@ export default async function NewsEditor() {
       <section className="editor-page" id="editors-pick">
         <EditorsPicks
           isAllArticlesPage={false}
-          highlightedEditors={highlightedEditors}
           // editorsArticles={editorsData}
           totalPagesCount={totalPagesCount}
           // handleToggleClick={handleToggleClick}

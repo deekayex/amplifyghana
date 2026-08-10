@@ -42,7 +42,7 @@
 }
 
 .editor-skeleton-text-header{
-  width: 90%;
+  width: 80vw;
   margin-left: 5%;
   border-radius: 10px;
   height: 35%;
@@ -63,8 +63,8 @@
 }
 
 .editor-skeleton-text-body, .editor-skeleton-text-body2, .editor-skeleton-text-body3, .playlist-skeleton-text-header, .playlist-skeleton-text-body{
-  width: 85%;
-  margin-left: 5%;
+  width: 85vw;
+  margin-left: 5vw;
   border-radius: 10px;
   height: 10%;
   margin-top: 2%;
@@ -75,13 +75,12 @@
 }
 
 .editor-skeleton-text-body3{
-  width: 70%;
+  width: 70vw;
 }
 
 .playlist-skeleton-text-header, .playlist-skeleton-text-body{
   position: relative;
-  height: 5
-  0%;
+  height: 50%;
 }
 
 @media screen and (max-width: 1000px) {

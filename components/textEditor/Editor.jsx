@@ -15,9 +15,6 @@ export function TinyEditor({ value, onChange }) {
 
 const handleNodeChange = (e) => {
   if (e.element.nodeName === 'IMG') {
-    console.log('Image alt text:', e.element.alt);
-
-    // Set alt text to state or perform actions based on alt text
     setImageAlt(e.element.alt);
   }
 };

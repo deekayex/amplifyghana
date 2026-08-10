@@ -40,10 +40,17 @@
   transition: 0.5s ease-in-out;
 }
 
+.card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
 .sticker,
 .playlist-text {
   position: absolute;
   right: 0;
+  z-index: 2;
   background-color: #ff7300;
   border-top-right-radius: 18px;
   padding-right: 20px;
@@ -53,17 +60,17 @@
   font-family: "hanson", sans-serif;
   font-weight: bolder;
   letter-spacing: 2px;
+   font-size: 13px;
 }
 
-.sticker {
-  font-size: 13px;
-}
+
 
 .editor-text,
 .news-text {
   background-color: black;
   position: absolute;
   bottom: 0;
+  z-index: 2;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   opacity: 0.9;
@@ -194,7 +201,7 @@
   top: 0;
   padding-left: 10px;
   padding-right: 12px;
-  font-size: 1.4vw;
+  /* font-size: 1; */
   letter-spacing: 1px;
 }
 

@@ -36,6 +36,12 @@ body {
   padding: 0;
 }
 
+.site-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
 .blank {
   min-height: 100vh;
   padding-top: 40vh;

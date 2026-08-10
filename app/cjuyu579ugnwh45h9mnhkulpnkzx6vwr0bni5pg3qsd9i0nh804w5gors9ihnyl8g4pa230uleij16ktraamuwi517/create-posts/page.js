@@ -36,7 +36,6 @@ const CreateArticleForm = ({ onSave, onCancel }) => {
 
     const handleContentChange = (newContent) => {
         setContent(newContent);
-        console.log(newContent)
     };
 
     const handleNext = () => {

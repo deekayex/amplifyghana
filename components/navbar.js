@@ -7,19 +7,13 @@ import "./navbar.css";
 import Image from "next/image";
 
 function Navbar() {
-  // const isActive = slug === segment
   const [activeSection, setActiveSection] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
   const params = useParams();
-  // const section = window.location.hash.substring(1);
-  // console.log(section);
-  // console.log('hello');
+
   useEffect(() => {
     const section = window.location.hash.substring(1);
-    console.log(section);
     setActiveSection(section);
-    // console.log(segment);
-    // console.log(location);
   }, [params]);
 
   const toggleMenu = () => {

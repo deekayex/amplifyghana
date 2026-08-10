@@ -158,21 +158,23 @@ const ArticleSide = () => {
         </div>
 
         <div className="flex-aside-article">
-          {highlightedPlaylists.map((playlist) => (
-            <div key={playlist.id} className="aside-playlist">
-              <a href={playlist.link} target="_blank" rel="noopener noreferrer">
-                <Image
-                  src={playlist.imageUrl}
-                  alt={playlist.title}
-                  className="aside-playlist-image"
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  style={{ width: '100%', height: 'auto' }}
-                />
-              </a>
-            </div>
-          ))}
+          {highlightedPlaylists.map((playlist) =>
+            playlist.image ? (
+              <div key={playlist.id} className="aside-playlist">
+                <a href={playlist.link} target="_blank" rel="noopener noreferrer">
+                  <Image
+                    src={playlist.image}
+                    alt={playlist.title}
+                    className="aside-playlist-image"
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                </a>
+              </div>
+            ) : null
+          )}
           <div className="aside-playlist-side">
             <Link href="/playlists" className="article-description">
               HERE FOR THE MUSIC? CHECK OUT AWESOME PLAYLISTS

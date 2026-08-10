@@ -81,8 +81,6 @@ export async function fetchEditorsData(database:Firestore) {
 export async function handleToggleClick( articleId) {
   "use server";
   try {
-    console.log("clicked",articleId);
-    
     const articleDocRef = doc(database, "centeredStates", articleId);
     const articleDoc = await getDoc(articleDocRef);
 

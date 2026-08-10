@@ -9,7 +9,6 @@ export const fetchMessages = async () => {
     const messagesSnapshot = await getDocs(q);
 
     if (messagesSnapshot.empty) {
-      console.log("No matching documents.");
       return [];
     }
 
@@ -18,7 +17,6 @@ export const fetchMessages = async () => {
       ...doc.data(),
     }));
 
-    console.log("Fetched messages:", messagesList);
     return messagesList;
   } catch (error) {
     console.error("Error fetching messages:", error);
