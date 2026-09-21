@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "functions/functions-prod",
+      "target": "prod",
       "source": ".",
       "ignore": [
         "firebase.json",
@@ -20,7 +20,7 @@
       ]
     },
     {
-      "target": "functions/functions-staging",
+      "target": "staging",
       "source": ".",
       "ignore": [
         "firebase.json",
